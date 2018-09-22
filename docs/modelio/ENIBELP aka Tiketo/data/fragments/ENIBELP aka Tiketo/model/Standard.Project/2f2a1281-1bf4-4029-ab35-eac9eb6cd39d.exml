@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="ENIBELP aka Tiketo" version="4">
+  <OBJECT>
+    <ID name="ENIBELP aka Tiketo" mc="Standard.Project" uid="2f2a1281-1bf4-4029-ab35-eac9eb6cd39d"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[ENIBELP aka Tiketo]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="enibelp aka tiketo" mc="Standard.Package" uid="673c78a2-d283-4c12-b501-1b1d412bf39d"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="ENIBELP aka Tiketo" mc="Infrastructure.DiagramSet" uid="9f5ea8a8-76aa-4dd5-ae2e-9118a799fc6c"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

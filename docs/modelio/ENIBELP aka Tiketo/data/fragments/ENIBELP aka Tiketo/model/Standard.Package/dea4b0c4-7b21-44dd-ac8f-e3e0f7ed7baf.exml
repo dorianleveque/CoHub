@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="cas d'utilisations" version="4">
+  <OBJECT>
+    <ID name="cas d'utilisations" mc="Standard.Package" uid="dea4b0c4-7b21-44dd-ac8f-e3e0f7ed7baf"/>
+    <PID name="enibelp aka tiketo" mc="Standard.Package" uid="673c78a2-d283-4c12-b501-1b1d412bf39d"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[cas d'utilisations]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Demandeur" mc="Standard.Actor" uid="959b2b44-7d9d-490c-a280-c93e892ff872"/>
+        <COMPID name="Aideur" mc="Standard.Actor" uid="ed8a0a15-df7e-4a54-9473-d9d710994e8c"/>
+        <COMPID name="Gérer les tickets de demande" mc="Standard.UseCase" uid="f739da0f-32fe-4899-b3d7-a9f37cc57487"/>
+        <COMPID name="Créer un ticket de demande" mc="Standard.UseCase" uid="89aa5eaf-a8cb-4b3f-831a-b6417e193ec6"/>
+        <COMPID name="Editer un ticket de demande" mc="Standard.UseCase" uid="4bd08c6c-b3ff-40e5-82b6-1a9bd1f5a237"/>
+        <COMPID name="S'autentifier" mc="Standard.UseCase" uid="28f237fc-d87d-41e0-bb7b-e932a71166f3"/>
+        <COMPID name="Consulter l'ensemble des demandes" mc="Standard.UseCase" uid="36a3ae5c-0d44-4fa2-9107-e86042ee53d4"/>
+        <COMPID name="Rechercher" mc="Standard.UseCase" uid="aa89f9a5-a6f4-41b1-af2b-80abd028b678"/>
+        <COMPID name="Filtrer" mc="Standard.UseCase" uid="6961adbb-7da0-4e53-b3f8-402b7856cc9e"/>
+        <COMPID name="Répondre à une demande" mc="Standard.UseCase" uid="a8f49e37-218b-4186-aa1b-a4a78a39db01"/>
+        <COMPID name="Administrateur" mc="Standard.Actor" uid="4be05db4-a44f-4161-9bba-bb9f2a986cf0"/>
+        <COMPID name="Supprimer ticket" mc="Standard.UseCase" uid="a553920e-2277-482f-91b1-fdaa65b62faa"/>
+        <COMPID name="Serveur" mc="Standard.Actor" uid="fbd0355f-4ee8-4b5e-9e4c-a893a5527bb0"/>
+        <COMPID name="Utilisateur" mc="Standard.Actor" uid="f6ebac01-15e5-4b49-a7e0-84730e519f17"/>
+        <COMPID name="Supprimer ticket de +30 jours tous les jours" mc="Standard.UseCase" uid="1fce728a-0e6c-40c4-a3bb-429233fd2956"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="cas d'utilisations" mc="Standard.UseCaseDiagram" uid="669bf5e4-2f99-4e3e-8f0c-b27181227e79"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

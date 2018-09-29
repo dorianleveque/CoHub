@@ -1,0 +1,36 @@
+@startuml sequence
+
+actor "Utilisateur" as client order 1
+participant "Serveur" as server order 2
+database "Base de donnée" as bdd order 4
+
+client ->> server : HttpRequest
+create ":Login" as LoginClass order 3
+server -> LoginClass : <<create>>
+
+server -> LoginClass : doPost
+activate LoginClass
+LoginClass -> LoginClass : check
+activate LoginClass
+LoginClass --> LoginClass
+deactivate LoginClass
+
+opt syntaxCorrect == True
+LoginClass -> bdd : execute Querry
+activate bdd
+bdd --> LoginClass
+deactivate bdd
+
+opt userExist == True
+create ":User" as userClass order 5
+LoginClass -> userClass : <<create>>
+end
+
+end
+
+LoginClass --> client
+destroy LoginClass
+
+
+
+@enduml

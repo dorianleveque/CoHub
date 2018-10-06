@@ -2,7 +2,7 @@
 
 actor "Utilisateur" as client order 1
 participant "Serveur" as server order 2
-database "Base de donnée" as bdd order 4
+database "Base de donnée" as bdd <<static>> order 4
 
 client ->> server : HttpRequest
 create ":Login" as LoginClass order 3

@@ -1,7 +1,7 @@
 @startuml consulter l'ensemble des tickets
 actor client as "User" order 1 
 participant server as "Server"   order 2
-database bdd as "<<static>>\ndatabase:" order 4
+database bdd as "database:" <<static>> order 4
 
 client ->> server : HttpRequest
 note left : Connect to\nwebsite
@@ -15,10 +15,10 @@ alt filtre == True
 
     ticketListCtrl -> bdd : executeQuery(filtre)
     activate bdd
-    bdd --> ticketListCtrl
+    bdd -->> ticketListCtrl
     deactivate bdd
 
-    ticketListCtrl --> server
+    ticketListCtrl -->> server
     deactivate ticketListCtrl
 else else
     server -> ticketListCtrl : getTicketList()
@@ -26,15 +26,16 @@ else else
 
     ticketListCtrl -> bdd : executeQuery()
     activate bdd
-    bdd --> ticketListCtrl
+    bdd -->> ticketListCtrl
     deactivate bdd
 
-    ticketListCtrl --> server
+    ticketListCtrl -->> server
     deactivate ticketListCtrl
 end
+server -> ticketListCtrl : <<destroy>>
 destroy ticketListCtrl
 
-server --> client : displayTicketList()
+server ->> client : displayTicketList()
 deactivate server
 
 @enduml

@@ -2,21 +2,21 @@
 
 actor client as "User" order 1
 participant server as "Server"   order 2
-database bdd as "<<static>>\ndataBase:" order 4
+database bdd as "dataBase:" <<static>> order 4
 
-client --> server : HttpRequest()
+client ->> server : HttpRequest()
 note left : click on \ncreate ticket
-server -->> client
+server ->> client
 
-client --> server : HttpRequest()
+client ->> server : HttpRequest()
 note left : le demandeur\nsaisi le informations\nrelatif au ticket
 
 activate server
 create ticket as ":Ticket" order 3
-server --> ticket : <<create>>
+server -> ticket : <<create>>
 
-server --> ticket : 
+server -> ticket : 
 
-ticket --> bdd : 
+ticket -> bdd : 
 
 @enduml

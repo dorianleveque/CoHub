@@ -1,14 +1,14 @@
-@startuml
+@startuml cas d'utilisation
 left to right direction
-actor Utilisateur as "Utilisateur \n<<primary>>"
+actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant
 actor Demandeur
 actor Administrateur
-database Serveur as "Base de \n données"
+agent Serveur as "Serveur" <<secoundary>>
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
-Utilisateur <|-- Administrateur
+Utilisateur <|-left- Administrateur
 
 rectangle "Tiketo" {
     usecase UC1 as "Consulter \n l'ensemble \n des tickets"
@@ -23,20 +23,20 @@ rectangle "Tiketo" {
     usecase UC10 as "Supprimer ticket \n de +30jours \n tous les jours" 
 
     Utilisateur -- (UC1)
-    UC1 <-- UC2 : <<extend>>
-    UC1 <-- UC3 : <<extend>>
+    UC1 <.. UC2 : <<extend>>
+    UC1 <.. UC3 : <<extend>>
 
     Demandeur -- UC4
-    UC4 --> UC8 : <<include>>
-    UC4 <-- UC5 : <<extend>>
-    UC4 <-- UC6 : <<extend>>
+    UC4 ..> UC8 : <<include>>
+    UC4 <.. UC5 : <<extend>>
+    UC4 <.. UC6 : <<extend>>
 
     Aidant -- UC7
-    UC7 --> UC8 : <<include>>
+    UC7 ..> UC8 : <<include>>
 
     Administrateur -- UC9
-    UC9 --> UC8 : <<include>>
+    UC9 ..> UC8 : <<include>>
 
-    UC10 --- Serveur:<<secoundary>>
+    UC10 --- Serveur
 }
 @enduml

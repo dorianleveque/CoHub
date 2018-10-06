@@ -2,7 +2,7 @@
 
 actor client as "User" order 1 
 participant server as "Server"   order 2
-database bdd as "<<static>>\ndataBase:" order 4
+database bdd as "dataBase:" <<static>> order 4
 
 client ->> server : HttpRequest()
 activate server
@@ -15,14 +15,14 @@ activate ticketCtrl
 
 ticketCtrl -> bdd : executeQuery()
 activate bdd
-bdd --> ticketCtrl
+bdd -->> ticketCtrl
 deactivate bdd
 
-ticketCtrl --> server
+ticketCtrl -->> server
 deactivate ticketCtrl
 destroy ticketCtrl
 
-server --> client : displayTicket()
+server ->> client : displayTicket()
 deactivate server
 
 

@@ -7,6 +7,21 @@
 ## Diagrammes de séquence
 ### Consulter l'ensemble des tickets
 
+| Sommaire    | Scénario nominal « Consulter l’ensemble des tickets »                                                                                                                                                    |
+|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Description | 1. L’utilisateur accède à la page 
+|             | 2. Le système affiche la liste des tickets (demande) en cours                                                                                                |
+| Sommaire    | Scénario alternatif « Consulter l’ensemble des tickets »                                                                                                                                                 |
+| Description | SA1 : L’utilisateur sélectionne un filtre
+|             | SA1 démarre au point 2 du scénario nominal
+|             | 3. Le système renvoie la liste des tickets en cours filtré par l’utilisateur
+|             | Le scénario nominal reprend au point 3                                                                                                                      |
+| Sommaire    | Scénario d’erreur « Consulter l’ensemble des demandes »                                                                                                                                                  |
+| Description | SE1 : La page n’est pas disponible
+|             | SE1 démarre au point 1
+|             | Le cas d’utilisation se termine en échec                                                                                                       |
+
+
 ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/pPCzJyCm48PtI_uFfox0a86FAKgjIbqOM82oTN6JAx9mxM1V2lttdFFHqb2Ga1XOeiHtxtFllOfdaNIWPcEXz2usbZ20FKCNSREo21L685E-84KfT4a-G6aDEW8TOV8KCKp0Xuf5bo15pIXJcbfpdKjRFavjZ-th1A1llPAYqgHNEYAigghjAGesmcAbbcuevWFxHWef-hcPKWCxXrkY-W5V6umaXVE4O75DN9Xxvx0a8BzqRxYAXh3rRxQQcpez8mEcpsx1EnDfJi6sTlB5uSmx2juUDhsMeZUGgR4sXwBeg4ebqzeIh8sbW32TmY8qR8DpW1y0pqY7uUUT-A9JxHSu5gL1gJn2CJobcmE-OzaGtZSOTjy0kR4xIOhiYwskLk5n_-cfcThdEnADcMZv1qYFNsRoXsdyZnmSG_YcyM-sEx7Ca0i3-pkGGsLYRVNkE9HF8uR9KioOpjVx0m00 "consulter l'ensemble des tickets")
 
 

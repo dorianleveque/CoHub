@@ -1,0 +1,39 @@
+@startuml sequence consulter un ticket
+actor client as "Utilisateur" order 1 
+participant server as "Serveur"   order 2
+database bdd as "<<static>>\nBase de donnée" order 4
+
+client ->> server : HttpRequest
+activate server
+create ticketListCtrl as ":TicketListControler" order 3
+server -> ticketListCtrl : <<create>>
+
+alt filtre == True
+    server -> ticketListCtrl : getTicketList(filtre)
+    activate ticketListCtrl
+
+    ticketListCtrl -> bdd : executeQuery(filtre)
+    activate bdd
+    bdd --> ticketListCtrl
+    deactivate bdd
+
+    ticketListCtrl --> server
+    deactivate ticketListCtrl
+else else
+    server -> ticketListCtrl : getTicketList()
+    activate ticketListCtrl
+
+    ticketListCtrl -> bdd : executeQuery()
+    activate bdd
+    bdd --> ticketListCtrl
+    deactivate bdd
+
+    ticketListCtrl --> server
+    deactivate ticketListCtrl
+end
+destroy ticketListCtrl
+
+server --> client : displayTicketList()
+deactivate server
+
+@enduml

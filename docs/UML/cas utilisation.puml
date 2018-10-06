@@ -4,7 +4,7 @@ actor Utilisateur
 actor Aidant
 actor Demandeur
 actor Administrateur
-actor Serveur
+database Serveur as "Base de \n données"
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
@@ -20,7 +20,7 @@ rectangle "Tiketo" {
     usecase UC7 as "Répondre à \n une demande"
     usecase UC8 as "S'authentifier"
     usecase UC9 as "Supprimer ticket"
-    usecase UC10 as "Supprimer ticket \n de +30jours \n tous les jours"
+    usecase UC10 as "Supprimer ticket \n de +30jours \n tous les jours" 
 
     Utilisateur -- (UC1)
     UC1 <-- UC2 : <<extends>>
@@ -37,7 +37,7 @@ rectangle "Tiketo" {
     Administrateur -- UC9
     UC9 --> UC8 : <<include>>
 
-    Serveur -- UC10
+    UC10 --- Serveur:<<secoundary>>
 }
 
 

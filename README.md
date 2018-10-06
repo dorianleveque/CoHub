@@ -17,5 +17,5 @@ Les tickets donne aux utilisateurs un moyen simple d'identifier l'utilisateur et
 N'importe quel utilisateur peut prendre en charge les tickets et proposer son aide. Le demandeur peut alors communiquer avec cette utilisateur.
 Ils définissent ensemble les modalité d'aide.
 
-*Exemple* : Besoin d'aide pour les cours de Math, besoin de matériel de bricolage, besoin de rentrer le weekend ... 
+>*Exemple* : Besoin d'aide pour les cours de Math, besoin de matériel de bricolage, besoin de rentrer le weekend ... 
 

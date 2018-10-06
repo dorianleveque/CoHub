@@ -1,0 +1,31 @@
+@startuml consulter un ticket
+
+actor client as "Utilisateur" order 1 
+participant server as "Serveur"   order 2
+database bdd as "<<static>>\nBase de donnée" order 4
+
+client ->> server : HttpRequest
+activate server
+create ticketCtrl as ":TicketControler" order 3
+server -> ticketCtrl : <<create>>
+
+server -> ticketCtrl : getTicket()
+activate ticketCtrl
+
+ticketCtrl -> bdd : executeQuery()
+activate bdd
+bdd --> ticketCtrl
+deactivate bdd
+
+ticketCtrl --> server
+deactivate ticketCtrl
+destroy ticketCtrl
+
+server --> client : displayTicket()
+deactivate server
+
+
+
+
+
+@enduml

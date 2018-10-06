@@ -4,32 +4,32 @@ actor Utilisateur as "Utilisateur \n<<primary>>"
 actor Aidant
 actor Demandeur
 actor Administrateur
-database Serveur as "<<secondary>>\nBase de \n donnée"
+agent Serveur as "<<secondary>>\nServeur"
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
 Utilisateur <|-- Administrateur
 
 rectangle "Tiketo" {
-    usecase UC1 as "Consulter \n l'ensemble \n des demandes"
-    usecase UC2 as "Rechercher"
+    usecase UC1 as "Consulter \n l'ensemble \n des tickets"
+    usecase UC2 as "Consulter \n un ticket"
     usecase UC3 as "Filtrer"
-    usecase UC4 as "Gérer les tickets \n de demande"
-    usecase UC5 as "Créer un ticket \n de demande"
-    usecase UC6 as "Editer un ticket \n de demande"
-    usecase UC7 as "Répondre à \n une demande"
+    usecase UC4 as "Gérer les tickets"
+    usecase UC5 as "Créer un ticket"
+    usecase UC6 as "Editer un ticket"
+    usecase UC7 as "Répondre à \n un ticket"
     usecase UC8 as "S'authentifier"
     usecase UC9 as "Supprimer ticket"
     usecase UC10 as "Supprimer ticket \n de +30jours \n tous les jours"
 
     Utilisateur -- (UC1)
-    UC1 <-- UC2 : <<extends>>
-    UC1 <-- UC3 : <<extends>>
+    UC1 <-- UC2 : <<extend>>
+    UC1 <-- UC3 : <<extend>>
 
     Demandeur -- UC4
     UC4 --> UC8 : <<include>>
-    UC4 <-- UC5 : <<extends>>
-    UC4 <-- UC6 : <<extends>>
+    UC4 <-- UC5 : <<extend>>
+    UC4 <-- UC6 : <<extend>>
 
     Aidant -- UC7
     UC7 --> UC8 : <<include>>

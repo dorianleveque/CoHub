@@ -1,9 +1,10 @@
-@startuml sequence consulter un ticket
-actor client as "Utilisateur" order 1 
-participant server as "Serveur"   order 2
-database bdd as "<<static>>\nBase de donnée" order 4
+@startuml consulter l'ensemble des tickets
+actor client as "User" order 1 
+participant server as "Server"   order 2
+database bdd as "<<static>>\ndatabase:" order 4
 
 client ->> server : HttpRequest
+note left : Connect to\nwebsite
 activate server
 create ticketListCtrl as ":TicketListControler" order 3
 server -> ticketListCtrl : <<create>>

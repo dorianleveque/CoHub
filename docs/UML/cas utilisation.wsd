@@ -1,10 +1,10 @@
-@startuml cas utilisation
+@startuml
 left to right direction
-actor Utilisateur
+actor Utilisateur as "Utilisateur \n<<primary>>"
 actor Aidant
 actor Demandeur
 actor Administrateur
-actor Serveur
+database Serveur as "<<secondary>>\nBase de \n donnée"
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
@@ -37,8 +37,6 @@ rectangle "Tiketo" {
     Administrateur -- UC9
     UC9 --> UC8 : <<include>>
 
-    Serveur -- UC10
+    UC10 --- Serveur
 }
-
-
 @enduml

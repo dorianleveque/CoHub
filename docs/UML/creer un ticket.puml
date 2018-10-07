@@ -6,17 +6,27 @@ database bdd as "dataBase:" <<static>> order 4
 
 client ->> server : HttpRequest()
 note left : click on \ncreate ticket
-server ->> client
+server ->> client : displayEditTicket()
 
 client ->> server : HttpRequest()
 note left : le demandeur\nsaisi le informations\nrelatif au ticket
-
 activate server
-create ticket as ":Ticket" order 3
-server -> ticket : <<create>>
 
-server -> ticket : 
-
-ticket -> bdd : 
+alt pas d'erreur
+    create ticketClass as ":Ticket" order 3
+    server -> ticketClass : <<create>>
+    server -> ticketClass : saveTicket()
+    activate ticketClass
+    ticketClass -> bdd : executeQuery()
+    activate bdd
+    bdd -->> ticketClass : executeQuery():
+    deactivate bdd
+    ticketClass -->> server : saveTicket():
+    deactivate ticketClass
+    server ->> client
+    deactivate server
+else else
+    server ->> client: HttpRequest(): erreur
+end
 
 @enduml

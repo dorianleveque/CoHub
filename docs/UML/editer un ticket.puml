@@ -1,0 +1,25 @@
+@startuml editer un ticket
+actor client as "User" order 1
+participant server as "Server"   order 2
+participant ticketClass as ":Ticket" order 3
+database bdd as "dataBase:" <<static>> order 4
+
+client ->> server: HttpRequest()
+note left : Click on \na ticket 
+server ->> client: displayEditTicket()
+
+client ->> server: HttpRequest()
+note left: Edit ticket\ninformation
+activate server
+server -> ticketClass: saveTicket()
+activate ticketClass
+ticketClass -> bdd: executeQuery()
+activate bdd
+bdd -->> ticketClass: executeQuery():
+deactivate bdd
+ticketClass -->> server: saveTicket():
+deactivate ticketClass
+server ->> client: HttpRequest():
+deactivate server
+
+@enduml

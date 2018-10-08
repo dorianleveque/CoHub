@@ -19,3 +19,13 @@ Ils définissent ensemble les modalité d'aide.
 
 >*Exemple* : Besoin d'aide pour les cours de Math, besoin de matériel de bricolage, besoin de rentrer le weekend ... 
 
+# Mots clefs
+
+Les mots clefs sont :
+* Partage
+* Entreaide
+* Echange
+* Tutorat
+* Services 
+
+

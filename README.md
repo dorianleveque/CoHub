@@ -4,9 +4,9 @@
 
 Projet Informatique réalisé dans le cadre de notre semestre 6.
 
-Ce projet est un site internet pour les étudiants ENIB. Ce site permet de mettre en relation les Enibiens afin d'échanger des services.
+Ce projet est un site internet qui permet d'échanger des services entre les étudiants ENIB.
 
-L'échange de services se caractérissent sous différentes formes :
+L'échange de services se caractérise sous différentes formes :
     * Aide au devoir
     * Demande de prêt de matériel
     * Demande d'aide diverse

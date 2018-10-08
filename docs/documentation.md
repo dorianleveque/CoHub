@@ -17,7 +17,18 @@ vulgariser la technique
 
 * conclusion
 * annexes
-    
+
+# __Préambule__
+L'idée de "Tiketo", nous est parvenu à la suite d'une énumération de petit problème que nous avions rencontré de nombreuses fois durant notre année scolaire et que nous voulions résoudre.
+
+
+
+Nous avons imaginé très rapidement que notre solution proposé serait sous la forme d'une application web afin de permettre à n'importe quel enibien de pouvoir utiliser notre application sur n'importe quel support.
+
+
+
+
+
 
 # __DESCRIPTION__
 

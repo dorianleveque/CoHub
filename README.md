@@ -7,10 +7,10 @@ Projet Informatique réalisé dans le cadre de notre semestre 6.
 Ce projet est un site internet qui permet d'échanger des services entre les étudiants ENIB.
 
 L'échange de services se caractérise sous différentes formes :
-    * Aide au devoir
-    * Demande de prêt de matériel
-    * Demande d'aide diverse
-    * Demande de covoiturage 
+* Aide au devoir
+* Demande de prêt de matériel
+* Demande d'aide diverse
+* Demande de covoiturage 
 
 Les tickets donne aux utilisateurs un moyen simple d'identifier l'utilisateur et ses besoins.
 

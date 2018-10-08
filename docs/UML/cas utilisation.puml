@@ -4,7 +4,7 @@ actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant
 actor Demandeur
 actor Administrateur
-agent Serveur as "Serveur" <<secoundary>>
+agent Serveur as "Serveur" <<secondary>>
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur

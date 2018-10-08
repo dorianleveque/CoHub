@@ -1,11 +1,27 @@
 # Documentation: Tiketo
 
 >## Description du projet
+vulgariser la technique
+* page titré
+* un résumé / mot-clés en français
+* table des matière sommaire herarchisé
 
+* corps du rapport
+    * situtation intro
+    * problème
+    * résolution
+        * maquette + logo
+        * style correct dans les présentations des diagrammes
+        * les figures doivent être cités dans les différents paragraphes
+    * implication / mise en oeuvre
+
+* conclusion
+* annexes
+    
 -----------------------
 >## Diagrammes Cas d'utilisations
 
-![cas d'utilisation](http://www.plantuml.com/plantuml/svg/VLJDRXCn4BwljEymsaj0A55BqeQWA6hL0dVQthYOzJGrUEt87YCGy2vSynnviOxjtP1ca-nfxUzlx9dTAq_2KMWqrCA370HIMdb1ofgoqFX8G1QSMZuHIEMmpe2eoJfuQBaO7B2usbbNC9-ld6g4-xLOTFnh9OMXRdMBZJ2IkLjODieeJouvyEuI3S4TkXzTGFiUpJtMDXZP-fV5RYtpFyFXDgm7xEJkOV6umruPPH6FBSnI8rJtwZkIhU1tMG0_WSiG7k7XvZmLU6ED3vhGmHS3Ue36O_ELTRoIw85KpN9VxOlVziN1jEmUUPp87vKcXww7JXBwQRDc4FI9p8kSwJPh9XvFkqoq3rBHITeqqJvlrYjhf4FO_3jzY7UvdmCHw8cxh1xLWRFCCYciuYHn_16lyxE3l7pfy6Pyziq6v-EIRF3fKj9E1R6vqMjt3dX2Nh7dwnRXniv7ezIZzpns-9FGo3XoBz7n7fhnxQX5L-vDfvh0QBH8jn1LojGwIFnlEcbDBmv6TkZbmSWyzZblsaccn_9QpOk9pzfPfvsTrgRh7xAa_JRBuczPN759_4jv1W00 "cas d'utilisation")
+![cas d'utilisation](http://www.plantuml.com/plantuml/svg/VLHBRjim4DqBq1q6shX5OIEfxRWk32D1FjqtoQuRLfmuR2dA88T5WoHtwTRdyCKo92NNiMnh9VBzXfoHpXq9IxxIK0e7ikT9QUK4gThacSO70gh1giKZWLGMomI8aceBzmqNlGKM5rlh0cQpfLMLi4_pUSk_K58OQbTNM0aZcRk1PQMCScIZ0-ykq13SeltJ1ZJlmTnXMHlPsEVPTYcpbtv_azK1jc9ti73QVgUAF0kd5cQX4OexzHkfBk0vpu0VprK8Xt1_UHhhkwoDyvhGmWy3keV6OVMJTRoIw81KoN9Nx8e_TyNUDEmEUHZ9DqgJHTj1Hn7zjbun2Ff8vZXbslMAYOVJpYBjMYewIfj4slVrQibDiGZhVySFyIMrioSyFNAJrOFQSvPf8lbb62IEF-1rUhANbouTFWrFVjNUkh2ashjuAN6dWD3SuBKz1pmX7zZpOuDmOsU3GUpHLvuw_4jeP1Yvz-Xm1qtuPjI2A_UcLOrWC9Z7MmWgPKhj9Vut7JMcuxsHBNgsDpADVSgRj9B9eRn6ysxYatRQQgV7jV7w-onfFiqyUyspSow9_oXl "cas d'utilisation")
 
 ------------------------
 

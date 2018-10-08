@@ -8,11 +8,10 @@ client ->> server : HttpRequest()
 note left : click on \ncreate ticket
 server ->> client : displayEditTicket()
 
-client ->> server : HttpRequest()
-note left : le demandeur\nsaisi le informations\nrelatif au ticket
-activate server
-
 alt pas d'erreur
+    client ->> server : HttpRequest()
+    note left : le demandeur\nsaisi le informations\nrelatif au ticket
+    activate server
     create ticketClass as ":Ticket" order 3
     server -> ticketClass : <<create>>
     server -> ticketClass : saveTicket()
@@ -26,7 +25,11 @@ alt pas d'erreur
     server ->> client
     deactivate server
 else else
+    client ->> server : HttpRequest()
+    note left : le demandeur\nsaisi le informations\nrelatif au ticket
+    activate server
     server ->> client: HttpRequest(): erreur
+    deactivate server
 end
 
 @enduml

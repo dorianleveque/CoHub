@@ -30,7 +30,7 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 
 
 
-# __DESCRIPTION__
+# __Qu'est-ce qui pose problème__
 
 -----------------------
 >## Diagrammes Cas d'utilisations
@@ -232,7 +232,9 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     <br>
 
     ### Diagramme de séquence
-    ![créer un ticket](http://www.plantuml.com/plantuml/svg/bLExRiCm3DmD-1y8Bss737rCGc04BGfqxMlBeaWC84IHNOaAca_gT_J7IbbA6jTeWIwMG1wFlAEy22GznQq5vJy_q4DqG4PjaEgghgIYpeEo1Xs13D2y1lGDT5upyhAkUgurolIIqvpPSJIXdeTh0r2GLtMb9ScL30WhhGTC2jnoG3Gmd_CGpDEs1N-JUfUkCuuMQW4FHFqJlaKCT7vHLwuZ18jhuXJ3rGOw1qkdF4fE76IKwaHKE0Le4tehz_VQqCi0ItJ_xcaHD6wbqnZzqWLfWaanuzQTtxAYpeMbysZvkWOPZnEnhMQNHinD1gSjGS--w3FqdkdgYjs3aP8xAqCOl1DvviCYhZFug7E45snlfcdRlt51xl3RZ8Gypda2p9dJIYPAInM0xwWYuMD4lvzGC2H74dQM71vt7nUBZDKuhH-r7ctgLC2KOA9XyYuc9OVreEM7cpw_5Fvu92ocx12TJijTyCc_s1S0 "créer un ticket")
+    ![créer un ticket](http://www.plantuml.com/plantuml/svg/pLIxRiCm3DmD-1y8Bss737rCHc04BGfqxMlBeaWC84IHNOaAca_gT_J7IbbEQbT5aR6BRP37unr9UE59E0fR0z9zVg23O86qt22LHLa8IQq3QJHQ0k6XUlNeAcYTOkHbMNHSgwNk1ASvi-DeH3ttdnN0WBmg2oL8h8H7M2dLOsBWbWDr1VCvYs2UfXdmDx7tq7N6qO6wXWUYxWdV0dewloWBsnA2mJLnYk5o0ws5fPKE1ISEDeRgI3Hmrg2qxupOtojDBpqiqh5VGz2nEdM6pc5mPS4Uu0Gb4JPMOn0KReLLJBAqNcYlOqpRTUksxBMrVcaT6lvSWmX7hP67XwvtqK1gDcWOUxepmlj-YdLIVrZ9TG8V7K_mDGywqJJDtpWlTlWzbecc4J1bnfLC5DTR0xwZ38IF0Tq-es18YaJiB4vrsdrQN2Uimhn-qdgodR61d23pa5r8Ld9O1He-uVZuFvUHYVyXWGSwkkNVF5aLRt_1R_uFV040 "créer un ticket")
+
+
 
 
 * ## _Éditer un ticket_

@@ -1,7 +1,7 @@
-@startuml
+@startuml diagramme etat-transition
 
 [*] --> TicketRenseigné
-State1 --> [*].
+State1 --> [*]
 State1 : this is a string
 State1 : this is another string
 

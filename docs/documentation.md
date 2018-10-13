@@ -77,9 +77,7 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     <tr>
         <td>Description</td>
         <td style="color:red;">
-            SE1 : La page n’est pas disponible <br>
-            SE1 : démarre au point 1 <br>
-            Le cas d’utilisation se termine en échec
+            
         </td>
     </tr>
     </table>

@@ -35,7 +35,7 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 -----------------------
 >## Diagrammes Cas d'utilisations
 
-![cas d'utilisation](http://www.plantuml.com/plantuml/svg/VLHBRjim4DqBq1q6shX5OIEfxRWk32D1FjqtoQuRLfmuR2dA88T5WoHtwTRdyCKo92NNiMnh9VBzXfoHpXq9IxxIK0e7ikT9QUK4gThacSO70gh1giKZWLGMomI8aceBzmqNlGKM5rlh0cQpfLMLi4_pUSk_K58OQbTNM0aZcRk1PQMCScIZ0-ykq13SeltJ1ZJlmTnXMHlPsEVPTYcpbtv_azK1jc9ti73QVgUAF0kd5cQX4OexzHkfBk0vpu0VprK8Xt1_UHhhkwoDyvhGmWy3keV6OVMJTRoIw81KoN9Nx8e_TyNUDEmEUHZ9DqgJHTj1Hn7zjbun2Ff8vZXbslMAYOVJpYBjMYewIfj4slVrQibDiGZhVySFyIMrioSyFNAJrOFQSvPf8lbb62IEF-1rUhANbouTFWrFVjNUkh2ashjuAN6dWD3SuBKz1pmX7zZpOuDmOsU3GUpHLvuw_4jeP1Yvz-Xm1qtuPjI2A_UcLOrWC9Z7MmWgPKhj9Vut7JMcuxsHBNgsDpADVSgRj9B9eRn6ysxYatRQQgV7jV7w-onfFiqyUyspSow9_oXl "cas d'utilisation")
+![cas d'utilisation](http://www.plantuml.com/plantuml/svg/VLFBJiCm4Bn7oZ-iSYa8jIgqK41L1U9rvt7ZOkAb65odijS81FmBrtv7VuoravH2q-OKUsPdx9trYIDXoKyqvCA1R7bIMZb1gZ1fel6HW0gmQln489N5l0H4JeM5kugBtW8NPqlh38R3gLKJOTz7evf_ggGmLA_ESIACP2vlZD4GtA1zhQMg_o3ZC2-Ch8JIPDbq-DbkBrHNW2M3D0b75sQi4R9RzO9KPF2H9i2VPmFX4ExETgFrMM6SruGMxWte5Xg7amUkuvL41wHoBdVP_-AzrM9lAlOAkHV9bqgJHRk2zYDwDPyn27g3vtxfQUSp9gvtEuYq2wbe8sqGQTVpsPJxRH7ctvilSLWcrHAUdZW_zQWQxd9KalmqJ0FRhz7QxJRoogR3Jg_xN7Zhmf8Axs9Juau68ToWjHm_Xx_5cjiLmi4EEvsOqJ4F5BuH6XccwI_Q-uUM-6AAWYfdqxXxL6lreTCPnTu4BMLoxIN-MlKhg_t6WzJeGUD1oZal_GProM2Tt-9oNQversyhJRxIv8Hb-S7_0000 "cas d'utilisation")
 
 ------------------------
 
@@ -121,10 +121,10 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     </tr>
     <tr>
         <td>Description</td>
-    
- 
+        <td style="color:red;">
+            
+
     </tr>
-    
     </table>
     <br>
     <br>
@@ -175,9 +175,11 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
         <th>Sommaire</th>
         <th>Scénario d’erreur « S’authentifier »</th>
     </tr>
-    <tr>
+   <tr>
         <td>Description</td>
-        <td/>
+        <td style="color:red;">
+            
+
     </tr>
     </table>
     <br>
@@ -200,8 +202,8 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
         <td>
             1. Le demandeur appuis le bouton de « création de demande » <br>
             2. Le demandeur saisit les informations relatif à sa demande <br>
-            3. Le système vérifie l’ensemble des informations <br>
-            4. Le demandeur valide sa demande
+            3. Le demandeur valide sa demande <br>
+            4. Le système vérifie l’ensemble des informations
         </td>
     </tr>
 
@@ -220,7 +222,11 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     </tr>
     <tr>
         <td>Description</td>
-        <td/>
+        <td>
+        SE1 : Les informations ne sont pas corrects</br>
+        SE1 départ au point 4 du scénario nominal</br>
+        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
     </tr>
     </table>
     <br>
@@ -244,9 +250,10 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     <tr>
         <td>Description</td>
         <td>
-            1. L’utilisateur sélectionnes un ticket qu’il  a créé <br>
-            2. L’utilisateur édite un ticket afin de pouvoir modifier ces informations <br>
-            Le scénario nominal reprend au point 3
+            1. Le demandeur sélectionnes un ticket qu’il  a créé <br>
+            2. Le demandeur édite un ticket afin de pouvoir modifier ces informations <br>
+            3. Le demandeur valide sa demande <br>
+            4. Le système vérifie l’ensemble des informations
         </td>
     </tr>
 
@@ -265,14 +272,20 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     </tr>
     <tr>
         <td>Description</td>
-        <td/>
+        <td>
+        SE1 : Les informations ne sont pas corrects</br>
+        SE1 départ au point 4 du scénario nominal</br>
+        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
     </tr>
     </table>
     <br>
     <br>
 
     ### Diagramme de séquence
-    ![editer un ticket](http://www.plantuml.com/plantuml/svg/bLAvRWCX4EsH-8VHLadX8aU5BCkA5IbjhiuDNiOI2eODpAxYly-mYnEGqgH3C-_YmJQHZZIU7A2nX1563sJx3oGfT4yXGkyiUWATe7jF63i8qJ3kHeg1cRQtW-OrRoQUPjJhVEm02lAsHIxgEwTJck7gRHvSTE-aC9hqGIU4Wp4p90yUUA0wMAyvC4jiDWL_BuKK9UEAfqiG1Kz4mmj-ZfZewbeA7mZ1uP50mSwn8mGFUwzB792Yt21hB78AZ4s3q-T7RcO9cPN-vQOWaul9tbj_3F74-OEVwxMJPk0YKYMeErAGz8I_zZ-i2YD5NIhpkJW5-8NzIFWyOZmtJDvAaRjTvIiqNYr7yLjWIskCwWRgb2sl2Vf7oqrtBVNIZ1HRz8P_wJS0 "editer un ticket")
+    ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")
+
+
 
 
 * ## _Répondre à une demande_
@@ -290,6 +303,7 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
             1. L’aidant  appuis sur le bouton « prendre en charge » <br>
             2. L’aidant renseigne les champs <br>
             3. L’aidant valide sa réponse 
+            4. Le système vérifie l’ensemble des informations
         </td>
     </tr>
 
@@ -308,7 +322,11 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     </tr>
     <tr>
         <td>Description</td>
-        <td/>
+         <td>
+        SE1 : Les informations ne sont pas corrects</br>
+        SE1 départ au point 4 du scénario nominal</br>
+        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
     </tr>
     </table>
     <br>
@@ -321,6 +339,42 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 * ## _Supprimer un ticket_
 * 
     ### Scénario
+     __Prérequi__ : L’administrateur c’est authentifier
+
+     <table style="width:100%; text-align:left;">
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario nominal « Supprimer un ticket »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+            1. L’utilisateur appuis sur le bouton "supprimer"
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario alternatif « Supprimer un ticket  »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td/>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur « Supprimer un ticket  »</th>
+    </tr>
+  <tr>
+        <td>Description</td>
+        <td style="color:red;">
+            
+
+    </tr>
+    </table>
+    <br>
+    <br>
 
     ### Diagramme de séquence
     

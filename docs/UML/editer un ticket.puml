@@ -8,18 +8,31 @@ client ->> server: HttpRequest()
 note left : Click on \na ticket 
 server ->> client: displayEditTicket()
 
-client ->> server: HttpRequest()
-note left: Edit ticket\ninformation
-activate server
-server -> ticketClass: saveTicket()
-activate ticketClass
-ticketClass -> bdd: executeQuery()
-activate bdd
-bdd -->> ticketClass: executeQuery():
-deactivate bdd
-ticketClass -->> server: saveTicket():
-deactivate ticketClass
-server ->> client: HttpRequest():
-deactivate server
+
+alt pas d'erreur
+
+    client ->> server: HttpRequest()
+    note left: Edit ticket\ninformation
+    activate server
+    server -> ticketClass: saveTicket()
+    activate ticketClass
+    ticketClass -> bdd: executeQuery()
+    activate bdd
+    bdd -->> ticketClass: executeQuery():
+    deactivate bdd
+    ticketClass -->> server: saveTicket():
+    deactivate ticketClass
+    server ->> client: HttpRequest():
+    deactivate server
+
+else else
+
+    client ->> server: HttpRequest()
+    note left: Edit ticket\ninformation
+    activate server
+    server ->> client: HttpRequest(): erreur
+    deactivate server
+    
+end
 
 @enduml

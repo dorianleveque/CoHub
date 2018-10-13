@@ -3,12 +3,10 @@ left to right direction
 actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant
 actor Demandeur
-actor Administrateur
 agent Serveur as "Serveur" <<secondary>>
 
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
-Utilisateur <|-left- Administrateur
 
 rectangle "Tiketo" {
     usecase UC1 as "Consulter \n l'ensemble \n des tickets"
@@ -27,15 +25,13 @@ rectangle "Tiketo" {
     UC1 <.. UC3 : <<extend>>
 
     Demandeur -- UC4
+    Demandeur -- UC9
     UC4 ..> UC8 : <<include>>
     UC4 <.. UC5 : <<extend>>
     UC4 <.. UC6 : <<extend>>
 
     Aidant -- UC7
     UC7 ..> UC8 : <<include>>
-
-    Administrateur -- UC9
-    UC9 ..> UC8 : <<include>>
 
     UC10 --- Serveur
 }

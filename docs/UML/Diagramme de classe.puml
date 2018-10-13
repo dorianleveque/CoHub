@@ -1,0 +1,170 @@
+abstract class Ticket  {
+
+- id  : int
+- title : string
+- description : string 
+- category : string 
+- creationDate : string
+
+<<create>> 
++ Ticket(id: int = null, title: string, description:  string, category: string, creationDate : string, demandeur : User)
+<<destroy>> 
++ Ticket()
++ getId():int
++ getTitle(): string
++ setTitle(title:string)
++ getDescription() : string
++ setDescription(description : string) 
++ getCategory () : string
++ getCreationDate (): string
+{abstract}+ display()
++ addHelper(helper: User)
++save()
+
+
+
+}
+
+class Conversation  {
+<<create>> 
++ Conversation()
+<<destroy>> 
++ Conversation()
+}
+
+
+class Message  {
+<<create>> 
++ Message()
+<<destroy>> 
++ Message()
+}
+
+class TicketCarSharing  {
+
+- departurLocation  : string
+- arrivalLocation  : string
+- departurTime : string
+- arrivalTime  : string
+- places : int
+
+<<create>> 
++ TicketCarSharing(id: int = null, title: string, description:  string, category: string, creationDate : string, demandeur : User, departurLocation  : string, arrivalLocation  : string, departurTime : string, arrivalTime  : string, places : string )
+<<destroy>> 
++ TicketCarSharing()
++ getDeparturLocation () : string
++ setDeparturLocation(departurLocation: string)
++ getArrivalLocation(): string
++ setArrivalLocation(arrivalLocation: string)
++ getDeparturTime() : string
++ setDeparturTime(departurTime: string)
++ getArrivalTime(): string
++ setArrivalTime(arrivalTime: string)
++ getPlaces() : int
++ setPlaces(places: int)
++ display()
++save()
+
+
+
+}
+
+
+
+class TicketStudy  {
+
+- subjetct : string
+- semester : string
+- teacher : string
+- theme : string
+
+<<create>> 
++ TicketStudy(id: int = null, title: string, description:  string, category: string, creationDate : string, demandeur : User, departurLocation  : string, arrivalLocation  : string, departurTime : string, arrivalTime  : string, places : string, subjetct: string, semester: string, teacher: string = null, theme: string = null )
+<<destroy>> 
++ TicketStudy()
++ getSubject() : string
++ setSubject(subjetct: string)
++ getSemester() : string
++ setSemester(semester: string)
++ getTeacher() : string
++ setTeacher(teacher: string)
++ getTheme() : string
++ setTheme(theme : string)
+
++ display()
++save()
+
+
+
+}
+
+class TicketSharing  {
+
+- subjetct : string
+- semester : string
+- teacher : string
+- theme : string
+
+<<create>> 
++ TicketStudy(id: int = null, title: string, description:  string, category: string, creationDate : string, demandeur : User, departurLocation  : string, arrivalLocation  : string, departurTime : string, arrivalTime  : string, places : string, subjetct: string, semester: string, teacher: string = null, theme: string = null )
+<<destroy>> 
++ TicketStudy()
++ getSubject() : string
++ setSubject(subjetct: string)
++ getSemester() : string
++ setSemester(semester: string)
++ getTeacher() : string
++ setTeacher(teacher: string)
++ getTheme() : string
++ setTheme(theme : string)
+
++ display()
++save()
+
+
+
+}
+
+class User  {
+
+- id : int
+- name  : string
+- surname  : string
+- nickname : string
+
+
+<<create>> \n+ User(id: int, name: string, surname : string, nickname = null)
+<<destroy>> \n+ User()
++ getId() : int
++ getName() : string
++ getSurName() : string
++ getNickname() : string
++ setNickname(nickname: string)
++ save()
+
+
+
+}
+
+
+class TicketListControleur <<static>> {
+
+
+<<create>> \n+ TicketListControleur()
+<<destroy>>\n+ TicketListControleur()   
++ serchTickets (filter  : string ): Ticket *
++ save()
++ display(ticket : Ticket *)
+
+
+}
+
+
+Ticket <|-- TicketCarSharing
+Ticket <|--TicketStudy
+Ticket <|--TicketSharing
+User "*" *---left- "1" Ticket : requester
+User "*" o---left- "*" Ticket : helper
+Ticket "*" *---left- "1" Conversation: conversation
+Conversation"1" *--- "*" Message :message
+Ticket "1" -down-* "*" TicketListControleur : tickets

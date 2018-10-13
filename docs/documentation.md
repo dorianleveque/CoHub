@@ -320,4 +320,13 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
     <br>
 
     ### Diagramme de séquence
+    
+    
+    
+* ## _Supprimer un ticket_
+* 
+    ### Scénario
 
+    ### Diagramme de séquence
+    
+    ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)

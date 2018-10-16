@@ -32,6 +32,13 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 
 # __Qu'est-ce qui pose problème__
 
+Alors que les réseaux sociaux sont l’objet de critiques , des réseaux d’échanges et de partage  se multiplient et se diversifient dans de nombreux domaines,  du partage de compétences ........ à l’application spécifique de prêt et d’échanges d’objet entre voisins . C’est une pratique qui progresse et qui s’accompagne d’une image positive.
+Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques. 
+
+Comment localement, à l’ échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences?
+
+Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète ! 
+
 -----------------------
 >## Diagrammes Cas d'utilisations
 

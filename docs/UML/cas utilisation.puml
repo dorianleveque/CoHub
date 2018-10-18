@@ -1,3 +1,7 @@
+@startuml
+left to right direction
+actor Utilisateur as "Utilisateur" <<primary>>
+actor Aidant
 actor Demandeur
 agent Serveur as "Serveur" <<secondary>>
 

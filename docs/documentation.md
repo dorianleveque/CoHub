@@ -1,6 +1,9 @@
 # Documentation: CoHub
 
 >## Description du projet
+
+Lien prototype : https://tinyurl.com/CoHubTest
+
 vulgariser la technique
 Chercher se que veut dire le stéréotype "static" en UML
 * page titré

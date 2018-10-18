@@ -1,4 +1,4 @@
-@startuml cas d'utilisation
+@startuml
 left to right direction
 actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant
@@ -8,17 +8,17 @@ agent Serveur as "Serveur" <<secondary>>
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
 
-rectangle "Tiketo" {
-    usecase UC1 as "Consulter \n l'ensemble \n des tickets"
-    usecase UC2 as "Consulter \n un ticket"
+rectangle "CoHub" {
+    usecase UC1 as "Consulter \n l'ensemble \n des demandes"
+    usecase UC2 as "Consulter \n une demande"
     usecase UC3 as "Filtrer"
-    usecase UC4 as "Gérer les tickets"
-    usecase UC5 as "Créer un ticket"
-    usecase UC6 as "Editer un ticket"
-    usecase UC7 as "Répondre à \n un ticket"
+    usecase UC4 as "Gérer les demandes"
+    usecase UC5 as "Créer une demande"
+    usecase UC6 as "Editer une demande"
+    usecase UC7 as "Répondre à \n une demande"
     usecase UC8 as "S'authentifier"
-    usecase UC9 as "Supprimer ticket"
-    usecase UC10 as "Supprimer ticket \n de +30jours \n tous les jours" 
+    usecase UC9 as "Supprimer une demande"
+    usecase UC10 as "Supprimer les demandes \n de plus 30jours " 
 
     Utilisateur -- (UC1)
     UC1 <.. UC2 : <<extend>>

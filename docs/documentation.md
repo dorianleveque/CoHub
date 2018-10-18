@@ -1,4 +1,4 @@
-# Documentation: Tiketo
+# Documentation: CoHub
 
 >## Description du projet
 vulgariser la technique
@@ -31,12 +31,19 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 
 
 # __Qu'est-ce qui pose problème__
+Mots clés: partage échange entraide collaboration hub efficacité service
+
+Pourquoi CoHub?  Co coopération coordination collaboration ensemble avec
+Hub : organisation mettant en œuvre une connexion centrale, plate forme de correspondance, infrastructure de communication
+
+
+
 Pas de tente pour le WAF ? Qui a une visseuse pour installer une étagère? qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
 Toutes ces situations racontent un quotidien des énibien-ne-s.
-Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème.
+Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème. A FINIR
 
-Alors que les réseaux sociaux sont l’objet de critiques , des réseaux d’échanges et de partage  se multiplient et se diversifient dans de nombreux domaines,  du partage de compétences ........ à l’application spécifique de prêt et d’échanges d’objet entre voisins . C’est une pratique qui progresse et qui s’accompagne d’une image positive.
-Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques. 
+Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans de nombreux domaines, du simple partage de fichiers à l’application spécifique de prêt et d’échanges d’objet entre voisins. C’est une pratique qui progresse et qui s’accompagne d’une image positive.
+Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques
 
 Comment localement, à l’ échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences?
 

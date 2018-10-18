@@ -27,7 +27,7 @@ rectangle "CoHub" {
     Demandeur -- UC5
     Demandeur -- UC9
     Demandeur -- UC6
-    UC5 ..> UC8 : <<include>>
+
 
 
     Aidant -- UC7

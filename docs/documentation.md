@@ -42,7 +42,7 @@ Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à 
 -----------------------
 >## Diagrammes Cas d'utilisations
 
-![cas d'utilisation](http://www.plantuml.com/plantuml/svg/VLFBJiCm4Bn7oZ-iSYa8jIgqK41L1U9rvt7ZOkAb65odijS81FmBrtv7VuoravH2q-OKUsPdx9trYIDXoKyqvCA1R7bIMZb1gZ1fel6HW0gmQln489N5l0H4JeM5kugBtW8NPqlh38R3gLKJOTz7evf_ggGmLA_ESIACP2vlZD4GtA1zhQMg_o3ZC2-Ch8JIPDbq-DbkBrHNW2M3D0b75sQi4R9RzO9KPF2H9i2VPmFX4ExETgFrMM6SruGMxWte5Xg7amUkuvL41wHoBdVP_-AzrM9lAlOAkHV9bqgJHRk2zYDwDPyn27g3vtxfQUSp9gvtEuYq2wbe8sqGQTVpsPJxRH7ctvilSLWcrHAUdZW_zQWQxd9KalmqJ0FRhz7QxJRoogR3Jg_xN7Zhmf8Axs9Juau68ToWjHm_Xx_5cjiLmi4EEvsOqJ4F5BuH6XccwI_Q-uUM-6AAWYfdqxXxL6lreTCPnTu4BMLoxIN-MlKhg_t6WzJeGUD1oZal_GProM2Tt-9oNQversyhJRxIv8Hb-S7_0000 "cas d'utilisation")
+![cas d'utilisation](http://www.plantuml.com/plantuml/png/XPFD4j8m58NtUOextQ0BEY0_YDFfuE2FQnrsRa9pWJXfsabk71trNTpo77qnqwHrQj7AYkISV2UN4mwMk25NAgRmGa0L67cz4GXfi21PQSOBgWoSI2ffEQ4pm2qaWtK2MLORMNBpDSyx-qifkAPkyGfBheLtCdv5JV01pUUU4xv7XiMYqY9Is30l-pwVzyJn_W3EsXjpVLK8oR5wvyu9V6FWFywJkKKu7PTjfXUrTOhGm4SDQeRQOdbMsAu4MX2HQ9FHuMUFXvt6tZvshuBxZLHaq8p5TH3VDdUlWPh8tCHCqzpHJALjW--ra3JjsmNV--PULreOXERdVyPu7bkQSKStr2Glyd6QVVIukdq5q_dBnT0x6ZuM0BLo5bQBJvKptWei88Qz-zQVUDJJAFXIipGD_Ro0BCClX5ha-KXS_Ia6jNywWUXB-TlclkEi8Ktpy7kq7AaBvGJ-JbbtAPjXobZSFbwXUzKnQjVvT_-8wYTQUFky_nEn7-pWUQvKlm00 "cas d'utilisation")
 
 ------------------------
 

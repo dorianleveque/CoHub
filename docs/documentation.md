@@ -2,6 +2,7 @@
 
 >## Description du projet
 vulgariser la technique
+Chercher se que veut dire le stéréotype "static" en UML
 * page titré
 * un résumé / mot-clés en français
 * table des matière sommaire herarchisé

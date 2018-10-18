@@ -78,7 +78,7 @@ Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensembl
         <td>Description</td>
         <td>
             1. L’utilisateur accède à la page <br>
-            2. Le système affiche la liste des tickets (demande) en cours
+            2. Le système affiche la liste des demande en cours
         </td>
     </tr>
 
@@ -89,7 +89,7 @@ Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensembl
     <tr>
         <td>Description</td>
         <td>
-            SA1 : L’utilisateur sélectionne un filtre <br>
+            SA1 : L’utilisateur sélectionne/applique un filtre <br>
             SA1 : démarre au point 2 du scénario nominal <br>
             3. Le système renvoie la liste des tickets en cours filtré par l’utilisateur <br>
             Le scénario nominal reprend au point 3 
@@ -118,7 +118,7 @@ Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensembl
 * ## _Consulter un ticket_
 
     ### Scénario
-    __Prérequi : consulter l’ensemble des ticket__
+    __Prérequi : consulter l’ensemble des ticket ou un ensmble de ticket apres filtrage__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

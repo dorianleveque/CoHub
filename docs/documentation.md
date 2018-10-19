@@ -252,8 +252,8 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <tr>
         <td>Description</td>
         <td>
-        SE1 : Les informations ne sont pas corrects</br>
-        SE1 départ au point 4 du scénario nominal</br>
+        SE1 : Les informations ne sont pas corrects<br>
+        SE1 départ au point 4 du scénario nominal<br>
         5. Le système indique à l'utilisateur qu'une partie des informations est érroné
         </td>
     </tr>

@@ -274,7 +274,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
         <td>Description</td>
         <td>
             1. Le demandeur sélectionnes une demande qu’il  a créé <br>
-            2. Le demandeur édite un ticket afin de pouvoir modifier ces informations <br>
+            2. Le demandeur édite une demande en modifiant ces informations <br>
             3. Le demandeur valide sa demande <br>
             4. Le système vérifie l’ensemble des informations
         </td>

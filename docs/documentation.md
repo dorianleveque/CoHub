@@ -107,7 +107,6 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
             SA1 : L’utilisateur applique un filtre <br>
             SA1 : démarre au point 2 du scénario nominal <br>
             3. Le système affiche la liste des tickets en cours filtré <br>
-            Le scénario nominal reprend au point 3 
         </td>
     </tr>
 

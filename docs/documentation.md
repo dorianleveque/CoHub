@@ -128,7 +128,6 @@ Après l’authentification, il peut aussi créer un nouvelle demande ou éditer
 * ## _Consulter un ticket_
 
     ### Scénario
-    __Prérequi : consulter l’ensemble des ticket ou un ensmble de ticket apres filtrage__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

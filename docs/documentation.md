@@ -261,7 +261,49 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <br>
     <br>
 
+* ## _Éditer une demande_
 
+    ### Scénario
+    __Pré-requie: l’utilisateur s’est authentifier et consulte un des tickets qu’il a créé__
+    <table style="width:100%; text-align:left;">
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario nominal « Éditer une demande »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+            1. Le demandeur sélectionnes une demande qu’il  a créé <br>
+            2. Le demandeur édite un ticket afin de pouvoir modifier ces informations <br>
+            3. Le demandeur valide sa demande <br>
+            4. Le système vérifie l’ensemble des informations
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario alternatif « Éditer un ticket »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td/>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur « Éditer un ticket »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+        SE1 : Les informations ne sont pas corrects</br>
+        SE1 départ au point 4 du scénario nominal</br>
+        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
+    </tr>
+    </table>
+    <br>
+    <br>
 
 
 
@@ -301,49 +343,7 @@ La troisième étape dans la création d’un système consiste à formaliser le
 
 
 
-* ## _Éditer un ticket_
 
-    ### Scénario
-    __Prérequi: L’utilisateur s’est authentifier et consulte un des tickets qu’il a créé__
-    <table style="width:100%; text-align:left;">
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario nominal « Éditer un ticket »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>
-            1. Le demandeur sélectionnes un ticket qu’il  a créé <br>
-            2. Le demandeur édite un ticket afin de pouvoir modifier ces informations <br>
-            3. Le demandeur valide sa demande <br>
-            4. Le système vérifie l’ensemble des informations
-        </td>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario alternatif « Éditer un ticket »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td/>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario d’erreur « Éditer un ticket »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>
-        SE1 : Les informations ne sont pas corrects</br>
-        SE1 départ au point 4 du scénario nominal</br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
-        </td>
-    </tr>
-    </table>
-    <br>
-    <br>
 
     ### Diagramme de séquence
     ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")

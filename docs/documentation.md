@@ -74,6 +74,7 @@ Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par m
 L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’il a une demande. 
 Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. 
 
+
 ------------------------
 
 >## Diagrammes de séquence

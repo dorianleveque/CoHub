@@ -81,9 +81,8 @@ Après l’authentification, il peut aussi créer un nouvelle demande ou éditer
 La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constitue le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
 En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
 
-* ## _Consulter l'ensemble des demande_
 
-    ### Scénario
+    ### Consulter l'ensemble des demande
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -124,9 +123,8 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <br>
     <br>
 
-* ## _Consulter une demande_
 
-    ### Scénario
+    ### Consulter une demande
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

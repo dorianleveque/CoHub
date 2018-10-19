@@ -64,6 +64,8 @@ La consultation des demandes émises n’est pas restreinte, par contre dans une
 -----------------------
 >## Diagrammes Cas d'utilisations
 
+SUPRIMER LE SERVEUR
+
 ![cas d'utilisation](http://www.plantuml.com/plantuml/png/XPF1hjCm44Nt_efHDeL5efQAbg8eAYeWrg3ksBZnlDPFZXFPOmG2_eNj-ux-67QcaQBq4RgAvrwVQrsxUq_IKMYCCFX0G2quVRuGAEsm9jrQ8Mjg7Hn96-qbON0WFMIZTGPbsJdTIFUZgcxsTrf9IxV5UsoaLT4fv1ajmHTqtmPE_yqCZtLh5LF4EA_ybUS3SJeVmKKwiRHdWv0Tsa_XbC5F0V4N8bbwXEDX5JEJQ7qmX0w-MZ0Bj1wRay6qKkX1CT5dayslxZS7YuDzwbxtxe_Qa4Ct5LypobsVqCr1DhtlWz8qxzlsli_Nfousw12kV_vpkZTS_a86kg0b_Q3l3xbZJ-ZIvSxdhvOJhndroBr2PuA7zVAn3IvQGVI8yNNcERo8g9SinBigYwAl_IsK9NudjAgg9kBwNcGmFml6fiAV6-wU6sw4O08_E1vkRx5RA8egrTV7QbkRe91pKyYikfbLT_zGMKu5vta-_7F4Rx57gq9Z_W80 "cas d'utilisation")
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’il a une demande. Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. Le serveur intervient au cours de toutes ces actions. 

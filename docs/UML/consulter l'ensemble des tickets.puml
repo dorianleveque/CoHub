@@ -1,41 +1,59 @@
 @startuml consulter l'ensemble des tickets
-actor client as "User" order 1 
-participant server as "Server"   order 2
-database bdd as "database:" <<static>> order 4
+title consulter l'ensemble des tickets
 
-client ->> server : HttpRequest
-note left : Connect to\nwebsite
-activate server
-create ticketListCtrl as ":TicketListControler" order 3
-server -> ticketListCtrl : <<create>>
+actor client as "Utilisateur" order 1 
+participant app as "App" order 2 
+participant tlc as ":TicketListControler" order 3
+database bdd as "database:"  order 5
 
-alt filtre == True
-    server -> ticketListCtrl : getTicketList(filtre)
-    activate ticketListCtrl
+client -> app :accède à la page 
+app -> tlc : searchTickets() 
+activate tlc
+tlc -> bdd : executeQuery()
+activate bdd
+tlc <<-- bdd
+deactivate bdd
 
-    ticketListCtrl -> bdd : executeQuery(filtre)
-    activate bdd
-    bdd -->> ticketListCtrl
-    deactivate bdd
-
-    ticketListCtrl -->> server
-    deactivate ticketListCtrl
-else else
-    server -> ticketListCtrl : getTicketList()
-    activate ticketListCtrl
-
-    ticketListCtrl -> bdd : executeQuery()
-    activate bdd
-    bdd -->> ticketListCtrl
-    deactivate bdd
-
-    ticketListCtrl -->> server
-    deactivate ticketListCtrl
+loop as long as there's results
+    create ticket as ":Ticket" order 4
+    tlc -> ticket : <<create>>
 end
-server -> ticketListCtrl : <<destroy>>
-destroy ticketListCtrl
+app <<-- tlc
+deactivate tlc
 
-server ->> client : displayTicketList()
-deactivate server
+opt search with filters
+    app -> tlc : searchTickets(filters) 
+    activate tlc
+    tlc -> bdd : executeQuery(filters)
+    activate bdd
+    tlc <<-- bdd
+    deactivate bdd
+
+    loop as long as there's results
+        opt ticket not already create
+            create ticket as ":Ticket" order 41
+            tlc -> ticket : <<create>>
+        end
+        
+        
+    end
+    app <<-- tlc
+    deactivate tlc
+
+end
+
+app -> tlc : displayTickets()
+activate tlc
+
+loop i = tickets
+tlc -> ticket : display()
+activate ticket
+tlc <<-- ticket: 
+deactivate ticket
+end
+
+app <<-- tlc
+deactivate tlc
+
 
 @enduml

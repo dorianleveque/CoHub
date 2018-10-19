@@ -168,7 +168,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     
 
     ### Scénario
-    __Pré-requie : l'utilisateur c'est enregitré__
+    __Pré-requie : l'utilisateur c'est déja enregitré dans la base de donné__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

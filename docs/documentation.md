@@ -136,7 +136,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
         <td>Description</td>
         <td>
             1. L’utilisateur sélectionne une demande <br>
-            2.      Le système affiche la demande sélectionné
+            2. Le système affiche la demande sélectionné
         </td>
     </tr>
 
@@ -164,6 +164,8 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <br>
 
 * ## _S'authentifier_
+    
+    Pré-requie : l'utilisateur c'est enregitré 
 
     ### Scénario
     <table style="width:100%; text-align:left;">
@@ -190,12 +192,12 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
         <td>
             SA1: l'identifiant et/ou le mots ont une mauvaise syntaxe <br>
             SA1 démarre au point 2  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que ses identifiants sont erroné <br>
+            3. Le système indique à l’utilisateur que sont identification a échoué <br>
             Le scénario nominal reprend au point 1 <br>
             <br>
             SA2: l'identifiant et/ou le mots de passe sont erroné <br>
             SA2 démarre au point 3  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que ses identifiants sont erroné <br>
+            3. Le système indique à l’utilisateur que sont identification a échoué <br>
             Le scénario nominal reprend au point 1
         </td>
     </tr>

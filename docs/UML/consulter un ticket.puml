@@ -1,29 +1,23 @@
 @startuml consulter un ticket
+title consulter un ticket
 
-actor client as "User" order 1 
-participant server as "Server"   order 2
-database bdd as "dataBase:" <<static>> order 4
+actor client as "Utilisateur" order 1 
+participant app as "App" order 2 
+participant tlc as ":TicketListControler" order 3
+participant ticket as ":Ticket" order 4
 
-client ->> server : HttpRequest()
-activate server
-note left : Click on\na ticket
-create ticketCtrl as ":TicketControler" order 3
-server -> ticketCtrl : <<create>>
+client ->> app: click on ticket
+activate app
+app -> tlc: displayTicket(ticket)
+activate tlc
+tlc -> ticket: display()
+activate ticket
+tlc <<-- ticket
+deactivate ticket
+app <<-- tlc
+deactivate tlc
+deactivate app
 
-server -> ticketCtrl : getTicket()
-activate ticketCtrl
-
-ticketCtrl -> bdd : executeQuery()
-activate bdd
-bdd -->> ticketCtrl
-deactivate bdd
-
-ticketCtrl -->> server
-deactivate ticketCtrl
-destroy ticketCtrl
-
-server ->> client : displayTicket()
-deactivate server
 
 
 

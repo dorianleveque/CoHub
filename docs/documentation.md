@@ -24,20 +24,14 @@ Chercher se que veut dire le stéréotype "static" en UML
 
 # __Préambule__
 L'idée de "Tiketo", nous est parvenu à la suite d'une énumération de petit problème que nous avions rencontré de nombreuses fois durant notre année scolaire et que nous voulions résoudre.
-
-
-
 Nous avons imaginé très rapidement que notre solution proposé serait sous la forme d'une application web afin de permettre à n'importe quel enibien de pouvoir utiliser notre application sur n'importe quel support.
 
-
-
-#__Introduction__
-
+# __Introduction__
 Pas de tente pour le weekend d’intégration? Qui a une visseuse pour installer une étagère? Qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
 Toutes ces situations racontent un quotidien des énibien·ne·s.
 Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème.  A finir
 
-#__Mots clés__
+# __Mots clés__
 partage échange entraide collaboration hub efficacité service a compléter choisir
 
 # __Qu'est-ce qui pose problème__
@@ -48,20 +42,20 @@ Comment localement, à l’ échelle de l’ENIB, partager à la fois des biens,
 
 Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète !
 
-#__Solution__
+# __Solution__
 Notre solution est le site internet CoHub. C’est un site de partage et d’échange fait par des étudiants de l’ENIB pour répondre aux demandes spécifiques des étudiants de l’ENIB. Le site a pour ambition de faciliter le partage, la collaboration et l’entraide.
 CoHub recense donc toutes les demandes d’aide car nous pensons qu’elles ont plus de chances d’aboutir ainsi. Pour stimuler les interactions, il doit être accessible à tous les étudiants de l’ENIB. CoHub doit aussi être disponible à partir de n’importe quelle interface utilisateur (téléphone, tablette ou ordinateur) à tout moment et en tout lieu où un connexion internet est possible. Pour plus d’efficacité, toutes les demandes sont classées par catégorie afin de faciliter des réponses expertes.
 La consultation des demandes émises n’est pas restreinte, par contre dans une souci de sécurité, l’émission ou la réponse à une demande est contrôlée par un identifiant et un mot de passe.
 
-#__Pourquoi CoHub?__
+# __Pourquoi CoHub?__
 Co coopération coordination collaboration ensemble avec
 Hub : organisation mettant en œuvre une connexion centrale, plate forme de correspondance, infrastructure de communication a rédiger et peut être à placer à un autre endroit
 
-#__Maquette__
+# __Maquette__
 Détail de chaque écran 
 Liste des fonctionnalités
 
-#__Modélisation UML__
+# __Modélisation UML__
 
 -----------------------
 >## Diagrammes Cas d'utilisations

@@ -306,27 +306,29 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <br>
     
     * ## _Répondre à une demande_
+    
+        ### Proposer par message une demande de rendez-vous
 
     ### Scénario
     __Pré-requie: l’utilisateur s’est authentifier et consulte une demande__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Répondre à une demande »</th>
+        <th>Scénario nominal « Proposer par message une demande de rendez-vous »</th>
     </tr>
     <tr>
         <td>Description</td>
         <td>
             1. L’aidant  appuis sur le bouton « prendre en charge » <br>
-            2. L’aidant renseigne les champs <br>
-            3. L’aidant valide sa réponse 
+            2. L’aidant ecrit un message avec les information consernant le rendez-vous <br>
+            3. L’aidant valide son message
             4. Le système vérifie l’ensemble des informations
         </td>
     </tr>
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Répondre à une demande »</th>
+        <th>Scénario alternatif « Proposer par message une demande de rendez-vous »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -335,14 +337,52 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Répondre à une demande »</th>
+        <th>Scénario d’erreur « Proposer par message une demande de rendez-vous »</th>
     </tr>
     <tr>
         <td>Description</td>
          <td>
-        SE1 : Les informations ne sont pas corrects<br>
-        SE1 départ au point 4 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
+    </tr>
+    </table>
+    <br>
+    <br>
+    
+    ### Répondre par message une demande de rendez-vous
+
+    ### Scénario
+    __Pré-requie: l’utilisateur s’est authentifier et consulte une demande__
+    <table style="width:100%; text-align:left;">
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario nominal « Répondre par message une demande de rendez-vous »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+            1. Le demandeur  appuis sur le bouton « répondre » <br>
+            2. Le demandeur ecrit un message avec sa réponces <br>
+            3. Le demandeur valide son message
+            4. Le système vérifie l’ensemble des informations
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario alternatif « Proposer par message une demande de rendez-vous »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td/>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur « Proposer par message une demande de rendez-vous »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+         <td>
         </td>
     </tr>
     </table>

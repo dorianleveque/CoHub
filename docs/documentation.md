@@ -31,35 +31,37 @@ Nous avons imaginé très rapidement que notre solution proposé serait sous la 
 
 
 
+#__Introduction__
 
+Pas de tente pour le weekend d’intégration? Qui a une visseuse pour installer une étagère? Qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
+Toutes ces situations racontent un quotidien des énibien·ne·s.
+Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème.  A finir
 
+#__Mots clés__
+partage échange entraide collaboration hub efficacité service a compléter choisir
 
 # __Qu'est-ce qui pose problème__
-Mots clés: partage échange entraide collaboration hub efficacité service
-
-Pourquoi CoHub?  Co coopération coordination collaboration ensemble avec
-Hub : organisation mettant en œuvre une connexion centrale, plate forme de correspondance, infrastructure de communication
-
-
-
-Pas de tente pour le WAF ? Qui a une visseuse pour installer une étagère? qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
-Toutes ces situations racontent un quotidien des énibien-ne-s.
-Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème. A FINIR
-
 Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans de nombreux domaines, du simple partage de fichiers à l’application spécifique de prêt et d’échanges d’objet entre voisins. C’est une pratique qui progresse et qui s’accompagne d’une image positive.
-Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques
+Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques 
 
 Comment localement, à l’ échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences?
 
-Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète ! 
+Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète !
 
-
+#__Solution__
 Notre solution est le site internet CoHub. C’est un site de partage et d’échange fait par des étudiants de l’ENIB pour répondre aux demandes spécifiques des étudiants de l’ENIB. Le site a pour ambition de faciliter le partage, la collaboration et l’entraide.
-CoHub recense donc toutes les demandes d’aide car nous pensons qu’elles ont plus de chances d’aboutir ainsi. Pour stimuler les interactions, il doit être accessible à tous les étudiants de l’ENIB. CoHub doit aussi être disponible à partir n’importe quelle interface utilisateur (téléphone, tablette ou ordinateur) à tout moment et en tout lieu où un connexion internet est possible. Pour plus d’efficacité, toutes les demandes sont classées par catégorie afin de faciliter des réponses expertes. 
+CoHub recense donc toutes les demandes d’aide car nous pensons qu’elles ont plus de chances d’aboutir ainsi. Pour stimuler les interactions, il doit être accessible à tous les étudiants de l’ENIB. CoHub doit aussi être disponible à partir de n’importe quelle interface utilisateur (téléphone, tablette ou ordinateur) à tout moment et en tout lieu où un connexion internet est possible. Pour plus d’efficacité, toutes les demandes sont classées par catégorie afin de faciliter des réponses expertes.
 La consultation des demandes émises n’est pas restreinte, par contre dans une souci de sécurité, l’émission ou la réponse à une demande est contrôlée par un identifiant et un mot de passe.
 
+#__Pourquoi CoHub?__
+Co coopération coordination collaboration ensemble avec
+Hub : organisation mettant en œuvre une connexion centrale, plate forme de correspondance, infrastructure de communication a rédiger et peut être à placer à un autre endroit
 
+#__Maquette__
+Détail de chaque écran 
+Liste des fonctionnalités
 
+#__Modélisation UML__
 
 -----------------------
 >## Diagrammes Cas d'utilisations

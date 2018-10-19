@@ -1,4 +1,5 @@
 @startuml diagramme de classe
+package "class" as alias <<Frame>> {
 
 abstract class Ticket <<abstract>> {
 - id  : int
@@ -177,4 +178,5 @@ Ticket "*" *---left- "1" Conversation: conversation
 Conversation"1" *-left-- "*" Message :message
 Ticket "1" -down-* "*" TicketListControleur : tickets
 
+}
 @enduml

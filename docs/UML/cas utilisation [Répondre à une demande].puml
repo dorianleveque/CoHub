@@ -1,0 +1,14 @@
+@startuml "cas d'utilisation - répondre à une demande"
+left to right direction
+actor Aidant
+actor Demandeur
+
+rectangle "Répondre à une demande" {
+    usecase UC1 as "Proposer par message une demande de rendez vous"
+    usecase UC2 as "Repondre par message a la demande de rendez vous"
+  
+
+    Aidant -- (UC1)
+    Demandeur -- (UC2)
+}
+@enduml

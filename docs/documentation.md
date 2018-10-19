@@ -296,6 +296,50 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <tr>
         <td>Description</td>
         <td>
+        SE1 : Les informations ne sont pas corrects<br>
+        SE1 départ au point 4 du scénario nominal<br>
+        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        </td>
+    </tr>
+    </table>
+    <br>
+    <br>
+    
+    * ## _Répondre à une demande_
+
+    ### Scénario
+    __Pré-requie: l’utilisateur s’est authentifier et consulte une demande__
+    <table style="width:100%; text-align:left;">
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario nominal « Répondre à une demande »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>
+            1. L’aidant  appuis sur le bouton « prendre en charge » <br>
+            2. L’aidant renseigne les champs <br>
+            3. L’aidant valide sa réponse 
+            4. Le système vérifie l’ensemble des informations
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario alternatif « Répondre à une demande »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td/>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur « Répondre à une demande »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+         <td>
         SE1 : Les informations ne sont pas corrects</br>
         SE1 départ au point 4 du scénario nominal</br>
         5. Le système indique à l'utilisateur qu'une partie des informations est érroné
@@ -351,49 +395,7 @@ La troisième étape dans la création d’un système consiste à formaliser le
 
 
 
-* ## _Répondre à une demande_
 
-    ### Scénario
-    __Prérequi: L’utilisateur s’est authentifier et consulte un ticket__
-    <table style="width:100%; text-align:left;">
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario nominal « Répondre à une demande »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>
-            1. L’aidant  appuis sur le bouton « prendre en charge » <br>
-            2. L’aidant renseigne les champs <br>
-            3. L’aidant valide sa réponse 
-            4. Le système vérifie l’ensemble des informations
-        </td>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario alternatif « Répondre à une demande »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td/>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario d’erreur « Répondre à une demande »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-         <td>
-        SE1 : Les informations ne sont pas corrects</br>
-        SE1 départ au point 4 du scénario nominal</br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
-        </td>
-    </tr>
-    </table>
-    <br>
-    <br>
 
     ### Diagramme de séquence
     

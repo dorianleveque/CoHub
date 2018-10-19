@@ -224,7 +224,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Créer un ticket »</th>
+        <th>Scénario nominal « Créer une demande »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -238,7 +238,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Créer un ticket »</th>
+        <th>Scénario alternatif « Créer une demande »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -247,7 +247,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Créer un ticket »</th>
+        <th>Scénario d’erreur « Créer une demande »</th>
     </tr>
     <tr>
         <td>Description</td>

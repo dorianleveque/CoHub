@@ -165,9 +165,10 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 
 * ## _S'authentifier_
     
-    __Pré-requie : l'utilisateur c'est enregitré 
+    
 
     ### Scénario
+    __Pré-requie : l'utilisateur c'est enregitré__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -219,7 +220,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 * ## _Créer une demande_
 
     ### Scénario
-    __Prérequi: l’utilisateur s’est authentifier__
+    __Pré-requie: l’utilisateur s’est authentifier__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

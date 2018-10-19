@@ -391,7 +391,7 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
 
 
 
->## Diagrammes de séquence
+*## Diagrammes de séquence
 
 La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
 

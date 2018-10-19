@@ -21,6 +21,19 @@ end
 app <<-- tlc
 deactivate tlc
 
+app -> tlc : displayTickets()
+activate tlc
+
+loop i = tickets
+tlc -> ticket : display()
+activate ticket
+tlc <<-- ticket: 
+deactivate ticket
+end
+
+app <<-- tlc
+deactivate tlc
+
 opt search with filters
     app -> tlc : searchTickets(filters) 
     activate tlc
@@ -40,20 +53,17 @@ opt search with filters
     app <<-- tlc
     deactivate tlc
 
+    app -> tlc : displayTickets()
+    activate tlc
+    loop i = tickets
+    tlc -> ticket : display()
+    activate ticket
+    tlc <<-- ticket: ticket(): string
+    deactivate ticket
+    end
+    app <-- tlc : displayTickets()
+    deactivate tlc
 end
-
-app -> tlc : displayTickets()
-activate tlc
-
-loop i = tickets
-tlc -> ticket : display()
-activate ticket
-tlc <<-- ticket: 
-deactivate ticket
-end
-
-app <<-- tlc
-deactivate tlc
 
 
 @enduml

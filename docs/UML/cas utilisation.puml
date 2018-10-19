@@ -1,4 +1,4 @@
-@startuml cas d'utilisation
+@startuml
 left to right direction
 actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant
@@ -7,28 +7,31 @@ actor Demandeur
 Utilisateur <|-- Aidant
 Utilisateur <|-- Demandeur
 
-rectangle "Tiketo" {
-    usecase UC1 as "Consulter \n l'ensemble \n des tickets"
-    usecase UC2 as "Consulter \n un ticket"
+rectangle "CoHub" {
+    usecase UC1 as "Consulter \n l'ensemble \n des demandes"
+    usecase UC2 as "Consulter \n une demande"
     usecase UC3 as "Filtrer"
-    usecase UC4 as "Gérer les tickets"
-    usecase UC5 as "Créer un ticket"
-    usecase UC6 as "Editer un ticket"
-    usecase UC7 as "Répondre à \n un ticket"
+    usecase UC5 as "Créer une demande"
+    usecase UC6 as "Editer une demande"
+    usecase UC7 as "Répondre à \n une demande"
     usecase UC8 as "S'authentifier"
-    usecase UC9 as "Supprimer ticket"
+    usecase UC9 as "Supprimer une demande"
 
     Utilisateur -- (UC1)
     Utilisateur -- (UC2)
     UC1 <.. UC3 : <<extend>>
+    
 
-    Demandeur -- UC4
+    Demandeur -- UC5
     Demandeur -- UC9
-    UC4 ..> UC8 : <<include>>
-    UC4 <.. UC5 : <<extend>>
-    UC4 <.. UC6 : <<extend>>
+    Demandeur -- UC6
+
+
 
     Aidant -- UC7
     UC7 ..> UC8 : <<include>>
+    UC5 ..> UC8 : <<include>>
+    UC6 ..> UC8 : <<include>>
+    UC9 ..> UC8 : <<include>>
 }
 @enduml

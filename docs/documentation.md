@@ -81,7 +81,7 @@ Après l’authentification, il peut aussi créer un nouvelle demande ou éditer
 La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constitue le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
 En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
 
-_Consulter l'ensemble des tickets_
+* ##_Consulter l'ensemble des demande_
 
     ### Scénario
     <table style="width:100%; text-align:left;">
@@ -125,25 +125,7 @@ _Consulter l'ensemble des tickets_
     <br>
     <br>
 
-
-
-
-
-
->## Diagrammes de séquence
-
-La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
-
-
-
-
-    ### Diagramme de séquence
-
-    ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiV8bzy25DUn5I8qMllGHeFu0cjpPHHYJ8LLF_JOxzZ_nObmyvekGcqKKYESkTdHdeBf3mD3mOaBOFWo7qOAwm3_YmDmWA0v2Mlv12sv0ctdeRrpP2alKWZSQUG0HO_I1jT124Wr-1zOghhw5j7FVMKZiHOSubw1VdHiY76OICJ93kUshrJGVwQdlork3vsfksKOB4NWI4lL89FsvqAoYeJv5buRVTfTwTaFBvhq9uVW8Zm8a3Sljume3OkOE0mijZRXxM6qY3wjyyLWImG8nYS6pR0Vv1EH3U3-XFwyq4oiSPUdkxtUQLmlgqROorIGvZ-qDyqn4zNWNm6CLdaO4VwJ7rJeIcoenYVCoumglWEcwSAtUxji5UvIaJcpJ6X4rQprHGEZWZJcSPvYeKyXe-Jw8pOr3kg8lJuKIQlD51pQYW4k-tcLj7nJPur7I4dpf6j-ZtYha55prEoEhQYQONl1vBPvN9sB7onVguixG_xhuh0l69CnPbUyivC6okEfLqlC3UbvZhkk2rw8oOPCMuc7-T3skdPcCNjnQcBBDssOrbuYwHdwIklgPagd9dJ5z-hpUS4FAwFoovJwhhQVEm_nrZFd-9TDlSyHV_aly1 "consulter l'ensemble des tickets")
-
-
-
-* ## _Consulter un ticket_
+* ## _Consulter une demande_
 
     ### Scénario
     <table style="width:100%; text-align:left;">
@@ -182,8 +164,27 @@ La troisième étape dans la création d’un système consiste à formaliser le
     <br>
     <br>
 
-    ### Diagramme de séquence
 
+
+
+>## Diagrammes de séquence
+
+La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
+
+
+
+
+    ### Diagramme de séquence
+    * ##_Consulter l'ensemble des tickets_
+
+    ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiV8bzy25DUn5I8qMllGHeFu0cjpPHHYJ8LLF_JOxzZ_nObmyvekGcqKKYESkTdHdeBf3mD3mOaBOFWo7qOAwm3_YmDmWA0v2Mlv12sv0ctdeRrpP2alKWZSQUG0HO_I1jT124Wr-1zOghhw5j7FVMKZiHOSubw1VdHiY76OICJ93kUshrJGVwQdlork3vsfksKOB4NWI4lL89FsvqAoYeJv5buRVTfTwTaFBvhq9uVW8Zm8a3Sljume3OkOE0mijZRXxM6qY3wjyyLWImG8nYS6pR0Vv1EH3U3-XFwyq4oiSPUdkxtUQLmlgqROorIGvZ-qDyqn4zNWNm6CLdaO4VwJ7rJeIcoenYVCoumglWEcwSAtUxji5UvIaJcpJ6X4rQprHGEZWZJcSPvYeKyXe-Jw8pOr3kg8lJuKIQlD51pQYW4k-tcLj7nJPur7I4dpf6j-ZtYha55prEoEhQYQONl1vBPvN9sB7onVguixG_xhuh0l69CnPbUyivC6okEfLqlC3UbvZhkk2rw8oOPCMuc7-T3skdPcCNjnQcBBDssOrbuYwHdwIklgPagd9dJ5z-hpUS4FAwFoovJwhhQVEm_nrZFd-9TDlSyHV_aly1 "consulter l'ensemble des tickets")
+
+
+
+
+
+    ### Diagramme de séquence
+    * ## _Consulter un ticket_
     ![consulter un ticket](http://www.plantuml.com/plantuml/svg/TPAxRiCm34Lt0Ve7mbCxPEXZ4W8ZQ9QkVMrT58ajXAYIAz51_VUbR2Us2XHUJFBmyfBGBfDEr7zvC37atXCcw0EGCqSaAQJGXc82unq60fsXUSkO6eZ9Cda3KdJSxuphDDUvTE9qmLx6tmPWHc-bi9hqGMU4WxKZKn8Fd50DRBTiX7NQTkRlo_1vx8QpixI2HwBk6Rzxp7HrFVfp9qqu0rA4o8773s9sxtaFYE4zwCjA9c71ft1FoOzMrEiKnq0f-cN3EodcoPjstQFOyQJKjiNfFz0dqYHSMLsGqhfguFPo6mNuWwOdVEen3LKhbwKepAOSPIraiOPguUM45LaBPDvz-EFkibXxVWGAhCkTryEosKhnF6JvTXWiFx1V "consulter un ticket")
 
 

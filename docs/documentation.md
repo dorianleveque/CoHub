@@ -68,6 +68,9 @@ SUPRIMER LE SERVEUR
 
 ![cas utilisation](http://www.plantuml.com/plantuml/svg/XLFTIiCm5Bulz1qElPbUhE34pKaPawbuhUpEcwmvsm9fEf8JKDHtyNRFiHSpIScOjjiAlKY-7xwUxtHgY6cobKmJYKi2ga6BrPg02uqbYLgb2IkfrZ0d8OLXX5O3Cv0Td3CeYeqM5TCVaqdatmlE5CNJ0rPCSSTDapGvj2g--lqzjmNyaVb0JAqaGZQhd-qYWyyq0VTOWoKp2FFPLOWsgvMnab33cmBPGsMmMZYPEt4qxWsc9lkl7hJLLc7aj-ZNWVua96dKBVIcCTExhNCwPJCCn4Skw0nn58Wlk-scLbmZx7xE9RmDYjSUixH6HM8fEeAE6vBT-0fR4HhsOJ6kbWitwSjZo20YheqYpyEWxjo6u3kXudv1F1gTzmrxjPjQv-suytReFQ9Fiq8DC8e1Hf3dap077q2eKbgECO6lw2GyF0sFZy7VQJ9rN-f-gby0 "cas utilisation")
 
+précision sur répondre a une demande
+
+http://www.plantuml.com/plantuml/svg/NOzDIWH138NtESMZLlPY5iu9HlG0Ck01GbTi2-gdIL8k5E_YrdFCnMox1x65B9B7ovUyapchzv8foxF36pHDBuwOL4PFhHAFtXHtANBrw_0WXMkKhaG_BgvJ5eJpvMjkDQhWyebU1N6p1RmJ07IJaKtmT7yBDeH7RNCpKSoiA6B6a_pTmr8gI_E6rzOj_8CSLyXPjfix22FpZi8x2gsaBH4E1zmi7mshzXliAXy7-g2JrDXB_WO0
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
 Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 

@@ -340,10 +340,50 @@ En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous 
     <tr>
         <td>Description</td>
          <td>
-        SE1 : Les informations ne sont pas corrects</br>
-        SE1 départ au point 4 du scénario nominal</br>
+        SE1 : Les informations ne sont pas corrects<br>
+        SE1 départ au point 4 du scénario nominal<br>
         5. Le système indique à l'utilisateur qu'une partie des informations est érroné
         </td>
+    </tr>
+    </table>
+    <br>
+    <br>
+    
+    * ## _Supprimer une demande_
+* 
+    ### Scénario
+     __Pré-requie: l’utilisateur s’est authentifier et consulte un des tickets qu’il a créé__
+
+     <table style="width:100%; text-align:left;">
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario nominal « Supprimer une demande »</th>
+    </tr>
+    <tr>
+        <td>Description</td> 
+        <td>
+            1. Le demandeur appuis sur le bouton "supprimer"
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario alternatif « Supprimer une demande  »</th>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td/>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur « Supprimer une demandet  »</th>
+    </tr>
+  <tr>
+        <td>Description</td>
+        <td style="color:red;">
+            
+
     </tr>
     </table>
     <br>
@@ -401,45 +441,7 @@ La troisième étape dans la création d’un système consiste à formaliser le
     
     
     
-* ## _Supprimer un ticket_
-* 
-    ### Scénario
-     __Prérequi__ : L’administrateur c’est authentifier
 
-     <table style="width:100%; text-align:left;">
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario nominal « Supprimer un ticket »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>
-            1. L’utilisateur appuis sur le bouton "supprimer"
-        </td>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario alternatif « Supprimer un ticket  »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td/>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario d’erreur « Supprimer un ticket  »</th>
-    </tr>
-  <tr>
-        <td>Description</td>
-        <td style="color:red;">
-            
-
-    </tr>
-    </table>
-    <br>
-    <br>
 
     ### Diagramme de séquence
     

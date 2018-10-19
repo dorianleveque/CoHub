@@ -112,9 +112,9 @@ La troisième étape dans la création d’un système consiste à formaliser le
     <tr>
         <td>Description</td>
         <td>
-            SA1 : L’utilisateur sélectionne/applique un filtre <br>
+            SA1 : L’utilisateur applique un filtre <br>
             SA1 : démarre au point 2 du scénario nominal <br>
-            3. Le système renvoie la liste des tickets en cours filtré par l’utilisateur <br>
+            3. Le système affiche la liste des tickets en cours filtré <br>
             Le scénario nominal reprend au point 3 
         </td>
     </tr>

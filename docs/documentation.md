@@ -81,33 +81,25 @@ Après l’authentification, il peut aussi créer un nouvelle demande ou éditer
 La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constitue le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
 En ce qui concerne CoHub, nous avons réalisé 7 (a vérifier) scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
 
-
-
->## Diagrammes de séquence
-
-La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
-
-
-
 * ## _Consulter l'ensemble des tickets_
 
     ### Scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Consulter l’ensemble des tickets »</th>
+        <th>Scénario nominal « Consulter l’ensemble des demandes »</th>
     </tr>
     <tr>
         <td>Description</td>
         <td>
             1. L’utilisateur accède à la page <br>
-            2. Le système affiche la liste des demande en cours
+            2. Le système affiche la liste des demandes en cours
         </td>
     </tr>
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Consulter l’ensemble des tickets »</th>
+        <th>Scénario alternatif « Consulter l’ensemble des demandes »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -132,6 +124,18 @@ La troisième étape dans la création d’un système consiste à formaliser le
     </table>
     <br>
     <br>
+
+
+
+
+
+
+>## Diagrammes de séquence
+
+La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
+
+
+
 
     ### Diagramme de séquence
 

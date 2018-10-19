@@ -75,6 +75,10 @@ L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’
 Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. 
 
 
+![cas d'utilisation - répondre à une demande](http://www.plantuml.com/plantuml/svg/VP11IWGn44NtWTpXausww8LpWX4zW0nuWA9Jje5qqbGgBXJlujPppCMijaSP1CqcbK_zLx-oRqgYVSu88pN4YwuffqQQQi40ENuijKHX7D_H2oFoJ2Loy2xpeq8h94rFYfY4nzNa7OrQ1JSfKj7lrzrcw-ATTsidbIapmk4lFbwzWvtUs78n7cwlOVd2lTIbDXOi99YvDPhut6WtXArumNFjBVocxBue1pvDFQSGCls7MQEli6qp30CkBTNL9luiUD9tfhzvjpU6VUud "cas d'utilisation - répondre à une demande")
+
+
+
 ------------------------
 
 >## Diagrammes de séquence

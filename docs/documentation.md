@@ -270,7 +270,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 (a vérifier) scénarios. Nous 
         <td>Description</td>
         <td>
             1. Le demandeur sélectionnes une demande qu’il  a créé <br>
-            2. Le demandeur appuie sur le bouton "édite une demande"
+            2. Le demandeur appuie sur le bouton "édite une demande" <br>
             3. Le demandeur modifie les informations <br>
             4. Le demandeur valide sa demande <br>
             5. Le système vérifie l’ensemble des informations

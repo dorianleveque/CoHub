@@ -1,12 +1,14 @@
-@startuml consulter l'ensemble des tickets
-title consulter l'ensemble des tickets
+@startuml consulter l'ensemble des demandes
+title consulter l'ensemble des demandes
 
 actor client as "Utilisateur" order 1 
 participant app as "App" order 2 
-participant tlc as ":TicketListControler" order 3
 database bdd as "database:"  order 5
 
 client -> app :accède à la page 
+create tlc as ":TicketListControler" order 3
+app -> tlc : <<create>>
+
 app -> tlc : searchTickets() 
 activate tlc
 tlc -> bdd : executeQuery()
@@ -24,17 +26,25 @@ deactivate tlc
 app -> tlc : displayTickets()
 activate tlc
 
-loop i = tickets
-tlc -> ticket : display()
+tlc -> ticket : displayTickets()
 activate ticket
 tlc <<-- ticket: 
 deactivate ticket
-end
+
 
 app <<-- tlc
 deactivate tlc
 
 opt search with filters
+    app -> tlc: clearTickets()
+    activate tlc
+    loop i=tickets
+        tlc -> ticket: <<destroy>>
+        destroy ticket
+    end
+    app <<-- tlc
+    deactivate tlc
+
     app -> tlc : searchTickets(filters) 
     activate tlc
     tlc -> bdd : executeQuery(filters)
@@ -43,25 +53,20 @@ opt search with filters
     deactivate bdd
 
     loop as long as there's results
-        opt ticket not already create
-            create ticket as ":Ticket" order 41
-            tlc -> ticket : <<create>>
-        end
-        
-        
+        tlc -> ticket : <<create>> 
+        create ticket as ":Ticket" order 4
     end
     app <<-- tlc
     deactivate tlc
 
     app -> tlc : displayTickets()
     activate tlc
-    loop i = tickets
-    tlc -> ticket : display()
+    tlc -> ticket : displayTickets()
     activate ticket
-    tlc <<-- ticket: ticket(): string
+    tlc <<-- ticket:
     deactivate ticket
-    end
-    app <-- tlc : displayTickets()
+    
+    app <-- tlc
     deactivate tlc
 end
 

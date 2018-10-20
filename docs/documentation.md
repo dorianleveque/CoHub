@@ -435,6 +435,8 @@ La troisième étape dans la création d’un système consiste à formaliser le
 ## _Consulter l'ensemble des demandes_
 
 ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiV8bzy25DUn5I8qMllGHeFu0cjpPHHYJ8LLF_JOxzZ_nObmyvekGcqKKYESkTdHdeBf3mD3mOaBOFWo7qOAwm3_YmDmWA0v2Mlv12sv0ctdeRrpP2alKWZSQUG0HO_I1jT124Wr-1zOghhw5j7FVMKZiHOSubw1VdHiY76OICJ93kUshrJGVwQdlork3vsfksKOB4NWI4lL89FsvqAoYeJv5buRVTfTwTaFBvhq9uVW8Zm8a3Sljume3OkOE0mijZRXxM6qY3wjyyLWImG8nYS6pR0Vv1EH3U3-XFwyq4oiSPUdkxtUQLmlgqROorIGvZ-qDyqn4zNWNm6CLdaO4VwJ7rJeIcoenYVCoumglWEcwSAtUxji5UvIaJcpJ6X4rQprHGEZWZJcSPvYeKyXe-Jw8pOr3kg8lJuKIQlD51pQYW4k-tcLj7nJPur7I4dpf6j-ZtYha55prEoEhQYQONl1vBPvN9sB7onVguixG_xhuh0l69CnPbUyivC6okEfLqlC3UbvZhkk2rw8oOPCMuc7-T3skdPcCNjnQcBBDssOrbuYwHdwIklgPagd9dJ5z-hpUS4FAwFoovJwhhQVEm_nrZFd-9TDlSyHV_aly1 "consulter l'ensemble des tickets")
+Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter l’ensemble des demandes en cours. Quand l’utilisateur accède à la page d’accueil du site, le site récupère l’ensemble des demandes auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
+Lorsque l’utilisateur souhaite filtrer les demandes le site récupère l’ensemble des demandes en cours filtré auprès de la base de données puis génère une page à affiche sur l’interface utilisateur avec les demandes filtrées.
 
 
 ## Diagramme de séquence

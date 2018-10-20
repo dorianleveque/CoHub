@@ -1,0 +1,14 @@
+@startuml état d'authentification
+title état d'authentification
+
+state S1 as "l'utilisateur n'est\npas connecter"
+S1 : on accès au site/ consulter l'ensemble des demandes \n on clic sur une demande/ consulter une demande
+state S2 as "l'utilisateur est\n connecter"
+S2 : on clic sur "crée une demande"/ créer une demande \n on clic sur "editer une demande "/editer une demande \n on clic supprimer une demande \n  répondre a une demande état transition de l'affichage consulter l'ensemble des demandes \n consulter une demande
+
+
+[*] --> S1
+S1  --> S2 : s'authentifier
+S2  --> [*]
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml état d'une demande
+title état d'une demande
+
+state S1 as "Demande crée"
+S1 : entry: save()
+state S2 as "Demande en cours de traitement"
+S2 : on: texte rentré / addMessage()
+state S3 as "Demande terminée"
+state S4 as "Demande éditée"
+
+
+[*] -right-> S1: Ticket()
+S1  -right-> S2: handle()
+S1  -up-> S3 : bouton de fin de demande
+S2  -right-> S3: bouton fin de demande
+S3  -right-> [*]: delete()
+
+S1 --> S4 : edit()
+S4 --> S1 : valider
+S2 --> S4 : edit()
+S4 --> S2 : save()
+
+
+@enduml

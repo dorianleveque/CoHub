@@ -388,31 +388,41 @@ En ce qui concerne CoHub, nous avons réalisé 8 (a vérifier) scénarios. Nous 
 
 
 > ## Diagrammes de séquence
+
 La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
 
+## Diagramme de séquence
 ## _Consulter l'ensemble des demandes_
+
 ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiV8bzy25DUn5I8qMllGHeFu0cjpPHHYJ8LLF_JOxzZ_nObmyvekGcqKKYESkTdHdeBf3mD3mOaBOFWo7qOAwm3_YmDmWA0v2Mlv12sv0ctdeRrpP2alKWZSQUG0HO_I1jT124Wr-1zOghhw5j7FVMKZiHOSubw1VdHiY76OICJ93kUshrJGVwQdlork3vsfksKOB4NWI4lL89FsvqAoYeJv5buRVTfTwTaFBvhq9uVW8Zm8a3Sljume3OkOE0mijZRXxM6qY3wjyyLWImG8nYS6pR0Vv1EH3U3-XFwyq4oiSPUdkxtUQLmlgqROorIGvZ-qDyqn4zNWNm6CLdaO4VwJ7rJeIcoenYVCoumglWEcwSAtUxji5UvIaJcpJ6X4rQprHGEZWZJcSPvYeKyXe-Jw8pOr3kg8lJuKIQlD51pQYW4k-tcLj7nJPur7I4dpf6j-ZtYha55prEoEhQYQONl1vBPvN9sB7onVguixG_xhuh0l69CnPbUyivC6okEfLqlC3UbvZhkk2rw8oOPCMuc7-T3skdPcCNjnQcBBDssOrbuYwHdwIklgPagd9dJ5z-hpUS4FAwFoovJwhhQVEm_nrZFd-9TDlSyHV_aly1 "consulter l'ensemble des tickets")
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter l’ensemble des demandes en cours. Quand l’utilisateur accède à la page d’accueil de l'application, l'application récupère l’ensemble des demandes auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
 Lorsque l’utilisateur souhaite filtrer les demandes l'application récupère l’ensemble des demandes en cours filtré auprès de la base de données puis génère une page à affiche sur l’interface utilisateur avec les demandes filtrées.
 
+
+## Diagramme de séquence
 ## _Consulter une demande_
 ![consulter un ticket](http://www.plantuml.com/plantuml/svg/TPAxRiCm34Lt0Ve7mbCxPEXZ4W8ZQ9QkVMrT58ajXAYIAz51_VUbR2Us2XHUJFBmyfBGBfDEr7zvC37atXCcw0EGCqSaAQJGXc82unq60fsXUSkO6eZ9Cda3KdJSxuphDDUvTE9qmLx6tmPWHc-bi9hqGMU4WxKZKn8Fd50DRBTiX7NQTkRlo_1vx8QpixI2HwBk6Rzxp7HrFVfp9qqu0rA4o8773s9sxtaFYE4zwCjA9c71ft1FoOzMrEiKnq0f-cN3EodcoPjstQFOyQJKjiNfFz0dqYHSMLsGqhfguFPo6mNuWwOdVEen3LKhbwKepAOSPIraiOPguUM45LaBPDvz-EFkibXxVWGAhCkTryEosKhnF6JvTXWiFx1V "consulter un ticket")
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter une demande en cours. 
 Quand l’utilisateur souhaite accéder à une demande l'application récupère l’information auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
 
+## Diagramme de séquence
 ## _S'authentifier_
 A compléter...
 
+## Diagramme de séquence
 ## _Créer une demande_
 ![créer un ticket](http://www.plantuml.com/plantuml/svg/pLIxRiCm3DmD-1y8Bss737rCHc04BGfqxMlBeaWC84IHNOaAca_gT_J7IbbEQbT5aR6BRP37unr9UE59E0fR0z9zVg23O86qt22LHLa8IQq3QJHQ0k6XUlNeAcYTOkHbMNHSgwNk1ASvi-DeH3ttdnN0WBmg2oL8h8H7M2dLOsBWbWDr1VCvYs2UfXdmDx7tq7N6qO6wXWUYxWdV0dewloWBsnA2mJLnYk5o0ws5fPKE1ISEDeRgI3Hmrg2qxupOtojDBpqiqh5VGz2nEdM6pc5mPS4Uu0Gb4JPMOn0KReLLJBAqNcYlOqpRTUksxBMrVcaT6lvSWmX7hP67XwvtqK1gDcWOUxepmlj-YdLIVrZ9TG8V7K_mDGywqJJDtpWlTlWzbecc4J1bnfLC5DTR0xwZ38IF0Tq-es18YaJiB4vrsdrQN2Uimhn-qdgodR61d23pa5r8Ld9O1He-uVZuFvUHYVyXWGSwkkNVF5aLRt_1R_uFV040 "créer un ticket")
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite créer une demande d’aide. Après l’appui sur le bouton « création de demandes », l’application affiche sur l’interface utilisateur un ensemble de champs à remplir concernant sa demande. 
 La cohérence des information est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande dans la base de donnée sinon elle l’indique à l’utilisateur par un message d’erreur.
 
+## Diagramme de séquence
 ## _Éditer une demande_
 ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite éditer une demande d’aide qu'il a emis. Après l’appui sur le bouton « éditer une demande », l’application affiche sur l’interface utilisateur l’ensemble de champs à remplir lors de la création de la demande. 
 La cohérence de cette information est ensuite vérifiée par l’application. Si ces information sont cohérente, le système enregistre la demande dans la base de donnée sinon elle l'indique à l’utilisateur par un message d’erreur.
 
+
+## Diagramme de séquence
 ## _Supprimer une demande_  
 ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émis. Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de donné.
@@ -436,8 +446,3 @@ Il permet de décrire les classes et les relation entre elle.
 * addTicket(s)()
     
 ![diagramme de classe](http://www.plantuml.com/plantuml/svg/vLTBRzD04BvRydyOzUGaze5h5AAYzW1IgP0QpjLYJnE3xOJTJL5Kyj_PfxsxNgFI7a12bTfwtlFjD_kuP9nGVcmRg6gofQHj4Ig4iY6COPga2Vd2E2KbroBOrEKtvB1QMVbw3KzfKa1T0IoXxhZyu3LlK7mAaxhRIac5hAJrWTVxhfU3L9I4utPFJu6K8f6srqBhnBc_JvFLIYbnlKwJXQadgokL6zv2TsoQN1TW_N8t-nAiD4twv8DbDB4Cq9AkmYCLiiyCwKpM8Q9okZzvXSpa_rla7wfiPk1GtnjPa1JPLXR0h5GNgnNM_tgeE9j1uEOgOy3Em4Ivik06CQJARTGjxCckx7aXEC4E3JdfhaXLlSVcW3JRgJyz4Wj67b7Qw9-p_ANPShNl7f4obGWaJyOBw9faOrX3zLddqE4_8cDaYnEHZJOIrD4unUeLl2BqRaSK4JMnApp82Q4t-zBquVAQK5e_aYQkjAwRkiMObv9x2e5sYSmEqXJTXnfVH7p1ZXSJNqpDD23vD1moQHIEF0v6Fa1XjeMfaNF068Odg30sGhv95dRLpvA9-SxlR3JAeJv08WntxM0nNPtIkh1DLAMZn2jIEWVZCCGdXREgmMnNh1VgDL0APUxj1tRgptRmtJ6wuyVgP2Q87RzyHIwE49Vf35knbaWz8KTIxaBP3jldd04guylcOJmDefbdpWFyRXp4yJaz47ys3caI34JUu-f83AY3n23QJv71HPnz2jT0FZba6bnBcJkPkEHZtbf5M5dlQEgBU5fDs89rtUX6nfvM4NJQ-yas8rvAx7DhckAZWysWuXqK_ppDNxFjmz_QzmLLNyNpPz0S_Z-UXqptzd9DSRdiqD_j-wjzHy8x2plIiR0JS2hf88nnMYQnPCvLR7Txerw4V0Ygbt6yMQbmxXKSt3luBHaXf1QPnXMt9jiOr5vZ2_8M8x9f-Dl6JSsukDUAiXivOQkLU8FnkjGlgQcvzvsogOqwD0C0NJGjTzg2GVPGDt9BSkvMI_kmcxiT31pXMZkOpRpkxAlmPr6CRcMUrfcocDnwAEvTp2zWNXH5Wm-yW8it5pRv4YX-FwhfSKptW-dSCTLlbJxPEAZxmbX2wNobYQkJjdFjfrFOryUorVyCEOHbKUr_TCNSgILOzILeJ9d4xnAxIhp1Vm40 "diagramme de classe")
-
-## Diagrammes d'états-transition
-
-## Diagrammes d'activité
-

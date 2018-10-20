@@ -431,6 +431,10 @@ Ce diagramme présente les interactions entre la base de données et le demandeu
 Rajouté le prix pour le convoiturage
     
 >classe Ticket
+
+Dans un quatrième temps nous avons réalisé le diagramme de classe de CoHub. 
+Le diagramme de classe permet de décrire clairement la structure de l’application. 
+Il permet de décrire les classes et les relation entre elle. 
 * getRequester()
 * getHelper()
 * setHelper()

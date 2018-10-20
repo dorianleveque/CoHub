@@ -1,5 +1,5 @@
 @startuml consulter une demande
-title consulter un demande
+title consulter une demande
 
 actor client as "Utilisateur" order 1 
 participant app as "App" order 2 
@@ -24,12 +24,8 @@ deactivate tlc
 app -> tlc : displayTicket(id:int)
 activate tlc
 
-tlc -> ticket : displayTicket(id:int)
+tlc -> ticket : display()
 activate ticket
-ticket -> ticket: display()
-activate ticket
-ticket <<-- ticket
-deactivate ticket
 
 tlc <<-- ticket: 
 deactivate ticket

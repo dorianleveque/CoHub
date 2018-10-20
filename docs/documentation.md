@@ -66,7 +66,7 @@ Liste des fonctionnalités
 
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
-Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 
+Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé ou par categorie. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 
 L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’il a une demande. 
 Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. 
 

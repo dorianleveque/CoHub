@@ -1,0 +1,40 @@
+@startuml diagramme de séquence authentification
+title authentification
+
+actor client as "Utilisateur" order 1
+participant app as "App" order 2
+database bdd as "Base de donnée" order 5
+
+client ->> app: l'utilisateur accède\nà la page
+create login as ":Login" order 3
+app -> login : <<create>>
+
+note left: "L'utilisateur saisie\nses infos de connection"
+client ->> app: appuie sur bouton \n "se connecter"
+app -> login: connect()
+activate login
+
+login -> login: check
+activate login
+login <<-- login
+deactivate login
+
+opt syntaxCorrect == true
+    login -> bdd: executeQuery()
+    activate bdd
+    login <<-- bdd
+    deactivate bdd
+    
+    opt userExiste == true 
+        create user as "masterUser:User" order 4
+        login -> user : <<create>>
+    end
+end
+app <<-- login
+deactivate login
+
+
+
+
+
+@enduml

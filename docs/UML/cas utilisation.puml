@@ -1,4 +1,6 @@
-@startuml
+@startuml diagramme cas utilisation
+title cas d'utilisation
+
 left to right direction
 actor Utilisateur as "Utilisateur" <<primary>>
 actor Aidant

@@ -1,4 +1,5 @@
-@startuml editer un ticket
+@startuml editer une demande
+title éditer une demande
 actor client as "User" order 1
 participant server as "Server"   order 2
 participant ticketClass as ":Ticket" order 3

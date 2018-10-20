@@ -303,29 +303,29 @@ En ce qui concerne CoHub, nous avons réalisé 8 (a vérifier) scénarios. Nous 
     <br>
     
     * ## _Répondre à une demande_
-    
-        ### Proposer par message une demande de rendez-vous
+
 
     ### Scénario
     __Pré-requie: l’utilisateur s’est authentifier et consulte une demande__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Proposer par message une demande de rendez-vous »</th>
+        <th>Scénario nominal « Répondre à une demande »</th>
     </tr>
     <tr>
         <td>Description</td>
         <td>
             1. L’aidant  appuis sur le bouton « prendre en charge » <br>
-            2. L’aidant ecrit un message avec les information consernant le rendez-vous <br>
-            3. L’aidant valide son message
-            4. Le système vérifie l’ensemble des informations
+            2. L’aidant ecrit un message aux demendeur <br>
+            3. L’aidant valide son message<br>
+            4. Le demandeur reponde a l'aidant par message
+            Cette echange dure jusqu' a l'obtention d'une solution
         </td>
     </tr>
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Proposer par message une demande de rendez-vous »</th>
+        <th>Scénario alternatif « Répondre à une demande »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -334,48 +334,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 (a vérifier) scénarios. Nous 
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Proposer par message une demande de rendez-vous »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-         <td>
-        </td>
-    </tr>
-    </table>
-    <br>
-    <br>
-    
-    ### Répondre par message une demande de rendez-vous
-
-    ### Scénario
-    __Pré-requie: l’utilisateur s’est authentifier et consulte une demande__
-    <table style="width:100%; text-align:left;">
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario nominal « Répondre par message une demande de rendez-vous »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>
-            1. Le demandeur  appuis sur le bouton « répondre » <br>
-            2. Le demandeur ecrit un message avec sa réponces <br>
-            3. Le demandeur valide son message
-            4. Le système vérifie l’ensemble des informations
-        </td>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario alternatif « Proposer par message une demande de rendez-vous »</th>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td/>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario d’erreur « Proposer par message une demande de rendez-vous »</th>
+        <th>Scénario d’erreur « Répondre à une demande »</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -450,16 +409,18 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 A compléter...
 
 ## Diagramme de séquence
+## _Créer une demande_
 ![créer un ticket](http://www.plantuml.com/plantuml/svg/pLIxRiCm3DmD-1y8Bss737rCHc04BGfqxMlBeaWC84IHNOaAca_gT_J7IbbEQbT5aR6BRP37unr9UE59E0fR0z9zVg23O86qt22LHLa8IQq3QJHQ0k6XUlNeAcYTOkHbMNHSgwNk1ASvi-DeH3ttdnN0WBmg2oL8h8H7M2dLOsBWbWDr1VCvYs2UfXdmDx7tq7N6qO6wXWUYxWdV0dewloWBsnA2mJLnYk5o0ws5fPKE1ISEDeRgI3Hmrg2qxupOtojDBpqiqh5VGz2nEdM6pc5mPS4Uu0Gb4JPMOn0KReLLJBAqNcYlOqpRTUksxBMrVcaT6lvSWmX7hP67XwvtqK1gDcWOUxepmlj-YdLIVrZ9TG8V7K_mDGywqJJDtpWlTlWzbecc4J1bnfLC5DTR0xwZ38IF0Tq-es18YaJiB4vrsdrQN2Uimhn-qdgodR61d23pa5r8Ld9O1He-uVZuFvUHYVyXWGSwkkNVF5aLRt_1R_uFV040 "créer un ticket")
 
 
 ## Diagramme de séquence
+## _Éditer une demande_
 ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")
 
 
 
 ## Diagramme de séquence
-  
+## _Supprimer une demande_  
 ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)
 
 

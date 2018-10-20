@@ -66,14 +66,10 @@ Liste des fonctionnalités
 
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
-Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 
+Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé ou par categorie. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 
 L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’il a une demande. 
 Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. 
-
-
-![cas d'utilisation - répondre à une demande](http://www.plantuml.com/plantuml/svg/VP11IWGn44NtWTpXausww8LpWX4zW0nuWA9Jje5qqbGgBXJlujPppCMijaSP1CqcbK_zLx-oRqgYVSu88pN4YwuffqQQQi40ENuijKHX7D_H2oFoJ2Loy2xpeq8h94rFYfY4nzNa7OrQ1JSfKj7lrzrcw-ATTsidbIapmk4lFbwzWvtUs78n7cwlOVd2lTIbDXOi99YvDPhut6WtXArumNFjBVocxBue1pvDFQSGCls7MQEli6qp30CkBTNL9luiUD9tfhzvjpU6VUud "cas d'utilisation - répondre à une demande")
-
-
+Lorsque l’aidant souhaite répond a une demande il peut discuteur par message de la solution avec le demandeur.
 
 ------------------------
 >## Scénario
@@ -439,14 +435,14 @@ La troisième étape dans la création d’un système consiste à formaliser le
 ## _Consulter l'ensemble des demandes_
 
 ![consulter l'ensemble des tickets](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiV8bzy25DUn5I8qMllGHeFu0cjpPHHYJ8LLF_JOxzZ_nObmyvekGcqKKYESkTdHdeBf3mD3mOaBOFWo7qOAwm3_YmDmWA0v2Mlv12sv0ctdeRrpP2alKWZSQUG0HO_I1jT124Wr-1zOghhw5j7FVMKZiHOSubw1VdHiY76OICJ93kUshrJGVwQdlork3vsfksKOB4NWI4lL89FsvqAoYeJv5buRVTfTwTaFBvhq9uVW8Zm8a3Sljume3OkOE0mijZRXxM6qY3wjyyLWImG8nYS6pR0Vv1EH3U3-XFwyq4oiSPUdkxtUQLmlgqROorIGvZ-qDyqn4zNWNm6CLdaO4VwJ7rJeIcoenYVCoumglWEcwSAtUxji5UvIaJcpJ6X4rQprHGEZWZJcSPvYeKyXe-Jw8pOr3kg8lJuKIQlD51pQYW4k-tcLj7nJPur7I4dpf6j-ZtYha55prEoEhQYQONl1vBPvN9sB7onVguixG_xhuh0l69CnPbUyivC6okEfLqlC3UbvZhkk2rw8oOPCMuc7-T3skdPcCNjnQcBBDssOrbuYwHdwIklgPagd9dJ5z-hpUS4FAwFoovJwhhQVEm_nrZFd-9TDlSyHV_aly1 "consulter l'ensemble des tickets")
+Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter l’ensemble des demandes en cours. Quand l’utilisateur accède à la page d’accueil du site, le site récupère l’ensemble des demandes auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
+Lorsque l’utilisateur souhaite filtrer les demandes le site récupère l’ensemble des demandes en cours filtré auprès de la base de données puis génère une page à affiche sur l’interface utilisateur avec les demandes filtrées.
 
 
 ## Diagramme de séquence
 ## _Consulter une demande_
 ![consulter un ticket](http://www.plantuml.com/plantuml/svg/TPAxRiCm34Lt0Ve7mbCxPEXZ4W8ZQ9QkVMrT58ajXAYIAz51_VUbR2Us2XHUJFBmyfBGBfDEr7zvC37atXCcw0EGCqSaAQJGXc82unq60fsXUSkO6eZ9Cda3KdJSxuphDDUvTE9qmLx6tmPWHc-bi9hqGMU4WxKZKn8Fd50DRBTiX7NQTkRlo_1vx8QpixI2HwBk6Rzxp7HrFVfp9qqu0rA4o8773s9sxtaFYE4zwCjA9c71ft1FoOzMrEiKnq0f-cN3EodcoPjstQFOyQJKjiNfFz0dqYHSMLsGqhfguFPo6mNuWwOdVEen3LKhbwKepAOSPIraiOPguUM45LaBPDvz-EFkibXxVWGAhCkTryEosKhnF6JvTXWiFx1V "consulter un ticket")
-
-
-
+Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter une demande en cours. Quand l’utilisateur souhaite accéder à une demande le site récupère l’information auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
 
 ## Diagramme de séquence
 ## _S'authentifier_

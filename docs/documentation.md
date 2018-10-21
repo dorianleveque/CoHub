@@ -23,33 +23,34 @@ Chercher se que veut dire le stéréotype "static" en UML
 * annexes
 
 # __Préambule__
-L'idée de "Tiketo", nous est parvenu à la suite d'une énumération de petit problème que nous avions rencontré de nombreuses fois durant notre année scolaire et que nous voulions résoudre.
-Nous avons imaginé très rapidement que notre solution proposé serait sous la forme d'une application web afin de permettre à n'importe quel enibien de pouvoir utiliser notre application sur n'importe quel support.
+L'idée de "CoHub", nous est parvenue à la suite d'une énumération de petits problèmes que nous avions rencontrés de nombreuses fois durant notre année scolaire et que nous voulions résoudre.
+Nous avons imaginé très rapidement que notre solution proposée serait sous la forme d'une application web afin de permettre à n'importe quel enibien de pouvoir utiliser notre application sur n'importe quel support.
 
 # __Introduction__
 Pas de tente pour le weekend d’intégration? Qui a une visseuse pour installer une étagère? Qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
 Toutes ces situations racontent un quotidien des énibien·ne·s.
-Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème.  A finir
+Parfois les réponses peuvent être si nombreuses que refuser devient un casse tête. Mais des questions restent sans réponse ce qui pose problème. <b>A finir</b>
 
 # __Mots clés__
-partage échange entraide collaboration hub efficacité service a compléter choisir
+partage échange entraide collaboration hub efficacité service <b>a compléter choisir</b>
 
 # __Qu'est-ce qui pose problème__
 Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans de nombreux domaines, du simple partage de fichiers à l’application spécifique de prêt et d’échanges d’objet entre voisins. C’est une pratique qui progresse et qui s’accompagne d’une image positive.
-Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques 
+Des applications mobiles ou des sites internet existent déjà mais sont organisées autour de besoins spécifiques.
 
-Comment localement, à l’ échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences?
+Comment localement, à l’échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences ?
 
 Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète !
 
 # __Solution__
 Notre solution est le site internet CoHub. C’est un site de partage et d’échange fait par des étudiants de l’ENIB pour répondre aux demandes spécifiques des étudiants de l’ENIB. Le site a pour ambition de faciliter le partage, la collaboration et l’entraide.
 CoHub recense donc toutes les demandes d’aide car nous pensons qu’elles ont plus de chances d’aboutir ainsi. Pour stimuler les interactions, il doit être accessible à tous les étudiants de l’ENIB. CoHub doit aussi être disponible à partir de n’importe quelle interface utilisateur (téléphone, tablette ou ordinateur) à tout moment et en tout lieu où un connexion internet est possible. Pour plus d’efficacité, toutes les demandes sont classées par catégorie afin de faciliter des réponses expertes.
-La consultation des demandes émises n’est pas restreinte, par contre dans une souci de sécurité, l’émission ou la réponse à une demande est contrôlée par un identifiant et un mot de passe.
+La consultation des demandes émises n’est pas restreinte, par contre dans un souci de sécurité, l’émission ou la réponse à une demande est contrôlée par un identifiant et un mot de passe.
 
 # __Pourquoi CoHub?__
-Co coopération coordination collaboration ensemble avec
-Hub : organisation mettant en œuvre une connexion centrale, plate forme de correspondance, infrastructure de communication a rédiger et peut être à placer à un autre endroit
+Nous avons décidé de donner un nom significatif 
+Co: coopération, coordination, collaboration, ensemble, avec
+Hub : organisation mettant en œuvre une connexion centrale, plateforme de correspondance, infrastructure de communication <b>à rédiger et peut être à placer à un autre endroit</b>
 
 # __Maquette__
 Détail de chaque écran 
@@ -66,16 +67,16 @@ Liste des fonctionnalités
 
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
-Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé ou par categorie. L’utilisateur peut aussi consulter une demande c’est à dire afficher plus de détails la concernant. 
-L’utilisateur s’authentifie s’il souhaite répondre à une demande ou s’il a une demande. 
-Après l’authentification, il peut aussi créer un nouvelle demande ou éditer ses demandes pour la modifier ou supprimer une demande qu’il a émise. 
-Lorsque l’aidant souhaite répond a une demande il peut discuteur par message de la solution avec le demandeur.
+Il peut aussi filtrer les demandes c’est à dire effectuer une recherche par mot clé ou par catégorie. Il lui est aussi possible de consulter une demande en particulier ; c’est à dire afficher plus de détails la concernant. 
+L’utilisateur s’authentifie s’il souhaite répondre à une demande ou bien poster une demande. 
+Après l’authentification, il a la possibilité de créer une nouvelle demande ou éditer ses demandes pour les modifier ou les supprimer. 
+Lorsque l’aidant souhaite répond à une demande il peut discuter par message de la solution avec le demandeur.
 
 ------------------------
 >## Scénario
 
-La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constitue le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
-En ce qui concerne CoHub, nous avons réalisé 8 (a vérifier) scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
+La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constituent le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
+En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
 
 * ## _Consulter l'ensemble des demande_
 

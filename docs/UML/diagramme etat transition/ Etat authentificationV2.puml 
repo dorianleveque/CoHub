@@ -1,0 +1,39 @@
+@startuml
+title état d'authentification
+
+state S1 as "l'utilisateur n'est\npas connecter"
+state S2 as "l'utilisateur est\n connecter"
+
+
+state S1 {
+
+  state S3 as "consulter l'ensemble des demandes"
+  state S4 as "consulter une demande"
+  [*] -> S3
+  S3 --> S4 : <<signal>> clic sur une demande
+  S4 --> S3 : <<signal>> clic sur ...
+}
+
+state S2 {
+
+  state S5 as "consulter l'ensemble des demandes"
+  state S6 as "consulter une demande"
+  state S7 as "crée une demande"
+  state S8 as "éditer une demande"
+  state S9 as "suprimer une demande"
+  state S10 as "répondre a une demande"
+
+  [*] -> S5
+  S5 --> S6 : <<signal>> clic sur une demande
+  S6 --> S5 : <<signal>> clic sur ...
+  S5 --> S7 : <<signal>> clic sur une le bouton <<crée une demande>>
+  S6 --> S8 : <<signal>> clic sur une le bouton <<éditer une demande>>[masterUser = requesteur]
+  S6 --> S9 : <<signal>> clic sur une le bouton <<suprimer une demande>>[masterUser = requesteur]
+  S6 --> S10 : <<signal>> clic sur une le bouton <<repondre a une demande>>[masterUser = requesteur or masterUser = helper]
+}
+
+
+[*] --> S1
+S1  --> S2 : s'authentifier
+S2  --> [*]
+@enduml

@@ -78,7 +78,7 @@ Lorsque l’aidant souhaite répond à une demande il peut discuter par message 
 La deuxième étape lors de la création d’un système consiste à décrire textuellement chaque cas d’utilisation. C’est ce qu’on appelle un scénario. Dans chaque scénario on décrit chronologiquement l’enchainement des étapes qui constituent le cas d’utilisation grâce à un scénario nominal, des scénarios alternatifs et des scénarios d’échec.
 En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénarios. Nous avons regroupé certaines extensions optionnelles dans des scénarios alternatifs.
 
-* ## _Consulter l'ensemble des demande_
+* ## _Consulter l'ensemble des demandes_
 
     ### Scénario
     <table style="width:100%; text-align:left;">
@@ -102,8 +102,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             SA1 : L’utilisateur applique un filtre <br>
-            SA1 : démarre au point 2 du scénario nominal <br>
-            3. Le système affiche la liste des tickets en cours filtré <br>
+            SA1 : Démarre au point 2 du scénario nominal <br>
+            3. Le système affiche la liste des tickets en cours filtrée <br>
         </td>
     </tr>
 
@@ -121,7 +121,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <br>
     <br>
 
-* ## __Consulter une demandes__
+* ## __Consulter une demande__
 
     ### Scénario
     <table style="width:100%; text-align:left;">
@@ -133,7 +133,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             1. L’utilisateur sélectionne une demande <br>
-            2. Le système affiche la demande sélectionné
+            2. Le système affiche la demande sélectionnée
         </td>
     </tr>
 
@@ -165,7 +165,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     
 
     ### Scénario
-    __Pré-requie : l'utilisateur c'est déja enregitré dans la base de donné__
+    __Prérequis : l'utilisateur s'est déjà enregistré dans la base de données__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -176,7 +176,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
             1. L’utilisateur saisit son identifiant et son mot de passe <br>
             2. Le système vérifie la syntaxe des champs <br>
-            3. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de donnée <br>
+            3. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de données <br>
             4. Le système valide la connexion
         </td>
     </tr>
@@ -188,14 +188,14 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            SA1: l'identifiant et/ou le mots ont une mauvaise syntaxe <br>
+            SA1: l'identifiant et/ou le mot ont une mauvaise syntaxe <br>
             SA1 démarre au point 2  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que sont identification a échoué <br>
+            3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1 <br>
             <br>
-            SA2: l'identifiant et/ou le mots de passe sont erroné <br>
+            SA2: l'identifiant et/ou le mot de passe sont erronés <br>
             SA2 démarre au point 3  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que sont identification a échoué <br>
+            3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
         </td>
     </tr>
@@ -217,7 +217,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Créer une demande_
 
     ### Scénario
-    __Pré-requie: l’utilisateur s’est authentifier__
+    __Prérequis: l’utilisateur s’est authentifié__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -226,8 +226,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur appuis le bouton de « création de demande » <br>
-            2. Le demandeur saisit les informations relatif à sa demande <br>
+            1. Le demandeur appuit le bouton de « création de demande » <br>
+            2. Le demandeur saisit les informations relatives à sa demande <br>
             3. Le demandeur valide sa demande <br>
             4. Le système vérifie l’ensemble des informations
         </td>
@@ -249,9 +249,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-        SE1 : Les informations ne sont pas corrects<br>
+        SE1 : Les informations ne sont pas correctes<br>
         SE1 départ au point 4 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est érroné
+        5. Le système indique à l'utilisateur qu'une partie des informations est érronée
         </td>
     </tr>
     </table>
@@ -261,7 +261,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Éditer une demande_
 
     ### Scénario
-    __Pré-requie: l’utilisateur s’est authentifier et consulte un des tickets qu’il a créé__
+    __Prérequis: l’utilisateur s’est authentifié et consulte un des tickets qu’il a créé__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -270,7 +270,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur sélectionnes une demande qu’il  a créé <br>
+            1. Le demandeur sélectionne une demande qu’il a créé <br>
             2. Le demandeur appuie sur le bouton "édite une demande" <br>
             3. Le demandeur modifie les informations <br>
             4. Le demandeur valide sa demande <br>

@@ -392,7 +392,6 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
 La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence et d’activité qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. A chaque scénario correspondent un diagramme de séquence et un diagramme de communication
 
-## Diagramme de séquence
 ## _Consulter l'ensemble des demandes_
 
 ![consulter l'ensemble des demandes](http://www.plantuml.com/plantuml/svg/fLNBRjim4BmRy3yiV4boy25zN0J7IDDJWLuAj1z0ankRA2qIvAgj_wR7_aT-h4kAb2WvSGDKW65fERkS6OwW-q32KtSq86qREaFemLnX6_2uCmWA0_-EekMRvO8qSUqLmEL2IB8UfD7O4eW0gs-aZGw2iFChi5vn-oqi5uvtrr8x4M7E9UW7vmha3KEK8B4J0M6dL5elXMO56VO-RfatMs_Je4P8-VH78Jpz1YF0YJtoBEcHAG0PcIOrNxNyZlHP1_feM_BMuC3kBOlWEJmkeXlORFhcxJRfgvS22YyF_QnmVGD9llwHTsBV6CNWoBy1_8Mo8_pIeJzTtrHGNkwXcyrwtJyfdAuk5yRQP9AnxJx-qm4zNWNm6C-4hGU-Yif4g1PQjBthSPbNnaqbOgjwbObDab6nISyp5vGEpeZJOCFSXKnUmrtUCGpE30psI0yYQFcfVRJJ2GbH-TCN6fZIogX4lX2y9C0wogS7FpKTu577O6SRHtKD9vbHbRIqFXaMAxt0kq4Uv6iYC_hCRmcdxHIDBfXS6ZJ4Mj9Hg8mwUlXSovJoMIopj9ZEvyc_dDBIEkjCaIoTOsXdx79m1tl-5TxBmOGHzDgK_v-9vwc-TFHrjbyICyzumPsbk1umo_mOccUx1icLy4kwX_Vbdk_uO_0N "consulter l'ensemble des demandes")
@@ -401,28 +400,22 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 Lorsque l’utilisateur souhaite filtrer les demandes le site récupère l’ensemble des demandes en cours filtré auprès de la base de données puis génère une page à affiche sur l’interface utilisateur avec les demandes filtrées.
 
 
-## Diagramme de séquence
 ## _Consulter une demande_
 ![consulter une demande](http://www.plantuml.com/plantuml/svg/XL8xJiGm4EqZvGwZL4kHWbzZHQj5j3H8S81PUmGMNiUo9uYz3INts8inSJuaYn2b_VwMTuanSdTme5kVEiSKeVC4XWxe3PK5MtRq5rWMgBcDe9qbpu09gcUspYPawc85RJGYkOIo299YjGtOqqB8rBiG9igLK0moxZ4Hx8t9-7IXAXXfjtta65Pliv52hKzVXk3q2GuXu8lqqf6a0R3JsKWzMVr6_60JtxUUO-jeBdSj6yH6t7gsWgOPnDjjdhU44c7KhuFNnXfbFLz0VWBxFiR9UmbL5Fq61VH1kcDwx2WU9yL28AH1q3HrFPmChT6VBJbsEMTQS3E7ZfprY7v2zi_r5lxvV3RHs1GS7jSRpoV-pXjbcnKrWnDxQ92l5AnhpBp_cfR5ZhoHl_eD "consulter une demande")
 
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter une demande en cours. Quand l’utilisateur souhaite accéder à une demande le site récupère l’information auprès de la base de données puis génère une page à affiche sur l’interface utilisateur. 
 
-## Diagramme de séquence
 ## _S'authentifier_
 ![diagramme de séquence authentification](http://www.plantuml.com/plantuml/svg/XLCzRzj03DqD-3yGMjeE7fAsY-08-K2tB1coPQ7lQ8UeVAVSyGhdtsHiVeV_M4bPKcmuG4y0eIFVutiYeUiicAHiM_2CcuJRBO4doFltbqB14M2HPmh2QtOe7CDy9YpjP_dv39t41AvbBG1cg1w5MyueL585CNbAS36VTQh8ZZiqLDVro9kk6n6Nyvb7mHLcWfNtVVdMBkhBnn3sxpH2VvhgeBTe6kjMG_kbVCW2EhV_w-afxD-WHUXmGqf9f5LeuuP3tx--jzUnxNVz5FMrQ0P43SlbWT8qfXYYaMajDLJt9sePEREAPSh0OHspcNPgcfmDgJftgw6m3bp9grWa1dWAKEM9HQawTLEFbQ_V-edpd-bJpDl1yH7ucTplS-01jbmk5cF6qtcps0daro2ukuifgIPSNO6aeYC4FPEMhga6sf4hGW-5qgjvCyJKKX77d5vuoXr9Jxb3D0CbK_gruwpLGNqesXasQPX-aLjKN7hKQsrXtEYF3yPakkUShjRg5DH17spg_vlG-5mhG_-YVm00 "diagramme de séquence authentification")
 
 ## Diagramme de séquence
 ![création d'une demande](http://www.plantuml.com/plantuml/svg/TPJ1Rjim38Rl1lmEd2zP3pwisov26tJ0ZZjqm7OR42WItGgrPK-YWlMHyXnviL6IbJfDaW29zVEZIFvIyk19EWf33yeTzfBCQ46lWaNGE4YhiQx8K8_NmdyiDCrcyyZHrk7VOFnc8w0_neC3lq9Fe4PhKT5XtpHrLLTIqUX0zGOjWVJGV2zy0wFJwE0JrDN4lHbb9XcXQKhWjsagoEqx97WM8oD-yrEXFjULbYItqYDijKv04KI1liQcx4W8umvBOmAQ7wj0lV6IuYGEhKVpP7dg7ZreqtM7FOlaGJtBOV8ysZnIkrx7ZaNSIRq0sxODHFob7F9cm3s_844omkoYmZIlUCYsP3uZPnhRZMv8pljBzDrTsrxZ1NViGqzi09vcScvFSnJkFm0wDxgw0dxDBKGlnTpjV3OVRsQYR1MPB9rEbOxWLtek_dx9N3eXtZs3WhlFcUlrvRYNEymRdHNFI1RdkfmO3rW0_aCL27y6TAzdYOoSP2K7Z-B2gQEMkahOikY2NChN1jNyAt3ZQvbqNXvJtynFXTwiNPJ9uknulcVb-C_Of67FTpv-NCmH8BlEyBLnCA3tyWdZFOWNFOs1LiTY-Vt0A_wN-0y0 "création d'une demande")
 
-
-## Diagramme de séquence
 ## _Éditer une demande_
 ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite éditer une demande d’aide qu'il a emis. Après l’appui sur le bouton « éditer une demande », l’application affiche sur l’interface utilisateur l’ensemble de champs à remplir lors de la création de la demande. 
 La cohérence de cette information est ensuite vérifiée par l’application. Si ces information sont cohérente, le système enregistre la demande dans la base de donnée sinon elle l'indique à l’utilisateur par un message d’erreur.
 
-
-## Diagramme de séquence
 ## _Supprimer une demande_  
 ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émis. Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de donné.
@@ -446,3 +439,8 @@ Il permet de décrire les classes et les relation entre elle.
 * addTicket(s)()
     
 ![diagramme de classe](http://www.plantuml.com/plantuml/svg/vLTBRzD04BvRydyOzUGaze5h5AAYzW1IgP0QpjLYJnE3xOJTJL5Kyj_PfxsxNgFI7a12bTfwtlFjD_kuP9nGVcmRg6gofQHj4Ig4iY6COPga2Vd2E2KbroBOrEKtvB1QMVbw3KzfKa1T0IoXxhZyu3LlK7mAaxhRIac5hAJrWTVxhfU3L9I4utPFJu6K8f6srqBhnBc_JvFLIYbnlKwJXQadgokL6zv2TsoQN1TW_N8t-nAiD4twv8DbDB4Cq9AkmYCLiiyCwKpM8Q9okZzvXSpa_rla7wfiPk1GtnjPa1JPLXR0h5GNgnNM_tgeE9j1uEOgOy3Em4Ivik06CQJARTGjxCckx7aXEC4E3JdfhaXLlSVcW3JRgJyz4Wj67b7Qw9-p_ANPShNl7f4obGWaJyOBw9faOrX3zLddqE4_8cDaYnEHZJOIrD4unUeLl2BqRaSK4JMnApp82Q4t-zBquVAQK5e_aYQkjAwRkiMObv9x2e5sYSmEqXJTXnfVH7p1ZXSJNqpDD23vD1moQHIEF0v6Fa1XjeMfaNF068Odg30sGhv95dRLpvA9-SxlR3JAeJv08WntxM0nNPtIkh1DLAMZn2jIEWVZCCGdXREgmMnNh1VgDL0APUxj1tRgptRmtJ6wuyVgP2Q87RzyHIwE49Vf35knbaWz8KTIxaBP3jldd04guylcOJmDefbdpWFyRXp4yJaz47ys3caI34JUu-f83AY3n23QJv71HPnz2jT0FZba6bnBcJkPkEHZtbf5M5dlQEgBU5fDs89rtUX6nfvM4NJQ-yas8rvAx7DhckAZWysWuXqK_ppDNxFjmz_QzmLLNyNpPz0S_Z-UXqptzd9DSRdiqD_j-wjzHy8x2plIiR0JS2hf88nnMYQnPCvLR7Txerw4V0Ygbt6yMQbmxXKSt3luBHaXf1QPnXMt9jiOr5vZ2_8M8x9f-Dl6JSsukDUAiXivOQkLU8FnkjGlgQcvzvsogOqwD0C0NJGjTzg2GVPGDt9BSkvMI_kmcxiT31pXMZkOpRpkxAlmPr6CRcMUrfcocDnwAEvTp2zWNXH5Wm-yW8it5pRv4YX-FwhfSKptW-dSCTLlbJxPEAZxmbX2wNobYQkJjdFjfrFOryUorVyCEOHbKUr_TCNSgILOzILeJ9d4xnAxIhp1Vm40 "diagramme de classe")
+
+> ## Diagrammes d'état transition
+> ## Diagrammes d'activiter
+> ## Presentation de l'équipe
+> ## Diagramme de Gantt

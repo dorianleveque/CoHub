@@ -54,8 +54,7 @@ Liste des fonctionnalités
 # __Modélisation UML__
 
 L’acronyme UML signifie Unified Modeling Language. 
-C’est un langage normé de modélisation graphique d’un système. 
-C’est un outil de communication visuel utiliser pour concevoir et documenter un système indépendamment d’un langage de programmation.
+C’est un langage normé de modélisation graphique d’un système utiliser pour concevoir et documenter un système indépendamment d’un langage de programmation.
 L’UML permet de décrire le système d’un point de vue statique et dynamique.
 
 PlantUML est le modeleur  que nous avons utilisé pour modéliser CoHub. 

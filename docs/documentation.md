@@ -426,13 +426,13 @@ La cohérence de cette information est ensuite vérifiée par l’application. S
 ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émis. Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de donné.
 
-## Diagramme de classe
+> ## Diagrammes de comunication
+
+> ## Diagramme de classe
 Dans un quatrième temps nous avons réalisé le diagramme de classe de CoHub. 
 Le diagramme de classe permet de décrire clairement la structure de l’application. 
 Il permet de décrire les classes et les relation entre elle. 
 
-> ## Diagrammes de comunication
-> ## Diagrammes de classe
 > ##classe Ticket
 
 

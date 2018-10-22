@@ -1,0 +1,39 @@
+@startuml
+|Utilisateur|
+start
+fork
+:Renseigner les information de connexion;
+|App|
+:Vérification des inforamtions de connexions;
+:Validation de la connexion;
+|Utilisateur|
+: Navigation dans la liste des tickets;
+:Selection d'un ticket;
+if (Propriétaire du ticket) then (oui)
+	fork 
+    	:Modification du ticket;
+        |App|
+        :Modification du ticket de la base de données;
+    fork again 
+    	|Utilisateur|
+    	: Réponse à une demande d'aide;
+    fork again 
+    	: Suppresion du ticket;
+        |App|
+        :Suppresion du ticket de la base de données;
+        
+    end fork
+    
+else (non)
+	|Utilisateur|
+	: Envoyer un message sur le ticket;
+endif
+
+fork again 
+|Utilisateur|
+: Navigation dans la liste des tickets;
+:Selection d'un ticket;
+:Consultation d'un ticket;
+	
+stop
+@enduml

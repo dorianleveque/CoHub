@@ -429,8 +429,9 @@ Ce diagramme présente les interactions entre la base de données et le demandeu
 > ## Diagrammes de comunication
 
 > ## Diagramme de classe
+
 Dans un quatrième temps nous avons réalisé le diagramme de classe de CoHub. 
-Le diagramme de classe permet de décrire clairement la structure de l’application. 
+Le diagramme de classe permet de décrire clairement la structure de l’application d'un point de vue statique. 
 Il permet de décrire les classes et les relation entre elle. 
 
 > ##classe Ticket

@@ -67,6 +67,10 @@ Il était donc très facile de pouvoir se partager les différant diagramme entr
 -----------------------
 >## Diagrammes Cas d'utilisations
 
+Apres un analyse fonctionnelle, l’elaboration du diagramme de cas d’utilisation est la premier étape UML d’analyse d’un système.
+Ce diagramme recense et synthétise les grandes fonctionnalités du système du point de vue l’utilisateur.
+Il permet aussi d’identifier les éléments extérieurs qui interagissent avec le système.
+Voici le diagramme de cas d’utilisation de CoHub. 
 
 
 ![cas utilisation](http://www.plantuml.com/plantuml/svg/XLFTIiCm5Bulz1qElPbUhE34pKaPawbuhUpEcwmvsm9fEf8JKDHtyNRFiHSpIScOjjiAlKY-7xwUxtHgY6cobKmJYKi2ga6BrPg02uqbYLgb2IkfrZ0d8OLXX5O3Cv0Td3CeYeqM5TCVaqdatmlE5CNJ0rPCSSTDapGvj2g--lqzjmNyaVb0JAqaGZQhd-qYWyyq0VTOWoKp2FFPLOWsgvMnab33cmBPGsMmMZYPEt4qxWsc9lkl7hJLLc7aj-ZNWVua96dKBVIcCTExhNCwPJCCn4Skw0nn58Wlk-scLbmZx7xE9RmDYjSUixH6HM8fEeAE6vBT-0fR4HhsOJ6kbWitwSjZo20YheqYpyEWxjo6u3kXudv1F1gTzmrxjPjQv-suytReFQ9Fiq8DC8e1Hf3dap077q2eKbgECO6lw2GyF0sFZy7VQJ9rN-f-gby0 "cas utilisation")

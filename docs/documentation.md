@@ -468,12 +468,15 @@ Il permet de décrire les classes et les relations entre elles.
 ## Annexe
 ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite
+
+
+
 Même si nous n'envisageons pas tous de choisir un module de spécialité informatique , la conception du site a été réalisée en équipe, 
 ce qui a entretenu la motivation de chacun et nous permis individuellement et collectivement de progresser.
 ## __Pourquoi CoHub?__
 Nous avons choisi d'appeler notre site CoHub car c'est la concaténation -c'est-à-dire le regroupement- de Co et de Hub qui illustrent les deux idées directrices de notre projet 
 Co pour coopération, coordination, collaboration
 et Hub pour organisation mettant en œuvre une connexion centrale ou une plateforme de correspondance.
-Le logo , avec ces deux mains , exprime ces idées de "coup de main", de main tendue et de "shake" de la réussite partagée.
+Le logo, avec ces deux mains, exprime ces idées de "coup de main", de main tendue et de "shake" de la réussite partagée.
 
 

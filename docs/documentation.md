@@ -94,7 +94,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Consulter l’ensemble des demandes »</th>
+        <th>Scénario nominal "Consulter l’ensemble des demandes"</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -106,7 +106,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Consulter l’ensemble des demandes »</th>
+        <th>Scénario alternatif "Consulter l’ensemble des demandes" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -119,7 +119,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Consulter l’ensemble des demandes »</th>
+        <th>Scénario d’erreur "Consulter l’ensemble des demandes" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -137,7 +137,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Consulter une demande »</th>
+        <th>Scénario nominal "Consulter une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -149,7 +149,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Consulter une demande »</th>
+        <th>Scénario alternatif "Consulter une demande"</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -158,7 +158,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Consulter une demande »</th>
+        <th>Scénario d’erreur "Consulter une demande"</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -179,7 +179,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « S’authentifier »</th>
+        <th>Scénario nominal "S’authentifier" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -193,7 +193,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « S’authentifier »</th>
+        <th>Scénario alternatif "S’authentifier" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -212,7 +212,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « S’authentifier »</th>
+        <th>Scénario d’erreur "S’authentifier" </th>
     </tr>
    <tr>
         <td>Description</td>
@@ -231,12 +231,12 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Créer une demande »</th>
+        <th>Scénario nominal "Créer une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur appuie sur le bouton de « création de demande » <br>
+            1. Le demandeur appuie sur le bouton de "création de demande"b <br>
             2. Le demandeur saisit les informations relatives à sa demande <br>
             3. Le demandeur valide sa demande <br>
             4. Le système vérifie l’ensemble des informations
@@ -245,7 +245,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Créer une demande »</th>
+        <th>Scénario alternatif "Créer une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -254,7 +254,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Créer une demande »</th>
+        <th>Scénario d’erreur "Créer une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -275,7 +275,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Éditer une demande »</th>
+        <th>Scénario nominal "Éditer une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -290,7 +290,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Éditer un ticket »</th>
+        <th>Scénario alternatif "Éditer un ticket" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -299,7 +299,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Éditer un ticket »</th>
+        <th>Scénario d’erreur "Éditer un ticket" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -321,7 +321,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Répondre à une demande »</th>
+        <th>Scénario nominal "Répondre à une demande"</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -336,7 +336,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Répondre à une demande »</th>
+        <th>Scénario alternatif "Répondre à une demande"</th>
     </tr>
     <tr>
         <td>Description</td>
@@ -345,7 +345,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Répondre à une demande »</th>
+        <th>Scénario d’erreur "Répondre à une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -364,7 +364,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
      <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
-        <th>Scénario nominal « Supprimer une demande »</th>
+        <th>Scénario nominal "Supprimer une demande"</th>
     </tr>
     <tr>
         <td>Description</td> 
@@ -375,7 +375,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario alternatif « Supprimer une demande  »</th>
+        <th>Scénario alternatif "Supprimer une demande" </th>
     </tr>
     <tr>
         <td>Description</td>
@@ -384,7 +384,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
     <tr>
         <th>Sommaire</th>
-        <th>Scénario d’erreur « Supprimer une demande  »</th>
+        <th>Scénario d’erreur "Supprimer une demande" </th>
     </tr>
   <tr>
         <td>Description</td>

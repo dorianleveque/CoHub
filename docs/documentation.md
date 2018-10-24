@@ -464,8 +464,11 @@ Il permet de décrire les classes et les relations entre elles.
 
 ## Diagrammes d'etat transition
 
+
+> ## Annexe
+
 ## Diagramme de Gantt
-## Annexe
+
 ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite
 

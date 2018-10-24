@@ -49,8 +49,20 @@ CoHub recense donc toutes les demandes d’aide car nous pensons qu’elles ont 
 La consultation des demandes émises n’est pas restreinte, par contre dans un souci de sécurité, l’émission ou la réponse à une demande est contrôlée par un identifiant et un mot de passe.
 
 # __Maquette__
-Détail de chaque écran 
-Liste des fonctionnalités
+
+Afin de répondre à ces différents besoins,le site Cohub collecte les demandes d'aide, les range par catégorie et les rend disponibles à la consultation. 
+Les trois catégories pré-définies sont tutorat, covoiturage et prêt d'objets.Il serait très facile d'impléménter des catégories supplémentaires.
+Le site CoHub doit permettre sans authentification de consulter toutes les demandes en cours 
+et aussi de consulter une demande particulière afin d'avoir plus de détails sur celle-ci. La consultation de demandes peut être filtrée par catégorie ou par mot-clé.
+Voici la page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes:
+Voici un exemple de demande:
+Voici la manière de selectionner une catégorie:
+Voici le bandeau de recherche filtrée par mot-clé:
+CoHub doit permettre, avec authentification, de créer une nouvelle demande ou de répondre à une demande via un système de messages entre le demandeur et l'aidant.
+CoHub doit aussi permettre, avec authentification,à un demandeur d'éditer sa demande déjà existante afin de la modifier.
+Voici la fenêtre d'authentification:
+Voici la page de création ou d'édition d'une demande:
+Voici la page permettant à l'aidant potentiel de dialoguer avec le demandeur:
 
 # __Modélisation UML__
 
@@ -455,7 +467,13 @@ Il permet de décrire les classes et les relations entre elles.
 ## Diagramme de Gantt
 ## Annexe
 ## Présentation de l'équipe
+Voici l'équipe de CoHub: de gauche à droite
+Même si nous n'envisageons pas tous de choisir un module de spécialité informatique , la conception du site a été réalisée en équipe, 
+ce qui a entretenu la motivation de chacun et nous permis individuellement et collectivement de progresser.
 ## __Pourquoi CoHub?__
-Nous avons décidé de donner un nom significatif 
-Co: coopération, coordination, collaboration, ensemble, avec
-Hub : organisation mettant en œuvre une connexion centrale, plateforme de correspondance, infrastructure de communication <b>à rédiger et peut être à placer à un autre endroit</b>
+Nous avons choisi d'appeler notre site CoHub car c'est la concaténation -c'est-à-dire le regroupement- de Co et de Hub qui illustrent les deux idées directrices de notre projet 
+Co pour coopération, coordination, collaboration
+et Hub pour organisation mettant en œuvre une connexion centrale ou une plateforme de correspondance.
+Le logo , avec ces deux mains , exprime ces idées de "coup de main", de main tendue et de "shake" de la réussite partagée.
+
+

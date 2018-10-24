@@ -54,14 +54,30 @@ Afin de répondre à ces différents besoins,le site Cohub collecte les demandes
 Les trois catégories pré-définies sont tutorat, covoiturage et prêt d'objets.Il serait très facile d'impléménter des catégories supplémentaires.
 Le site CoHub doit permettre sans authentification de consulter toutes les demandes en cours 
 et aussi de consulter une demande particulière afin d'avoir plus de détails sur celle-ci. La consultation de demandes peut être filtrée par catégorie ou par mot-clé.
+
+
 Voici la page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes:
+
+
 Voici un exemple de demande:
+
+
 Voici la manière de selectionner une catégorie:
+
+
 Voici le bandeau de recherche filtrée par mot-clé:
+
+
 CoHub doit permettre, avec authentification, de créer une nouvelle demande ou de répondre à une demande via un système de messages entre le demandeur et l'aidant.
 CoHub doit aussi permettre, avec authentification,à un demandeur d'éditer sa demande déjà existante afin de la modifier.
+
+
 Voici la fenêtre d'authentification:
+
+
 Voici la page de création ou d'édition d'une demande:
+
+
 Voici la page permettant à l'aidant potentiel de dialoguer avec le demandeur:
 
 # __Modélisation UML__

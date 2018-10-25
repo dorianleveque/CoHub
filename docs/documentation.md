@@ -214,7 +214,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. L'utilisateur accède a la page
+            1. L'utilisateur accède a la page <br>
             2. L’utilisateur saisit son identifiant et son mot de passe <br>
             3. Le système vérifie la syntaxe des champs <br>
             4. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de données <br>
@@ -270,8 +270,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
             1. Le demandeur saisit les informations relatives à sa demande <br>
             2. Le demandeur valide <br>
-            3. Le système vérifie si l’ensemble des champs obligatoire on été remplis
-            4. Le système transmet les information a la base de donnée affin d'être enregistré 
+            3. Le système vérifie si l’ensemble des champs obligatoire on été remplis <br>
+            4. Le système transmet les information a la base de donnée affin d'être enregistré <br>
             5. Le système indique a l'utilisateur que les informations sont enregistré
         </td>
     </tr>
@@ -294,7 +294,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
         SE1 : Les informations ne sont pas correctes<br>
         SE1 départ au point 3 du scénario nominal<br>
-        4. Le système indique à l'utilisateur qu'une partie des informations sont erronée
+        4. Le système indique à l'utilisateur qu'une partie des informations sont erronée <br>
         </td>
     </tr>
     </table>
@@ -362,7 +362,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
             1. L’aidant  appuie sur le bouton « prendre en charge » <br>
             2. L’aidant ecrit un message au demendeur <br>
             3. L’aidant valide son message<br>
-            4. Le demandeur repond à l'aidant par message
+            4. Le demandeur repond à l'aidant par message <br>
             Cet échange dure jusqu' à l'obtention d'une solution
         </td>
     </tr>

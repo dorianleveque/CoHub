@@ -128,7 +128,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             1. L’utilisateur accède à la page <br>
-            2. Le système affiche la liste des demandes en cours
+            2. Le système recupere l'ensmble des demandes en cour au pres de la base de donnée <br>
+            3. Le système extrait les information important pour chaque demande <br>
+            4. Le système affiche ses information important pour chaque demande <br>
         </td>
     </tr>
 
@@ -140,8 +142,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             SA1 : L’utilisateur applique un filtre <br>
-            SA1 : Démarre au point 2 du scénario nominal <br>
-            3. Le système affiche la liste des tickets en cours filtrée <br>
+            SA1 : Démarre au point 3 du scénario nominal <br>
+            3. Le système recupere l'ensmble des demandes en cour filtré au pres de la base de donnée <br>
+            4. Le système affiche l'ensemble des demande récupere <br>
         </td>
     </tr>
 
@@ -256,7 +259,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Créer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié__
+    __Pré-requis: l’utilisateur s’est authentifié et a appuiée sur le bouton "création de demande"__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -265,10 +268,11 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur appuie sur le bouton de "création de demande" <br>
-            2. Le demandeur saisit les informations relatives à sa demande <br>
-            3. Le demandeur valide sa demande <br>
-            4. Le système vérifie l’ensemble des informations
+            1. Le demandeur saisit les informations relatives à sa demande <br>
+            2. Le demandeur valide sa demande <br>
+            3. Le système vérifie l’ensemble des informations
+            4. Le système transmet les informetion a la base de donnée affin d'être enregistré 
+            5. Le système indique a l'utilisateur que les informations sont enregistré
         </td>
     </tr>
 
@@ -289,8 +293,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
         SE1 : Les informations ne sont pas correctes<br>
-        SE1 départ au point 4 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est erronée
+        SE1 départ au point 3 du scénario nominal<br>
+        5. Le système indique à l'utilisateur qu'une partie des informations sont erronée
         </td>
     </tr>
     </table>

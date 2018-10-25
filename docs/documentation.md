@@ -504,6 +504,7 @@ Ces diagrammes permettent de représenter d’un point de vue dynamique les diff
 
 > ## Diagramme de Gantt
 
+<img src="docs/Ressources_doc/Gantt.png" alt="Ceci etait censé etre le gantt" />
 
 > ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite

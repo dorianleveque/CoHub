@@ -342,7 +342,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <br>
     <br>
     
-    * ## _Répondre à une demande_
+* ## _Répondre à une demande_
 
 
     ### Scénario
@@ -449,10 +449,14 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 ![création d'une demande](http://www.plantuml.com/plantuml/svg/TPJ1Rjim38Rl1lmEd2zP3pwisov26tJ0ZZjqm7OR42WItGgrPK-YWlMHyXnviL6IbJfDaW29zVEZIFvIyk19EWf33yeTzfBCQ46lWaNGE4YhiQx8K8_NmdyiDCrcyyZHrk7VOFnc8w0_neC3lq9Fe4PhKT5XtpHrLLTIqUX0zGOjWVJGV2zy0wFJwE0JrDN4lHbb9XcXQKhWjsagoEqx97WM8oD-yrEXFjULbYItqYDijKv04KI1liQcx4W8umvBOmAQ7wj0lV6IuYGEhKVpP7dg7ZreqtM7FOlaGJtBOV8ysZnIkrx7ZaNSIRq0sxODHFob7F9cm3s_844omkoYmZIlUCYsP3uZPnhRZMv8pljBzDrTsrxZ1NViGqzi09vcScvFSnJkFm0wDxgw0dxDBKGlnTpjV3OVRsQYR1MPB9rEbOxWLtek_dx9N3eXtZs3WhlFcUlrvRYNEymRdHNFI1RdkfmO3rW0_aCL27y6TAzdYOoSP2K7Z-B2gQEMkahOikY2NChN1jNyAt3ZQvbqNXvJtynFXTwiNPJ9uknulcVb-C_Of67FTpv-NCmH8BlEyBLnCA3tyWdZFOWNFOs1LiTY-Vt0A_wN-0y0 "création d'une demande")
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite créer une demande d’aide. Après l’appui sur le bouton « création de demande », l’application affiche sur l’interface utilisateur un ensemble de champs à remplir concernant sa demande. 
 La cohérence des informations est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande, sinon il l’indique à l’utilisateur par un message d’erreur.
+
 ## _Éditer une demande_
 ![editer un ticket](http://www.plantuml.com/plantuml/svg/nPCzQyCm48PtWVx3uQNjaA4VamWXD1IwzclBebWN455aLpgRvj_tPDcfZHiwba0INhttwhaxUnr91sgE3j1OmW2D1xBb0KaANL8Le7GMFO6EK7n430LKmR3lLegQAsrfQyt7VDAocbnltTy2e7VUJPqvVUDqZ9rTlNV2a7ilXT6aTpeYx8pfB4buP44Li5moC4UiLht_GGefUiO5gnb4mJDH_OgV3KQwlf72LuJWS4-WOEFuHgWyRBtkSK2AleEKaUCK61jhfqzFF9aCcPBIHpk2cidC5OQ0JKWQzmj_SoJNcKL1YkuHjjxwVHMEt5tbiv4NO5lDvXoMnJFdU98Aecxn1t9IFVBba_4AE8V7h02_i6m8NneCfra2ExAIDh98xKtkdjQgR3KuBvzSF9xIc7vUFslWbrrDvZoF62Oe1Jf-ijBNlopj4Z0C3z85xYGpkpU9Uis__Cf-0m00 "editer un ticket")
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite éditer une demande d’aide qu'il a émise. Après l’appui sur le bouton « éditer une demande », l’application affiche sur l’interface utilisateur l’ensemble de champs à remplir lors de la création de la demande. 
 La cohérence de cette information est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande dans la base de données, sinon il l'indique à l’utilisateur par un message d’erreur.
+
+## _Répondre à une demande_
+
 
 ## _Supprimer une demande_  
 ![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)

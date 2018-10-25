@@ -136,8 +136,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
             1. L’utilisateur accède à la page <br>
             2. Le système recupere l'ensmble des demandes en cour au pres de la base de donnée <br>
-            3. Le système extrait les information important pour chaque demande <br>
-            4. Le système affiche uniquement les information important pour chaque demande <br>
+            3. Le système affiche une miniature de chaque demande en cour <br>
         </td>
     </tr>
 
@@ -149,10 +148,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             SA1 : L’utilisateur applique un filtre <br>
-            SA1 : Démarre au point 4 du scénario nominal <br>
-            5. Le système recupere l'ensemble des demandes en cour filtré au pres de la base de donnée <br>
-            6. Le système extrait les information important pour chaque demande filtré <br>
-            7. Le système affiche uniquement les information important pour chaque demande <br>
+            SA1 : Démarre au point 3 du scénario nominal <br>
+            4. Le système recupere l'ensemble des demandes en cour filtré au pres de la base de donnée <br>
+            7.Le système affiche une miniature de chaque demande en cour filté<br>
         </td>
     </tr>
 

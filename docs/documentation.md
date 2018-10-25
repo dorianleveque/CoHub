@@ -489,19 +489,18 @@ Il permet de décrire les classes et les relations entre elles.
 La réalisation des diagrammes d’état transition est la cinquième étape. 
 Ces diagrammes permettent de représenter d’un point de vue dynamique les différents état d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
 
+## Annexe
 
-> ## Annexe
+> ## Diagramme de Gantt
 
-## Diagramme de Gantt
-
-## Présentation de l'équipe
+> ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite
 
 
 
 Même si nous n'envisageons pas tous de choisir un module de spécialité informatique , la conception du site a été réalisée en équipe, 
 ce qui a entretenu la motivation de chacun et nous permis individuellement et collectivement de progresser.
-## __Pourquoi CoHub?__
+> ## __Pourquoi CoHub?__
 Nous avons choisi d'appeler notre site CoHub car c'est la concaténation -c'est-à-dire le regroupement- de Co et de Hub qui illustrent les deux idées directrices de notre projet 
 Co pour coopération, coordination, collaboration
 et Hub pour organisation mettant en œuvre une connexion centrale ou une plateforme de correspondance.

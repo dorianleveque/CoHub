@@ -1,16 +1,20 @@
 @startuml s'authentifier
 title s'authentifier
-
+hide footbox
 actor client as "Utilisateur" order 1
-participant app as "App" order 2
+participant app as ":App" order 2
 database bdd as "Base de donnée" order 5
 
 client ->> app: l'utilisateur accède\nà la page
+activate app
 create login as ":Login" order 3
 app -> login : <<create>>
+client <<-- app
+deactivate app
 
-note left: "L'utilisateur saisie\nses infos de connection"
-client ->> app: appuie sur bouton \n "se connecter"
+client ->> app: click sur bouton \n "se connecter"
+activate app
+note left: L'utilisateur saisit\nses infos de connection
 app -> login: connect()
 activate login
 
@@ -19,19 +23,26 @@ activate login
 login <<-- login
 deactivate login
 
-opt syntaxCorrect == true
+alt syntaxCorrect == true
     login -> bdd: executeQuery()
     activate bdd
     login <<-- bdd
     deactivate bdd
     
-    opt userExiste == true 
-        create user as "masterUser:User" order 4
+    alt userExist == true 
+        create user as "currentUser:User" order 4
         login -> user : <<create>>
+        app <<-- login
+        client <<-- app
+        deactivate app
+    else else
+        client <<-- login : erreur identification incorrect
+
     end
+else else
+    client <<-- login : erreur syntax incorrect
+    deactivate login
 end
-app <<-- login
-deactivate login
 
 
 

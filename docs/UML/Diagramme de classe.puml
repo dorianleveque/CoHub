@@ -26,7 +26,7 @@ __
 {abstract}+ display()
 + addHelper(helper: User)
 + isHelper(user: User): boolean
-+ addMessage(msg: string)
++ addMessage(msg: string, user: User)
 + edit()
 + save()
 + delete()
@@ -48,9 +48,10 @@ __
 
 class Message  {
 -texte: string
+-sender : User
 __
 <<create>>
-+ Message(texte: string)
++ Message(texte: string, sender : User)
 <<destroy>>
 + Message()
 + save()
@@ -151,7 +152,7 @@ __
 + setNickname(nickname: string)
 + createTicket(): Ticket
 + editTicket(t: Ticket)
-+ handleTicket()
++ handleTicket(id: int)
 + deleteTicket()
 + save()
 + checkRights(id)
@@ -203,8 +204,8 @@ __
 Ticket <|-- TicketCarPooling
 Ticket <|--TicketStudy
 Ticket <|--TicketSharing
-App -- TicketListControleur: + ticketListControler
-
+App "1" -- "1" TicketListControleur: ticketListControler 
+App "1" -- "1" Login: login 
 
 
 User "*" *---left- "1" Ticket : requester

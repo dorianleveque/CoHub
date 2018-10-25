@@ -1,28 +1,30 @@
-@startuml diagramme de classe
+@startuml
 package "class" as alias <<Frame>> {
 
 abstract class Ticket <<abstract>> {
-- id  : int
-- title : string
-- description : string 
-- category : string 
-- creationDate : string
+- id: int
+- title: string
+- description: string 
+- category: string 
+- creationDate: string
 __
 <<create>>
 + Ticket(id: int = null, title: string, description:  string,
- category: string, creationDate : string, demandeur : User)
+ category: string, creationDate : string, requester: User)
 <<destroy>>
 + Ticket()
 + getId(): int
 + getTitle(): string
 + setTitle(title:string)
-+ getDescription() : string
-+ setDescription(description : string) 
-+ getCategory () : string
++ getDescription(): string
++ setDescription(description: string) 
++ getCategory (): string
++ setCategory(category: string )
 + getCreationDate (): string
 {abstract}+ display()
 + addHelper(helper: User)
-+save()
++ save()
++ delet()
 
 
 
@@ -34,40 +36,43 @@ __
 + Conversation()
 <<destroy>>
 + Conversation()
++ save()
 }
 
 
 class Message  {
+-texte: string
 __
 <<create>>
-+ Message()
++ Message(texte: string)
 <<destroy>>
 + Message()
++save()
 }
 
-class TicketCarSharing  {
-- departurLocation  : string
-- arrivalLocation  : string
-- departurTime : string
-- arrivalTime  : string
-- places : int
+class TicketCarPooling  {
+- departurLocation: string
+- arrivalLocation: string
+- departurTime: string
+- arrivalTime: string
+- places: int
 __
 <<create>>
-+ TicketCarSharing(id: int = null, title: string, description:  string, 
-category: string, creationDate : string, demandeur : User,
-departurLocation  : string, arrivalLocation  : string, 
-departurTime : string, arrivalTime  : string, places : string )
++ TicketCarPooling(id: int = null, title: string, description:  string, 
+category: string, creationDate: string, requester: User,
+departurLocation: string, arrivalLocation: string, 
+departurTime: string, arrivalTime: string, places: string )
 <<destroy>>
-+ TicketCarSharing()
-+ getDeparturLocation () : string
++ TicketCarPooling()
++ getDeparturLocation (): string
 + setDeparturLocation(departurLocation: string)
 + getArrivalLocation(): string
 + setArrivalLocation(arrivalLocation: string)
-+ getDeparturTime() : string
++ getDeparturTime(): string
 + setDeparturTime(departurTime: string)
 + getArrivalTime(): string
 + setArrivalTime(arrivalTime: string)
-+ getPlaces() : int
++ getPlaces(): int
 + setPlaces(places: int)
 + display()
 + save()
@@ -76,16 +81,16 @@ departurTime : string, arrivalTime  : string, places : string )
 
 
 class TicketStudy  {
-- subjetct : string
-- semester : string
-- teacher : string
-- theme : string
+- subjetct: string
+- semester: string
+- teacher: string
+- theme: string
 __
 <<create>>
 + TicketStudy(id: int = null, title: string, description:  string, category: string, 
-creationDate : string, demandeur : User, departurLocation  : string, 
-arrivalLocation  : string, departurTime : string, arrivalTime  : string, 
-places : string, subjetct: string, semester: string, teacher: string = null,
+creationDate: string, requester : User, departurLocation: string, 
+arrivalLocation: string, departurTime: string, arrivalTime: string, 
+places: string, subjetct: string, semester: string, teacher: string = null,
  theme: string = null )
 <<destroy>>
 + TicketStudy()
@@ -105,29 +110,16 @@ places : string, subjetct: string, semester: string, teacher: string = null,
 }
 
 class TicketSharing  {
-- subjetct : string
-- semester : string
-- teacher : string
-- theme : string
+- item: string
+
 __
 <<create>>
 + TicketStudy(id: int = null, title: string, description:  string, 
-category: string, creationDate : string, demandeur : User, 
-departurLocation  : string, arrivalLocation  : string, 
-departurTime : string, arrivalTime  : string, places : string,
-subjetct: string, semester: string, teacher: string = null,
-theme: string = null )
+category: string, creationDate : string, requester : User, item : string)
 <<destroy>> 
 + TicketStudy()
-+ getSubject() : string
-+ setSubject(subjetct: string)
-+ getSemester() : string
-+ setSemester(semester: string)
-+ getTeacher() : string
-+ setTeacher(teacher: string)
-+ getTheme() : string
-+ setTheme(theme : string)
-
++ getItem() : string
++ setItem(item: string)
 + display()
 +save()
 }
@@ -148,6 +140,10 @@ __
 + getSurName() : string
 + getNickname() : string
 + setNickname(nickname: string)
++ creatRequest()
++ editRequest()
++ handleRequest()
++ deleteRequest()
 + save()
 
 
@@ -155,7 +151,7 @@ __
 }
 
 
-class TicketListControleur <<static>> {
+class TicketListControleur {
 __
 <<create>>
 + TicketListControleur()
@@ -164,12 +160,28 @@ __
 + serchTickets (filter  : string ): Ticket *
 + save()
 + display(ticket : Ticket *)
+}
 
+class App {
+__
+<<create>>
++ App()
+<<destroy>>
++ App()   
+
+}
+
+class Login {
+__
+<<create>>
++ Login()
+<<destroy>>
++ Login()   
 
 }
 
 
-Ticket <|-- TicketCarSharing
+Ticket <|-- TicketCarPooling
 Ticket <|--TicketStudy
 Ticket <|--TicketSharing
 User "*" *---left- "1" Ticket : requester

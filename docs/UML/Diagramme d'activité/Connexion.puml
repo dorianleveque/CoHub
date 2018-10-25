@@ -1,0 +1,27 @@
+@startuml
+title __Connexion__
+
+partition Utilisateur {
+  (*) --> "Clique sur l'icone de connexion"
+}
+
+partition Système {
+  "Clique sur l'icone de connexion" --> "Affichage de la page"
+
+partition Utilisateur {
+  "Affichage de la page" --> "Insertion des informations de connexion"
+}
+  
+partition Système {
+	"Insertion des informations de connexion" -->    "Vérification des informations de connexion" 
+   "Vérification des informations de connexion" --> if "Identifiants correct" then
+   -->[true] "valider l'accès"
+   		"valider l'accès" -->(*)
+       	else 
+        -->[false] "Afficher message d'erreur"
+        "Afficher message d'erreur" --> "Insertion des informations de connexion"
+}
+
+
+
+@enduml

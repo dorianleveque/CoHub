@@ -1,0 +1,72 @@
+@startuml repondre a une demande
+title Répondre à une demande\n""__Pré-requis__: L'aidant s'est connecté et consulte une demande""
+hide footbox
+
+actor client as "Aidant" order 1
+participant app as ":App" order 2 
+participant user as "currentUser:User" order 3
+participant tlc as ":TicketListControler" order 4
+participant conv as ":Conversation" order 5
+participant ticket as ":Ticket" order 4
+database bdd as "database:"  order 7
+
+note over client: l'aidant inscrit\nun message
+client ->> app: click sur le bouton\n"Proposer une demande"
+activate app
+app -> user: handleRequest()
+activate user
+
+user -> tlc: getTicket(id)
+activate tlc
+user <<-- tlc
+deactivate tlc
+
+user -> ticket: isHelper(currentUser)
+activate ticket
+user <<-- ticket: isHelper(currentUser): ishelper
+deactivate ticket
+
+user -> ticket: addMessage()
+activate ticket
+create msg as ":Message" order 6
+ticket -> msg: <<create>>
+
+ticket -> conv: addMessage()
+activate conv
+ticket <<-- conv
+deactivate conv
+
+ticket -> msg: save()
+activate msg
+msg -> bdd: executeQuery
+activate bdd
+msg <<-- bdd
+deactivate bdd
+ticket <<-- msg 
+deactivate msg
+
+user <<-- ticket
+deactivate ticket
+
+opt currentUser != ishelper 
+user -> ticket: addHelper(currentUser)
+activate ticket
+ticket -> ticket: save()
+activate ticket
+ticket -> bdd: executeQuery
+activate bdd
+ticket <<-- bdd
+deactivate bdd
+ticket <<-- ticket
+deactivate ticket
+user <<-- ticket
+deactivate ticket
+end
+
+app <<-- user
+deactivate user
+client <<-- app
+deactivate app
+
+
+@enduml

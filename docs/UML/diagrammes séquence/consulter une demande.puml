@@ -1,27 +1,39 @@
 @startuml consulter une demande
 title consulter une demande
+hide footbox
 
 actor client as "Utilisateur" order 1 
-participant app as "App" order 2 
-database bdd as "database:"  order 5
+participant app as ":App" order 2 
+database bdd as "database:"  order 6
 
-client -> app :accède à la page
+client ->> app :accède à la page
+activate app
 create tlc as ":TicketListControler" order 3
 app -> tlc : <<create>>
 
-app -> tlc : searchTicket(id:int) 
+app -> tlc : getTicket(id) 
 activate tlc
-tlc -> bdd : executeQuery(id:int)
+tlc -> bdd : executeQuery(id)
+note over bdd: On récupère l'ensemble\ndes tickets et les données\nde l'utilisateur ayant créé \nle ticket
 activate bdd
 tlc <<-- bdd
 deactivate bdd
 
-create ticket as ":Ticket" order 4
-tlc -> ticket : <<create>>
+create user as ":User" order 4
+tlc -> user : <<create>>
+tlc -> user : createTicket()
+activate user   
+
+create ticket as "t:Ticket" order 5
+user -> ticket : <<create>>
+note right: créer un objet ticket\ncorrespondant à sa \ncatégorie 
+tlc <<-- user: :t
+deactivate user
+
 app <<-- tlc
 deactivate tlc
 
-app -> tlc : displayTicket(id:int)
+app -> tlc : displayTicket(id)
 activate tlc
 
 tlc -> ticket : display()
@@ -32,6 +44,8 @@ deactivate ticket
 
 app <<-- tlc
 deactivate tlc
+client <<-- app
+deactivate app
 
 
 @enduml

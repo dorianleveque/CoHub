@@ -1,36 +1,45 @@
 @startuml créer une demande
-title créer une demande
+title Créer une demande\n""__Pré-requis__: L'utilisateur s'est authentifié \net à appuyer sur le bouton 'création de demande'""
 
-actor client as "User" order 1
-participant server as "Server"   order 2
-database bdd as "dataBase:" <<static>> order 4
+actor client as "Demandeur" order 1
+participant app as ":App"   order 2
+participant user as "current:User" order 3
+database bdd as "dataBase:" order 6
+hide footbox
 
-client ->> server : HttpRequest()
-note left : click on \ncreate ticket
-server ->> client : displayEditTicket()
+note over client : le demandeur\nsaisi le informations\nrelatif au ticket
+client -> app: click sur bouton valider
+activate app
 
-alt pas d'erreur
-    client ->> server : HttpRequest()
-    note left : le demandeur\nsaisi le informations\nrelatif au ticket
-    activate server
-    create ticketClass as ":Ticket" order 3
-    server -> ticketClass : <<create>>
-    server -> ticketClass : saveTicket()
-    activate ticketClass
-    ticketClass -> bdd : executeQuery()
+app -> app : checkField
+activate app
+app <<-- app
+deactivate app
+alt all field complete == true
+    app -> user: createTicket()
+    activate user
+    create ticket as ":Ticket" order 4
+    user ->> ticket: <<create>>
+    create conv as ":Conversation" order 5 
+    activate ticket
+    ticket ->> conv : <<create>>
+    deactivate ticket
+    app <<--user : Ticket
+    deactivate user
+
+    app -> ticket: save()
+    activate ticket
+    ticket -> bdd : executeQuery
     activate bdd
-    bdd -->> ticketClass : executeQuery():
+    ticket <<-- bdd
     deactivate bdd
-    ticketClass -->> server : saveTicket():
-    deactivate ticketClass
-    server ->> client
-    deactivate server
+    app <<-- ticket
+    deactivate ticket
+    client <<-- app: redirige sur la page qui affiche la demande
 else else
-    client ->> server : HttpRequest()
-    note left : le demandeur\nsaisi le informations\nrelatif au ticket
-    activate server
-    server ->> client: HttpRequest(): erreur
-    deactivate server
+    client <<-- app: error field uncompleted
+    deactivate app
 end
+
 
 @enduml

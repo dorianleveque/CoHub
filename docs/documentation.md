@@ -235,7 +235,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <th>Sommaire</th>
         <th>Scénario d’erreur "S’authentifier" </th>
-    <tr>
+    <td>
             SE1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
             SE1 démarre au point 4  du scénario nominal <br>
             5. Le système indique à l’utilisateur que son identification a échouée <br>
@@ -245,7 +245,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
             SE2 démarre au point 4  du scénario nominal <br>
             5. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
-    </tr>
+    </td>
    <tr>
         <td>Description</td>
         <td style="color:red;">

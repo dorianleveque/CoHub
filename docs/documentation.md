@@ -437,7 +437,8 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 Lorsque l’utilisateur souhaite filtrer les demandes le site récupère l’ensemble des demandes en cours filtrées auprès de la base de données puis génère une page à afficher sur l’interface utilisateur avec les demandes filtrées.
 
 ## _Consulter une demande_
-![consulter une demande](http://www.plantuml.com/plantuml/svg/XL8xJiGm4EqZvGwZL4kHWbzZHQj5j3H8S81PUmGMNiUo9uYz3INts8inSJuaYn2b_VwMTuanSdTme5kVEiSKeVC4XWxe3PK5MtRq5rWMgBcDe9qbpu09gcUspYPawc85RJGYkOIo299YjGtOqqB8rBiG9igLK0moxZ4Hx8t9-7IXAXXfjtta65Pliv52hKzVXk3q2GuXu8lqqf6a0R3JsKWzMVr6_60JtxUUO-jeBdSj6yH6t7gsWgOPnDjjdhU44c7KhuFNnXfbFLz0VWBxFiR9UmbL5Fq61VH1kcDwx2WU9yL28AH1q3HrFPmChT6VBJbsEMTQS3E7ZfprY7v2zi_r5lxvV3RHs1GS7jSRpoV-pXjbcnKrWnDxQ92l5AnhpBp_cfR5ZhoHl_eD "consulter une demande")
+![consulter une demande](http://www.plantuml.com/plantuml/svg/VPGzZjim48Lx0Rh3m4soXOly5e8XR90sG10WsxcXo5cR2KqAv6YnlatAzJbqiGo7iYmjaC2DoVc6x_5nxFj4Aj9mSg23JuCZZ31u18CdvGtM5Lbo-A_YqHg4nn2e2yzrLLTAKuYWdKLFe19i7iWwcnJX43SGek43ta5TzQnfjUrLnlfUqEPBtr-PzymOHQfJ2Q4pHe3hHhE12VkSDIUrRTlAKOtIUdnXM-CVS0fwTK3nPP_OHIQu8sB-JauNuPzM_qRwPXDz3PvYS3YR_S2zVEYs5Rg1tQuqjwrSTrbAgA8-bhFUMdC72racE4d6cCxNQG2VKG-4FmQCvqpNbGyCXYSMPQA1xnxYUD53Fxv41FS6VS9Jvt3FmISWaKc018wN9dW_NZ3b8hF3BNLGvnoovhF62-mzlsNfNRXZlU9kjzjkoyhWkZg7DYGsAAazf5jC7-VRINsTqxfIzgUOxXOkf0wmq2f6HOscHxeAVgehuNFwXLfhIfZH7exKoDrbS25qlvWi3NklGuoO-k1DJeZ79IaEI2iQBuSGBS8Yb2pMG4EhPFBcTGo4acTU0B9-DIR6fjwfysrENe_97DXyiQbbbTRr4HSUorO3Qmipzt-Nqwz80FcHB01PvyyzUiD_5Ny1 "consulter une demande")
+
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter une demande en cours. Quand l’utilisateur souhaite accéder à une demande le site récupère l’information auprès de la base de données puis génère une page à afficher sur l’interface utilisateur. 
 
 ## _S'authentifier_

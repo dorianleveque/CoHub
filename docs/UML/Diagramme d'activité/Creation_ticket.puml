@@ -1,0 +1,35 @@
+@startuml
+title __Création d'un ticket__ \n Pré-requis : Connexion
+
+partition Utilisateur {
+  (*) --> "Accès à l'application"
+}
+
+partition Système {
+  "Accès à l'application" --> "Affichage de la liste des demande"
+
+partition Utilisateur {
+  "Affichage de la liste des demande" --> "Appuis sur le bouton création de demande"
+}
+  
+partition Système {
+	
+	"Appuis sur le bouton création de demande" -->    "Affichage de la page de création de ticket" 
+}
+partition Utilisateur {
+  "Affichage de la page de création de ticket"  --> "Insertion des informations nécessaires"
+  "Insertion des informations nécessaires" --> "Appuis sur le bouton de validation des informations"
+  
+}
+  partition Système {
+  "Appuis sur le bouton de validation des informations" --> 	"Vérification des informations du ticket"
+	"Vérification des informations du ticket" --> if "Informations correct" then
+   -->[true] "valider la création"
+   		"valider la création" --> "Stockage du ticket"
+   		"Stockage du ticket" -->(*)
+       	else 
+        -->[false] "Afficher message d'erreur"
+        "Afficher message d'erreur" --> "Insertion des informations nécessaires"
+
+
+@enduml

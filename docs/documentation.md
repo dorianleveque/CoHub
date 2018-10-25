@@ -212,10 +212,11 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. L’utilisateur saisit son identifiant et son mot de passe <br>
-            2. Le système vérifie la syntaxe des champs <br>
-            3. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de données <br>
-            4. Le système valide la connexion
+            1. L'utilisateur accède a la page
+            2. L’utilisateur saisit son identifiant et son mot de passe <br>
+            3. Le système vérifie la syntaxe des champs <br>
+            4. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de données <br>
+            5. Le système valide la connexion
         </td>
     </tr>
 

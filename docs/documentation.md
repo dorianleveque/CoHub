@@ -28,7 +28,7 @@ Toutes ces situations racontent un quotidien des énibien·ne·s.
 Parfois les réponses peuvent être si nombreuses que refuser devient un casse-tête. Mais d'autres fois des questions restent sans solution.
 C'est la répétition de ces tracas tout au long de notre formation qui nous a donné l'idée de CoHub : un site internet qui permet facilement et efficacement à tout enibien-ne de partager des biens et des services .
 
-No tent before the WAF ? Who has a screwdriver to install this shelf ? Who has a printer ? Need help in math the day before an interrogation ? Who goes back to Quimper this Weekend ?
+No tent before the WAF ? Who has a screwdriver to install this shelf ? Who has a printer ? Need help in math the day before an interrogation ? Who goes back to Quimper this weekend ?
 All of those situations are a common occurrence for an Enibien. 
 Sometimes those answers can be so numerous that refusing one can be a baffling problem. But also sometimes the questions have no answer.
 It's the repetition of this hassle all along our formation that gave us the idea of CoHub : a website that allows any Enibien to easily and efficiently share goods or services. 

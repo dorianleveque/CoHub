@@ -28,12 +28,6 @@ Toutes ces situations racontent un quotidien des énibien·ne·s.
 Parfois les réponses peuvent être si nombreuses que refuser devient un casse-tête. Mais d'autres fois des questions restent sans solution.
 C'est la répétition de ces tracas tout au long de notre formation qui nous a donné l'idée de CoHub : un site internet qui permet facilement et efficacement à tout enibien-ne de partager des biens et des services .
 
-No tent before the WAF ? Who has a screwer to install this shelf ? Who has a printer ? Need help in math the day before an interogation ? Who goes back to Quimper this Weekend ?
-All this situations are a common ocurence for an Enibien. 
-Sometimes this answers can be so numerous that refusing one can be a baffling problem.
-
-
-
 # __Mots clés__
 partage, échange, entraide, service centralisé
 
@@ -135,8 +129,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
             1. L’utilisateur accède à la page <br>
             2. Le système recupere l'ensmble des demandes en cour au pres de la base de donnée <br>
-            3. Le système extrait les information important pour chaque demande <br>
-            4. Le système affiche uniquement les information important pour chaque demande <br>
+            3. Le système affiche uniquement les information important pour chaque demande <br>
         </td>
     </tr>
 
@@ -148,10 +141,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             SA1 : L’utilisateur applique un filtre <br>
-            SA1 : Démarre au point 4 du scénario nominal <br>
-            5. Le système recupere l'ensemble des demandes en cour filtré au pres de la base de donnée <br>
-            6. Le système extrait les information important pour chaque demande filtré <br>
-            7. Le système affiche uniquement les information important pour chaque demande <br>
+            SA1 : Démarre au point 3 du scénario nominal <br>
+            4. Le système recupere l'ensemble des demandes en cour filtré au pres de la base de donnée <br>
+            5. Le système affiche uniquement les information important pour chaque demande filtré <br>
         </td>
     </tr>
 
@@ -211,7 +203,6 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
 * ## _S'authentifier_
     
-    
 
     ### Scénario
     __Pré-requis : l'utilisateur s'est déjà enregistré dans la base de données__
@@ -245,14 +236,14 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <th>Sommaire</th>
         <th>Scénario d’erreur "S’authentifier" </th>
     <tr>
-            SA1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
-            SA1 démarre au point 2  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que son identification a échouée <br>
+            SE1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
+            SE1 démarre au point 4  du scénario nominal <br>
+            5. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1 <br>
             <br>
-            SA2: l'identifiant et/ou le mot de passe sont erronés <br>
-            SA2 démarre au point 3  du scénario nominal <br>
-            3. Le système indique à l’utilisateur que son identification a échouée <br>
+            SE2: l'identifiant et/ou le mot de passe sont erronés <br>
+            SE2 démarre au point 4  du scénario nominal <br>
+            5. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
     </tr>
    <tr>
@@ -268,7 +259,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Créer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié et a appuiée sur le bouton "création de demande"__
+    __Pré-requis: le demendeur s’est authentifié et a appuiée sur le bouton "création de demande"__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -303,7 +294,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
         SE1 : Les informations ne sont pas correctes<br>
         SE1 départ au point 3 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations sont erronée
+        4. Le système indique à l'utilisateur qu'une partie des informations sont erronée
         </td>
     </tr>
     </table>
@@ -313,7 +304,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Éditer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié et consulte un des tickets qu’il a créés__
+    __Pré-requis: l’utilisateur s’est authentifié__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -509,8 +500,6 @@ Ces diagrammes permettent de représenter d’un point de vue dynamique les diff
 ## Annexe
 
 > ## Diagramme de Gantt
-
-<img src="docs/Ressources_doc/Gantt.png" alt="Ceci etait censé etre le gantt" />
 
 > ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite

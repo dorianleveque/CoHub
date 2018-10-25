@@ -269,7 +269,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Créer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié et a appuiée sur le bouton "création de demande"__
+    __Pré-requis: le demandeur s’est authentifié et a appuiée sur le bouton "création de demande"__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -280,9 +280,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
             1. Le demandeur saisit les informations relatives à sa demande <br>
             2. Le demandeur valide <br>
-            3. Le système vérifie si l’ensemble des champs obligatoire on été remplis
-            4. Le système transmet les information a la base de donnée affin d'être enregistré 
-            5. Le système indique a l'utilisateur que les informations sont enregistré
+            3. Le système vérifie si l’ensemble des champs obligatoire on été remplis <br>
+            4. Le système transmet les information a la base de donnée affin d'être enregistré <br>
+            5. Le système indique a l'utilisateur que les informations sont enregistré <br>
         </td>
     </tr>
 
@@ -303,7 +303,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
         SE1 : Les informations ne sont pas correctes<br>
-        SE1 départ au point 3 du scénario nominal<br>
+        SE1 démarre au point 3 du scénario nominal<br>
         5. Le système indique à l'utilisateur qu'une partie des informations sont erronée
         </td>
     </tr>
@@ -314,7 +314,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Éditer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié et consulte un des tickets qu’il a créés__
+    __Pré-requis: le demandeur s’est authentifié et consulte une demande __
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -323,11 +323,13 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur sélectionne une demande qu’il a créée <br>
+            1. Le systheme verifie si c'est l'utilisateur courant qui a créée la demande  <br>
             2. Le demandeur appuie sur le bouton "édite une demande" <br>
             3. Le demandeur modifie les informations <br>
             4. Le demandeur valide sa demande <br>
             5. Le système vérifie l’ensemble des informations
+            6. le systeme enregistre les information dans la basse de donnée
+            7. Le systeme la demande modidier
         </td>
     </tr>
 
@@ -347,9 +349,14 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-        SE1 : Les informations ne sont pas correctes<br>
-        SE1 départ au point 4 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est erronée
+        SE1 : L'utilisateur courant n'est pas le demandeur<br>
+        SE1 départ au point 1 du scénario nominal<br>
+        Le cas d'utilisation se termine en echec (l'objectif n'est pas atteint)
+        
+        SE2 : Les informations ne sont pas correctes<br>
+        SE2 départ au point 5 du scénario nominal<br>
+        6. Le système indique à l'utilisateur qu'une partie des informations est erronée
+        Le cas d'utilisation se termine en echec (l'objectif n'est pas atteint)
         </td>
     </tr>
     </table>
@@ -360,7 +367,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié et consulte une demande__
+    __Pré-requis: l'aidant s’est authentifié et consulte une demande__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -369,11 +376,10 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. L’aidant  appuie sur le bouton « prendre en charge » <br>
-            2. L’aidant ecrit un message au demendeur <br>
-            3. L’aidant valide son message<br>
-            4. Le demandeur repond à l'aidant par message
-            Cet échange dure jusqu' à l'obtention d'une solution
+            1. L’aidant saisie un message a destination du demendeur <br>
+            2. L’aidant valide son message en appuyant sur le bouton "proposer une demande"<br>
+            3. Le systeme enregiste le message dans la base de donnée <br>
+            4. Le systeme enregistre l'aidant dans la demande
         </td>
     </tr>
 
@@ -383,7 +389,12 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     </tr>
     <tr>
         <td>Description</td>
-        <td/>
+        <td>
+            SA1: L'aidant est déja enregistré dans la demande
+            SA1 démarre 3 au point du scénario nominal
+            Le scénario se termine
+        </td>
+        
     </tr>
 
     <tr>

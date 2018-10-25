@@ -27,7 +27,7 @@ app -> tlc : displayTickets()
 activate tlc
 
 loop i = tickets
-tlc -> ticket : getBasicInfo()
+tlc -> ticket : displayThumbnail()
 activate ticket
 tlc <<-- ticket: 
 deactivate ticket
@@ -64,7 +64,7 @@ opt search with filters
     app -> tlc : displayTickets()
     activate tlc
     loop i = tickets
-        tlc -> ticket : getBasicInfo()
+        tlc -> ticket : displayThumbnail()
         activate ticket
         tlc <<-- ticket: 
         deactivate ticket

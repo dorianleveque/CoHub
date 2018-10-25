@@ -244,13 +244,13 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <th>Sommaire</th>
         <th>Scénario d’erreur "S’authentifier" </th>
     <tr>
-            SA1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
-            SA1 démarre au point 2  du scénario nominal <br>
+            SE1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
+            SE1 démarre au point 2  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1 <br>
             <br>
-            SA2: l'identifiant et/ou le mot de passe sont erronés <br>
-            SA2 démarre au point 3  du scénario nominal <br>
+            SE2: l'identifiant et/ou le mot de passe sont erronés <br>
+            SE2 démarre au point 3  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
     </tr>
@@ -421,7 +421,10 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td> 
         <td>
-            1. Le demandeur appuie sur le bouton "supprimer"
+            1. Le systheme verifie si c'est l'utilisateur courant qui a créée la demande  <br>
+            2. Le demandeur appuie sur le bouton "supprimer" <br>
+            3. le systeme suprimme les information relative a la demande dans la basse de donnée
+            4. Le syteme affiche la page d'acceuil
         </td>
     </tr>
 

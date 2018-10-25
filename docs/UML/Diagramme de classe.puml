@@ -21,10 +21,16 @@ __
 + getCategory (): string
 + setCategory(category: string )
 + getCreationDate (): string
++ getRequester()
++ displayThumbnail (): string
 {abstract}+ display()
 + addHelper(helper: User)
++ isHelper(user: User): boolean
++ addMessage(msg: string)
++ edit()
 + save()
-+ delet()
++ delete()
+
 
 
 
@@ -36,7 +42,7 @@ __
 + Conversation()
 <<destroy>>
 + Conversation()
-+ save()
++ addMessage()
 }
 
 
@@ -47,7 +53,7 @@ __
 + Message(texte: string)
 <<destroy>>
 + Message()
-+save()
++ save()
 }
 
 class TicketCarPooling  {
@@ -74,6 +80,7 @@ departurTime: string, arrivalTime: string, places: string )
 + setArrivalTime(arrivalTime: string)
 + getPlaces(): int
 + setPlaces(places: int)
++ getBasicInfo(): string 
 + display()
 + save()
 }
@@ -102,6 +109,7 @@ places: string, subjetct: string, semester: string, teacher: string = null,
 + setTeacher(teacher: string)
 + getTheme() : string
 + setTheme(theme : string)
++ getBasicInfo(): string 
 + display()
 + save()
 
@@ -120,6 +128,7 @@ category: string, creationDate : string, requester : User, item : string)
 + TicketStudy()
 + getItem() : string
 + setItem(item: string)
++ getBasicInfo(): string 
 + display()
 +save()
 }
@@ -140,11 +149,12 @@ __
 + getSurName() : string
 + getNickname() : string
 + setNickname(nickname: string)
-+ creatRequest()
-+ editRequest()
-+ handleRequest()
-+ deleteRequest()
++ createTicket(): Ticket
++ editTicket(t: Ticket)
++ handleTicket()
++ deleteTicket()
 + save()
++ checkRights(id)
 
 
 
@@ -157,26 +167,35 @@ __
 + TicketListControleur()
 <<destroy>>
 + TicketListControleur()   
-+ serchTickets (filter  : string ): Ticket *
++ serchTickets (filter: string)
++ getTicket(id: int): Ticket
 + save()
-+ display(ticket : Ticket *)
++ displayTickets()
++ displayTicket(id: int)
++ clearTickets()
++ retriveTicket(id: int)
 }
 
 class App {
++ curentUser: User
 __
 <<create>>
 + App()
 <<destroy>>
-+ App()   
++ App() 
+ 
 
 }
 
 class Login {
+
 __
 <<create>>
 + Login()
 <<destroy>>
-+ Login()   
++ Login() 
++ connect(username: string, password: string) 
++ check(username: string, password: string): boolean 
 
 }
 
@@ -184,6 +203,10 @@ __
 Ticket <|-- TicketCarPooling
 Ticket <|--TicketStudy
 Ticket <|--TicketSharing
+App -- TicketListControleur: + ticketListControler
+
+
+
 User "*" *---left- "1" Ticket : requester
 User "*" o---left- "*" Ticket : helper
 Ticket "*" *---left- "1" Conversation: conversation

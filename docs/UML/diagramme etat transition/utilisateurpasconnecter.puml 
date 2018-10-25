@@ -4,6 +4,6 @@ title L'utilisateur n'est pas connecter
   state S3 as "consultation de  l'ensemble\n des demandes"
   state S4 as "consultation une demande"
   [*] -> S3
-  S3 --> S4 : when (clic sur une demande)
-  S4 --> S3 : when (clic sur "fermer" ou presedent)
+  S3 --> S4 : when (clic sur une demande)/display()
+  S4 --> S3 : when (clic sur "fermer" ou presedent)/display()
 @enduml

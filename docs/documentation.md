@@ -128,7 +128,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             1. L’utilisateur accède à la page <br>
-            2. Le système affiche la liste des demandes en cours
+            2. Le système recupere l'ensmble des demandes en cour au pres de la base de donnée <br>
+            3. Le système extrait les information important pour chaque demande <br>
+            4. Le système affiche uniquement les information important pour chaque demande <br>
         </td>
     </tr>
 
@@ -140,8 +142,10 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
             SA1 : L’utilisateur applique un filtre <br>
-            SA1 : Démarre au point 2 du scénario nominal <br>
-            3. Le système affiche la liste des tickets en cours filtrée <br>
+            SA1 : Démarre au point 4 du scénario nominal <br>
+            5. Le système recupere l'ensemble des demandes en cour filtré au pres de la base de donnée <br>
+            6. Le système extrait les information important pour chaque demande filtré <br>
+            7. Le système affiche uniquement les information important pour chaque demande <br>
         </td>
     </tr>
 
@@ -170,8 +174,9 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. L’utilisateur sélectionne une demande <br>
-            2. Le système affiche la demande sélectionnée
+            1. L’utilisateur accède à la page <br>
+            2. Le système recupere la demande au pres de la base de donnée <br>
+            3. Le système affiche la demande <br>
         </td>
     </tr>
 
@@ -227,6 +232,13 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
+        </td>
+    </tr>
+
+    <tr>
+        <th>Sommaire</th>
+        <th>Scénario d’erreur "S’authentifier" </th>
+    <tr>
             SA1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
             SA1 démarre au point 2  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
@@ -236,12 +248,6 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
             SA2 démarre au point 3  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
-        </td>
-    </tr>
-
-    <tr>
-        <th>Sommaire</th>
-        <th>Scénario d’erreur "S’authentifier" </th>
     </tr>
    <tr>
         <td>Description</td>
@@ -256,7 +262,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Créer une demande_
 
     ### Scénario
-    __Pré-requis: l’utilisateur s’est authentifié__
+    __Pré-requis: l’utilisateur s’est authentifié et a appuiée sur le bouton "création de demande"__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -265,10 +271,11 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur appuie sur le bouton de "création de demande"b <br>
-            2. Le demandeur saisit les informations relatives à sa demande <br>
-            3. Le demandeur valide sa demande <br>
-            4. Le système vérifie l’ensemble des informations
+            1. Le demandeur saisit les informations relatives à sa demande <br>
+            2. Le demandeur valide <br>
+            3. Le système vérifie si l’ensemble des champs obligatoire on été remplis
+            4. Le système transmet les information a la base de donnée affin d'être enregistré 
+            5. Le système indique a l'utilisateur que les informations sont enregistré
         </td>
     </tr>
 
@@ -289,8 +296,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>Description</td>
         <td>
         SE1 : Les informations ne sont pas correctes<br>
-        SE1 départ au point 4 du scénario nominal<br>
-        5. Le système indique à l'utilisateur qu'une partie des informations est erronée
+        SE1 départ au point 3 du scénario nominal<br>
+        5. Le système indique à l'utilisateur qu'une partie des informations sont erronée
         </td>
     </tr>
     </table>
@@ -342,7 +349,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <br>
     <br>
     
-    * ## _Répondre à une demande_
+* ## _Répondre à une demande_
 
 
     ### Scénario
@@ -451,6 +458,7 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite créer une demande d’aide. Après l’appui sur le bouton « création de demande », l’application affiche sur l’interface utilisateur un ensemble de champs à remplir concernant sa demande. 
 La cohérence des informations est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande, sinon il l’indique à l’utilisateur par un message d’erreur.
+
 ## _Éditer une demande_
 ![editer une demande](http://www.plantuml.com/plantuml/svg/XLJBRjim4BmBq3yiT4bwqA5DUn6I82dQdd9eWVOMmA39TKoO8XK-ZFQJ_1t-iIv9KPMj9hb8ukxCQdPsfJldcVMXLu12UhGGD8B0dcc1TUMbLmXV5vb7tJIhrNTxFBGMduDqgrK73rCwM70Nw3nmepLoVpm0feCBokEy43o72wc0mV7GIzyqTLLNZ7jZWIk9sWDpq7p9MDk0iNI3ztKra6Z9vS0YP1WIhBiVXWPW17qu1GL7iOZYmLeg_8lENRoKebUdU7hOONwzxtwcGq5-h2l1F5ipXx0M8c5Yu3C5kWBw53iPUsXlRwF8BlR4T-38dhK9tcZgEbcRUfPxHjuGRk9TNxTj9hBDHl8jWc8mi2TCiv96an0yPTQLDlHizbWSF9jBRuJSI8H7hT01tx9-SAy9fV6FMlTCIR7KIcVolqr48EOM-UwRH2NEWJ5VEbeAPuhCLWesaKghqWyAANTp0zu6saIQAumlYgFiaWLvBfV-tPWl5ICYXzBOYPF7cLcNv_2Sd16Yp7bm9hQ4_r_UiJs-MdvSAwBGvf2StyY3nny1xPy5Zn0df6JU59nfccAJU7X3VN4pOl-PDGFcO0uljj6IYrRI6gO56LUI_WBpDPr-8QZeCucN5ugXjVIrvx47NGQ_R39j2MfAtD6LVbX_0G00 "editer une demande")
 
@@ -489,20 +497,21 @@ Il permet de décrire les classes et les relations entre elles.
 ![diagramme de classe](http://www.plantuml.com/plantuml/svg/vLTBRzD04BvRydyOzUGaze5h5AAYzW1IgP0QpjLYJnE3xOJTJL5Kyj_PfxsxNgFI7a12bTfwtlFjD_kuP9nGVcmRg6gofQHj4Ig4iY6COPga2Vd2E2KbroBOrEKtvB1QMVbw3KzfKa1T0IoXxhZyu3LlK7mAaxhRIac5hAJrWTVxhfU3L9I4utPFJu6K8f6srqBhnBc_JvFLIYbnlKwJXQadgokL6zv2TsoQN1TW_N8t-nAiD4twv8DbDB4Cq9AkmYCLiiyCwKpM8Q9okZzvXSpa_rla7wfiPk1GtnjPa1JPLXR0h5GNgnNM_tgeE9j1uEOgOy3Em4Ivik06CQJARTGjxCckx7aXEC4E3JdfhaXLlSVcW3JRgJyz4Wj67b7Qw9-p_ANPShNl7f4obGWaJyOBw9faOrX3zLddqE4_8cDaYnEHZJOIrD4unUeLl2BqRaSK4JMnApp82Q4t-zBquVAQK5e_aYQkjAwRkiMObv9x2e5sYSmEqXJTXnfVH7p1ZXSJNqpDD23vD1moQHIEF0v6Fa1XjeMfaNF068Odg30sGhv95dRLpvA9-SxlR3JAeJv08WntxM0nNPtIkh1DLAMZn2jIEWVZCCGdXREgmMnNh1VgDL0APUxj1tRgptRmtJ6wuyVgP2Q87RzyHIwE49Vf35knbaWz8KTIxaBP3jldd04guylcOJmDefbdpWFyRXp4yJaz47ys3caI34JUu-f83AY3n23QJv71HPnz2jT0FZba6bnBcJkPkEHZtbf5M5dlQEgBU5fDs89rtUX6nfvM4NJQ-yas8rvAx7DhckAZWysWuXqK_ppDNxFjmz_QzmLLNyNpPz0S_Z-UXqptzd9DSRdiqD_j-wjzHy8x2plIiR0JS2hf88nnMYQnPCvLR7Txerw4V0Ygbt6yMQbmxXKSt3luBHaXf1QPnXMt9jiOr5vZ2_8M8x9f-Dl6JSsukDUAiXivOQkLU8FnkjGlgQcvzvsogOqwD0C0NJGjTzg2GVPGDt9BSkvMI_kmcxiT31pXMZkOpRpkxAlmPr6CRcMUrfcocDnwAEvTp2zWNXH5Wm-yW8it5pRv4YX-FwhfSKptW-dSCTLlbJxPEAZxmbX2wNobYQkJjdFjfrFOryUorVyCEOHbKUr_TCNSgILOzILeJ9d4xnAxIhp1Vm40 "diagramme de classe")
 
 ## Diagrammes d'etat transition
+La réalisation des diagrammes d’état transition est la cinquième étape. 
+Ces diagrammes permettent de représenter d’un point de vue dynamique les différents état d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
 
+## Annexe
 
-> ## Annexe
+> ## Diagramme de Gantt
 
-## Diagramme de Gantt
-
-## Présentation de l'équipe
+> ## Présentation de l'équipe
 Voici l'équipe de CoHub: de gauche à droite
 
 
 
 Même si nous n'envisageons pas tous de choisir un module de spécialité informatique , la conception du site a été réalisée en équipe, 
 ce qui a entretenu la motivation de chacun et nous permis individuellement et collectivement de progresser.
-## __Pourquoi CoHub?__
+> ## __Pourquoi CoHub?__
 Nous avons choisi d'appeler notre site CoHub car c'est la concaténation -c'est-à-dire le regroupement- de Co et de Hub qui illustrent les deux idées directrices de notre projet 
 Co pour coopération, coordination, collaboration
 et Hub pour organisation mettant en œuvre une connexion centrale ou une plateforme de correspondance.

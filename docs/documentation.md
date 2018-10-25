@@ -28,6 +28,12 @@ Toutes ces situations racontent un quotidien des énibien·ne·s.
 Parfois les réponses peuvent être si nombreuses que refuser devient un casse-tête. Mais d'autres fois des questions restent sans solution.
 C'est la répétition de ces tracas tout au long de notre formation qui nous a donné l'idée de CoHub : un site internet qui permet facilement et efficacement à tout enibien-ne de partager des biens et des services .
 
+No tent before the WAF ? Who has a screwer to install this shelf ? Who has a printer ? Need help in math the day before an interogation ? Who goes back to Quimper this Weekend ?
+All this situations are a common ocurence for an Enibien. 
+Sometimes this answers can be so numerous that refusing one can be a baffling problem.
+
+
+
 # __Mots clés__
 partage, échange, entraide, service centralisé
 

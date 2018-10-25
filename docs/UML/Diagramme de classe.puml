@@ -96,9 +96,7 @@ class TicketStudy  {
 __
 <<create>>
 + TicketStudy(id: int = null, title: string, description:  string, category: string, 
-creationDate: string, requester : User, departurLocation: string, 
-arrivalLocation: string, departurTime: string, arrivalTime: string, 
-places: string, subjetct: string, semester: string, teacher: string = null,
+creationDate: string, requester : User, subjetct: string, semester: string, teacher: string = null,
  theme: string = null )
 <<destroy>>
 + TicketStudy()

@@ -265,7 +265,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. Le demandeur appuie sur le bouton de "création de demande"b <br>
+            1. Le demandeur appuie sur le bouton de "création de demande" <br>
             2. Le demandeur saisit les informations relatives à sa demande <br>
             3. Le demandeur valide sa demande <br>
             4. Le système vérifie l’ensemble des informations

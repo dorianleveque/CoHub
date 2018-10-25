@@ -1,0 +1,22 @@
+@startuml
+title __Consultation d'un ticket__ \n 
+
+partition Utilisateur {
+  (*) --> "Accès à l'application"
+}
+
+partition Système {
+  "Accès à l'application" --> "Affichage de la liste des demande"
+
+partition Utilisateur {
+  "Affichage de la liste des demande" --> "Selection d'un ticket"
+}
+  
+partition Système {
+	"Selection d'un ticket" --> "Récupération des informations du ticket"
+	"Récupération des informations du ticket" -->    "Affichage du ticket" 
+}
+
+
+
+@enduml

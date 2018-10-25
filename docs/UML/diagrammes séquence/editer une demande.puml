@@ -1,38 +1,39 @@
 @startuml editer une demande
-title éditer une demande
-actor client as "User" order 1
-participant server as "Server"   order 2
-participant ticketClass as ":Ticket" order 3
-database bdd as "dataBase:" <<static>> order 4
+title Editer une demande\n""__Pré-requis__: L'utilisateur s'est connecté""
 
-client ->> server: HttpRequest()
+actor client as "User" order 1
+participant app as ":App"   order 2
+participant ticketClass as ":Ticket" order 3
+database bdd as "dataBase:" order 4
+
+client ->> app: HttpRequest()
 note left : Click on \na ticket 
-server ->> client: displayEditTicket()
+app ->> client: displayEditTicket()
 
 
 alt pas d'erreur
 
-    client ->> server: HttpRequest()
+    client ->> app: HttpRequest()
     note left: Edit ticket\ninformation
-    activate server
-    server -> ticketClass: saveTicket()
+    activate app
+    app -> ticketClass: saveTicket()
     activate ticketClass
     ticketClass -> bdd: executeQuery()
     activate bdd
     bdd -->> ticketClass: executeQuery():
     deactivate bdd
-    ticketClass -->> server: saveTicket():
+    ticketClass -->> app: saveTicket():
     deactivate ticketClass
-    server ->> client: HttpRequest():
-    deactivate server
+    app ->> client: HttpRequest():
+    deactivate app
 
 else else
 
-    client ->> server: HttpRequest()
+    client ->> app: HttpRequest()
     note left: Edit ticket\ninformation
-    activate server
-    server ->> client: HttpRequest(): erreur
-    deactivate server
+    activate app
+    app ->> client: HttpRequest(): erreur
+    deactivate app
     
 end
 

@@ -2,10 +2,11 @@
 title consulter l'ensemble des demandes
 
 actor client as "Utilisateur" order 1 
-participant app as "App" order 2 
-database bdd as "database:"  order 5
+participant app as ":App" order 2 
+database bdd as "database:"  order 6
 
-client -> app :accède à la page 
+client ->> app :accède à la page 
+activate app
 create tlc as ":TicketListControler" order 3
 app -> tlc : <<create>>
 
@@ -17,8 +18,14 @@ tlc <<-- bdd
 deactivate bdd
 
 loop as long as there's results
-    create ticket as ":Ticket" order 4
-    tlc -> ticket : <<create>>
+    create user as ":User" order 4
+    tlc -> user : <<create>>
+    tlc -> user : createTicket()
+    activate user
+    create ticket as ":Ticket" order 5
+    user -> ticket : <<create>>
+    tlc <<-- user : :Ticket
+    deactivate user
 end
 app <<-- tlc
 deactivate tlc
@@ -55,8 +62,14 @@ opt search with filters
     deactivate bdd
 
     loop as long as there's results
-        tlc -> ticket : <<create>> 
-        create ticket as ":Ticket" order 4
+        create user as ":User" order 4
+        tlc -> user : <<create>>
+        tlc -> user : createTicket()
+        activate user
+        create ticket as ":Ticket" order 5
+        user -> ticket : <<create>>
+        tlc <<-- user : :Ticket
+        deactivate user
     end
     app <<-- tlc
     deactivate tlc
@@ -73,6 +86,7 @@ opt search with filters
     app <-- tlc
     deactivate tlc
 end
-
+client <<-- app
+deactivate app
 
 @enduml

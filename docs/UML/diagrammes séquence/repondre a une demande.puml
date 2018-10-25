@@ -1,0 +1,17 @@
+@startuml repondre a une demande
+title Répondre à une demande\n""__Pré-requis__: L'utilisateur s'est connecté""
+hide footbox
+
+actor client as "Utilisateur"
+participant app as "App" order 2 
+database bdd as "database:"  order 6
+
+client ->> app: click sur le bouton\n"Répondre à une demande"
+activate app
+
+
+
+client <<-- app
+deactivate app
+
+@enduml

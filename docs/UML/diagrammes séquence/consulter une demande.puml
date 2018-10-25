@@ -11,7 +11,7 @@ activate app
 create tlc as ":TicketListControler" order 3
 app -> tlc : <<create>>
 
-app -> tlc : searchTicket(id) 
+app -> tlc : getTicket(id) 
 activate tlc
 tlc -> bdd : executeQuery(id)
 note over bdd: On récupère l'ensemble\ndes tickets et les données\nde l'utilisateur ayant créé \nle ticket

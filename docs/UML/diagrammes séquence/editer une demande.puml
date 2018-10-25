@@ -1,40 +1,47 @@
 @startuml editer une demande
-title Editer une demande\n""__Pré-requis__: L'utilisateur s'est connecté""
+title Editer une demande\n""__Pré-requis__: Le demandeur s'est connecté et consulte une demande qu'il a émit""
 
-actor client as "User" order 1
+actor client as "Demander" order 1
 participant app as ":App"   order 2
-participant ticketClass as ":Ticket" order 3
-database bdd as "dataBase:" order 4
+participant user as "currentUser:User" order 3
+participant ticket as "t:Ticket" order 4
+database bdd as "dataBase:" order 5
 
-client ->> app: HttpRequest()
-note left : Click on \na ticket 
-app ->> client: displayEditTicket()
+client ->> app: click sur bouton éditer
+activate app
+client <<-- app: affiche la page edition
+deactivate app
 
+note over client: Le demandeur modifie \nles champs
+client ->> app: click sur le bouton valider
+activate app
 
-alt pas d'erreur
+app -> app : checkField
+activate app
+app <<-- app
+deactivate app
+alt all field complete == true
+    app -> user: editTicket(t)
+    activate user
+    user -> ticket: edit()
+    activate ticket
+    user <<--ticket
+    deactivate ticket
 
-    client ->> app: HttpRequest()
-    note left: Edit ticket\ninformation
-    activate app
-    app -> ticketClass: saveTicket()
-    activate ticketClass
-    ticketClass -> bdd: executeQuery()
+    user -> ticket: save()
+    activate ticket
+    ticket -> bdd: executeQuery()
     activate bdd
-    bdd -->> ticketClass: executeQuery():
+    ticket <<-- bdd
     deactivate bdd
-    ticketClass -->> app: saveTicket():
-    deactivate ticketClass
-    app ->> client: HttpRequest():
-    deactivate app
+    user <<-- ticket
+    deactivate ticket
+    app <<--user
+    deactivate user
 
+    client <<-- app: redirige sur la page qui affiche la demande
 else else
-
-    client ->> app: HttpRequest()
-    note left: Edit ticket\ninformation
-    activate app
-    app ->> client: HttpRequest(): erreur
+    client <<-- app: error field uncompleted
     deactivate app
-    
 end
-
 @enduml

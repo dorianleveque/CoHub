@@ -5,7 +5,7 @@ actor client as "Utilisateur" order 1
 participant app as ":App" order 2
 database bdd as "Base de donnée" order 5
 
-client ->> app: l'utilisateur accède\nà la page
+client ->> app: accèder à la page
 activate app
 create login as ":Login" order 3
 app -> login : <<create>>
@@ -15,10 +15,10 @@ deactivate app
 client ->> app: click sur bouton \n "se connecter"
 activate app
 note left: L'utilisateur saisit\nses infos de connection
-app -> login: connect()
+app -> login: connect(username, password)
 activate login
 
-login -> login: check
+login -> login: check(username, password)
 activate login
 login <<-- login
 deactivate login

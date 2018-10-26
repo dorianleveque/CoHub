@@ -1,0 +1,23 @@
+@startuml
+|Stickman|
+start
+: Accède à la page d'accueil;
+|CoHub|
+: Affiche la page d'accueil;
+|Stickman|
+: Clic sur le bouton de connexion;
+|CoHub|
+: Affiche la page de connexion;
+|Stickman|
+: Renseigne l'identifaint et le mot de passe;
+|:Login|
+if (Vérification des informations de connexion) then (informations correct)
+    |CoHub|
+    : Affiche la page d'accueil;
+     
+else (informations incorrect)
+    |CoHub|
+    : Affiche un message d'erreur;
+endif
+
+@enduml

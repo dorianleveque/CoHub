@@ -1,12 +1,14 @@
 @startuml
 title Navigation
 
-state S1 as "l'utilisateur n'est pas connecter"
+state S1 as "l'utilisateur n'est pas connecté"
+S1 : ""             O-O""
 state S2 as "l'utilisateur est connecté" 
+S2 : ""           O-O""
 
 [*] --> S1
 S1  --> S2 : s'authentifier
-S2  --> S1 : deconnecter
+S2  --> S1 : se deconnecter
 S1  --> [*]
 S2  --> [*]
 @enduml

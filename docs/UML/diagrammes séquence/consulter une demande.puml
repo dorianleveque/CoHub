@@ -24,10 +24,10 @@ tlc -> user : <<create>>
 tlc -> user : createTicket()
 activate user   
 
-create ticket as "t:Ticket" order 5
+create ticket as ":Ticket" order 5
 user -> ticket : <<create>>
 note right: créer un objet ticket\ncorrespondant à sa \ncatégorie 
-tlc <<-- user: :t
+tlc <<-- user:
 deactivate user
 
 app <<-- tlc

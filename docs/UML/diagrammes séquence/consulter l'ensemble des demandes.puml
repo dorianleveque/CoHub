@@ -4,7 +4,7 @@ title consulter l'ensemble des demandes
 actor client as "Utilisateur" order 1 
 participant app as ":App" order 2 
 database bdd as "Base de donnée"  order 6
-
+hide footbox
 client ->> app :accède à la page 
 activate app
 create tlc as ":TicketListControler" order 3
@@ -24,7 +24,7 @@ loop as long as there's results
     activate user
     create ticket as ":Ticket" order 5
     user -> ticket : <<create>>
-    tlc <<-- user : :Ticket
+    tlc <<-- user :
     deactivate user
 end
 app <<-- tlc
@@ -68,7 +68,7 @@ opt search with filters
         activate user
         create ticket as ":Ticket" order 5
         user -> ticket : <<create>>
-        tlc <<-- user : :Ticket
+        tlc <<-- user :
         deactivate user
     end
     app <<-- tlc

@@ -8,7 +8,7 @@ database bdd as "Base de donnée" order 6
 hide footbox
 
 note over client : le demandeur\nsaisi le informations\nrelatif au ticket
-client -> app: click sur bouton valider
+client ->> app: click sur bouton valider
 activate app
 
 app -> app : checkField
@@ -19,12 +19,12 @@ alt all field complete == true
     app -> user: createTicket()
     activate user
     create ticket as ":Ticket" order 4
-    user ->> ticket: <<create>>
+    user -> ticket: <<create>>
     create conv as ":Conversation" order 5 
     activate ticket
-    ticket ->> conv : <<create>>
+    ticket -> conv : <<create>>
     deactivate ticket
-    app <<--user : Ticket
+    app <<--user : 
     deactivate user
 
     app -> ticket: save()

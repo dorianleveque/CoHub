@@ -315,7 +315,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Éditer une demande_
 
     ### Scénario
-    __Pré-requis: le demandeur s’est authentifié et consulte une demande __
+    __Pré-requis: le demandeur s’est authentifié et consulte une demande__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>

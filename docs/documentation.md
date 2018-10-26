@@ -516,18 +516,15 @@ Il permet de décrire les classes et les relations entre elles.
 
 > ##classe Ticket
 
-
-* getRequester()
-* getHelper()
-* setHelper()
-* addHelper()
-    
->classe TicketListControleur
-* getTicket(s)()
-* setTicket(s)()
-* addTicket(s)()
-    
 ![diagramme de classe](http://www.plantuml.com/plantuml/png/jLVTRzis47ytuF-1o9ETIC3sQcH5WnJ30cH5qRXFmr3GqjNceW-FfD9bNV_t7JzE8aKgAmhinPRk-twyEnrVAysb7jg6rO8V9MzRO3Mmgk5AmNgb7aLtvaXsb1kjfJWC6kwgldiGVmFxORqwy-gH7u5TM94BnXNZZS3Vw-kVKHDUlM9VrglrYX-KbhpIpXJRY-eHD0eHtScLJDGx9Zfj7hNG3UmOyaLtD8GQL2N5MOk-8p8pz8fhEFRoEIPAu4Ro3J8d8ny_hbVNrvQ7eQrNLpwIZVVBVcBTq3H5xBo8NHDrlKfS5v5VDf4b_3c0qY1tx8C2kJLXe54j--SeZgrvFeA-gpTRZuHztvju38aokMAAg2vMno3zDrF0YLR8os2wPTx6hK-E9HQ8ivddJ-vlGnHYTUI-9p0Cny3XwRz0SmQfYCf-k_pTS6gXpWr_tf-6zj1nqKG6lr05VHq57OYyhfszpSd-ZS1VCQ4yPr0ZVSSEVTy0xxpkhw0K5lQcLSVf50Dv8mQry2Uc-1EufneQqFRvgwbxL-wtVVU4YLb8c2dqj0v3aKrQ7dDs52EXxjyjWFwPC9oufjInhYOH7od5Iegs7pNyfOCMLD3LU2vqQ6aMvCFe1UqJwQN9pVFOetPID0_MHbWn17e0jEkYMoxVuM6QKU2cIWrdC-ZaVL_niDGDZqifddYJOv7QNhIGKPcJiVOgKBvhboRD5DjtpHpipPTdpkB8mN6r14En189nbmEXo45GZ03uCRmqv088fd4LHyOoGokMs2mbGoPlufGIWtF-0WJp24t6Yy5PPWwmML1P8o4l0o-PU6T13huEQgG51UY6U3GGetQPjyo37kfdtorgEFm1kWeR7vsqlfOccWPUdMQa4xJVyBcrthwl_jFgnqHUhdy_TueaiI99gvWdHS7XjpxApTCNQznbI6VsO1nNEDFOxCo9COziLFJnPJI9CqzX6g8saLIJ6BDCHpsJPaRBaYq6B59Phh6elavSJlDOQ6Z_rohvhod9NYeJ4rsOOt30REc4xr0d1SrImsGJn3A0sTM7jc4shiCTRjECHJqvo9JOON2M-XA-nWK1MrZBGKjugnDbDEcE82rvQoxSN5cukhxbIJtPbf1vnbllBKLpv5104QekFrgZT_wKQ4tpT4rqgtBYNTr0V0C8bhXm9PyMFEoPwl6zE9wqGftjR7joElT2QTpO4A461fbV-7AIcwLnaehvMu5XgZZTaJwc578b86HFkQGLS5cTl4cs-IIQ-LIXHPoy9hJOtWGPxjKoq0gA_UPypiE3Z0mQbieY2_VzKNJ61leP97JwmxYav-nQyOnbJxSDZlVRpanbi-x7pN56ZvzxMSzX8OsfGhv5URnpiB6Aw6ByJrcMoReKiuCnb6MuYRjU6OWlVhnWbwKqLLlQbrnPxN2spgcIXGOQ-EJrBLmxrbZmNUXsRZcvaYGloHFsyZXeIHIPVLxKtTZ6h6P6yIsy3ktCUOrlwrN82y9sBkXsislfyaC-a5dM_UUkl5m4Y152okIB9_OQxoH3s_mB "diagramme de classe")
+
+Le site CoHub peut être consulté par tous librement.
+Cependant l’émission, la réponse, l’éditer et la supprimer d’une demande nécessite une connexion.
+La classe Login contient donc une méthode permettant de s’authentifier et de se déconnecter a CoHub.
+CoHub contiens une classe abstrait Ticket qui correspond a une demande émise par le requêter (demandeur) qui est une instance de la classe User.
+Les classes TicketCarPooling, TicketStudy et TicketSaring spécialisent la classe Ticket. Un ou plusieurs User peuvent répondre a une demande on les appelé les helper (aidant) il sont aussi une instance de la classe User. 
+Lorsque qu’un aidant souhaite répondre a une demande d’aide il envoie un message sur une conversation lier à la demande.
+``
 
 ## Diagrammes d'etat transition
 La réalisation des diagrammes d’état transition est la cinquième étape. 

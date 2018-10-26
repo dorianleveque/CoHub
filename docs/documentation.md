@@ -534,6 +534,13 @@ La réalisation des diagrammes d’état transition est la cinquième étape.
 Ces diagrammes on pour objectifs de montré d’un point de vue dynamique le comportement d’un objet. 
 On y représente les différents états d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
 
+
+
+Ce diagramme d’état transition pressente les différents états que peut avoir une demande. 
+La demande peut être crée, on peut l’édité, un aidant peut y répondre enfin la demande peut être supprimé. 
+L’appui sur les boutons permet de franchir les transitions.
+
+
 ## Diagrammes d'activité
 
 La sixième étape de modélisation UML est la réalisation des diagrammes d’activité.

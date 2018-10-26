@@ -12,7 +12,7 @@ app -> login : <<create>>
 client <<-- app
 deactivate app
 
-client ->> app: click sur bouton \n "se connecter"
+client ->> app: clic sur bouton \n "se connecter"
 activate app
 note left: L'utilisateur saisit\nses infos de connection
 app -> login: connect(username, password)

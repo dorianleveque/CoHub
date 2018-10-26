@@ -6,7 +6,7 @@ actor client as "Utilisateur" order 1
 participant app as ":App" order 2 
 database bdd as "Base de donnée"  order 6
 
-client ->> app :accède à la page
+client ->> app :accèder à la page
 activate app
 create tlc as ":TicketListControler" order 3
 app -> tlc : <<create>>

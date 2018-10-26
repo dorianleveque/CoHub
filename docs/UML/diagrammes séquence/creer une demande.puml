@@ -7,8 +7,8 @@ participant user as "currentUser:User" order 3
 database bdd as "Base de donnée" order 6
 hide footbox
 
-note over client : le demandeur\nsaisi le informations\nrelatif au ticket
-client ->> app: click sur bouton valider
+note over client : le demandeur\nsaisi les informations\nrelatif au ticket
+client ->> app: clic sur bouton valider
 activate app
 
 app -> app : checkField

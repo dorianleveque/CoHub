@@ -1,6 +1,6 @@
 @startuml supprimer un ticket
 title Supprimer une demande\n""__Pré-requis__: Le demandeur s'est connecté""\n"" et consulte une demande""
-actor client as "Demander" order 1
+actor client as "Demandeur" order 1
 participant app as ":App"   order 2
 participant user as "currentUser:User" order 3
 participant tlc as ":TicketListControler" order 4

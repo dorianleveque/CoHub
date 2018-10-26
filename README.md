@@ -1,5 +1,7 @@
 # CoHub
 
+![CoHub](docs/CoHub.png)
+
 # *Introduction*
 
 Projet Informatique réalisé dans le cadre de notre semestre 6.

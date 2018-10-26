@@ -536,7 +536,8 @@ On y représente les différents états d’un objet ainsi que les évènements 
 
 ## Diagrammes d'activité
 
-
+La sixième étape de modélisation UML est la réalisation des diagrammes d’activité.
+Les diagrammes d’activité on pour objectifs de montré le déroulement des activité entre les différant objet. 
 
 
 ## Annexe

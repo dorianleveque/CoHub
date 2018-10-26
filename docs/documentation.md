@@ -23,10 +23,11 @@ Chercher se que veut dire le stéréotype "static" en UML
 * annexes
 
 # __Introduction__
-Pas de tente pour le weekend d’intégration? Qui a une visseuse pour installer une étagère? Qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
+Pas de tente pour le weekend d’intégration ? Qui a une visseuse pour installer une étagère ? Qui a une imprimante ? Besoin d’aide en maths la veille d’un DS ? Qui rentre à Quimper ce weekend ?
 Toutes ces situations racontent un quotidien des énibien·ne·s.
 Parfois les réponses peuvent être si nombreuses que refuser devient un casse-tête. Mais d'autres fois des questions restent sans solution.
-C'est la répétition de ces tracas tout au long de notre formation qui nous a donné l'idée de CoHub : un site internet qui permet facilement et efficacement à tout enibien-ne de partager des biens et des services .
+C'est la répétition de ces tracas tout au long de notre formation qui nous a donné l'idée de CoHub : un site internet qui permet facilement et efficacement à tout enibien-ne de partager des biens et des services.
+
 
 No tent before the WAF ? Who has a screwdriver to install this shelf ? Who has a printer ? Need help in math the day before an interrogation ? Who goes back to Quimper this weekend ?
 All of those situations are a common occurrence for an Enibien. 
@@ -36,19 +37,15 @@ It's the repetition of this hassle all along our formation that gave us the idea
 
 
 # __Mots clés__
-partage, échange, entraide, service centralisé
+partage, échange, entraide <b>, service centralisé</b>
 
 # __Qu'est-ce qui pose problème__
-Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans 
-de nombreux domaines, du simple partage de fichiers à des applications ou des sites spécifiques de prêts et d’échanges entre particuliers.
+Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans de nombreux domaines, du simple partage de fichiers à des applications ou des sites spécifiques de prêts et d’échanges entre particuliers.
 C’est une pratique qui progresse et qui s’accompagne d’une image positive.
 Des applications mobiles ou des sites internet existent déjà mais sont organisés autour de besoins spécifiques.
-
 Comment localement, à l’échelle de l’ENIB, partager à la fois des biens, un coup de main, des compétences ?
+Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète !
 
-Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser 
-ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, 
-des économies et rend service aussi à la planète !
 
 # __Solution__
 Notre solution est le site internet CoHub. C’est un site de partage et d’échange fait par des étudiants de l’ENIB pour répondre aux demandes spécifiques des étudiants de l’ENIB. Le site a pour ambition de faciliter le partage, la collaboration et l’entraide.
@@ -57,62 +54,63 @@ La consultation des demandes émises n’est pas restreinte, par contre dans un 
 
 # __Maquette__
 
-Afin de répondre à ces différents besoins,le site Cohub collecte les demandes d'aide, les range par catégorie et les rend disponibles à la consultation. 
-Les trois catégories pré-définies sont tutorat, covoiturage et prêt d'objets.Il serait très facile d'impléménter des catégories supplémentaires.
-Le site CoHub doit permettre sans authentification de consulter toutes les demandes en cours 
-et aussi de consulter une demande particulière afin d'avoir plus de détails sur celle-ci. La consultation de demandes peut être filtrée par catégorie ou par mot-clé.
+Afin de répondre à ces différents besoins, le site CoHub collecte les demandes d'aide, les range par catégorie et les rend disponibles à la consultation. 
+Les trois catégories prédéfinies sont tutorat, covoiturage et prêt d'objets. Il serait très facile d'implémenter des catégories supplémentaires.
+Le site CoHub doit permettre sans authentification de consulter toutes les demandes en cours et aussi de consulter une demande particulière afin d'avoir plus de détails sur celle-ci. La consultation de demandes peut être filtrée par catégorie ou par mot-clé.
 
 
-Voici la page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes:
+
+Voici la page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes :
 
 
-Voici un exemple de demande:
+Voici un exemple de demande :
 
 
-Voici la manière de selectionner une catégorie:
+Voici la manière de sélectionner une catégorie :
 
 
-Voici le bandeau de recherche filtrée par mot-clé:
+Voici le bandeau de recherche filtrée par mot-clé :
 
 
 CoHub doit permettre, avec authentification, de créer une nouvelle demande ou de répondre à une demande via un système de messages entre le demandeur et l'aidant.
-CoHub doit aussi permettre, avec authentification,à un demandeur d'éditer sa demande déjà existante afin de la modifier.
+CoHub doit aussi permettre, avec authentification, à un demandeur d'éditer sa demande déjà existante afin de la modifier.
 
 
-Voici la fenêtre d'authentification:
+Voici la fenêtre d’authentification :
 
 
-Voici la page de création ou d'édition d'une demande:
+Voici la page de création ou d'édition d'une demande :
 
 
-Voici la page permettant à l'aidant potentiel de dialoguer avec le demandeur:
+Voici la page permettant à l'aidant potentiel de dialoguer avec le demandeur :
 
 # __Modélisation UML__
 
-L’acronyme UML signifie Unified Modeling Language. 
+L’acronyme UML signifie Unified Modeling Language.
 C’est un langage normé de modélisation graphique d’un système utilisé pour concevoir et documenter un système indépendamment d’un langage de programmation.
 L’UML permet de décrire le système d’un point de vue statique et dynamique.
 
-PlantUML est le modeleur  que nous avons utilisé pour modéliser CoHub. 
-Nous avons choisi ce modeleur car il repose sur un langage simple  pour la réalisation des diagrammes. 
-Durant cette phase de conception nous avons utilisé un gitlab (un site de partage et de gestion pour le développement informatique). 
+PlantUML est le modeleur que nous avons utilisé pour modéliser CoHub. 
+Nous avons choisi ce modeleur car il repose sur un langage simple pour la réalisation des diagrammes. 
+Durant cette phase de conception nous avons utilisé un Gitlab (un site de partage et de gestion pour le développement informatique). 
 Il était donc très facile de pouvoir se partager les différents diagrammes entre les membres du groupe.
+
 
 
 -----------------------
 >## Diagrammes Cas d'utilisations
 
-Apres un analyse fonctionnelle, l’élaboration du diagramme de cas d’utilisation est la première étape UML d’analyse d’un système.
+Après un analyse fonctionnelle, l’élaboration du diagramme de cas d’utilisation est la première étape UML d’analyse d’un système.
 Ce diagramme recense et synthétise les grandes fonctionnalités du système du point de vue de l’utilisateur.
 Il permet aussi d’identifier les éléments extérieurs qui interagissent avec le système.
-Voici le diagramme de cas d’utilisation de CoHub: 
+Voici le diagramme de cas d’utilisation de CoHub :
 
 
 ![diagramme cas utilisation](http://www.plantuml.com/plantuml/png/XLFDJW8n4Bvlik_Gx0Kzi8aOGSo6O53ZMSFDIzaEqAJR9Trfeb7VnIlFmOivRIq1bv-zTRwVVfsP7JV83TfACI7vml2g0bRoXbcKIZOSPQtJ12MgK1QTFI1D5CoHOSsCN2oHF0oK0U8brePD_zXW3IDvjdFEM56iZAou-HYD8lzU2gundXwWubeGrzsqQrLyTRjRRWlOaxb0N2yeVpQfd-qiOvzfmkYp3T2BW4qdLpxQfDQDLGY6lMccEg0Rg6OaevC0UdamRRB_wbvRRJL4Vej-xUbFKg41qq9lWfdPhCdfb4tV4n-5n3F4WIU-RDQhMWi3RFDpBk6jLxnskCKbQ9HpUI3eC93ioesm5I6mTmT3OxcWJbyUGteHeMaKUUuRTKSR0ky8MhW5SMXqtaxOgQbh1wl3WzM-yuW-OOK2C8W11YpFHxuFBe3KfR82OW8tefDm_pGyF0P_fycONaf_uYy0 "diagramme cas utilisation")
 
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
-Il peut aussi filtrer les demandes c’est-à-dire effectuer une recherche par mot-clé ou par catégorie. Il lui est aussi possible de consulter une demande en particulier: afficher plus de détails la concernant. 
+Il peut aussi filtrer les demandes c’est-à-dire effectuer une recherche par mot-clé ou par catégorie. Il lui est aussi possible de consulter une demande en particulier : afficher plus de détails la concernant. 
 L’utilisateur s’authentifie s’il souhaite répondre à une demande ou bien poster une demande. 
 Après l’authentification, il a la possibilité de créer une nouvelle demande ou d'éditer ses demandes pour les modifier ou les supprimer. 
 Lorsque l’aidant souhaite répondre à une demande il peut discuter par message de la solution avec le demandeur.
@@ -528,22 +526,22 @@ Lorsque qu’un aidant souhaite répondre a une demande d’aide il envoie un me
 
 ## Diagrammes d'etat transition
 La réalisation des diagrammes d’état transition est la cinquième étape. 
-Ces diagrammes on pour objectifs de montré d’un point de vue dynamique le comportement d’un objet. 
-On y représente les différents états d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
+Ces diagrammes ont pour objectif de montrer d’un point de vue dynamique le comportement d’un objet. 
+On y représente les différents états d’un objet ainsi que les évènements qui permettent de naviguer entre ces états. 
 
 ![l'etat d'une demande](http://www.plantuml.com/plantuml/png/ZP91JiCm44NtaNA7KJPD4LL5cXKIg1TW1QnA5rOyj1QEKyRZbYlb7BaOupQB10gjb4MKUV_F_uwNdXLng6sQi66BO2V8Ya5FWaFGM2kdCKtI1EG1WHdX-GwKXwmVGaLTsxNPO5wCvbsh3NSj3ed5YF1XHwR-WPGZ11rKJI0laO1mrpWVuOYlRjOmqyt1pHvZidiuR0NEAsigCIR8OZx5fd5Hs_jbq_cBgJwGysdq45rK5sVKn_H88a1vwV42_bgsLzRe8-xL7aVkvHbyH-WqdUfj5Mqas9jRLO7aExzw97YGkfy1FMEWzLnf_OJUgmtc_CMtC21FgqgONMpoxuPVBSjhM_Qh5sVuqm--k5kZHHuSciLtlcm9rtikOYEvC6cob7ENM_yD "l'etat d'une demande")
 
 
 
-Ce diagramme d’état transition pressente les différents états que peut avoir une demande. 
-La demande peut être crée, on peut l’édité, un aidant peut y répondre enfin la demande peut être supprimé. 
+Ce diagramme d’état transition presente les différents états que peuvent avoir une demande. 
+La demande peut être créée, on peut l’éditer, un aidant peut y répondre et enfin la demande peut être supprimée. 
 L’appui sur les boutons permet de franchir les transitions.
 
 
 ## Diagrammes d'activité
 
 La sixième étape de modélisation UML est la réalisation des diagrammes d’activité.
-Les diagrammes d’activité on pour objectifs de montré le déroulement des activité entre les différant objet. 
+Les diagrammes d’activité ont pour objectif de montrer le déroulement des activités entre les différents objets. 
 
 
 ## Annexe

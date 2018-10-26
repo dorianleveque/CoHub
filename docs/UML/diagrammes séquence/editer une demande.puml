@@ -4,44 +4,64 @@ title Editer une demande\n""__Pré-requis__: Le demandeur s'est connecté et con
 actor client as "Demander" order 1
 participant app as ":App"   order 2
 participant user as "currentUser:User" order 3
-participant ticket as "t:Ticket" order 4
-database bdd as "dataBase:" order 5
+participant tlc as ":TicketListControler" order 4
+participant ticket as "t:Ticket" order 5
+database bdd as "dataBase:" order 6
 
-client ->> app: click sur bouton éditer
-activate app
-client <<-- app: affiche la page edition
-deactivate app
+app -> user: checkRights()
+activate user
+user -> tlc: getTicket(id)
+activate tlc
+user <<-- tlc
+deactivate tlc
 
-note over client: Le demandeur modifie \nles champs
-client ->> app: click sur le bouton valider
-activate app
+user -> ticket: getRequester()
+activate ticket
+user <<-- ticket : getRequester(): requester
+deactivate ticket
 
-app -> app : checkField
-activate app
-app <<-- app
-deactivate app
-alt all field complete == true
-    app -> user: editTicket(t)
-    activate user
-    user -> ticket: edit()
-    activate ticket
-    user <<--ticket
-    deactivate ticket
-
-    user -> ticket: save()
-    activate ticket
-    ticket -> bdd: executeQuery()
-    activate bdd
-    ticket <<-- bdd
-    deactivate bdd
-    user <<-- ticket
-    deactivate ticket
-    app <<--user
+opt requester == currentUser
+    app <<-- user: afficher bouton de suppression
     deactivate user
 
-    client <<-- app: redirige sur la page qui affiche la demande
-else else
-    client <<-- app: error field uncompleted
+
+    client ->> app: click sur bouton éditer
+    activate app
+    client <<-- app: affiche la page edition
     deactivate app
+
+    note over client: Le demandeur modifie \nles champs
+    client ->> app: click sur le bouton valider
+    activate app
+
+    app -> app : checkField
+    activate app
+    app <<-- app
+    deactivate app
+    alt all field complete == true
+        app -> user: editTicket(t)
+        activate user
+        user -> ticket: edit()
+        activate ticket
+        user <<--ticket
+        deactivate ticket
+
+        user -> ticket: save()
+        activate ticket
+        ticket -> bdd: executeQuery()
+        activate bdd
+        ticket <<-- bdd
+        deactivate bdd
+        user <<-- ticket
+        deactivate ticket
+        app <<--user
+        deactivate user
+
+        client <<-- app: redirige sur la page qui affiche la demande
+    else else
+        client <<-- app: error field uncompleted
+        deactivate app
+    end
+
 end
 @enduml

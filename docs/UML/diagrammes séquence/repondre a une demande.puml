@@ -11,9 +11,9 @@ participant ticket as ":Ticket" order 4
 database bdd as "database:"  order 7
 
 note over client: l'aidant inscrit\nun message
-client ->> app: click sur le bouton\n"Proposer une demande"
+client ->> app: clic sur le bouton\n"Proposer une demande"
 activate app
-app -> user: handleRequest()
+app -> user: handleTicket(id)
 activate user
 
 user -> tlc: getTicket(id)
@@ -26,7 +26,7 @@ activate ticket
 user <<-- ticket: isHelper(currentUser): ishelper
 deactivate ticket
 
-user -> ticket: addMessage()
+user -> ticket: addMessage(msg, currentUser)
 activate ticket
 create msg as ":Message" order 6
 ticket -> msg: <<create>>

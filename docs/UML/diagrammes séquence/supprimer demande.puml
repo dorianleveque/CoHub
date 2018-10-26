@@ -7,7 +7,7 @@ participant tlc as ":TicketListControler" order 4
 participant ticket as "t:Ticket" order 5
 database bdd as "dataBase:" order 6
 
-app -> user: checkRights()
+app -> user: checkRights(id)
 activate user
 user -> tlc: getTicket(id)
 activate tlc

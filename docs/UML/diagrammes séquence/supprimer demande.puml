@@ -1,11 +1,11 @@
-@startuml editer un ticket
+@startuml supprimer un ticket
 title Supprimer une demande\n""__Pré-requis__: Le demandeur s'est connecté""\n"" et consulte une demande""
 actor client as "Demander" order 1
 participant app as ":App"   order 2
 participant user as "currentUser:User" order 3
 participant tlc as ":TicketListControler" order 4
-participant ticket as "t:Ticket" order 5
-database bdd as "dataBase:" order 6
+participant ticket as ":Ticket" order 5
+database bdd as "Base de donnée" order 6
 
 app -> user: checkRights(id)
 activate user
@@ -23,7 +23,7 @@ opt requester == currentUser
     app <<-- user: afficher bouton de suppression
     deactivate user
 
-    client -> app: clic sur bouton de suppression
+    client ->> app: clic sur bouton de suppression
     activate app
     app -> user: deleteTicket(id)
     activate user

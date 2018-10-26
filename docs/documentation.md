@@ -108,7 +108,7 @@ Il permet aussi d’identifier les éléments extérieurs qui interagissent avec
 Voici le diagramme de cas d’utilisation de CoHub: 
 
 
-![cas utilisation](http://www.plantuml.com/plantuml/svg/XLFTIiCm5Bulz1qElPbUhE34pKaPawbuhUpEcwmvsm9fEf8JKDHtyNRFiHSpIScOjjiAlKY-7xwUxtHgY6cobKmJYKi2ga6BrPg02uqbYLgb2IkfrZ0d8OLXX5O3Cv0Td3CeYeqM5TCVaqdatmlE5CNJ0rPCSSTDapGvj2g--lqzjmNyaVb0JAqaGZQhd-qYWyyq0VTOWoKp2FFPLOWsgvMnab33cmBPGsMmMZYPEt4qxWsc9lkl7hJLLc7aj-ZNWVua96dKBVIcCTExhNCwPJCCn4Skw0nn58Wlk-scLbmZx7xE9RmDYjSUixH6HM8fEeAE6vBT-0fR4HhsOJ6kbWitwSjZo20YheqYpyEWxjo6u3kXudv1F1gTzmrxjPjQv-suytReFQ9Fiq8DC8e1Hf3dap077q2eKbgECO6lw2GyF0sFZy7VQJ9rN-f-gby0 "cas utilisation")
+![diagramme cas utilisation](http://www.plantuml.com/plantuml/png/XLFDJW8n4Bvlik_Gx0Kzi8aOGSo6O53ZMSFDIzaEqAJR9Trfeb7VnIlFmOivRIq1bv-zTRwVVfsP7JV83TfACI7vml2g0bRoXbcKIZOSPQtJ12MgK1QTFI1D5CoHOSsCN2oHF0oK0U8brePD_zXW3IDvjdFEM56iZAou-HYD8lzU2gundXwWubeGrzsqQrLyTRjRRWlOaxb0N2yeVpQfd-qiOvzfmkYp3T2BW4qdLpxQfDQDLGY6lMccEg0Rg6OaevC0UdamRRB_wbvRRJL4Vej-xUbFKg41qq9lWfdPhCdfb4tV4n-5n3F4WIU-RDQhMWi3RFDpBk6jLxnskCKbQ9HpUI3eC93ioesm5I6mTmT3OxcWJbyUGteHeMaKUUuRTKSR0ky8MhW5SMXqtaxOgQbh1wl3WzM-yuW-OOK2C8W11YpFHxuFBe3KfR82OW8tefDm_pGyF0P_fycONaf_uYy0 "diagramme cas utilisation")
 
 
 Lorsque l’utilisateur se connecte au site CoHub, il peut consulter l’ensemble des demandes d’aide émises affichées sur la page d’accueil. 
@@ -222,7 +222,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
     <tr>
         <td>Description</td>
         <td>
-            1. L'utilisateur accède a la page
+            1. L'utilisateur accède a la page<br>
             2. L’utilisateur saisit son identifiant et son mot de passe <br>
             3. Le système vérifie la syntaxe des champs <br>
             4. Le système vérifie l'identifiant et le mot de passe à l’aide de la base de données <br>
@@ -244,6 +244,8 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <th>Sommaire</th>
         <th>Scénario d’erreur "S’authentifier" </th>
     <tr>
+        <td>Description</td>
+        <td>
             SE1: l'identifiant et/ou le mot de passe ont une mauvaise syntaxe <br>
             SE1 démarre au point 2  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
@@ -253,6 +255,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
             SE2 démarre au point 3  du scénario nominal <br>
             3. Le système indique à l’utilisateur que son identification a échouée <br>
             Le scénario nominal reprend au point 1
+        </td>
     </tr>
    <tr>
         <td>Description</td>
@@ -312,7 +315,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 * ## _Éditer une demande_
 
     ### Scénario
-    __Pré-requis: le demandeur s’est authentifié et consulte une demande __
+    __Pré-requis: le demandeur s’est authentifié et consulte une demande__
     <table style="width:100%; text-align:left;">
     <tr>
         <th>Sommaire</th>
@@ -349,8 +352,7 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
         <td>
         SE1 : L'utilisateur courant n'est pas le demandeur<br>
         SE1 départ au point 1 du scénario nominal<br>
-        Le cas d'utilisation se termine en echec (l'objectif n'est pas atteint)
-        
+        Le cas d'utilisation se termine en echec (l'objectif n'est pas atteint)<br>
         SE2 : Les informations ne sont pas correctes<br>
         SE2 départ au point 5 du scénario nominal<br>
         6. Le système indique à l'utilisateur qu'une partie des informations est erronée
@@ -458,39 +460,51 @@ En ce qui concerne CoHub, nous avons réalisé 8 <b>(à vérifier)</b> scénario
 La troisième étape dans la création d’un système consiste à formaliser les scénarios.  Pour cela, on utilise les diagrammes de séquence qui ont donc pour but de montrer comment les objets qui participent au scénario communiquent pour réaliser les fonctionnalités souhaitées. Un diagramme de séquence correspond à un scénario .
 
 ## _Consulter l'ensemble des demandes_
-![consulter l'ensemble des demandes](http://www.plantuml.com/plantuml/svg/fLLBZjim3DqRy1s8R6PcaKM_2oCJJDjLWMuAT0wWo9n4g68R4jqsj-cozvYBbQ9antOyIOeQ269BZ-Hxf1xqu4avQlSMT5tvrX8wi3TOUTnlB4A9ddzxLV5Bdf4XNhi2c6TAK-r0MuCLWVAmU2HZZLU4hLj0xKeEVmLvrd1reqsZ0gnf15fyQ9eEyvenfIArKHvXKvO2w1QA1IJO-r0pLLkkrvAgK5e__oaHdd-3LT2eBO8GCp-OHe1mYCFmJbR7oj-C_exqnNZwL5VaQeizspSSorcNQq4Ni5h5uFLQz0wtF2gdTp6NlxqRLcK0zv5H30vo2i1Vg5l2hoswm-tT0ChR4RfQBPVngyJnRfxPkfQcsRhQXd_QeSCR3mx3Z7WKm4zIsNgM8J8V_L7NsuX9d0Gp5dUw6_UYla0v87fY0JCgIu8RzhSh_IxY96jeNWJELvScfFefJTmSz2IMnggCyv0GQVW08z-JUPN6DrOT-e5DvvNQRE0-SVJz37lEMwIFoXlzkNggnnaIrrv4N2XWJ2kXX7n7y9o0kg5qpk2deHqycM39DF2ZEXwMPTH0scXOaYoiH87tlJn8pqXcc0pxctrnw4OJ9o1BlOQm9ZewAaSTau4bBMFA9mPAqeAFvic_xASkT18fvXcTh7xbr69zUoxPx5ghNRRRTPPxmNR_Ohshx7VHWhCs_FzJS6hBSsTtQCxPqpjZqfCkqaJLZ6bd1CyU_87mSxe5dsukgIJtqW0bttdsm42-fly2 "consulter l'ensemble des demandes")
+![consulter l'ensemble des demandes](http://www.plantuml.com/plantuml/png/fLLBRjim4DqBq1q6tYHPUD7qip0S8KsttHHe3a1BauWeBGearSQtwR8zXo_MuP2IAKjs7DImON7uE3Dl7XzqRvqmhjigA7LZE-NGWBh2nk9sen0gjFJRYeOUyin9Hx4BW7acIgSDb4fYuq1OM3mwgQGL3Zkp06qgEluEygobwhAKhV2mjcNewdFRzfXRmbJ2YOsm29kgOi23NrJqrKsp_uiBYE1FULPBYZzfxJRw9SzY_MLHSFALAClz7mBiVuCIq8fd16vL_gJ6F8IE6FJFJfMXb--o_87kgxJkYswSqGg7_j_JMSgwB1YzWlKw72uAda2wPL6OiWwvxFLDMfK0D5b24TWJN06-ODav_DQXsLtV953Q3j3rUhaCgmh7ktccjEOnAjqy-tzNey4h2mQzQYGEq2Uox2pHO9gFzi3hGy34dXWp9ZVT3Nk1ds_P8uR6F6PKrZ4kdMzV-cF0SLO_l02Shyv32FL3C9b5A8bD5NHWA0ywmV3wIATAsbQ9tI3KiKvnl1BkOczsq6xejSzHTzjD8wGQPs5Kec88h63SMaGnWRx9SoHqw-8TWr_IrV0alK6Zs0U699GYL49l91Gdyv50ycwW2F4pekfL8RUJ9tQzB4453WqSV8nvzAqSU1o95hcCMvwO9rBp7ffl_hIN-gD79zauerirHARs6iRpciKkjTdhLhlCRYSiznRRNMIza_QRjU3_gp-rvBaxcnfpzjQUCEXaWkdr7L4-67Q6zEobJyYVuyxu-CRYIlm-Ib2yphDx0j8B-ny0 "consulter l'ensemble des demandes")
+
 
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter l’ensemble des demandes en cours. Quand l’utilisateur accède à la page d’accueil du site, le site récupère l’ensemble des demandes auprès de la base de données puis génère une page à afficher sur l’interface utilisateur. 
 Lorsque l’utilisateur souhaite filtrer les demandes le site récupère l’ensemble des demandes en cours filtrées auprès de la base de données puis génère une page à afficher sur l’interface utilisateur avec les demandes filtrées.
 
 ## _Consulter une demande_
-![consulter une demande](http://www.plantuml.com/plantuml/svg/VPI_Rjim4CPt0Ng7WvSsWuVqto0OGeAk1Oe2pUQ58YyEMveKo5CGlqt7-3dqOZqUPLaAqCABoViTluyVpxvBf28DHmSw-3GumWY3Hp1uLDvWNP4bX_ygFbc3y1W2TU6bhkfAQGeHjBFe2LI2pGDPPvCY7E86GZHym2tKLS-QLjjUPQpl1Mtk-_x2V636A5ATIWYTCG9SDfeDJDYNh3cfRTjMZcgKrkChsnh_W5FGgmEAB_lCBZB17H7pTtAw2F-q-ZVIDvleQ_0KWyFPx4VkvKEthT0Dx7QbkMtbkilI0QaSzDwQ6rXeSfbZP8RHV9S6y0NrGFXZm7ZAT5tvm61uPaKc6lZk8OvdFVJZQqHmxz0dF7OEzvnw0XAP14ZWU6c2z-CPKouoErmZ1tNA2Mi-Qpp3tlD3bjw5EzOhxdQxxRQi3AwhSs93OeCIsKEwPlHflftKro6jAsL_YkbcuKBg00kjObJKQ7gXY-3dkX8-Hr-ejQQ46UtXYHgvkqmjXEuNawLXxtM84LCVlCa9yQmanG5fHUFv4A95M8IInHfeQ9LCthpCW53op0j0rczcnDZKEtMwpidRCPa3coysjQpIkZpYmcFPQc1jOUR-xtBw2GaWlv058ElykKDl-7_YBm00 "consulter une demande")
+![consulter une demande](http://www.plantuml.com/plantuml/png/VPI_Zjim3CPt0tu78ajxGuR-7Op0kBPhWQ90RyiYIsnEhI894XrStgRZvJdyOgKanv4FQE754d_KHtsaVHz911gF1gIpSJI40KQBeF0ehCAs8Kq6_nLyr0hXftCqkAUsQHiXoGMGHgCb414s3wIDZe9m31jmGV41Rw1jF6jggRr8cFSPxJvvVsNUCgC4YK54X46f37nE2zPJpjhfWXkOuOz9UTRSzdq-i1DIJiyCJt_02F3YWBawVU9Q4i4P0TCx6LdaVsZv6-chZlJ5MGhEu5BoEyxbGxTzfZlOxKfot-TBrw6053IUi9psMgixg8IPOKSPP3vTgmDyGZaIVXynd1FTDjOnw4uioqG7too4wI97Fpq71FCARSJZO73F3OX0MIO24XXUpjR456HslBaFufpCbdpMT86zvPwMtAewrYlLxNRRRLafN4SNsyR81MRV7kBDgFVBxN9yxTGwKlPdc-wgAd8SeD8gXTPTkkfzQ9kC9_iBj9RCNWPzUAGkNptFBxZX5vCbOM-b2m6ZTrObWtXUec1_fA3fSd3SIwWyIMBTofMqSns2ZEGMLq1UlnWIfQCtudoRaPSZifYrt6fEMJbrRM1LODdgO5t2mls_olaRoa3-H2eWhzDpZrRnx-8l "consulter une demande")
 
 
 Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite consulter une demande en cours. Quand l’utilisateur souhaite accéder à une demande le site récupère l’information auprès de la base de données puis génère une page à afficher sur l’interface utilisateur. 
 
 ## _S'authentifier_
-![s'authentifier](http://www.plantuml.com/plantuml/svg/ZLGzRzim4Dq5w3ySl2G1uY5fkmYEa0zaoz8XMnQQEiT4558WZudpRpgslyD_h7UKHCjAKKG2195yT-_TtPEk0obFyRM5SA8YRT6IsHZqPK66MloqkpKDmiOvMhjTMIXDpeDk3GD01LWyacbDK8JHBy3v1ZrSb4N754QRJWcgwnAokkcw4N9P5eqYjLO1OTqqwVnM5ipLE6ltVt24_YYBiXW8btKjwIfGMkz_o-d-5xGAElMCIPjvOoK2uH2FyjwwPsDx_WTv7TD-OpmBMzO3eeBLgW-fwyotMYsNVRO6ZxD_biHh_G8XUbYxICx2auK5LwIv7DI4VZ5NQ9temmrLy70I3ts4e4mmz6G31Z1suuAqPSXZd3rMNeqdfp6Wj-eLpxaV8RnpdMSJoWGMuNsza_0jwfUl1VUXgIl3pgGlcK2r1E73ajhTEUzP6LnT0Vd88mA-CZyFlWBSeOw4FoFwZzEp7f5JCc8QauZpteGwxmtnB43gkT-PaCc7Cxa6QmWaEKD7bcdfaTULF4QFV3-4PD4fwDWi8qQcCkrDffkRQJoOcqhsi6NFoEFVyQDPaHMpK_ZRJ1-gLc8CDelkEovZIDaiDsQMyZ_f-gbDqyna3fMbj8VxcjVyG_aB "s'authentifier")
+![s'authentifier](http://www.plantuml.com/plantuml/png/ZLGzRzim4Dq5w3ySl2G1uY5fkmYEa0zaoz8XMnQQEiT4558WZudpRpgslyD_h7UKHCjAKKG2195yT-_TtPEk0obFyRM5SA8YRT6IsHZqPK66MloqkpKDmiOvMhjTMIXDpeDk3GD01LWyacbDK8JHBy3v1ZrSb4N754QRJWcgwnAokkcw4N9P5eqYjLO1OTqqwVnM5ipLE6ltVt24_YYBiXW8btKjwIfGMkz_o-d-5xGAElMCIPjvOoK2uH2FyjwwPsDx_WTv7TD-OpmBMzO3eeBLgW-fwyotMYsNVRO6ZxD_biHh_G8XUbYxICx2auK5LwIv7DI4VZ5NQ9temmrLy70I3ts4e4mmz6G31Z1suuAqPSXZd3rMNeqdfp6Wj-eLpxaV8RnpdMSJoWGMuNsza_0jwfUl1VUXgIl3pgGlcK2r1E73ajhTEUzP6LnT0Vd88mA-CZyFlWBSeOw4FoFwZzEp7f5JCc8QauZpteGwxmtnB43gkT-PaCc7Cxa6QmWaEKD7bcdfaTULF4QFV3-4PD4fwDWi8qQcCkrDffkRQJoOcqhsi6NFoEFVyQDPaHMpK_ZRJ1-gLc8CDelkEovZIDaiDsQMyZ_f-gbDqyna3fMbj8VxcjVyG_aB "s'authentifier")
+
+Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite s’authentifier. 
+Après avoir saisi sont identifiant et sont mots de passe une première vérification syntaxique est réalisé. 
+Lorsque cette vérification est effectuée avec succès, le système récupère les informations auprès de la basse de donnée.
+Par contre si une erreur syntaxique est détectée le système indique à l’utilisateur qu’il y a un problème.
+Lorsque le système a correctement récupéré l’information auprès de la base de données, il affiche sur l’interface utilisateur que l’aurification a été réaliser avec suces. 
+Si le système ne trouve pas les informations dans la base de données, il indique une erreur. 
 
 ## _Créer une demande_
-![créer une demande](http://www.plantuml.com/plantuml/svg/TLIxZjim4Em5w1yMQfmKBl8iX3lXaWjIfKY0IsV0eCbLJ9Wc5Jw4kxz9Uz_X7ykI50NPlciCUdTsTdQuuftppFfmLC3jwHaj18qWyCYqmBhoqYk4-wlCHZVDTlkJuckBVuDqssqBFrR1IoKTynWik1Kw3opuFMelUtbwXer63wT_m8OXF16X8nZHxqpmHiCg2c1Uqb7CZLPDKrTrnRWt5hYIn0NCGVCjfuDjm5X1NE_gQg1199S3YvXXIBZsop0q01Fe_JaeE8f550_M4dFxcmA5y4DT2URPZZbIA4J2nS1N2hG5zBckzfBKziRudNcCKhNn26R4MMuRPnH5xqOx9fsCCQbxOuzfOhVH5XKTUt8CIE01VLrD1EikZjD6Fdv8fasEZKnHSvliaIFP7d79Bfe-Lr5tlaT--2vHYKjWpD_ShDVvdy2Bh28RbO8-bW8tnq4XvMvlmTj0kq6kmjGe6acDB5BnGnB_vkq4A9GHaaCPDWsPBodN55C_PbowdNNNJSYMfERIhZiZuaQFcUQUJcXTShIGVO8B8SNS69mqn2Q9vRh7mfHbON4kQMpXOP5QLEIPpvmgipWsufL7BqfBozS2FY8F7dy5j4yNPGGugqbNEWSNUkROVF7-PU7ByBI4PKzQi2YabNymVxuC1aPdUWE0zRsaPOkn-G51HPzF_7c53Asb3pklMD1boQwbfur4BQATTNL79tgo_WC0 "créer une demande")
+![créer une demande](http://www.plantuml.com/plantuml/png/TLIxZjim4Em5w1yMQfmKBl8iX3lZaWjIfKY0f3l0eCbLJ9Wc5JwCkxz9Uz_X7yikAGf-v1g1MixEpWwNl0jH-9Zs1gG_FgE7P14KxeLLs3PHHuDmVxNpOBjklVvEyQN7Fqc7zRg7R_DsyX0M62A85BTeenxqyHcwZjCmml4lY75CJyGP24eLDYv5Ps716aJKj5GpsQBhsgPjX8pEWpIQ-404wBxKMXquhuZhJTkCr8kMUXIC6SUCwp-DOmSmWTwUWrAW6ADayfwOVz5_pvzA-gvjb8XY8mAfL2fZF_CF2tJMaZCL-h5jjfh2WtDnunvPj7KHmHrm5jvpjxDB3pO87JJ7j1sSt-VUmuFrQ6Wva7z0KdSOssOYMAvMt5dFX7AN_PlCEmX3rNrsIXy45IPSTewCMEOiAY-tA7TVDHfr2UJzcvlbilmflDWrvAWnC70gIBSV3TBUxIr4dsXIo62O2h6dLCWZ9V_Cwb-zdW2LaY4bL61Jb-MyIavrzNt1vOCYyWBiIMd9NAtEUAIpXy9oJolq8JjQkJx0XOvgBWSd2LGZaroNEB7aDA_wbXNsS8KjlPuvL9i8ue1NtlnV4yzU3_Y8CaNyaT0_NQGHu2md7-KSFD4pn-O3FwtuGfFJzDNvwC6Zqbx_ndA31Oo2rlGIW1W6JKF6iVaPGKCNXZylaA7tTBVBQ2LRX-jQUfv4j8hjR9ixMj73zGy0 "créer une demande")
 
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite créer une demande d’aide. Après l’appui sur le bouton « création de demande », l’application affiche sur l’interface utilisateur un ensemble de champs à remplir concernant sa demande. 
 La cohérence des informations est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande, sinon il l’indique à l’utilisateur par un message d’erreur.
 
 ## _Éditer une demande_
-![editer une demande](http://www.plantuml.com/plantuml/svg/XLJBRjim4BmBq3yiT4bwqA5DUn6I82dQdd9eWVOMmA39TKoO8XK-ZFQJ_1t-iIv9KPMj9hb8ukxCQdPsfJldcVMXLu12UhGGD8B0dcc1TUMbLmXV5vb7tJIhrNTxFBGMduDqgrK73rCwM70Nw3nmepLoVpm0feCBokEy43o72wc0mV7GIzyqTLLNZ7jZWIk9sWDpq7p9MDk0iNI3ztKra6Z9vS0YP1WIhBiVXWPW17qu1GL7iOZYmLeg_8lENRoKebUdU7hOONwzxtwcGq5-h2l1F5ipXx0M8c5Yu3C5kWBw53iPUsXlRwF8BlR4T-38dhK9tcZgEbcRUfPxHjuGRk9TNxTj9hBDHl8jWc8mi2TCiv96an0yPTQLDlHizbWSF9jBRuJSI8H7hT01tx9-SAy9fV6FMlTCIR7KIcVolqr48EOM-UwRH2NEWJ5VEbeAPuhCLWesaKghqWyAANTp0zu6saIQAumlYgFiaWLvBfV-tPWl5ICYXzBOYPF7cLcNv_2Sd16Yp7bm9hQ4_r_UiJs-MdvSAwBGvf2StyY3nny1xPy5Zn0df6JU59nfccAJU7X3VN4pOl-PDGFcO0uljj6IYrRI6gO56LUI_WBpDPr-8QZeCucN5ugXjVIrvx47NGQ_R39j2MfAtD6LVbX_0G00 "editer une demande")
+![editer une demande](http://www.plantuml.com/plantuml/png/ZLLBRkCm3DqRy1q8Rvekl9ZlmcYBpdVLnKmnioiGA1QJ2f5bLvzWvaWvHousb6GdbkEsWm0EA3u-Ke-aVMiiqzOr4f0BYngSGk3OCCKnpwom4k7RcUT15SLo-KCVzgN69oVCSbd1tT7jD9WBD1RgLYcixM4F60pZfCKn4Jov2o61mM7V25iKUPPdhBQjXbeAL1QOWU9hnEe2Mar_y2RFEYfQrA9Z7j9r0LPzwhe2e0UzJK7Eq9b7rKvh8lvDTkKV0-cx56zb7Kb_YNgBzauO-wLLLhVo5F9-4XAGuwW1-27FEBDinGp2YlC0-UmD4e2JH8Sz3j2FGG6wKNaJQgwWViHwUoysZzOiBeCwOiUyYkJDit0lmbAz5MpGniGBmSTGSlR8gwkoZ2R7r3sY2XI1xPwQItr4dMIEW8GnNdqQKu4UZ3HXJv1dRMTF6BY-Xb5xyeoQ6ReRSaGrs7ejI14DgzRPLda5ZUiwZSQ8LiMGKQOealzvHpzJvSsDfwsyNMyf_iXss8THxpCF98HDuaCvWQ2l1YI3ZcqmxD1S6O4XdggMx7Q7muHFzgPfkLWBX0SbqL3lMTEPrugd5Uthtp4f-7pz9pNBG03zP7qNAFbp5pwAVpoPNYgW94szbB3sLBJcJIUH_DHDgnr6p2XvRAINgXzMUpd2f9qRZgUpwQCNSs73Q2M1_WfJn-muFfVEi1t-Lxf-4IYKzfpA_8Eri_ZJeVux6q-ei-0WUE8OrPgSJnVmnTkDk-1ZKe5dTcPmdKsz9lMrs60SldxqwIimNeVZ9yGpeAHtdN-yG8fQqri_Zf1Jmn3DYt2SF5JSLnh-Rkb9tx5_ "editer une demande")
 
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite éditer une demande d’aide qu'il a émise. Après l’appui sur le bouton « éditer une demande », l’application affiche sur l’interface utilisateur l’ensemble de champs à remplir lors de la création de la demande. 
 La cohérence de cette information est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande dans la base de données, sinon il l'indique à l’utilisateur par un message d’erreur.
 
 ## _Répondre à une demande_
-![repondre a une demande](http://www.plantuml.com/plantuml/svg/ZPNDQXin4CVl2_iEqxt4FVZGRrXIaz1B3ocaeRq5Z2nDRP6rjDM7IT-crpo7NwoZqMwihVE5mQ2Pt_n7-ezad_aWN8ZR3XpsrYY7820Q18LROHJMLT2XGxZQtmtf_TyoVssQPhcyTFkxkSFVKVlbieMB4w6LC07y2Ve0qXg3Ckpl07dXOnUm56cQkjfeXV3Bsh2ojtLLLq86wq1s6ab7U6ZEMR81wnGwU5DNFMrSIzsdHgBl6MhF-tv4tiAKYPw22PBHELBzIUisVOq5xwPyw6JM_A7b3OOBxSCNQuAptQ7a_RI43hVBDKJkq7aHj3KZ_E4_VPOjMnIgIWIn4XvXfHGZOw1jOA0-9PkC9IijjHgiQg4RpTV6IwV3jOa6jkYzMDCq1qFdYqNoh4rLyWPyT413NjaOhA6HNZhRssHNEIIUYTu9QaYbj2BFvmksjOKD8HrUqHMWYSzU5spAfvso_SIJhIsiCUGZpxGgOKeEvEdfV9wN2gVfGeebMj3-AtOzkbansOagSnFXfofJUCFXQVD1vRY_KEfRDdZsK5lfC2stVfs7FR3Zj3-cDyPNWIG9QccBkMInIDqEoNIz7ksMalSm7p97YXFam54xBtPJAOhMLTek4NJ_Mi1Rb37WzuZkJy5HBdFSZbT5DrwN-qdaXE0-nsDvn7NRqmCxZ0bUVRwV4pmuavTTYeCPO-cH7yVeiwwKvtxMc2UE_I9lq2Z-oQG7oMX-SWMO0yFRPuHVS47mEdtEI8p-3lu1 "repondre a une demande")
+![repondre a une demande](http://www.plantuml.com/plantuml/png/ZPNFQXin4CRl2_iEqxt4XVhG_x2a9calFQIGblGMCB8qjKNNqbRIclHjUlLpx8jrDDgDjNKQ1uDXHh_vHlf6iYzy42vqsmOSjjOeXo2WCmWAjy8eB8kWGuFmhTyFo_sVVFtMLDLoUUtw_TpXhqxxvRA6gpEXbJ01_1dw0D8QWpBqUq0EVDS4p4MggYmsMY7yi3Qix5rPb8MGmJgGZKRI4HwgIvQim3g53bwMHKiRrrAtiP5eMuRgoxOTaLSmPJfFoGZ9pZbI_Kvn7R_6WjTJFZGoQTve-HF3bVRXapN1sUPGycPQGeVRfHeYT-Yy2DgQ4NxxZpxBvYqoLIM2M0cFi5AAaOyn88iKcTdlSKJVHw-C9JyjzHlygg4P9w2Dbqw7MzCPsABtOaqZ7LoTBnRHk3fMIV2T0nhqodR16XhhjREjZPRbW-Avw9sWVbH94Va-Nx2rDMm8QJ0TPQRLymoEGDmfpu0AoDiQrXWUX6bn8C_Fv_CKAfmkPr8iKOFsdx5fqSsoyKvKcPi8FrOPqnjEJviFAiVzXL9Vai6phL-_W1FRa0vZI6Yw0KFjEDTtyU7n_Q0M1DMqvLIoMCJkXyLuvoRTysvnyHxcGwTCTgAKE6hdnMugHTcoYDibWYvb3NY7iWlujKFtE-DeBN7SZgEi6yVvVY8v8RZFyPZ-CmNRXjnfUFRXVcxmu8oUTaaEPeobHtuSeoTToSzzqfX7ZlqaRz0e_Xsb5yfeUe8Pc1B3Rm4Z_AGpWkFukI0n-e_u2m00 "repondre a une demande")
 
+Ce diagramme présente les interactions entre la base de données et l’aidant lorsque celui-ci souhaite répondre à une demande. 
+Apres la saisit d’un message le système enregistre le message dans la basse de donné il enregistre aussi l’utilisateur en tant qu’aidant dans le ticket si ce n’a pas déjà été fait.
 
 ## _Supprimer une demande_  
-![supprimer ticket](https://www.plantuml.com/plantuml/img/LP2nRW8n44Jx_OhHLQIu0kXEw8H2anOGNHfZRoGh5vzZhn7v-wmvAoATFVCyEslQPp59ojS4TbuueGI8jvyiPApC2NRo70GcexjaJXtcv1HRKzHttlfer5NZfcA5pezZ1pHmGyw8kPhCk3htGAhmgiBGORVJ-HepZWtV4hM9lMfBxe0taNZYxy9PLYyKPc5C_24OS9YqBEQ0zv1BZ8bpRlr1TGD_CmelETHgzcEjCe3lR8lmiN3wqTW_MasgNVkd2kJud_zqRU6qv-3q8-aN)
-Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émise. Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de données
+![supprimer un ticket](http://www.plantuml.com/plantuml/png/ZLJBRjim4BmBq3yiT8bxqA7fuo0aHjhqc4ERjhS21ark4Y8ogP3BelqaVuT_h4jIbYaP20e85hWxCrpEKBxn91o5NGy-38FJEtGG392MpqXrHPfwXEz52q7XJXY5lqpJR3PVtM7VEdm9scys7TnDxU30Nw0daDOOb7JODqsa0AQI3prXATSqTIKaMGUorsW8X8VcI-wv1gpZ5xojgu77rL8F8aA68S6wJyFG08oWopaeUAv5b0pEiV1FNdVnvoZwRewdNcRH7yc3E-tfrXfojZzHtYye2LcoZi0FTQK4YQtm25kb4kHpN2X-s9Z37e_GZtN53l29sdMQkGFvXFBvNZy-aLzfzIRvet-Bw1ltwogTZD4ySGUFI7dh1PIR8_BggctpKk6yNKWbYQHspw5oVkXMCxdnOXIA-V1BJWVkk9XlE0hKbHteX87hQoW2gYkEC-MRziX-Y8S7pPuusDf0raGFqwL5xxKrcLBib4tAvV5EjUjr5EtYMZBvLQb9Y1cdUQPq5FP8M7e-8uNf5A_5DAEaB2R6AQx5kSR8Pj9ZR7ccrPdmw7aiZd4nYUzZ1_W7PI3y5j2vlmiQ0sQSDD5KB2QQQijRSJxxbFvPll-JNm9FSHJOL4EZyXTKQ9xftJ2A_-x-0G00 "supprimer un ticket")
+
+Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émise. 
+Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de données
 
 > ## Diagrammes de comunication
 
@@ -513,11 +527,18 @@ Il permet de décrire les classes et les relations entre elles.
 * setTicket(s)()
 * addTicket(s)()
     
-![diagramme de classe](http://www.plantuml.com/plantuml/svg/vLTBRzD04BvRydyOzUGaze5h5AAYzW1IgP0QpjLYJnE3xOJTJL5Kyj_PfxsxNgFI7a12bTfwtlFjD_kuP9nGVcmRg6gofQHj4Ig4iY6COPga2Vd2E2KbroBOrEKtvB1QMVbw3KzfKa1T0IoXxhZyu3LlK7mAaxhRIac5hAJrWTVxhfU3L9I4utPFJu6K8f6srqBhnBc_JvFLIYbnlKwJXQadgokL6zv2TsoQN1TW_N8t-nAiD4twv8DbDB4Cq9AkmYCLiiyCwKpM8Q9okZzvXSpa_rla7wfiPk1GtnjPa1JPLXR0h5GNgnNM_tgeE9j1uEOgOy3Em4Ivik06CQJARTGjxCckx7aXEC4E3JdfhaXLlSVcW3JRgJyz4Wj67b7Qw9-p_ANPShNl7f4obGWaJyOBw9faOrX3zLddqE4_8cDaYnEHZJOIrD4unUeLl2BqRaSK4JMnApp82Q4t-zBquVAQK5e_aYQkjAwRkiMObv9x2e5sYSmEqXJTXnfVH7p1ZXSJNqpDD23vD1moQHIEF0v6Fa1XjeMfaNF068Odg30sGhv95dRLpvA9-SxlR3JAeJv08WntxM0nNPtIkh1DLAMZn2jIEWVZCCGdXREgmMnNh1VgDL0APUxj1tRgptRmtJ6wuyVgP2Q87RzyHIwE49Vf35knbaWz8KTIxaBP3jldd04guylcOJmDefbdpWFyRXp4yJaz47ys3caI34JUu-f83AY3n23QJv71HPnz2jT0FZba6bnBcJkPkEHZtbf5M5dlQEgBU5fDs89rtUX6nfvM4NJQ-yas8rvAx7DhckAZWysWuXqK_ppDNxFjmz_QzmLLNyNpPz0S_Z-UXqptzd9DSRdiqD_j-wjzHy8x2plIiR0JS2hf88nnMYQnPCvLR7Txerw4V0Ygbt6yMQbmxXKSt3luBHaXf1QPnXMt9jiOr5vZ2_8M8x9f-Dl6JSsukDUAiXivOQkLU8FnkjGlgQcvzvsogOqwD0C0NJGjTzg2GVPGDt9BSkvMI_kmcxiT31pXMZkOpRpkxAlmPr6CRcMUrfcocDnwAEvTp2zWNXH5Wm-yW8it5pRv4YX-FwhfSKptW-dSCTLlbJxPEAZxmbX2wNobYQkJjdFjfrFOryUorVyCEOHbKUr_TCNSgILOzILeJ9d4xnAxIhp1Vm40 "diagramme de classe")
+![diagramme de classe](http://www.plantuml.com/plantuml/png/jLVTRzis47ytuF-1o9ETIC3sQcH5WnJ30cH5qRXFmr3GqjNceW-FfD9bNV_t7JzE8aKgAmhinPRk-twyEnrVAysb7jg6rO8V9MzRO3Mmgk5AmNgb7aLtvaXsb1kjfJWC6kwgldiGVmFxORqwy-gH7u5TM94BnXNZZS3Vw-kVKHDUlM9VrglrYX-KbhpIpXJRY-eHD0eHtScLJDGx9Zfj7hNG3UmOyaLtD8GQL2N5MOk-8p8pz8fhEFRoEIPAu4Ro3J8d8ny_hbVNrvQ7eQrNLpwIZVVBVcBTq3H5xBo8NHDrlKfS5v5VDf4b_3c0qY1tx8C2kJLXe54j--SeZgrvFeA-gpTRZuHztvju38aokMAAg2vMno3zDrF0YLR8os2wPTx6hK-E9HQ8ivddJ-vlGnHYTUI-9p0Cny3XwRz0SmQfYCf-k_pTS6gXpWr_tf-6zj1nqKG6lr05VHq57OYyhfszpSd-ZS1VCQ4yPr0ZVSSEVTy0xxpkhw0K5lQcLSVf50Dv8mQry2Uc-1EufneQqFRvgwbxL-wtVVU4YLb8c2dqj0v3aKrQ7dDs52EXxjyjWFwPC9oufjInhYOH7od5Iegs7pNyfOCMLD3LU2vqQ6aMvCFe1UqJwQN9pVFOetPID0_MHbWn17e0jEkYMoxVuM6QKU2cIWrdC-ZaVL_niDGDZqifddYJOv7QNhIGKPcJiVOgKBvhboRD5DjtpHpipPTdpkB8mN6r14En189nbmEXo45GZ03uCRmqv088fd4LHyOoGokMs2mbGoPlufGIWtF-0WJp24t6Yy5PPWwmML1P8o4l0o-PU6T13huEQgG51UY6U3GGetQPjyo37kfdtorgEFm1kWeR7vsqlfOccWPUdMQa4xJVyBcrthwl_jFgnqHUhdy_TueaiI99gvWdHS7XjpxApTCNQznbI6VsO1nNEDFOxCo9COziLFJnPJI9CqzX6g8saLIJ6BDCHpsJPaRBaYq6B59Phh6elavSJlDOQ6Z_rohvhod9NYeJ4rsOOt30REc4xr0d1SrImsGJn3A0sTM7jc4shiCTRjECHJqvo9JOON2M-XA-nWK1MrZBGKjugnDbDEcE82rvQoxSN5cukhxbIJtPbf1vnbllBKLpv5104QekFrgZT_wKQ4tpT4rqgtBYNTr0V0C8bhXm9PyMFEoPwl6zE9wqGftjR7joElT2QTpO4A461fbV-7AIcwLnaehvMu5XgZZTaJwc578b86HFkQGLS5cTl4cs-IIQ-LIXHPoy9hJOtWGPxjKoq0gA_UPypiE3Z0mQbieY2_VzKNJ61leP97JwmxYav-nQyOnbJxSDZlVRpanbi-x7pN56ZvzxMSzX8OsfGhv5URnpiB6Aw6ByJrcMoReKiuCnb6MuYRjU6OWlVhnWbwKqLLlQbrnPxN2spgcIXGOQ-EJrBLmxrbZmNUXsRZcvaYGloHFsyZXeIHIPVLxKtTZ6h6P6yIsy3ktCUOrlwrN82y9sBkXsislfyaC-a5dM_UUkl5m4Y152okIB9_OQxoH3s_mB "diagramme de classe")
 
 ## Diagrammes d'etat transition
 La réalisation des diagrammes d’état transition est la cinquième étape. 
-Ces diagrammes permettent de représenter d’un point de vue dynamique les différents état d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
+Ces diagrammes on pour objectifs de montré d’un point de vue dynamique le comportement d’un objet. 
+On y représente les différents états d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
+
+## Diagrammes d'activité
+
+La sixième étape de modélisation UML est la réalisation des diagrammes d’activité.
+Les diagrammes d’activité on pour objectifs de montré le déroulement des activité entre les différant objet. 
+
 
 ## Annexe
 

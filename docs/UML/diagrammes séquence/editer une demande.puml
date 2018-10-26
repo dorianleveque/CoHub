@@ -5,8 +5,8 @@ actor client as "Demander" order 1
 participant app as ":App"   order 2
 participant user as "currentUser:User" order 3
 participant tlc as ":TicketListControler" order 4
-participant ticket as "t:Ticket" order 5
-database bdd as "dataBase:" order 6
+participant ticket as ":Ticket" order 5
+database bdd as "Base de donnée" order 6
 
 app -> user: checkRights()
 activate user

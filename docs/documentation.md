@@ -475,11 +475,15 @@ Ce diagramme présente les interactions entre la base de données et l’utilisa
 ## _S'authentifier_
 ![s'authentifier](http://www.plantuml.com/plantuml/svg/ZLGzRzim4Dq5w3ySl2G1uY5fkmYEa0zaoz8XMnQQEiT4558WZudpRpgslyD_h7UKHCjAKKG2195yT-_TtPEk0obFyRM5SA8YRT6IsHZqPK66MloqkpKDmiOvMhjTMIXDpeDk3GD01LWyacbDK8JHBy3v1ZrSb4N754QRJWcgwnAokkcw4N9P5eqYjLO1OTqqwVnM5ipLE6ltVt24_YYBiXW8btKjwIfGMkz_o-d-5xGAElMCIPjvOoK2uH2FyjwwPsDx_WTv7TD-OpmBMzO3eeBLgW-fwyotMYsNVRO6ZxD_biHh_G8XUbYxICx2auK5LwIv7DI4VZ5NQ9temmrLy70I3ts4e4mmz6G31Z1suuAqPSXZd3rMNeqdfp6Wj-eLpxaV8RnpdMSJoWGMuNsza_0jwfUl1VUXgIl3pgGlcK2r1E73ajhTEUzP6LnT0Vd88mA-CZyFlWBSeOw4FoFwZzEp7f5JCc8QauZpteGwxmtnB43gkT-PaCc7Cxa6QmWaEKD7bcdfaTULF4QFV3-4PD4fwDWi8qQcCkrDffkRQJoOcqhsi6NFoEFVyQDPaHMpK_ZRJ1-gLc8CDelkEovZIDaiDsQMyZ_f-gbDqyna3fMbj8VxcjVyG_aB "s'authentifier")
 
+Ce diagramme présente les interactions entre la base de données et l’utilisateur lorsque celui-ci souhaite s’authentifier. 
+Après avoir saisi sont identifiant et sont mots de passe une première vérification syntaxique est réalisé. 
+Lorsque cette vérification est effectuée avec succès, le système récupère les informations auprès de la basse de donnée.
+Par contre si une erreur syntaxique est détectée le système indique à l’utilisateur qu’il y a un problème.
+Lorsque le système a correctement récupéré l’information auprès de la base de données, il affiche sur l’interface utilisateur que l’aurification a été réaliser avec suces. 
+Si le système ne trouve pas les informations dans la base de données, il indique une erreur. 
 
 ## _Créer une demande_
 ![créer une demande](http://www.plantuml.com/plantuml/svg/TLIxZjim4Em5w1yMQfmKBl8iX3lXaWjIfKY0IsV0eCbLJ9Wc5Jw4kxz9Uz_X7ykI50NPlci4QZaxEpjSyivvPdquAk3sz8mMWaOGU6HQO5rvwHN2_TNEHZVDTlkJuckBVuDqssqBF-RjOC6jq7bWmUzHUzdBqpCqJKn33wT_m8OXF16d8oXLs9dWZOPLrC2yfAMOoLPDKrTrnRWt5hYIn0VCGVEjr6h0M45Sx-fge5uabmEBc658kFRBC3G04-ZzEIWuYaKK3zOIys_wR-Eda7weAy4ysp57AeL8sA_n9meqMfCp1VgvhlQImhqnVcSUesXjF88PSHRUncvdbpRQCUbaZ4dT6tjClRkDjgXesPD_G58FwEjg8bXtiR4syl53ic_oRcIAYjjab1mPrILSCevyo5bKdU-H7xvBLE8I6FTlRjRh_2VmObUHeKf17rE1c-EWaFPkRy7RG8D2_i9KA5fAXInIyaCI_-Rj12YK4P936JOrcOyhvnHJFsPSEgTrrqt8bgJcrAux8-96ZvdcdbPeNNAqa7s22o75t1YSDCGYYUMwniAKPM9nBcbiuM6njSZ8FPyvLNfnRCGhZrwKbaQm1Nn47Zp-2cYVBj88S9QJZdGEBlJCiVdW_Sl2b-5f2CkSj61HI2l_OBx830P6QteGWFMzf66BiVarGKNt9dvU8KDhwOhd4Gkw3Dcrz3IHg4MqiwxkQ4Nlrty0 "créer une demande")
-
-
 
 Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite créer une demande d’aide. Après l’appui sur le bouton « création de demande », l’application affiche sur l’interface utilisateur un ensemble de champs à remplir concernant sa demande. 
 La cohérence des informations est ensuite vérifiée par l’application. Si ces informations sont cohérentes, le système enregistre la demande, sinon il l’indique à l’utilisateur par un message d’erreur.
@@ -497,8 +501,8 @@ La cohérence de cette information est ensuite vérifiée par l’application. S
 ## _Supprimer une demande_  
 ![supprimer un ticket](http://www.plantuml.com/plantuml/svg/ZLJBRjim4BmBq3yiTAbxyA7FWv0KITfZ3ctQtWeODBb9YCYaIYwBzfFy7VwnhaYQfcGW2634uExCS7U6pfKduIZi1l1X79tUeODWWBHyGceRqZGWVAzQ20ftmYZyPRfki_dg3lkrmzz1-yscXzlI3WxyA_G4qXg3aWxxhfieWB7amq1OotLTsmX9re4SD1e2uQ7xadgk0-lu2zwqpSZZQgb7CK76CSBwwt7i03BexHmKFDScb0pEiV1FFlVJdwFekpcU1fb4VqGFRhMdpzQGiyE9ydv1YSZ8eamx8Z-qZH8aji8ZR9MAc9lfeFZ3pXpsU8H-R1ksW5TQVuf3zo0VKJxTwOT7yYkjNaU3z1yn6SVzjechCPf7xk41ALszW78p8oykrkjqL3XlLr9H8ghTSQeS8BhLJ2w_Z4enRR_azE2EX_c5MQ1jx4Wd35nUGfLGst2UCU1uH_93tDzhziJ1rWQoPl8mlbhqNbkJADLDoQHKpe-ADsJDVZfAvZwhL7IOSHgdXADmGCBQyXafb2MUIsb6YL4KnYcjnLeviPbqJYtDj3eJpfPFnPmMa_Wvze1_KGR2Rm6T-xUWCM36YHELOZLHgIqVnVdi9VopU5yINmINE2fihA5HwGTKQPxfNJ6A_ztz1m00 "supprimer un ticket")
 
-
-Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émise. Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de données
+Ce diagramme présente les interactions entre la base de données et le demandeur lorsque celui-ci souhaite supprimer une demande d’aide qu’il a émise. 
+Après l’appui sur le bouton « supprimer », l’application supprime la demande dans la base de données
 
 > ## Diagrammes de comunication
 

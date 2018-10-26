@@ -60,29 +60,35 @@ Le site CoHub doit permettre sans authentification de consulter toutes les deman
 
 
 
-Voici la page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes :
+Page d'accueil de CoHub où l'on peut consulter l'ensemble des demandes :
+
+La liste affiche les informations de base de la demande, c'est à dire, le titre, la catégorie et le demandeur. Il suffit de selectionner une demande afin d'afficher toutes les inforamtions du tickets.
+
+Exemple de demande :
+
+Une demande se caractérise par une liste de champs. Chaque catégorie a des champs spécifique. Les champs importants sont la description, le titre et la conversation.
 
 
-Voici un exemple de demande :
+Selection de catégorie :
+
+Un simple bandeau sur la page d'accueil permet de filtrer les résultats en fonction d'une catégorie de ticket.
 
 
-Voici la manière de sélectionner une catégorie :
 
+Fenêtre d’authentification :
 
-Voici le bandeau de recherche filtrée par mot-clé :
+L'utilisateur rentre ses identifiants de connexion.
 
+Après l'authentification, il est possible de créer une nouvelle demande ou de répondre à une demande via un système de messages entre le demandeur et l'aidant.
+Un demandeur peux aussi d'éditer sa demande déjà existante après authentification.
 
-CoHub doit permettre, avec authentification, de créer une nouvelle demande ou de répondre à une demande via un système de messages entre le demandeur et l'aidant.
-CoHub doit aussi permettre, avec authentification, à un demandeur d'éditer sa demande déjà existante afin de la modifier.
+Page de création ou d'édition d'une demande :
 
-
-Voici la fenêtre d’authentification :
-
-
-Voici la page de création ou d'édition d'une demande :
-
+Ici l'utilisateur renseigne les champs afin que sa demande puisse être pris en compte et comprise par les autres utilisateurs. Lorsque tout les champs sont renseigné l'appuis sur valider enregistre la demande
 
 Voici la page permettant à l'aidant potentiel de dialoguer avec le demandeur :
+
+Cette interface permet à l'utilisateur souhaitant aider de communiquer avec le demandeur.
 
 # __Modélisation UML__
 

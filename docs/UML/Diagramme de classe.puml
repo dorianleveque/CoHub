@@ -1,4 +1,5 @@
-@startuml
+@startuml diagramme de classe
+skinparam classAttributeIconSize 0
 package "class" as alias <<Frame>> {
 
 abstract class Ticket <<abstract>> {
@@ -30,10 +31,6 @@ __
 + edit()
 + save()
 + delete()
-
-
-
-
 }
 
 class Conversation  {
@@ -43,6 +40,8 @@ __
 <<destroy>>
 + Conversation()
 + addMessage()
++ getMessages(): Message
++ getMessage(id:int): Message
 }
 
 
@@ -54,6 +53,8 @@ __
 + Message(texte: string, sender : User)
 <<destroy>>
 + Message()
++ getTexte(): string
++ getSender(): User
 + save()
 }
 
@@ -111,14 +112,10 @@ creationDate: string, requester : User, subjetct: string, semester: string, teac
 + getBasicInfo(): string 
 + display()
 + save()
-
-
-
 }
 
 class TicketSharing  {
 - item: string
-
 __
 <<create>>
 + TicketStudy(id: int = null, title: string, description:  string, 
@@ -137,7 +134,6 @@ class User  {
 - name  : string
 - surname  : string
 - nickname : string
-
 __
 <<create>>
 + User(id: int, name: string, surname : string, nickname = null)
@@ -154,9 +150,6 @@ __
 + deleteTicket()
 + save()
 + checkRights(id)
-
-
-
 }
 
 
@@ -165,14 +158,15 @@ __
 <<create>>
 + TicketListControleur()
 <<destroy>>
-+ TicketListControleur()   
-+ serchTickets (filter: string)
++ TicketListControleur()
++ getTickets(): Ticket
 + getTicket(id: int): Ticket
-+ save()
++ retriveTicket(id: int)
++ serchTickets (filter: string)
 + displayTickets()
 + displayTicket(id: int)
++ save()
 + clearTickets()
-+ retriveTicket(id: int)
 }
 
 class App {
@@ -182,8 +176,6 @@ __
 + App()
 <<destroy>>
 + App() 
- 
-
 }
 
 class Login {
@@ -195,15 +187,14 @@ __
 + Login() 
 + connect(username: string, password: string) 
 + check(username: string, password: string): boolean 
-
 }
 
 
 Ticket <|-- TicketCarPooling
 Ticket <|--TicketStudy
 Ticket <|--TicketSharing
-App "1" -- "1" TicketListControleur: ticketListControler 
-App "1" -- "1" Login: login 
+App "1" -right- "1" TicketListControleur: ticketListControler 
+App "1" -left- "1" Login: login 
 
 
 User "*" *---left- "1" Ticket : requester

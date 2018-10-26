@@ -8,7 +8,7 @@ participant user as "currentUser:User" order 3
 participant tlc as ":TicketListControler" order 4
 participant conv as ":Conversation" order 5
 participant ticket as ":Ticket" order 4
-database bdd as "database:"  order 7
+database bdd as "Base de donnée" order 7
 
 note over client: l'aidant inscrit\nun message
 client ->> app: clic sur le bouton\n"Proposer une demande"

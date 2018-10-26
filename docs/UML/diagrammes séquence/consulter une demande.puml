@@ -4,7 +4,7 @@ hide footbox
 
 actor client as "Utilisateur" order 1 
 participant app as ":App" order 2 
-database bdd as "database:"  order 6
+database bdd as "Base de donnée"  order 6
 
 client ->> app :accède à la page
 activate app

@@ -4,7 +4,7 @@ title Créer une demande\n""__Pré-requis__: Le demandeur s'est authentifié ""\
 actor client as "Demandeur" order 1
 participant app as ":App"   order 2
 participant user as "currentUser:User" order 3
-database bdd as "dataBase:" order 6
+database bdd as "Base de donnée" order 6
 hide footbox
 
 note over client : le demandeur\nsaisi le informations\nrelatif au ticket

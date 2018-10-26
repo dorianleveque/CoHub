@@ -531,7 +531,13 @@ Il permet de décrire les classes et les relations entre elles.
 
 ## Diagrammes d'etat transition
 La réalisation des diagrammes d’état transition est la cinquième étape. 
-Ces diagrammes permettent de représenter d’un point de vue dynamique les différents état d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
+Ces diagrammes on pour objectifs de montré d’un point de vue dynamique le comportement d’un objet. 
+On y représente les différents états d’un objet ainsi que les évènements qui permettent de naviguer entre ses états. 
+
+## Diagrammes d'activité
+
+
+
 
 ## Annexe
 

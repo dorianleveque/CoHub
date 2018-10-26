@@ -20,9 +20,10 @@ __
 + getDescription(): string
 + setDescription(description: string) 
 + getCategory (): string
-+ setCategory(category: string )
++ setCategory(category: string)
 + getCreationDate (): string
-+ getRequester()
++ getRequester(): User
++ getHelpers(): User [*]
 + displayThumbnail (): string
 {abstract}+ display()
 + addHelper(helper: User)
@@ -40,20 +41,20 @@ __
 <<destroy>>
 + Conversation()
 + addMessage()
-+ getMessages(): Message
++ getMessages(): Message [*]
 + getMessage(id:int): Message
 }
 
 
 class Message  {
--texte: string
+-text: string
 -sender : User
 __
 <<create>>
 + Message(texte: string, sender : User)
 <<destroy>>
 + Message()
-+ getTexte(): string
++ getText(): string
 + getSender(): User
 + save()
 }
@@ -81,8 +82,7 @@ departurTime: string, arrivalTime: string, places: string )
 + getArrivalTime(): string
 + setArrivalTime(arrivalTime: string)
 + getPlaces(): int
-+ setPlaces(places: int)
-+ getBasicInfo(): string 
++ setPlaces(places: int) 
 + display()
 + save()
 }
@@ -109,7 +109,6 @@ creationDate: string, requester : User, subjetct: string, semester: string, teac
 + setTeacher(teacher: string)
 + getTheme() : string
 + setTheme(theme : string)
-+ getBasicInfo(): string 
 + display()
 + save()
 }
@@ -124,7 +123,6 @@ category: string, creationDate : string, requester : User, item : string)
 + TicketStudy()
 + getItem() : string
 + setItem(item: string)
-+ getBasicInfo(): string 
 + display()
 +save()
 }
@@ -162,7 +160,7 @@ __
 + getTickets(): Ticket
 + getTicket(id: int): Ticket
 + retriveTicket(id: int)
-+ serchTickets (filter: string)
++ searchTickets (filter: string)
 + displayTickets()
 + displayTicket(id: int)
 + save()
@@ -170,7 +168,6 @@ __
 }
 
 class App {
-+ curentUser: User
 __
 <<create>>
 + App()
@@ -179,29 +176,30 @@ __
 }
 
 class Login {
-
++ curentUser: User
 __
 <<create>>
 + Login()
 <<destroy>>
 + Login() 
-+ connect(username: string, password: string) 
++ connect(username: string, password: string)
++ disconnect()
 + check(username: string, password: string): boolean 
 }
 
 
-Ticket <|-- TicketCarPooling
-Ticket <|--TicketStudy
-Ticket <|--TicketSharing
-App "1" -right- "1" TicketListControleur: ticketListControler 
-App "1" -left- "1" Login: login 
+Ticket <|--- TicketCarPooling
+Ticket <|---TicketStudy
+Ticket <|---TicketSharing
+App "1" *-right- "1" TicketListControleur: ticketListControler 
+App "1" *-left- "1" Login: login 
 
 
-User "*" *---left- "1" Ticket : requester
+User "1" *---left- "*" Ticket : requester
 User "*" o---left- "*" Ticket : helper
-Ticket "*" *---left- "1" Conversation: conversation
+Ticket "1" *---left- "1" Conversation: conversation
 Conversation"1" *-left-- "*" Message :message
-Ticket "1" -down-* "*" TicketListControleur : tickets
+Ticket "*" -down-* "1" TicketListControleur : tickets
 
 }
 @enduml

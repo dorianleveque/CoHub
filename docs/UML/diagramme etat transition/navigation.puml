@@ -7,7 +7,7 @@ state S2 as "l'utilisateur est connecté"
 S2 : ""           O-O""
 
 [*] --> S1
-S1  --> S2 : s'authentifier
+S1  --> S2 : when (clic sur le bouton connection)/ connect()
 S2  --> S1 : se deconnecter
 S1  --> [*]
 S2  --> [*]

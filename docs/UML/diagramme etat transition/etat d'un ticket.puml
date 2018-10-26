@@ -1,0 +1,19 @@
+@startuml
+title l'etat d'une demande
+
+ 
+  state S1 as "demande créé"
+  state S2 as "demande éditée"
+  state S3 as "demande suprimée"
+  state S4 as "demande en cours de reponse"
+
+  [*] -down-> S1 : when (clic sur "création de demande")/Ticket()
+  S1 -> S2 : when (clic sur "éditer")/edit()
+  S2 -> S1 : when (clic sur "valider")/save()
+  S1 -> S4 : when (clic sur "prendre en charge")\n[currentUser = requesteur]/addMessage(txt, currentUser)
+  S4 --> S2 : when (clic sur "éditer")\n[currentUser = requesteur]/edit()
+  S2 -> S4 : when (clic sur "valider")/save()
+  S4 --> S3 : when (clic sur "suprimer")\n[currentUser = requesteur]/delete()
+  S1 -left-> S3 : when (clic sur "suprimer") \n[currentUser = requesteur]/delete()
+  S3 -> [*]
+@enduml

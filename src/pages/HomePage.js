@@ -8,6 +8,7 @@ import Bottom from "../components/Bottom"
 import TicketCarPooling from "../classes/TicketCarPooling"
 import User from "../classes/User"
 import Ticket from '../classes/Ticket'
+import BoutonCreationDemande from "../components/boutons/BoutonCreationDemande"
 const { Content } = Layout;
 
 class HomePage extends Component {
@@ -142,18 +143,17 @@ class HomePage extends Component {
 		let pagination;
 	
 		
-		
 	 	cards =  <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly'}} >
 			{this.Cards()}						
 			</ul>
 		
 		
-		
 		space = <Row><br /></Row>;
-		pagination = <Row> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10} onChange={this.onChange.bind(this)}  />  </div> </Row>;
+		pagination = <Row> <BoutonCreationDemande/> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10} onChange={this.onChange.bind(this)}  />  </div></Row>;
 		
 		
 		return (
+					<Layout>
 				<Layout style={{ height: "100vh" }}>
 					< SiderMenu visible = {this.state.visible} sortItems ={this.sortItems} />
 					<Layout>
@@ -164,9 +164,10 @@ class HomePage extends Component {
 							{pagination}
 							{space}
 						</Content>
-						<Bottom/>
 					</Layout>
 				</Layout>
+				     		<Bottom/>
+					</Layout>
 		);
 	}}
 

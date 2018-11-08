@@ -30,7 +30,7 @@ class HomePage extends Component {
 			var pages  = value.pageCount
 			this.setState({
 				cardsData : [...this.state.cardsData,...tickets],
-				numerOfPaes : pages ,
+				numerOfPages : pages ,
 			})//setState
 		}) //Then searchTickets
 
@@ -53,39 +53,59 @@ class HomePage extends Component {
 		}
 	}
 
-	onChange = (pageNumber) => {  //prblème de début du num de page TODO
+	onChange = (pageNumber) => {  //prblème de début du num de page TODO : Modification de la page
 
-		console.log(pageNumber);
 		this.tlc.searchTickets(pageNumber).then((value) => {
+
+			this.changeCards(value);
+
+		})
+	}
+	
+
+	searchItems = (text) =>{
+
+		this.tlc.searchTickets(0,20,null,text).then((value) => {
+			this.changeCards(value);
+
+		})
+	}
+
+	
+	sortItems = (category) =>{
+
+		this.tlc.searchTickets(0,20,category).then((value) => {
+			this.changeCards(value);
+
+		})
+	}
+
+
+	changeCards = (value) => {
 
 			var tickets = value.tickets
 			var pages  = value.pageCount
 			this.setState({
 				cardsData : [...this.state.cardsData,...tickets],
-				numerOfPaes : pages ,
+				numerOfPages : pages ,
 			})
 
-
-		})
 	}
+
 
 	Cards = () => {
 		
 		var values  = []
-		var i = 0
 		this.state.cardsData.forEach(function(entry){
 			values.push({ title : entry.getTitle()  , author : entry.getRequester() , description :entry.getDescription() , category : entry.getCategory() , key : entry.getId() , })
-			i++
 		});
 
 		return values.map(item => {
 			return (
-				<DemandeCard args = {item} key ={item.key} />);});
+				<DemandeCard args = {item} key ={item.key} />);
+					});
 
 	}
-
-	
-
 
 	render() {
 
@@ -109,7 +129,7 @@ class HomePage extends Component {
 				<Layout style={{ height: "100vh" }}>
 					< SiderMenu {...this.state} />
 					<Layout>
-						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} />
+						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} sortItems={this.sortItems} orderItems = {this.orderItems} />
 						<Content>
 							{cards}
 							{space}

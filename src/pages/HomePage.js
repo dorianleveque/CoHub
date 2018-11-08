@@ -22,9 +22,9 @@ class HomePage extends Component {
 				numberOfPages : 5
 			      }
 
-		var tlc = new TicketListControler();	
+		this.tlc = new TicketListControler();	
 
-		tlc.searchTickets(0).then((value) => {
+		this.tlc.searchTickets(0).then((value) => {
 			
 			var tickets = value.tickets
 			var pages  = value.pageCount
@@ -64,7 +64,7 @@ class HomePage extends Component {
 	
 
 	searchItems = (text) =>{
-
+		console.log(this.tlc)
 		this.tlc.searchTickets(0,20,null,text).then((value) => {
 			this.changeCards(value);
 
@@ -86,7 +86,7 @@ class HomePage extends Component {
 			var tickets = value.tickets
 			var pages  = value.pageCount
 			this.setState({
-				cardsData : [...this.state.cardsData,...tickets],
+				cardsData : [...tickets],// [...this.state.cardsData,...tickets],
 				numerOfPages : pages ,
 			})
 
@@ -127,9 +127,9 @@ class HomePage extends Component {
 		
 		return (
 				<Layout style={{ height: "100vh" }}>
-					< SiderMenu {...this.state} />
+					< SiderMenu {...this.state.visible} />
 					<Layout>
-						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} sortItems={this.sortItems} orderItems = {this.orderItems} />
+						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} searchItems={this.searchItems} orderItems = {this.orderItems} />
 						<Content>
 							{cards}
 							{space}

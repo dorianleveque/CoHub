@@ -10,7 +10,8 @@ class SiderMenu extends Component {
     super(props);
     this.visible =  this.props.visible;
   }
-
+//Add a funtion to call the function to search a category, something like onclick(value) => orderItems
+	//add the props to the function ! TODO
 
   render() {
 
@@ -24,7 +25,7 @@ class SiderMenu extends Component {
               <span>Tout</span>
             </Menu.Item>
 
-            <Menu.Item key="2">
+            <Menu.Item key="2" >
               <span>Tutorat</span>
             </Menu.Item>
 

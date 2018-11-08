@@ -15,12 +15,28 @@ class MenuBurger extends Component {
   togleSideBar() {
     this.props.togleSideBar();
   }
+	
+	
+  orderItems = (value) => {
+	
+	this.props.orderItems(value);
 
-confirm = () => {
+  }
+
+  searchItems = (value) => {
+	  console.log(this.props)
+
+	this.props.searchItems(value)
+  }
+
+
+  confirm = () => {
 	this.context.signOut()
 }
 
   render() {
+
+
 	let account ;
 	let connected = this.context.isValide()
 	if (connected) {
@@ -28,16 +44,12 @@ confirm = () => {
             		<Icon type="user" />
 			</Popconfirm> ;
 	}
-	else  {
 
+	else  {
 		account = <NavLink to={SIGN_IN} style={{color: 'white'}}>
             <Icon type="user" />
           </NavLink>
 	}
-	  
-	  
-	  //if connected PopComfirm br
-	  //if not connected Navlink
 
     return (
       <div>
@@ -51,7 +63,7 @@ confirm = () => {
         </NavLink>
         <Col offset = {5} span = {2}>
          <Search
-            onSearch={value => console.log(value)}
+            onSearch={value => this.searchItems(value)}
             style={{ width: '200px'  }}
             />
         </Col>

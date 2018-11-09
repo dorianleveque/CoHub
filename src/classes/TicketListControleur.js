@@ -32,6 +32,7 @@ class TicketListControleur {
 	 */
 	async searchTickets(page=0, limit=20, category=null, filter='') {
 		try {
+			console.time("F")
 			const nbTicket = limit
 			var tickets = []
 
@@ -55,11 +56,14 @@ class TicketListControleur {
 			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
 			
 			// création des tickets
+			console.time("I")
 			for (var idTicket of idTicketList) {
 				var ticket = await this.retriveTicket(idTicket)
 				tickets.push(ticket)
 			}
-
+			console.timeEnd("I")
+			//console.log(tickets)
+			console.timeEnd("F")
 			return { tickets, pageCount }
 		}
 		catch (error) {

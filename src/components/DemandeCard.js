@@ -18,7 +18,6 @@ class DemandeCard extends Component {
 	let author = this.state.author 
 	let iconType ;
 	let userInfo = author.getName()+" " + author.getSurname() + " | " + author.getNickname()
-	  console.log(this.state.category)
 	if (this.state.category === "CarPooling" )
 	   {
 		   iconType = "car"
@@ -39,7 +38,6 @@ class DemandeCard extends Component {
 		   iconType = "interation"
 
 		}
-	  console.log(iconType)
 
 
 

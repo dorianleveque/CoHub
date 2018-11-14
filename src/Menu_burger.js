@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import { Drawer, Button, Radio, Icon } from 'antd';
+import { Drawer, Button, Radio, Icon, Col ,  Row } from 'antd';
 
 import { Layout } from 'antd';
 const {  Sider } = Layout;
@@ -32,22 +31,9 @@ class Menu_burger extends Component {
   {
     return (
       <div>
-        
-        <Sider style={{ background: '#1890ff' , color :'#fff' , fontSize : '20px' , height: '70px' }}  onClick={this.showDrawer}>
-          <Icon type="menu-unfold" />
-        </Sider>
-        <Drawer
-          title="CoHub"
-          placement={this.state.placement}
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible}
-        >
-        <p>Tout</p>
-          <p>Covoiturage</p>
-          <p>Aide Devoir</p>
-          <p>Pret</p>
-        </Drawer>
+        <Col span= {1}> <Icon type="menu-unfold" onClick={this.showDrawer} /> </Col>
+	<Col span= {22}> <div style={{textAlign :'center'}}>CoHub </div></Col>
+	<Col span= {1}> <Icon type="user" /> </Col>
       </div>
     );
   }

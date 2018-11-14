@@ -13,7 +13,7 @@ const RouteList = () => (
     <Switch>
         <Route exact path='/'               component={HomePage} />
         <Route exact path='/create-demande' component={CreateDemandPage} />
-        <Route exact path='/login'           component={LoginPage} />
+        <Route exact path='/login'          component={LoginPage} />
         <Route       path='/demande/:id'     />
         <Route component={NotFoundPage} />
     </Switch>

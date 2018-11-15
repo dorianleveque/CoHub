@@ -13,7 +13,7 @@ class Demande_Consultation  extends Component {
       
 	  <Layout>
 	  <Header>Header</Header>
-	  <Layout style={{background: '#F1F9FF' }}>
+	  <Layout style={{background: '#F1F9FF'}}>
 	  <Content style={{ margin: '24px 16px', padding: 24}}>
 	  <div>
 	  
@@ -21,10 +21,15 @@ class Demande_Consultation  extends Component {
 			<h1>DEMANDE</h1>
 		</Layout>
 		
-		<Layout style={{width:600, background:'#F1F9FF',position:'relative',textAlign:'center',alignContent:'center',left:325}}>
-		<h3>Titre</h3>
-		<Input value="Titre du ticket"  />
-		</Layout>
+		
+		<Row >
+			<Layout style={{background:'#F1F9FF', textAlign:'center'}}>
+				<Col span={12} offset={6}>
+					<h3>Titre</h3>
+					<Input value="Titre du ticket" />
+				</Col>
+			</Layout>
+		</Row>
 		
 		<Divider style={{height:0, position:'relative', margin:10}} />
 		 <div>
@@ -79,7 +84,7 @@ class Demande_Consultation  extends Component {
 			</div>
 			
 			<Row>
-				<Col span={6} offset={20}>
+				<Col span={3} offset={20}>
 					<Button type="primary">Aider cette personne</Button>
 				</Col>
 			</Row>

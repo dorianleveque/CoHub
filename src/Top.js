@@ -9,9 +9,13 @@ class Top extends Component { // demande un argument
 
   constructor(props) { // constructuer de Top
     super(props); // utile ?
-    this.ismenu = this.props.ismenu  //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
+    this.ismenu = this.props.ismenu ; //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
+    
   }
- 
+  togleSideBar  = () => {
+    console.log("hellow");
+    this.props.togleSideBar();
+  };
 
 
   render() {  // permet l'affichage du top
@@ -21,7 +25,7 @@ class Top extends Component { // demande un argument
     let hamburger; // création de hamburger, varibale contenat le code à rajouter pour le menu hamburger (peut etre vide)
 
     if (ismenu) { //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
-        hamburger = <Menu_burger/>; // insère le code du menu hamburger
+        hamburger = <Menu_burger togleSideBar ={this.togleSideBar}/>; // insère le code du menu hamburger
     } else {
         hamburger = <Col span= {24}> <div style={{textAlign :'center'}}>CoHub </div></Col>;
     }

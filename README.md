@@ -1,86 +1,96 @@
-# CoHub
+<div align="center">
+    <img src="docs/CoHub.png" alt="drawing" width="200px" style="filter: opacity(0.6) drop-shadow(0 0 0 blue)"/>
+    <h1><b>CoHub</b></h1>
+    <h3>Une solution de partage et d'entraide à l'ENIB</h3>
+</div>
 
-![CoHub](docs/CoHub.png)
+<br/>
+<br/>
 
-# *Introduction*
+# ❓ I- Quel est le problème ? 
+ 
+Alors que les réseaux sociaux sont l’objet de critiques, des réseaux d’échanges et de partage se diversifient et se spécialisent dans de nombreux domaines, du simple partage de fichiers à des applications ou des sites spécifiques de prêts et d’échanges entre particuliers. 
+C’est une pratique qui progresse et qui s’accompagne d’une image positive. 
+ 
+Des applications mobiles ou des sites internet existent déjà mais sont organisés autour de besoins spécifiques. Comment partager localement, à l’échelle de l’ENIB, à la fois des biens, un coup de main, des compétences ? 
+ 
+Il s’agit par exemple de pouvoir éviter des achats individuels difficiles à rentabiliser ou utilisables seulement de manière occasionnelle ce qui peut permettre une maîtrise de la consommation, des économies et rend service aussi à la planète !
 
-Projet Informatique réalisé dans le cadre de notre semestre 6.
+<br/>
 
-Ce projet est un site internet qui permet d'échanger des services entre les étudiants ENIB.
+# 📣 II- Notre solution 
+ 
+Notre solution est **le site internet CoHub**. C’est un site de partage et d’échange fait par des étudiants de l’ENIB pour répondre aux demandes spécifiques des étudiants de l’ENIB. **Le site** a pour ambition de faciliter **le partage**, **la collaboration** et **l’entraide**. 
+ 
+**CoHub** recense donc toutes les **demandes d’aide** car nous pensons qu’elles ont plus de chances d’aboutir ainsi. Pour stimuler les interactions, **il doit être accessible à tous les étudiants de l’ENIB**. **CoHub** doit aussi **être disponible à partir de n’importe quelle interface utilisateur** (téléphone, tablette ou ordinateur) **à tout moment** et en tout lieu où une **connexion internet est possible**. Pour plus d’efficacité, toutes les demandes sont classées par catégorie afin de faciliter des réponses expertes. 
+ 
+La consultation des demandes émises **n’est pas restreinte**, par contre dans un souci de sécurité, **l’émission** ou la **réponse** à **une demande** est contrôlée par **un identifiant** et **un mot de passe**. 
+ 
+Afin de répondre à ces différents besoins, le site **CoHub** collecte les demandes d'aide, les range par catégorie et les rend disponibles à la consultation. 
+Les trois catégories prédéfinies sont **tutorat**, **covoiturage** et **prêt d'objets**. Il serait très facile d'implémenter des catégories supplémentaires.
 
-L'échange de services se caractérise sous différentes formes :
-* Aide au devoir
-* Demande de prêt de matériel
-* Demande d'aide diverse
-* Demande de covoiturage 
+Le site **CoHub** doit permettre **sans authentification de consulter toutes les demandes en cours** et aussi de **consulter une demande particulière** afin d'avoir plus de détails sur celle-ci. La consultation de demandes **peut être filtrée** par **catégorie** ou par **mot-clé**. 
 
-Les tickets donne aux utilisateurs un moyen simple d'identifier l'utilisateur et ses besoins.
 
-N'importe quel utilisateur peut prendre en charge les tickets et proposer son aide. Le demandeur peut alors communiquer avec cette utilisateur.
-Ils définissent ensemble les modalité d'aide.
+> ### >>>  [En savoir plus sur le projet](./docs/documentation.md)
 
->*Exemple* : Besoin d'aide pour les cours de Math, besoin de matériel de bricolage, besoin de rentrer le weekend ... 
+<br/>
 
-# Mots clefs
+# 📦 Installation du projet
 
-Les mots clefs sont :
-* Partage
-* Entreaide
-* Echange
-* Tutorat
-* Services 
+1. Installer la dernière version de [nodeJs](https://nodejs.org/en/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+2. Cloner le dépôt GitLab sur votre répertoire
+```bash
+git clone https://git.enib.fr/d5levequ/CoHub.git
+```
 
-----------------
-----------------
+3. Se rendre dans le répertoire à l'aide d'un terminal
+```bash
+cd CoHub
+```
 
-# Available Scripts
+4. Installer les dépendances du projet
+```bash
+npm install
+```
+5. Projet Installé
 
-In the project directory, you can run:
+
+# 📋 Liste des différentes commandes du projets
+
+Dans le dossier du projet, vous pouvez lancer les commandes suivantes:
+
 ```bash
 npm start
 ```
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Lance l'application en mode développement. Un serveur de développement est lancée sur votre machine. Lorsque l'application est chargée, une page internet est ouverte dans votre navigateur favori à l'adresse [http://localhost:3000](http://localhost:3000)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Dans ce mode, la page se recharge à chaque modification de fichier
 
-```bash
-npm test
-```
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
 
 ```bash
 npm run build
 ```
+Passe l'application en mode production. Tous les outils de débug sont désactivés. L'ensembles des fichiers sont minifiés (optimisés) et des hash sont ajouter sur les noms des fichiers.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A la fin de l'execution de la commande, un dossier build est généré à la racine du projet, permettant de déployer notre application pour être ensuite hébergée.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
 
 ```bash
-npm run eject
+npm run server
 ```
+Lance un serveur de distribution
+**lorsque l'application a été générer** (la commande build doit être lancée avant).
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Le serveur distribue les fichiers à l'adresse [http://localhost](http://localhost)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<br/>
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
+```bash
+npm run test
+```
+Lance les tests unitaires de l'application.
+Pour plus d'information sur les [tests unitaires](https://facebook.github.io/create-react-app/docs/running-tests)

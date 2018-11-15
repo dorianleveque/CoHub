@@ -13,11 +13,15 @@ class LoginPage extends Component {
           <Layout style = {{background: '#ffffff'}}>
               <Content style={{paddingTop: '60px'}}>
                 <Row>
-                  <Col span={8}></Col>
-                  <Col span={8}>
-                    <Connection_Form/>
+                  <Col 
+                    xs={{offset:1, span:22}} 
+                    sm={{offset:6 ,span:12}} 
+                    md={{offset:7, span:10}} 
+                    lg={{offset:8, span:8}} 
+                    xl={{offset:9, span:6}}
+                  >
+                    <Connection_Form routerHistory={this.props.history} />
                   </Col>
-                  <Col span={8}></Col>
                 </Row> 
               </Content>
           </Layout>

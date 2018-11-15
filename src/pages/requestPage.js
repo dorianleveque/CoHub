@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class DemandPage extends Component {
+class RequestPage extends Component {
     
     render() {
         return (
@@ -12,4 +12,4 @@ class DemandPage extends Component {
     }
 }
 
-export default DemandPage;
+export default RequestPage;

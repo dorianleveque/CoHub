@@ -5,7 +5,7 @@ import {auth} from '../firebase'
 const FormItem = Form.Item;
 
 
-class Connexion extends Component {
+class LoginForm extends Component {
 
   constructor() {
     super()
@@ -88,7 +88,7 @@ class Connexion extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(Connexion);
+const WrappedNormalLoginForm = Form.create()(LoginForm);
 
 
 export default WrappedNormalLoginForm;

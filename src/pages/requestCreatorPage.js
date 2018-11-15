@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-class CreateDemandPage extends Component {
+class RequestCreatorPage extends Component {
     render() {
         return (
             <h2>Création d'une demande</h2>
@@ -8,4 +8,4 @@ class CreateDemandPage extends Component {
     }
 }
 
-export default CreateDemandPage;
+export default RequestCreatorPage;

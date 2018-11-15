@@ -4,7 +4,24 @@ import { Form, Icon, Input, Button, Checkbox} from 'antd';
 const FormItem = Form.Item;
 
 
-class Connexion extends React.Component {
+class Connexion extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      userNameField: {
+        var: 'email',
+        placeholder: 'adresse mail',
+        rules: [{ required: true, message: 'une adresse mail est requise' }]
+      },
+      passWordField: {
+        var: 'password',
+        placeholder: 'mot de passe',
+        rules: [{ required: true, message: 'un mot de passe est requis' }]
+      }
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -13,28 +30,32 @@ class Connexion extends React.Component {
       }
     });
   }
+
   render() {
-       const { getFieldDecorator } = this.props.form;
+    const { getFieldDecorator } = this.props.form
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
-        <FormItem>
-          {getFieldDecorator('userName', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
-          )}
+        <FormItem> 
+          { 
+            getFieldDecorator(this.state.userNameField.var, { rules: this.state.userNameField.rules })
+            (<Input 
+                prefix={ <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> } 
+                placeholder={this.state.userNameField.placeholder} 
+            />)
+          }
         </FormItem>
         <FormItem>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
-          )}
+          {
+            getFieldDecorator(this.state.passWordField.var, { rules: this.state.passWordField.rules })
+            (<Input 
+                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
+                type="password" 
+                placeholder={this.state.passWordField.placeholder}
+            />)
+          }
         </FormItem>
         <FormItem>
-          <Button type="primary" htmlType="submit" className="login-form-button">
-            Log in
-          </Button>
+          <Button type="primary" htmlType="submit" className="login-form-button">Se connecter</Button>
         </FormItem>
       </Form>
     );

@@ -4,7 +4,6 @@ import { Route, Redirect } from 'react-router-dom'
 
 class PrivateRoute extends Component {
     render() {
-        console.log(this.props)
         if(this.props.isConnect){ 
             return <Route path={this.props.path} component={this.props.component} />
         }

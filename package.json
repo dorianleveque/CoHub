@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^3.10.4",
     "console-dialog": "^1.0.6",
+    "jshint": "^2.9.6",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-router-dom": "^4.3.1",

@@ -1,31 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Drawer, Button, Radio, Icon, Col ,  Row } from 'antd';
-
-import { Layout } from 'antd';
-const {  Sider } = Layout;
-
-
-const RadioGroup = Radio.Group;
+import { Icon, Col } from 'antd';
 
 
 class Menu_burger extends Component {
-
-  state = { visible: false, placement: "left" };
-
-  showDrawer = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false
-    });
-  };
-
 
   render()
   {

@@ -1,26 +1,39 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import { Drawer, Button, Radio, Icon, Col ,  Row } from 'antd';
+import { Menu} from 'antd';
 
 import { Layout } from 'antd';
 const {  Sider } = Layout;
- // ajouter signal 
 
-const RadioGroup = Radio.Group;
 
 class Sider_menu extends Component {
+    render () {
+      return (
+      <Sider style ={{background: '#fff'}}>
+      <div style = {{verticalAlign: 'middle' , textAlign: 'center', lineHeight: '70px' , background: '#1890ff' , color :'#fff' , fontSize : '20px', height: '70px'}}> Categorie </div>
+          <div>
+      <Menu mode="inline" defaultSelectedKeys={['1']} style={{ height: '100%', background: '#fff' }}>
+            <Menu.Item key="1">
+              <span>Tout</span>
+            </Menu.Item>
+
+            <Menu.Item key="2">
+              <span>Tutorat</span>
+            </Menu.Item>
+
+            <Menu.Item key="3">
+              <span>Covoiturage</span>
+            </Menu.Item>
+            <Menu.Item key="4">
+              <span>Prêt</span>
+            </Menu.Item>
+        </Menu>
+          </div>
+      </Sider>
+    ); 
+  }
+}
 
 
-  showDrawer = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  onClose = () => {
-    this.setState({
-      visible: false
-    });
-  };
-
+export default Sider_menu;

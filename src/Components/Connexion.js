@@ -12,18 +12,24 @@ class Connexion extends Component {
       userNameField: {
         var: 'email',
         placeholder: 'adresse mail',
-        rules: [{ required: true, message: 'une adresse mail est requise' }]
+        rules: [
+          { required: true, message: 'une adresse mail est requise' },
+          { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
+        ]
       },
       passWordField: {
         var: 'password',
         placeholder: 'mot de passe',
-        rules: [{ required: true, message: 'un mot de passe est requis' }]
+        rules: [
+          { required: true, message: 'un mot de passe est requis' },
+          { min: 8, message: "Votre mot de passe n'est pas assez long\n"}
+        ]
       }
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  onSubmit = (event) => {
+    event.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
@@ -34,7 +40,7 @@ class Connexion extends Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form onSubmit={this.onSubmit} className="login-form">
         <FormItem> 
           { 
             getFieldDecorator(this.state.userNameField.var, { rules: this.state.userNameField.rules })

@@ -53,6 +53,7 @@ constructor(props) { // constructuer de Top
 								{cards}
 								{space}
 								{pagination}
+								{space}
 						</Content>
 	    	</Layout>
 	    </Layout>

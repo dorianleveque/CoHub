@@ -23,7 +23,7 @@ const Router = (props) => (
             <PublicRoute exact path='/login'                component={LoginPage}   />
             <PublicRoute exact path='/logout' />
             <PublicRoute exact path='/demande/:id'  component={DemandPage}  />
-            <PrivateRoute isConnect={props.isConnect} path='/demande/:id/edit' to='/demande/:id' component={DemandPage}  />
+            <PrivateRoute isConnect={props.isConnect} path='/demande/:id/edit' to='/login' component={DemandPage}  />
             <PublicRoute component={NotFoundPage} />
         </Switch>
     </BrowserRouter>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox} from 'antd';
+import {auth} from '../firebase'
 
 const FormItem = Form.Item;
 
@@ -29,10 +30,30 @@ class Connexion extends Component {
   }
 
   onSubmit = (event) => {
-    event.preventDefault();
+    // on arrête la propagation de l'évènement
+    event.preventDefault()
     this.props.form.validateFields((err, values) => {
+      
+      // Lorsqu'il n'y a pas d'erreur de saisie
       if (!err) {
-        console.log('Received values of form: ', values);
+        /* 
+        on contacte la base de donnée afin vérifier si les identifiants
+        rentrés sont correct
+        */
+        const { email, password } = values
+        const history = this.props.routerHistory
+
+        auth.doSignInWithEmailAndPassword(email, password)
+            .then(()=>{
+              /* 
+              si la vérification avec la base de données est correct
+              alors on crée l'objet user et redirige l'utilisateur sur la page HOME
+              */
+              history.goBack()
+            })
+            .catch(error => {
+              console.log(error)
+            });
       }
     });
   }

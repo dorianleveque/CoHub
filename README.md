@@ -32,7 +32,7 @@ Les trois catégories prédéfinies sont **tutorat**, **covoiturage** et **prêt
 Le site **CoHub** doit permettre **sans authentification de consulter toutes les demandes en cours** et aussi de **consulter une demande particulière** afin d'avoir plus de détails sur celle-ci. La consultation de demandes **peut être filtrée** par **catégorie** ou par **mot-clé**. 
 
 
-> ### >>>  [En savoir plus sur le projet](./docs/documentation.md)
+> ### >>>  [En savoir plus sur le projet](./docs/Dossier_CoHub.pdf)
 
 <br/>
 

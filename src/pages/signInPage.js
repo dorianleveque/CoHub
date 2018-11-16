@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Connection_Form from '../components/loginForm'
+import SignInForm from '../components/signInForm'
 import {Layout,  Row, Col, Card } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -20,8 +20,8 @@ class LoginPage extends Component {
                     lg={{offset:8, span:8}} 
                     xl={{offset:9, span:6}}
                   >
-                    <Card title="Se connecter" style={{ width: 300 }} >
-                      <Connection_Form routerHistory={this.props.history} />
+                    <Card title="Bonjour" style={{ width: 300 }} >
+                      <SignInForm routerHistory={this.props.history} />
                     </Card>
                   </Col>
                 </Row> 

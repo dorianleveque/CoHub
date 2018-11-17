@@ -5,7 +5,7 @@ import Sider_menu from  './Sider_menu'
 import Demande_card from  './Demande_card';
 const { Content } = Layout;
 
-class App extends Component {
+class HomePage extends Component {
 constructor(props) { // constructuer de Top
 		
 		super(props); 
@@ -82,4 +82,4 @@ handleWindowSizeChange = () => {
   }
 }
 
-export default App;
+export default HomePage;

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Layout, Col, Row } from 'antd';
-import Menu_burger from './Menu_burger';
+import Menu_burger from './MenuBurger';
 
 const { Header } = Layout;
 
@@ -12,12 +11,12 @@ class Top extends Component { // demande un argument
     this.ismenu = this.props.ismenu; //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
 
   }
+
   togleSideBar = () => {
     console.log("hellow");
     this.props.togleSideBar();
   };
-
-
+  
   render() {  // permet l'affichage du top
     // Permet de de déterminer si on affiche ou non l'hamburger
 

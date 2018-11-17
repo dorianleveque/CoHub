@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Card , Col , Row, Tag} from 'antd';
 const { Meta } = Card;
 class DemandeCard extends Component {

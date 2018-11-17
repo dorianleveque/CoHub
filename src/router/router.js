@@ -1,17 +1,17 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route as PublicRoute } from 'react-router-dom'
-import PrivateRoute from './privateRoute'
+import PrivateRoute from './PrivateRoute'
 import * as routes from './routes'
 
 /**
  * Importation des différentes pages de notre application
  */
-import HomePage             from '../pages/homePage'
-import RequestCreatorPage   from '../pages/requestCreatorPage'
-import RequestPage          from '../pages/requestPage'
-import SignInPage           from '../pages/signInPage'
-import SignUpPage           from '../pages/signUpPage'
-import NotFoundPage         from '../pages/notFoundPage'
+import HomePage             from '../pages/HomePage'
+import RequestCreatorPage   from '../pages/RequestCreatorPage'
+import RequestPage          from '../pages/RequestPage'
+import SignInPage           from '../pages/SignInPage'
+import SignUpPage           from '../pages/SignUpPage'
+import NotFoundPage         from '../pages/NotFoundPage'
 
 /**
  * Définition de l'ensemble des différentes routes de notre application

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SignInForm from '../components/signInForm'
+import SignInForm from '../components/form/SignInForm'
 import {Layout,  Row, Col, Card } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;

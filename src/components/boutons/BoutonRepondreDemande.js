@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 
 
-class Bouton_repondre_demande extends React.Component {
+class BoutonRepondreDemande extends React.Component {
   render(){
    	return (
   	<div>
@@ -12,4 +12,4 @@ class Bouton_repondre_demande extends React.Component {
  }
 }
 
-export default Bouton_repondre_demande;
+export default BoutonRepondreDemande;

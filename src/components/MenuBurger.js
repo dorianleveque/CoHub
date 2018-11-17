@@ -4,7 +4,7 @@ import './App.css';
 import { Icon, Col } from 'antd';
 
 
-class Menu_burger extends Component {
+class MenuBurger extends Component {
 
   togleSideBar (){
     this.props.togleSideBar();
@@ -23,4 +23,4 @@ class Menu_burger extends Component {
   }
 }
 
-export default Menu_burger;
+export default MenuBurger;

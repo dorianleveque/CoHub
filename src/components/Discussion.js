@@ -3,7 +3,7 @@ import {Card, Icon} from 'antd';
 
 const { Meta } = Card;
 
-class Discution extends React.Component {
+class Discussion extends React.Component {
 
   render() {
     return (
@@ -18,4 +18,4 @@ class Discution extends React.Component {
   }
 }
 
-export default Discution;
+export default Discussion;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Card , Col , Row, Tag} from 'antd';
 const { Meta } = Card;
-class Demande_card extends Component {
+class DemandeCard extends Component {
 
   render()
   {
@@ -36,7 +36,7 @@ class Demande_card extends Component {
   }
 }
 
-export default Demande_card;
+export default DemandeCard;
 
 
 

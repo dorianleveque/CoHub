@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 
 
-class Bouton_editer extends React.Component {
+class BoutonEditer extends React.Component {
   render(){
    	return (
   	<div>
@@ -12,4 +12,4 @@ class Bouton_editer extends React.Component {
  }
 }
 
-export default Bouton_editer;
+export default BoutonEditer;

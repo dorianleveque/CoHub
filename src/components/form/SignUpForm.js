@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
-import {auth} from '../firebase'
+import {auth} from '../../firebase'
 
 const FormItem = Form.Item;
 

@@ -12,7 +12,7 @@ function decline() {
 }
 
 
-class Bouton_supprimer extends React.Component {
+class BoutonSupprimer extends React.Component {
   render(){
    	return (
   	<div style={{ width: 70, float: 'left' }}>
@@ -24,4 +24,4 @@ class Bouton_supprimer extends React.Component {
  }
 }
 
-export default Bouton_supprimer;
+export default BoutonSupprimer;

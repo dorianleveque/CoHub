@@ -1,9 +1,5 @@
 <div align="center">
-<<<<<<< HEAD
-    <img src="docs/CoHub.png" alt="drawing" width="200px" style="filter: opacity(0.6) drop-shadow(0 0 0 blue)"/>
-=======
     <img src="docs/CoHub.png" alt="drawing" width="200px;" style="filter: opacity(0.6) drop-shadow(0 0 0 blue);"/>
->>>>>>> origin/master
     <h1><b>CoHub</b></h1>
     <h3>Une solution de partage et d'entraide à l'ENIB</h3>
 </div>

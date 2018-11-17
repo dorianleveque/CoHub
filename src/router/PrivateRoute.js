@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
+import { applyRouteParams } from './routes'
 
 class PrivateRoute extends Component {
     render() {
@@ -8,11 +9,7 @@ class PrivateRoute extends Component {
             return <Route path={this.props.path} component={this.props.component} />
         }
         else{
-            let to = this.props.to
-            Object.entries(this.props.computedMatch.params).forEach(([key, value]) => {
-                to = to.replace(`:${key}`, value)
-            })
-            return <Redirect from={this.props.path} to={to} />
+            return <Redirect from={this.props.path} to={applyRouteParams(this.props.to, this.props.computedMatch.params)} />
         }
     }
 }

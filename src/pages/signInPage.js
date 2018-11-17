@@ -4,7 +4,7 @@ import {Layout,  Row, Col, Card } from 'antd';
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class LoginPage extends Component {
+class SignInPage extends Component {
     render() {
         return (
 
@@ -32,4 +32,4 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage;
+export default SignInPage;

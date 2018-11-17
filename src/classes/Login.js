@@ -1,10 +1,8 @@
 class Login {
-    _id = 0
 
     constructor(){
         let _id = 0
+        this.setId = function(id) { _id = id; }
+        this.getId = function() { return _id; }
     }
-
-    setId(id) { _id = id; }
-    getId() { return _id; }
 }

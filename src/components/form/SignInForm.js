@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
 import {auth} from '../../firebase'
+import {SIGN_UP} from '../../router/routes'
 
 const FormItem = Form.Item;
 
@@ -30,41 +31,44 @@ class LoginForm extends Component {
     }
   }
 
+
+  /**
+   * Fonction déclenchée lors de la soumission du formulaire
+   * Un loader sur le bouton informe l'utilisateur du traitement de sa demande
+   * 
+   * Après vérification de la validité des différents champs du formulaire, 
+   * s'il n'y a pas d'erreur, on contacte la base de donnée afin vérifier si 
+   * les identifiants rentrés sont correct
+   * 
+   * - si la vérification avec la base de données est correct
+   *   alors on crée l'objet user et redirige l'utilisateur sur la page HOME
+   * - sinon on lui affiche un message d'erreur
+   */
   onSubmit = (event) => {
     // on arrête la propagation de l'évènement
     event.preventDefault()
-    // on informe l'utilisateur que sa demande à été prise en compte par un loader
     this.setState({ submitButtonLoading: true })
 
     this.props.form.validateFields((err, values) => {
       
       // Lorsqu'il n'y a pas d'erreur de saisie
       if (!err) {
-        /* 
-        on contacte la base de donnée afin vérifier si les identifiants
-        rentrés sont correct
-        */
         const { email, password } = values
         const history = this.props.routerHistory
 
         auth.doSignInWithEmailAndPassword(email, password)
             .then(()=>{
-              /* 
-              si la vérification avec la base de données est correct
-              alors on crée l'objet user et redirige l'utilisateur sur la page HOME
-              */
+              this.setState({ submitButtonLoading: false })
               message.success("Vous êtes maintenant connecté")
               history.goBack()
             })
             .catch(error => {
               this.setState({ submitButtonLoading: false })
-              if (error.code === "auth/wrong-password") { 
-                message.error("Votre identifiant et/ou votre mot de passe sont incorrects") 
-              }
-              else { 
-                message.error(error.message)
-              }
+              message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
             })
+      }
+      else{
+        this.setState({ submitButtonLoading: false })
       }
     });
   }
@@ -93,7 +97,22 @@ class LoginForm extends Component {
           }
         </FormItem>
         <FormItem>
-          <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.submitButtonLoading} >Se connecter</Button>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true,
+          })(
+            <Checkbox>Rester connecter</Checkbox>
+          )}
+          
+          <Row gutter={20}>
+            <Col span={14}>
+              <Button block type="primary"   htmlType="submit" className="login-form-button" loading={this.state.submitButtonLoading} >Se connecter</Button>
+            </Col>
+            <Col span={10}>
+              <Button block type="secondary" href={SIGN_UP} className="login-form-button" >S'inscrire</Button>
+            </Col>
+          </Row>
+          <a className="login-form-forgot" href="">Mot de passe oublié</a>
         </FormItem>
       </Form>
     );

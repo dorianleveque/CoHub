@@ -1,6 +1,10 @@
 <div align="center">
     <img src="docs/CoHub.png" alt="drawing" width="200px;" style="filter: opacity(0.6) drop-shadow(0 0 0 blue);"/>
-    <h1><b>CoHub</b></h1>
+    <h1>
+        <b>
+            <a style="color: black" href="https://cohub-9d62b.firebaseapp.com/">CoHub</a>
+        </b>
+    </h1>
     <h3>Une solution de partage et d'entraide à l'ENIB</h3>
 </div>
 

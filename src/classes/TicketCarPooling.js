@@ -1,4 +1,5 @@
 import Ticket from './Ticket' 
+import {database} from '../firebase/firebase'
 
 
 class TicketCarPooling extends Ticket{
@@ -13,59 +14,69 @@ class TicketCarPooling extends Ticket{
 		this.places = places;
 	}
 
-	getDeparturLocation = function ()
+	getDeparturLocation()
 	{
 		return this.departurLocation;
 	}
 
-	setDeparturLocation = function (departurLocation)
+	setDeparturLocation(departurLocation)
 	{
 		this.departurLocation = departurLocation;
 	}
 
-	getArrivalLocation = function ()
+	getArrivalLocation()
 	{
 		return  this.arrivalLocation;
 	}
 
-	setArrivalLocation = function (arrivalLocation)
+	setArrivalLocation(arrivalLocation)
 	{
 		this.arrivalLocation = arrivalLocation;
 	}
 
-	getDeparturTime = function ()
+	getDeparturTime()
 	{
 		return this.departurTime;
 	}
 
-	setDeparturTime = function (departurTime)
+	setDeparturTime(departurTime)
 	{
 		this.departurTime = departurTime;//verification du format de l'heure
 	}
 
-	getArrivalTime = function()
+	getArrivalTime()
 	{
 		return this.arrivalTime;//verification du format de l'heure
 	}
 
-	setArrivalTime = function(arrivalTime)
+	setArrivalTime(arrivalTime)
 	{
 		this.arrivalTime = arrivalTime;
 	}
 
-	getPlaces = function()
+	getPlaces()
 	{
 		return this.places;
 	}
 
-	setPlaces = function(places)
+	setPlaces(places)
 	{
 		this.places = places;
 	}
 
 	//display()
 
-	//save()
+	save()
+	{
+		super.save();
+		database.ref('TicketCarPooling/' + this.id).set({
+			DeparturLocation : this.departurLocation,
+			ArrivalLocation : this.arrivalLocation,
+			DeparturTime : this.departurTime,
+			ArrivalTime : this.arrivalTime,
+			Places : this.places
+		});
+	}
 
 };
 export default TicketCarPooling

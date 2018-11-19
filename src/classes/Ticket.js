@@ -1,3 +1,6 @@
+import {database} from '../firebase/firebase'
+
+
 class Ticket{
 
 	constructor(id, title, description, category, creationDate, requester)
@@ -11,58 +14,58 @@ class Ticket{
 		this.helper = [];
 	}
 
-	getId = function()
+	getId()
 	{
 		return this.id;
 	}
 
-	getTitle = function ()
+	getTitle()
 	{
 		return this.title;
 	}
 
-	setTitle = function (title)
+	setTitle(title)
 	{
 		this.title = title;
 	}
 
-	getDescription = function ()
+	getDescription()
 	{
 		return this.description;
 	}
 
-	setDescription = function (description)
+	setDescription(description)
 	{
 		this.description = description;
 	}
 
-	getCategory = function ()
+	getCategory()
 	{
 		return this.category;
 	}
 
-	setCategory = function (category)
+	setCategory(category)
 	{
 		//verrifier que la categorie existe
 		this.category = category;
 	}
 
-	getCreationDate = function ()
+	getCreationDate()
 	{
 		return this.creationDate;
 	}
 
-	getRequester = function ()
+	getRequester()
 	{
 		return this.requester;
 	}
 
-	getHelper = function ()
+	getHelper()
 	{
 		return this.helper;
 	}
 
-	addHelper = function (helper)
+	addHelper(helper)
 	{
 		if (helper === this.requester)
 		{
@@ -74,7 +77,7 @@ class Ticket{
 		}
 	}
 
-	isHelper = function (user)
+	isHelper(user)
 	{
 		for (var i = 0; i < this.helper.length; i++) {
 			if (this.helper[i] === user) 
@@ -98,7 +101,21 @@ class Ticket{
 
 	//edit()
 
-	//save()
+	save()
+	{
+		var helper = [];
+		for (var i = 0; i < this.helper.length; i++) {
+			helper[i] =  this.helper[i].getId();
+		}
+		database.ref('Ticket/' + this.id).set({
+			Title : this.title,
+			Description : this.description,
+			Category : this.category,
+			CreationDate : this.creationDate,
+			IdRequester : this.requester.getId(),
+			IdHelper : helper
+		});
+	}
 
 	//delete()
 };

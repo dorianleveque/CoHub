@@ -1,3 +1,5 @@
+import {database} from '../firebase/firebase'
+
 class User {
 
 	constructor(id, name, surname, nickname = null)
@@ -9,27 +11,27 @@ class User {
 		
 	}
 
- 	getId = function()
+ 	getId()
 	{
 		return this.id;
 	}
 
-	getName = function()
+	getName()
 	{
 		return this.name;
 	}
 
-	getSurname = function()
+	getSurname()
 	{
 		return this.surname;
 	}
 
-	getNickname = function()
+	getNickname()
 	{
 		return this.nickname;
 	}
 
-	setNickname = function(nickname)
+	setNickname(nickname)
 	{
 		this.nickname = nickname;
 	}
@@ -44,9 +46,16 @@ class User {
 
 	//deleteTicket()
 
-	//save()
+	save()
+	{
+		database.ref('Ticket/' + this.id).set({
+			Name : this.name,
+			Surname : this.surname,
+			Nickname : this.nickname
+		});
+	}
 
-	//checkRights')
+	//checkRights
 
 };
 export default User

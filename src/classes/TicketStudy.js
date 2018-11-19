@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-
+import {database} from '../firebase/firebase'
 
 class TicketStudy extends Ticket{
 
@@ -12,42 +12,42 @@ class TicketStudy extends Ticket{
 		this.theme = theme;
 	}
 
-	getSubject = function ()
+	getSubject()
 	{
 		return this.subject;
 	}
 
-	setSubject = function (subject)
+	setSubject(subject)
 	{
 		this.subject = subject;
 	}
 
-	getSemester = function () // peut-etre a copier coller dans la classe User
+	getSemester() // peut-etre a copier coller dans la classe User
 	{
 		return this.semester;
 	}
 
-	setSemester = function (semester) // peut-etre a copier coller dans la classe User
+	setSemester(semester) // peut-etre a copier coller dans la classe User
 	{
 		this.semester = semester;
 	}
 
-	getTeacher = function ()
+	getTeacher()
 	{
 		return this.teacher;
 	}
 
-	setTeacher = function (teacher)
+	setTeacher(teacher)
 	{
 		this.teacher = teacher;
 	}
 
-	getTheme = function ()
+	getTheme()
 	{
 		return this.theme;
 	}
 
-	setTheme = function (theme)
+	setTheme(theme)
 	{
 		this.theme = theme;
 	}
@@ -55,7 +55,16 @@ class TicketStudy extends Ticket{
 	//display()
 
 
-	//save()
+	save()
+	{
+		super.save();
+		database.ref('TicketStudy/' + this.id).set({
+			Subject : this.subject,
+			Semester : this.semester,
+			Teacher : this.teacher,
+			Theme : this.theme
+		});
+	}
 
 };
 export default TicketStudy

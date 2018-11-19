@@ -1,4 +1,5 @@
 import Ticket from './Ticket' 
+import {database} from '../firebase/firebase'
 
 
 class TicketSharing extends Ticket{
@@ -9,19 +10,25 @@ class TicketSharing extends Ticket{
 		this.item = item;
 	}
 
-	getItem = function()
+	getItem()
 	{
 		return this.item;
 	}
 
-	setItem = function(item)
+	setItem(item)
 	{
 		this.item = item;
 	}
 
 	//display()
 
-	//save()
+	save()
+	{
+		super.save();
+		database.ref('TicketSharing/' + this.id).set({
+			Item : this.item
+		});
+	}
 
 };
 export default TicketSharing

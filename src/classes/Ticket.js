@@ -1,7 +1,7 @@
 import {database} from '../firebase/firebase'
 
 
-class Ticket{
+class Ticket{//rendre la classe abstarite
 
 	constructor(id, title, description, category, creationDate, requester)
 	{
@@ -117,6 +117,9 @@ class Ticket{
 		});
 	}
 
-	//delete()
+	delete()
+	{
+		database.ref('Ticket/' + this.id).remove();
+	}
 };
 export default Ticket

@@ -25,9 +25,15 @@ class TicketSharing extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketSharing/' + this.id).set({
+		database.ref('TicketSharing/' + this.id).set({//pb de réfrérance?
 			Item : this.item
 		});
+	}
+
+	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	{
+		super.delete()
+		database.ref('TicketSharing/' + this.id).remove();
 	}
 
 };

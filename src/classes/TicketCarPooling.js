@@ -9,8 +9,8 @@ class TicketCarPooling extends Ticket{
 		super(id, title, description, category, creationDate, requester);
 		this.departurLocation = departurLocation;
 		this.arrivalLocation = arrivalLocation;
-		this.departurTime = departurTime;//verification du format de l'heure
-		this.arrivalTime = arrivalTime;//verification du format de l'heure
+		this.departurTime = departurTime;
+		this.arrivalTime = arrivalTime;
 		this.places = places;
 	}
 
@@ -69,13 +69,19 @@ class TicketCarPooling extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketCarPooling/' + this.id).set({
+		database.ref('TicketCarPooling/' + this.id).set({//pb de réfrérance?
 			DeparturLocation : this.departurLocation,
 			ArrivalLocation : this.arrivalLocation,
 			DeparturTime : this.departurTime,
 			ArrivalTime : this.arrivalTime,
 			Places : this.places
 		});
+	}
+
+	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	{
+		super.delete()
+		database.ref('TicketCarPooling/' + this.id).remove();
 	}
 
 };

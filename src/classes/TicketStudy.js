@@ -66,5 +66,11 @@ class TicketStudy extends Ticket{
 		});
 	}
 
+	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	{
+		super.delete()
+		database.ref('TicketStudy/' + this.id).remove();
+	}
+
 };
 export default TicketStudy

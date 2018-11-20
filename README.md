@@ -98,3 +98,22 @@ npm run test
 ```
 Lance les tests unitaires de l'application.
 Pour plus d'information sur les [tests unitaires](https://facebook.github.io/create-react-app/docs/running-tests)
+
+# 📡 Déployer le projet sur Firebase
+
+1. Lancer le build du projet
+```bash
+npm run build
+```
+
+2. Se connecter à Firebase
+```bash
+npx firebase login
+```
+
+3. Déployer l'application sur Firebase
+```bash
+npx firebase deploy
+```
+
+4. Application hébergé sur [Firebase]("https://cohub-9d62b.firebaseapp.com/")

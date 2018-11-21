@@ -93,15 +93,15 @@ class Ticket{//rendre la classe abstarite
 
 	//ce qui reste a coder (c.f diagrame de classe)
 
-	//displayThumbnail()
+	//displayThumbnail() 
 
 	//display()
 
-	//addMessage()
+	//addMessage() 
 
 	//edit()
 
-	save()
+	save() 
 	{
 		var helper = [];
 		for (var i = 0; i < this.helper.length; i++) {

@@ -58,7 +58,7 @@ class TicketStudy extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketStudy/' + this.id).set({
+		database.ref('TicketStudy/' + this.id).set({//pb de réfrérance?
 			Subject : this.subject,
 			Semester : this.semester,
 			Teacher : this.teacher,

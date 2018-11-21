@@ -38,6 +38,7 @@ class Message {
 			Date : this.date//pas dans le diagrame de classe mais nessesaire
 		});
 	}
+	
 
 }
 export default Message

@@ -1,85 +1,101 @@
+import Conversation from './Conversation' 
 import {database} from '../firebase/firebase'
 
 
 class Ticket{//rendre la classe abstarite
 
-	constructor(id, title, description, category, creationDate, requester)
+	#id
+	#title;
+	#description;
+	#category;
+	#creationDate;
+	#requester;
+	#helper;
+	#conversation;
+
+	constructor(id, title, description, category, creationDate, requester, idConversation)
 	{
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.category = category;
-		this.creationDate = creationDate;
-		this.requester = requester;
-		this.helper = [];
+		this.#id = id;
+		this.#title = title;
+		this.#description = description;
+		this.#category = category;
+		this.#creationDate = creationDate;
+		this.#requester = requester;
+		this.#helper = [];
+		this.#conversation = new Conversation(idConversation);
 	}
 
 	getId()
 	{
-		return this.id;
+		return this.#id;
 	}
 
 	getTitle()
 	{
-		return this.title;
+		return this.#title;
 	}
 
 	setTitle(title)
 	{
-		this.title = title;
+		this.#title = title;
 	}
 
 	getDescription()
 	{
-		return this.description;
+		return this.#description;
 	}
 
 	setDescription(description)
 	{
-		this.description = description;
+		this.#description = description;
 	}
 
 	getCategory()
 	{
-		return this.category;
+		return this.#category;
 	}
 
 	setCategory(category)
 	{
 		//verrifier que la categorie existe
-		this.category = category;
+		this.#category = category;
 	}
 
 	getCreationDate()
 	{
-		return this.creationDate;
+		return this.#creationDate;
 	}
 
 	getRequester()
 	{
-		return this.requester;
+		return this.#requester;
 	}
 
 	getHelper()
 	{
-		return this.helper;
+		return this.#helper;
+	}
+
+	getConversation()
+	{
+		return this.#conversation;
 	}
 
 	addHelper(helper)
 	{
-		if (helper === this.requester)
+		if (helper === this.#requester)
 		{
 			console.log("On ne peut pas etre aidant et aider en meme temps");
 		}
 		else
 		{
-			this.helper.push(helper);
+			this.#helper.push(helper);
 		}
 	}
 
 	isHelper(user)
 	{
-		for (var i = 0; i < this.helper.length; i++) {
+		for (var i = 0; i < this.#helper.length; i++) {
 			if (this.helper[i] === user) 
 			{
 					return true;
@@ -95,31 +111,37 @@ class Ticket{//rendre la classe abstarite
 
 	//displayThumbnail() 
 
-	//display()
+	display(){}// methode abstraite
 
-	//addMessage() 
+	addMessage(message)
+	{
+		this.#conversation.addMessage(message);
+	} 
 
 	//edit()
 
 	save() 
 	{
 		var helper = [];
-		for (var i = 0; i < this.helper.length; i++) {
+		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.helper[i].getId();
 		}
-		database.ref('Ticket/' + this.id).set({
-			Title : this.title,
-			Description : this.description,
-			Category : this.category,
-			CreationDate : this.creationDate,
-			IdRequester : this.requester.getId(),
-			IdHelper : helper
+		database.ref('Ticket/' + this.#id).set({
+			Title : this.#title,
+			Description : this.#description,
+			Category : this.#category,
+			CreationDate : this.#creationDate,
+			IdRequester : this.#requester.getId(),
+			IdHelper : helper,
+			IdConversation : this.#conversation.getId()
 		});
+		this.#conversation.save();
 	}
 
 	delete()
 	{
-		database.ref('Ticket/' + this.id).remove();
+		database.ref('Ticket/' + this.#id).remove();
+		this.#conversation.delete();
 	}
 };
 export default Ticket

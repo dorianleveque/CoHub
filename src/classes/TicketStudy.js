@@ -3,53 +3,58 @@ import {database} from '../firebase/firebase'
 
 class TicketStudy extends Ticket{
 
+	#subject
+	#semester
+	#teacher
+	#theme
+
 	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme)
 	{
 		super(id, title, description, category, creationDate, requester);
-		this.subject = subject;
-		this.semester = semester;// ne serce pas mieux de metre cette attribu dans la classe User
-		this.teacher = teacher;
-		this.theme = theme;
+		this.#subject = subject;
+		this.#semester = semester;// ne serce pas mieux de metre cette attribu dans la classe User
+		this.#teacher = teacher;
+		this.#theme = theme;
 	}
 
 	getSubject()
 	{
-		return this.subject;
+		return this.#subject;
 	}
 
 	setSubject(subject)
 	{
-		this.subject = subject;
+		this.#subject = subject;
 	}
 
 	getSemester() // peut-etre a copier coller dans la classe User
 	{
-		return this.semester;
+		return this.#semester;
 	}
 
 	setSemester(semester) // peut-etre a copier coller dans la classe User
 	{
-		this.semester = semester;
+		this.#semester = semester;
 	}
 
 	getTeacher()
 	{
-		return this.teacher;
+		return this.#teacher;
 	}
 
 	setTeacher(teacher)
 	{
-		this.teacher = teacher;
+		this.#teacher = teacher;
 	}
 
 	getTheme()
 	{
-		return this.theme;
+		return this.#theme;
 	}
 
 	setTheme(theme)
 	{
-		this.theme = theme;
+		this.#theme = theme;
 	}
 
 	//display()
@@ -59,10 +64,10 @@ class TicketStudy extends Ticket{
 	{
 		super.save();
 		database.ref('TicketStudy/' + this.id).set({//pb de réfrérance?
-			Subject : this.subject,
-			Semester : this.semester,
-			Teacher : this.teacher,
-			Theme : this.theme
+			Subject : this.#subject,
+			Semester : this.#semester,
+			Teacher : this.#teacher,
+			Theme : this.#theme
 		});
 	}
 

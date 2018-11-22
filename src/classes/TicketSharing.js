@@ -4,20 +4,22 @@ import {database} from '../firebase/firebase'
 
 class TicketSharing extends Ticket{
 
+	#item
+
 	constructor(id, title, description, category, creationDate, requester, item)
 	{
 		super(id, title, description, category, creationDate, requester);
-		this.item = item;
+		this.item = #item;
 	}
 
 	getItem()
 	{
-		return this.item;
+		return this.#item;
 	}
 
 	setItem(item)
 	{
-		this.item = item;
+		this.#item = item;
 	}
 
 	//display()
@@ -26,7 +28,7 @@ class TicketSharing extends Ticket{
 	{
 		super.save();
 		database.ref('TicketSharing/' + this.id).set({//pb de réfrérance?
-			Item : this.item
+			Item : this.#item
 		});
 	}
 

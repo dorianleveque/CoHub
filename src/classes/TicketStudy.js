@@ -60,6 +60,28 @@ class TicketStudy extends Ticket{
 	//display()
 
 
+	edit(title, description, category, subject, semester, teacher, theme)
+	{
+		super.edit(title, description, category)
+		if(subject != null)
+		{
+			this.setSubject(subject);
+		}
+		if(semester != null)
+		{
+			this.setSemester(semester);
+		}
+		if(teacher != null)
+		{
+			this.setTeacher(teacher);
+		}
+		if(theme != null)
+		{
+			this.setTheme(theme);
+		}
+	}
+
+
 	save()
 	{
 		super.save();

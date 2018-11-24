@@ -118,7 +118,21 @@ class Ticket{//rendre la classe abstarite
 		this.#conversation.addMessage(message);
 	} 
 
-	//edit()
+	edit(title, description, category)
+	{
+		if(title != null)
+		{
+			this.setTitle(title);
+		}
+		if(description != null)
+		{
+			this.setDescription(description);
+		}
+		if(category != null)
+		{
+			this.setCategory(category);
+		}
+	}
 
 	save() 
 	{
@@ -135,7 +149,7 @@ class Ticket{//rendre la classe abstarite
 			IdHelper : helper,
 			IdConversation : this.#conversation.getId()
 		});
-		this.#conversation.save();
+		this.#conversation.save(); // a modifier
 	}
 
 	delete()

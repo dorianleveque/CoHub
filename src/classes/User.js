@@ -12,8 +12,7 @@ class User {
 		this.#id = id;
 		this.#name = name;
 		this.#surname = surname;
-		this.#nickname = nickname;
-		
+		this.#nickname = nickname;	
 	}
 
  	getId()

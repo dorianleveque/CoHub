@@ -72,6 +72,32 @@ class TicketCarPooling extends Ticket{
 
 	//display()
 
+	edit(title, description, category, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
+	{
+		super.edit(title, description, category)
+		if(departurLocation != null)
+		{
+			this.setDeparturLocation(departurLocation);
+		}
+		if(arrivalLocation != null)
+		{
+			this.setArrivalLocation(arrivalLocation);
+		}
+		if(departurTime != null)
+		{
+			this.setDeparturTime(departurTime);
+		}
+		if(arrivalTime != null)
+		{
+			this.setArrivalTime(arrivalTime);
+		}
+		if(places != null)
+		{
+			this.setPlaces(places);
+		}
+	}
+
+
 	save()
 	{
 		super.save();

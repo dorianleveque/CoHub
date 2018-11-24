@@ -24,6 +24,15 @@ class TicketSharing extends Ticket{
 
 	//display()
 
+	edit(title, description, category, item)
+	{
+		super.edit(title, description, category)
+		if(item != null)
+		{
+			this.setItem(item);
+		}
+	}
+
 	save()
 	{
 		super.save();

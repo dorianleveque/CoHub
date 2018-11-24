@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Layout, Col, Row, Pagination , Icon} from 'antd'
-=======
-import { Layout, Col, Row, Pagination } from 'antd'
->>>>>>> Master
 import Top from '../components/Top'
 import Sider_menu from '../components/SiderMenu'
 import Demande_card from '../components/DemandeCard';

@@ -12,10 +12,20 @@ class SiderMenu extends Component {
   }
 
 
+<<<<<<< HEAD
   render() {
 
     return (
       <Sider style={{ background: '#fff' }} collapsed={this.props.visible} collapsedWidth={0} >
+=======
+  componentDidUpdate() {
+    this.visible = this.props.visible;
+  }
+  render() {
+
+    return (
+      <Sider style={{ background: '#fff' }} collapsed={this.visible} collapsedWidth={0} >
+>>>>>>> Master
         <div style={{ verticalAlign: 'middle', textAlign: 'center', lineHeight: '70px', background: '#1890ff', color: '#fff', fontSize: '20px', height: '70px' }}> Categorie </div>
         <div>
           <Menu mode="inline" defaultSelectedKeys={['1']} style={{ height: '100%', background: '#fff' }}>

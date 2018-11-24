@@ -4,7 +4,7 @@ const consoleDialog = require('console-dialog');
 
 var app = express();
 
-var path = __dirname + '../build';
+var path = __dirname + '/../build';
 var port = 80;
 
 app.use(express.static(path));

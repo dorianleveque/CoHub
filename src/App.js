@@ -15,7 +15,6 @@ class App extends Component {
   componentDidMount() {
     // Lorsque la session est prête, on affiche notre application
     this.state.session.whenSessionReady(() => {
-      console.log('fait')
       this.setState({ displayApp: true })
     })
   }

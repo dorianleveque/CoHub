@@ -54,8 +54,7 @@ class Session {
      * Renvoie false si connection invalide
      */
     isConnected() {
-        this.currentUser ? console.log(`Connect ${this.currentUser}`): console.log(`dis-Connect ${this.currentUser}`)
-        return this.authObject ? true : false
+        return this.firebaseObject ? true : false
     }
 
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Route, Redirect} from 'react-router-dom'
+import { SessionStore } from '../stores/session-store'
 
 /**
  * Ce fichier contient l'ensemble des routes de notre application
@@ -59,10 +60,11 @@ export class PublicRoute extends Component {
 
 
 export class PrivateRoute extends Component {
+    static contextType = SessionStore
     render() {
-        let { authUser, component, path, computedMatch, redirectTo, ...otherProps } = this.props
-        return authUser.isConnected() ? <PublicRoute 
-                                        authUser={authUser} 
+        let { component, path, computedMatch, redirectTo, ...otherProps } = this.props
+        const session = this.context
+        return session.isConnected() ? <PublicRoute 
                                         component={component}
                                         path={path}
                                         {...otherProps} /> 

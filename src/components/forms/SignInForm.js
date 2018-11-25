@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
 import {auth} from '../../firebase'
 import {SIGN_UP, HOME} from '../../router/routes'
+import { SessionStore } from '../../stores';
 
 const FormItem = Form.Item;
 
 
 class LoginForm extends Component {
 
+  static contextType = SessionStore
   constructor() {
     super()
     this.state = {
@@ -46,6 +48,11 @@ class LoginForm extends Component {
    */
   onSubmit = (event) => {
     // on arrête la propagation de l'évènement
+    console.log(`Context: `)
+    console.log(this.context)
+    const session = this.context
+    session.setKeep(true)
+
     event.preventDefault()
     this.setState({ submitButtonLoading: true })
 

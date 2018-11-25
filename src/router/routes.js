@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Route, Redirect} from 'react-router-dom'
-import { SessionStore } from '../stores/session-store'
+import { SessionStore } from '../stores'
 
 /**
  * Ce fichier contient l'ensemble des routes de notre application

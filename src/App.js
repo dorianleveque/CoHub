@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Router from './router/router'
-import { SessionStore } from './stores/session-store'
+import { SessionStore } from './stores'
 import Session from './classes/Session';
 
 class App extends Component {

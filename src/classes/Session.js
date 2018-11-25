@@ -8,6 +8,8 @@ class Session {
     constructor() {
         this.currentUser = null             // User Object
         this.firebaseObject = null          // Authentification Object firebase
+        this.keep = false
+        //.setPersistence(firebase.auth.Auth.Persistence.SESSION)
         this.sessionReadyCallback = ()=>{}    // callback
         
         firebase.auth.onAuthStateChanged((auth) => {
@@ -25,6 +27,10 @@ class Session {
             }
             this.sessionReadyCallback()
         })
+    }
+
+    setKeep(k){
+        this.keep = k
     }
     
     setAuth(auth) {

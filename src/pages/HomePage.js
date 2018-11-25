@@ -6,7 +6,7 @@ import Demande_card from '../components/DemandeCard';
 
 import {NavLink} from 'react-router-dom'
 import {DISPLAY_DEMAND, EDIT_DEMAND, applyRouteParams} from '../router/routes'
-import { SessionStore } from '../stores/session-store';
+import { SessionStore } from '../stores';
 const { Content } = Layout;
 
 class HomePage extends Component {

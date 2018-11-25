@@ -7,6 +7,9 @@ const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;
 //function onChange(editorState) {console.log(toString(editorState));}
 const Search = Input.Search;
+const options = [{value: 'Tutorat',label: 'Tutorat'},{value: 'Objet',label: 'Pret d objet'},{value: 'Covoiturage',label: 'Covoiturage'}];
+function onChange(value) {console.log(value);}
+
 
 class Demande_Consultation  extends Component {
 	
@@ -15,11 +18,15 @@ class Demande_Consultation  extends Component {
 	{
 		return 	<div>
 					<h3 style= {{color:colorH3}}>{titreH3}</h3>
-					<Input disabled={isViewMode} defaultValue={isViewMode ? valueInput : null} style= {{color:colorInput}}/>
+					<Input disabled={isViewMode} defaultValue={isViewMode ? valueInput : ""} style= {{color:colorInput}}/>
 				</div>;
 	}
-	var Categorie = "Covoiturage"; // Variable a modifier pour afficher les differentes categories de tickets
+	
+	// LES VARIABLES A MODIFIER SONT ICI POUR LE FONCTIONNEMENT DU PROG
+	var Categorie = "Tutorat"; // Variable a modifier pour afficher les differentes categories de tickets
 	var isViewMode=true; //Variable a modifier en fonction du type de page (mode consultation: mettre a true, mode edition: mettre a false).
+	
+	
 	
 	var isSharing = false;
 	var isStudy = false;
@@ -54,7 +61,9 @@ class Demande_Consultation  extends Component {
 					
 				</Col>
 				<Col span={6} offset={3}>
-					{h3PlusInput('#7F7F7F',"Catégorie",Categorie,'#42A6FB')}
+					<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
+					<Cascader options={options} onChange={onChange} defaultValue={isViewMode ? [Categorie] : []} disabled={isViewMode} style= {{color:'#42A6FB'}}/>
+					
 				</Col>
 				<Col span={6} offset={3}>
 					{h3PlusInput('#7F7F7F',"Matiere","Maths",'#42A6FB')}
@@ -82,7 +91,9 @@ class Demande_Consultation  extends Component {
 					
 				</Col>
 				<Col span={6} offset={3}>
-					{h3PlusInput('#7F7F7F',"Catégorie",Categorie,'#42A6FB')}
+					<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
+					<Cascader options={options} onChange={onChange} defaultValue={isViewMode ? [Categorie] : []} disabled={isViewMode} style= {{color:'#42A6FB'}}/>
+					
 				</Col>
 				<Col span={6} offset={3}>
 					{h3PlusInput('#7F7F7F',"Objet","Tournevis",'#42A6FB')}
@@ -100,7 +111,9 @@ class Demande_Consultation  extends Component {
 					
 				</Col>
 				<Col span={6} offset={3}>
-					{h3PlusInput('#7F7F7F',"Catégorie",Categorie,'#42A6FB')}
+					<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
+					<Cascader options={options} onChange={onChange} defaultValue={isViewMode ? [Categorie] : []} disabled={isViewMode} style= {{color:'#42A6FB'}}/>
+					
 				</Col>
 				<Col span={6} offset={3}>
 				

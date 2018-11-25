@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import SignInForm from '../components/form/SignInForm'
+import SignInForm from '../components/forms/SignInForm'
 import Top from '../components/Top'
 import { Layout, Row, Col, Card } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Content } = Layout;
 
 class SignInPage extends Component {
   render() {

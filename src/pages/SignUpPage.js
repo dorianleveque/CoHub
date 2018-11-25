@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import SignUpForm from '../components/form/SignUpForm'
+import SignUpForm from '../components/forms/SignUpForm'
 import {Layout,  Row, Col, Card } from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 class SignUpPage extends Component {
     render() {

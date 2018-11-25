@@ -1,3 +1,3 @@
 import React from 'react'
 
-export const SessionStore = React.createContext(null)
+export default React.createContext(null)

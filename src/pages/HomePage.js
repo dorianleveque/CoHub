@@ -1,46 +1,38 @@
 import React, { Component } from 'react';
-import { Layout, Col, Row, Pagination } from 'antd'
+import { Layout, Row, Pagination } from 'antd'
 import Top from '../components/Top'
 import Sider_menu from '../components/SiderMenu'
 import Demande_card from '../components/DemandeCard';
+
+import {NavLink} from 'react-router-dom'
+import {DISPLAY_DEMAND, EDIT_DEMAND, applyRouteParams} from '../router/routes'
+import { SessionStore } from '../stores/session-store';
 const { Content } = Layout;
 
 class HomePage extends Component {
-	constructor(props) { // constructuer de Top
+	//static contextType = SessionStore
 
+	constructor(props) { // constructuer de Top
 		super(props);
 		this.ismenu = true;
-		this.state = { visible: true, width: window.innerWidth, }
+		this.state = { 
+			visible: true,
+			session: this.context
+		}
 	}
-
-
-
-	componentWillMount() {
-		window.addEventListener('resize', this.handleWindowSizeChange);
-	}
-
-	// make sure to remove the listener
-	// when the component is not mounted anymore
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.handleWindowSizeChange);
-	}
-
-	handleWindowSizeChange = () => {
-		this.setState({ width: window.innerWidth });
-	};
 
 	togleSideBar = () => {
 		if (this.state.visible === true) {
 			this.setState({
 				visible: false
-			}, console.log("1"));
+			});
 		}
 
 		else {
 
 			this.setState({
 				visible: true
-			}, console.log("2"));
+			});
 		}
 
 	}
@@ -48,7 +40,7 @@ class HomePage extends Component {
 
 		const { width } = this.state;
 		const isMobile = width <= 500;
-
+		console.log(this.context)
 		let cards;
 		let space;
 		let pagination;
@@ -68,6 +60,8 @@ class HomePage extends Component {
 					<Layout>
 						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} />
 						<Content>
+							<NavLink to={applyRouteParams(DISPLAY_DEMAND, {id:20})}>demande</NavLink><br/>
+							<NavLink to={applyRouteParams(EDIT_DEMAND, {id:20})}>edit</NavLink>
 							{cards}
 							{space}
 							{pagination}
@@ -78,5 +72,7 @@ class HomePage extends Component {
 		);
 	}
 }
+
+HomePage.contextType = SessionStore
 
 export default HomePage;

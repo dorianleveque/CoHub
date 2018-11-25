@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
-import { Card , Col , Row, Tag} from 'antd';
+import { Card, Col, Row, Tag } from 'antd';
 const { Meta } = Card;
 class DemandeCard extends Component {
 
-  render()
-  {
+  render() {
     return (
-		<Col span= {6} offset = {2}> 
-		<div style={{textAlign :'center' , fontSize : '15'}}> 
-        <Card
-    style={{ width: 275 , height :150 , fontSize : '8px' }}
-	    extra = {<Tag color = "blue" style={{fontSize : '8px'}}>Covoiturage</Tag>}
-        title="Trajet Paris / Brest"
-      >
-      <Meta
-        description = "Jean Pierre | Poney"
-        />
-        <br/>
-        <div style={{fontSize : '12px'}}> 
-        <Row>
-            Description ...
-        </Row>
-        <Row>
-            Description ...
-        </Row>
-        <Row>
-        </Row>
-           </div>
-      
-  </Card>
-  </div>
-		</Col>
+      <Col span={6} offset={2}>
+        <div style={{ textAlign: 'left', fontSize: '15' }}>
+          <Card
+            style={{ width: 270, height: 150, fontSize: '8px', textAlign: 'right' }}
+            cover={<Tag color="blue" style={{ width: 'auto', marginTop: '8px', fontSize: '8px', cursor: 'default' }}>Covoiturage</Tag>}
+          >
+            <Meta
+              style={{ textAlign: 'center', fontSize: '15' }}
+              title="Trajet Paris / Brest"
+              description="Jean Pierre | Poney"
+            />
+            <br />
+            <div style={{ textAlign: 'center', fontSize: '12px' }}>
+              <Row>
+                Description ...
+              </Row>
+              <Row>
+                Description ...
+              </Row>
+              <Row>
+              </Row>
+            </div>
+
+          </Card>
+        </div>
+      </Col>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
-import {auth} from '../../firebase'
+//import {auth} from '../../firebase'
 import {SIGN_UP, HOME} from '../../router/routes'
 import { SessionStore } from '../../stores';
 
@@ -29,7 +29,13 @@ class LoginForm extends Component {
           { min: 8, message: "Votre mot de passe n'est pas assez long\n"}
         ]
       },
-      submitButtonLoading: false
+      checkBox: {
+        var: 'remember',
+        label: 'Rester connecter',
+        initialValue: true
+      },
+      submitButtonLoading: false,
+      validateStatus: ''
     }
   }
 
@@ -48,38 +54,23 @@ class LoginForm extends Component {
    */
   onSubmit = (event) => {
     // on arrête la propagation de l'évènement
-    console.log(`Context: `)
-    console.log(this.context)
-    const session = this.context
-    session.setKeep(true)
-
     event.preventDefault()
-    this.setState({ submitButtonLoading: true })
+    this.setState({ submitButtonLoading: true, validateStatus: '' })
 
+    // on récupère notre session 
+    const auth = this.context
     this.props.form.validateFields((err, values) => {
       
       // Lorsqu'il n'y a pas d'erreur de saisie
       if (!err) {
-        const { email, password } = values
+        const { email, password, remember } = values
         const history = this.props.routerHistory
-        
-        /*login.connect(email, password)
-        .then(() => {
-          alert('Hello')
-        })
-          /*this.setState({ submitButtonLoading: false })
-          message.success("Vous êtes maintenant connecté")
-          history.goBack()
-        })
-        .catch(error => {
-          this.setState({ submitButtonLoading: false })
-          message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
-        })*/
-        
-        auth.doSignInWithEmailAndPassword(email, password)
+                       
+        auth.signInWithEmailAndPassword(email, password, remember)
             .then(()=>{
               this.setState({ submitButtonLoading: false })
               message.success("Vous êtes maintenant connecté")
+
               if (history.action === 'PUSH') {
                 history.goBack()
               } else {
@@ -87,7 +78,7 @@ class LoginForm extends Component {
               }
             })
             .catch(error => {
-              this.setState({ submitButtonLoading: false })
+              this.setState({ submitButtonLoading: false, validateStatus: 'error' })
               message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
             })
       }
@@ -101,7 +92,7 @@ class LoginForm extends Component {
     const { getFieldDecorator } = this.props.form
     return (
       <Form onSubmit={this.onSubmit} className="login-form">
-        <FormItem> 
+        <FormItem validateStatus={this.state.validateStatus} > 
           { 
             getFieldDecorator(this.state.userNameField.var, { rules: this.state.userNameField.rules })
             (<Input 
@@ -110,7 +101,7 @@ class LoginForm extends Component {
             />)
           }
         </FormItem>
-        <FormItem>
+        <FormItem validateStatus={this.state.validateStatus} >
           {
             getFieldDecorator(this.state.passWordField.var, { rules: this.state.passWordField.rules })
             (<Input 
@@ -121,11 +112,11 @@ class LoginForm extends Component {
           }
         </FormItem>
         <FormItem>
-          {getFieldDecorator('remember', {
+          {getFieldDecorator(this.state.checkBox.var, {
             valuePropName: 'checked',
-            initialValue: true,
+            initialValue: this.state.checkBox.initialValue,
           })(
-            <Checkbox>Rester connecter</Checkbox>
+            <Checkbox> { this.state.checkBox.label } </Checkbox>
           )}
           
           <Row gutter={20}>

@@ -1,7 +1,10 @@
-import * as auth from './auth';
-import * as firebase from './firebase';
+import firebase from './firebase';
 
+const auth = firebase.auth();
+const database = firebase.database();
+
+export default firebase 
 export {
   auth,
-  firebase,
+  database
 };

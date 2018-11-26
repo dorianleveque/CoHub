@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
-import {auth} from '../../firebase'
+//import {auth} from '../../firebase'
 
 const FormItem = Form.Item;
 
@@ -47,12 +47,12 @@ class LoginForm extends Component {
         const { email, password } = values
         const history = this.props.routerHistory
 
-        auth.doSignInWithEmailAndPassword(email, password)
+        /*auth.doSignInWithEmailAndPassword(email, password)
             .then(()=>{
-              /* 
-              si la vérification avec la base de données est correct
-              alors on crée l'objet user et redirige l'utilisateur sur la page HOME
-              */
+               
+              // si la vérification avec la base de données est correct
+              // alors on crée l'objet user et redirige l'utilisateur sur la page HOME
+            
               message.success("Vous êtes maintenant connecté")
               history.goBack()
             })
@@ -64,7 +64,7 @@ class LoginForm extends Component {
               else { 
                 message.error(error.message)
               }
-            })
+            })*/
       }
     });
   }

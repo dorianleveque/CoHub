@@ -6,11 +6,9 @@ import Demande_card from '../components/DemandeCard';
 
 import {NavLink} from 'react-router-dom'
 import {DISPLAY_DEMAND, EDIT_DEMAND, applyRouteParams} from '../router/routes'
-import { SessionStore } from '../stores';
 const { Content } = Layout;
 
 class HomePage extends Component {
-	//static contextType = SessionStore
 
 	constructor(props) { // constructuer de Top
 		super(props);
@@ -40,7 +38,6 @@ class HomePage extends Component {
 
 		const { width } = this.state;
 		const isMobile = width <= 500;
-		console.log(this.context)
 		let cards;
 		let space;
 		let pagination;
@@ -72,7 +69,5 @@ class HomePage extends Component {
 		);
 	}
 }
-
-HomePage.contextType = SessionStore
 
 export default HomePage;

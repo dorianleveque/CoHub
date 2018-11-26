@@ -13,8 +13,7 @@ class Authentification {
     constructor() {
         this.currentUser = null             // User Object
         this.firebaseObject = null          // Authentification Object firebase
-        //.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-        this.authStateChangedCallback = []//()=>{}    // callback
+        this.authStateChangedCallback = []  //()=>{}    // callback list
 
         auth.onAuthStateChanged((auth) => {
             if (auth) {
@@ -41,7 +40,7 @@ class Authentification {
      * Permet d'ajouter une fonction qui sera executé à chaque fois que les infos
      * d'authentification sont modifiés
      * @param {function} func référence de la fonction à executer
-     * @returns {function} retourne la fonction passer en paramètre
+     * @return retourne la fonction passer en paramètre
      */
     onAuthStateChanged(func){
         this.authStateChangedCallback.push(func)
@@ -65,6 +64,7 @@ class Authentification {
      * Permet de s'authentifier à l'aide d'un email et d'un mot de passe
      * @param {String} email adresse mail
      * @param {String} password mot de passe
+     * @param {Boolean} remember la session est conservé même après fermeture de la page si vrai (true) sinon la session est détruite
      */
     async signInWithEmailAndPassword(email, password, remember=false) {
         auth.setPersistence(
@@ -86,6 +86,14 @@ class Authentification {
     }
 
     /**
+     * Permet d'envoyer un email afin de reset son mot de passe
+     * @param {String} email adresse mail
+     */
+    async sendPassWordResetWithEmail(email) {
+        await auth.sendPasswordResetEmail(email)
+    }
+
+    /**
      * Permet de se déconnecter 
      */
     async signOut() {
@@ -95,8 +103,7 @@ class Authentification {
 
     /**
      * Permet de vérifier si l'authentification est valide
-     * Renvoie true si connection valide
-     * Renvoie false si connection invalide
+     * @return vrai (true) si l'authentification est valide
      */
     isValide() {
         return this.firebaseObject ? true : false

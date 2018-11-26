@@ -63,13 +63,13 @@ export class PrivateRoute extends Component {
     static contextType = SessionStore
     render() {
         let { component, path, computedMatch, redirectTo, ...otherProps } = this.props
-        const session = this.context
-        return session.isConnected() ? <PublicRoute 
-                                        component={component}
-                                        path={path}
-                                        {...otherProps} /> 
-                                    : <Redirect 
-                                        from={path}
-                                        to={applyRouteParams(redirectTo, computedMatch.params)} />
+        const auth = this.context
+        return auth.isValide() ? <PublicRoute 
+                                    component={component}
+                                    path={path}
+                                    {...otherProps} /> 
+                                : <Redirect 
+                                    from={path}
+                                    to={applyRouteParams(redirectTo, computedMatch.params)} />
     }
 }

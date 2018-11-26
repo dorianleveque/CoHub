@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import Router from './router/router'
-import { SessionStore } from './stores'
-import Session from './classes/Session';
+import Router from './router/router';
+import { SessionStore } from './stores';
+import Authentification from './classes/Authentification';
 
 class App extends Component {
   constructor(){
-    super()
+    super();
     this.state = {
       displayApp: false,
-      session: new Session()
-    }
+      auth: new Authentification()
+    };
   }
 
   componentDidMount() {
     // Lorsque la session est prête, on affiche notre application
-    this.state.session.whenSessionReady(() => {
+    let a = this.state.auth.onAuthStateChanged(() => {
       this.setState({ displayApp: true })
     })
   }
@@ -29,7 +29,7 @@ class App extends Component {
                     : null
 		  return (
       <div className="App">
-        <SessionStore.Provider value={this.state.session} >
+        <SessionStore.Provider value={this.state.auth} >
           {router}
         </SessionStore.Provider>
       </div>

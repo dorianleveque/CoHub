@@ -37,7 +37,7 @@ class Authentification {
     }
 
     /**
-     * Permet d'ajouter une fonction qui sera executé à chaque fois que les infos
+     * Ajoute une fonction qui sera executé à chaque fois que les infos
      * d'authentification sont modifiés
      * @param {function} func référence de la fonction à executer
      * @return retourne la fonction passer en paramètre
@@ -48,7 +48,7 @@ class Authentification {
     }
 
     /**
-     * Permet de supprimer l'execution de la fonction fourni en paramètre
+     * Supprime l'execution de la fonction fourni en paramètre
      * lorsque l'évènement onAuthStateChanged se produit
      * @param {function} func référence de la fonction à supprimer
      */
@@ -61,7 +61,7 @@ class Authentification {
     }
 
     /**
-     * Permet de s'authentifier à l'aide d'un email et d'un mot de passe
+     * Créé une authentification à l'aide d'un email et d'un mot de passe
      * @param {String} email adresse mail
      * @param {String} password mot de passe
      * @param {Boolean} remember la session est conservé même après fermeture de la page si vrai (true) sinon la session est détruite
@@ -76,7 +76,7 @@ class Authentification {
     }
 
     /**
-     * Permet de se créer un compte à l'aide d'une adresse mail et
+     * Créé un compte à l'aide d'une adresse mail et
      * d'un mot de passe
      * @param {String} email adresse mail
      * @param {String} password mot de passe
@@ -86,7 +86,7 @@ class Authentification {
     }
 
     /**
-     * Permet d'envoyer un email afin de reset son mot de passe
+     * Envoi un email afin de reset son mot de passe
      * @param {String} email adresse mail
      */
     async sendPassWordResetWithEmail(email) {
@@ -94,15 +94,39 @@ class Authentification {
     }
 
     /**
-     * Permet de se déconnecter 
+     * Déconnecte l'utilisateur de l'application
      */
     async signOut() {
         await auth.signOut()
     }
     
+    /**
+     * Met à jour les infos de son profil
+     * @param {String} displayName Pseudo
+     * @param {String} photoURL liens url avatar
+     */
+    async updateProfil(displayName='', photoURL='') {
+        await auth.currentUser.updateProfile({ displayName, photoURL })
+    }
 
     /**
-     * Permet de vérifier si l'authentification est valide
+     * Met à jour son mot de passe
+     * @param {String} newPassword nouveau mot de passe
+     */
+    async updatePassword(newPassword) {
+        await auth.currentUser.updatePassword(newPassword)
+    }
+
+    /**
+     * Met à jour l'adresse mail
+     * @param {String} newEmail nouvelle adresse mail
+     */
+    async updateEmail(newEmail) {
+        await auth.currentUser.updateEmail(newEmail)
+    }
+
+    /**
+     * Vérifie si l'authentification est valide
      * @return vrai (true) si l'authentification est valide
      */
     isValide() {

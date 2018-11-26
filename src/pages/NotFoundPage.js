@@ -4,7 +4,6 @@ import { Layout, Row, Col } from 'antd'
 import Top from '../components/Top'
 import { HOME } from '../router/routes'
 import errorImg from '../images/404Error.png'
-import { relative } from 'path';
 
 const { Content } = Layout
 
@@ -65,7 +64,7 @@ class NotFoundPage extends Component {
             >
             <Row gutter={50} >
               <Col sm={12} >
-                <img src={errorImg} style={style.image}/>
+                <img alt='not found img' src={errorImg} style={style.image}/>
               </Col>
               <Col sm={12} >
                 <div style={style.title} >Cette page n'existe plus.</div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
-import './App.css';
-import Top from './Top'
+import Top from '../components/Top'
 import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;

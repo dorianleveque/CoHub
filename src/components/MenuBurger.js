@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Icon, Col } from 'antd';
+import { Icon, Col , Input  } from 'antd';
 import { NavLink } from 'react-router-dom'
-import { SIGN_IN } from '../router/routes'
+import { SIGN_IN , HOME } from '../router/routes'
+const Search = Input.Search;
 
 class MenuBurger extends Component {
 
@@ -17,8 +18,16 @@ class MenuBurger extends Component {
             <Icon type="menu-unfold" /> 
           </div>
         </Col>
-        <Col span={20}> <div style={{ textAlign: 'center' }}>CoHub </div></Col>
-        <Col span={1} offset={1}> 
+        <NavLink to={HOME} style={{color: 'white'}}>
+        <Col offset= {6} span={3}> <div style={{ textAlign: 'center' }}>CoHub </div></Col>
+        </NavLink>
+        <Col offset = {5} span = {2}>
+         <Search
+            onSearch={value => console.log(value)}
+            style={{ width: '200px'  }}
+            />
+        </Col>
+        <Col span={1} offset={5}> 
           <NavLink to={SIGN_IN} style={{color: 'white'}}>
             <Icon type="user" />
           </NavLink>

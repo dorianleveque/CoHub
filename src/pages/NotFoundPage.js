@@ -4,44 +4,68 @@ import { Layout, Row, Col, Icon } from 'antd'
 import Top from '../components/Top'
 import { HOME } from '../router/routes'
 
-const { Content } = Layout
+const { Content, Footer } = Layout
 
 const style = {
-  subtitle: {
+  layout: {
+    height: '100vh'
+  },
+  content: {
+    height: '100%'
+  },
+  linkBox: {
     position: 'relative',
     height: '30px',
     minWidth: '244px',
     marginTop: '20px',
     color: 'rgba(0, 0, 0, 0.8)',
     fontWeight: 'bold',
-    fontSize: '16px',
-    pseudoElement: {
-      position: 'absolute',
-      bottom: 2,
-      width: '100px',
-      height: '4px',
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    }
+    fontSize: '14px'
   },
   link: {
-    borderLeft: '3px solid black',
+    borderLeft: '3px solid rgba(0, 0, 0, 0.8)',
     paddingLeft: '5px'
+  },
+  compass: {
+    keyFrame: `@keyframes dontPanic {
+                  0%    { transform: rotate(20deg); }
+                  10%   { transform: rotate(60deg); }
+                  20%   { transform: rotate(100deg); }
+                  30%   { transform: rotate(1deg); }
+                  40%   { transform: rotate(45deg); }
+                  65%   { transform: rotate(260deg); }
+                  70%   { transform: rotate(320deg); }
+                  80%   { transform: rotate(360deg); }
+                  90%   { transform: rotate(30deg); }
+                  100%  { transform: rotate(90deg); }
+                }`,
+    style: {
+      fontSize: '110px',
+      animation: 'infinite',
+      animationName: 'dontPanic',
+      animationDuration: '5s',
+      animationTimingFunction: 'cubic-bezier(.46,.03,.52,.96)',
+      animationDirection: 'alternate',
+      animationPlayState: 'infinite'
+    }
   }
 }
 
 class NotFoundPage extends Component {
   render() {
+    let styleSheet = document.styleSheets[0];
+    styleSheet.insertRule(style.compass.keyFrame, styleSheet.cssRules.length);
     return (
-      <Layout>
+      <Layout style={ style.layout } >
         <Top />
         <Content >
-          <Row type='flex' align='middle' justify='center' >
+          <Row type='flex' align='middle' justify='center' style={ style.content } >
             <Col>
               <Row gutter={50} type='flex' align='middle' justify='space-around'>
                 <Col sm={14} xs={22} >
                   <div style={{ width: 'auto', textAlign: "center" }}>
                     <span style={{ fontSize: '150px' }} >4</span>
-                    <Icon spin type="compass" style={{ fontSize: '110px' }} />
+                    <Icon type="compass" style={ style.compass.style } />
                     <span style={{ fontSize: '150px' }} >4</span>
                   </div>
                   <br/>
@@ -52,7 +76,7 @@ class NotFoundPage extends Component {
                     pour vous permettre de retrouver votre chemin ;)
                   </div>
                   <NavLink to={HOME}>
-                    <div style={{...style.subtitle, fontSize: '14px'}} >
+                    <div style={ style.linkBox } >
                       <div style={style.link} >Accueil</div>
                     </div>
                   </NavLink>
@@ -61,6 +85,7 @@ class NotFoundPage extends Component {
             </Col>
           </Row>
         </Content>
+        <Footer></Footer>
       </Layout>
     )
   }

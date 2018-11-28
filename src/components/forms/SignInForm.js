@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
 //import {auth} from '../../firebase'
 import {SIGN_UP, HOME} from '../../router/routes'
@@ -7,7 +8,7 @@ import { SessionStore } from '../../stores';
 const FormItem = Form.Item;
 
 
-class LoginForm extends Component {
+class SignInForm extends Component {
 
   static contextType = SessionStore
   constructor() {
@@ -25,13 +26,12 @@ class LoginForm extends Component {
         var: 'password',
         placeholder: 'mot de passe',
         rules: [
-          { required: true, message: 'un mot de passe est requis' },
-          { min: 8, message: "Votre mot de passe n'est pas assez long\n"}
+          { required: true, message: 'un mot de passe est requis' }
         ]
       },
       checkBox: {
         var: 'remember',
-        label: 'Rester connecter',
+        label: 'Se souvenir de moi',
         initialValue: true
       },
       submitButtonLoading: false,
@@ -57,7 +57,7 @@ class LoginForm extends Component {
     event.preventDefault()
     this.setState({ submitButtonLoading: true, validateStatus: '' })
 
-    // on récupère notre session 
+    // on récupère notre authentification 
     const auth = this.context
     this.props.form.validateFields((err, values) => {
       
@@ -91,7 +91,7 @@ class LoginForm extends Component {
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <Form onSubmit={this.onSubmit} className="login-form">
+      <Form onSubmit={this.onSubmit} >
         <FormItem validateStatus={this.state.validateStatus} > 
           { 
             getFieldDecorator(this.state.userNameField.var, { rules: this.state.userNameField.rules })
@@ -121,19 +121,21 @@ class LoginForm extends Component {
           
           <Row gutter={20}>
             <Col span={14}>
-              <Button block type="primary"   htmlType="submit" className="login-form-button" loading={this.state.submitButtonLoading} >Se connecter</Button>
+              <Button block type="primary" htmlType="submit" loading={this.state.submitButtonLoading} >Se connecter</Button>
             </Col>
             <Col span={10}>
-              <Button block type="secondary" href={SIGN_UP} className="login-form-button" >S'inscrire</Button>
+              <NavLink to={SIGN_UP} >
+                <Button block type="secondary" >S'inscrire</Button>
+              </NavLink>
             </Col>
           </Row>
-          <a className="login-form-forgot" href="">Mot de passe oublié</a>
+          <a href="">Mot de passe oublié</a>
         </FormItem>
       </Form>
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(LoginForm);
+const WrappedNormalLoginForm = Form.create()(SignInForm);
 
 
 export default WrappedNormalLoginForm;

@@ -2,30 +2,54 @@ import React, { Component } from 'react'
 import SignInForm from '../components/forms/SignInForm'
 import Top from '../components/Top'
 import { Layout, Row, Col, Card } from 'antd';
+import cohub from '../images/CoHub.png'
 
-const { Content } = Layout;
+const { Content, Footer } = Layout;
+const { Meta } = Card;
+const style = {
+  layout: {
+    height: '100vh'
+  },
+  content: {
+    height: '100%'
+  },
+  card: {
+    height: '440px'
+  },
+  frame: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginTop: '20px'
+  },
+  img: {
+    width: '90px',
+    height: 'auto',
+    position: 'relative'
+  }
+}
 
 class SignInPage extends Component {
   render() {
     return (
-
-      <Layout>
+      <Layout style={ style.layout }>
         <Top/>
-        <Content style={{ paddingTop: '60px' }}>
-          <Row>
-            <Col
-              xs={{ offset: 1, span: 22 }}
-              sm={{ offset: 6, span: 12 }}
-              md={{ offset: 7, span: 10 }}
-              lg={{ offset: 8, span: 8 }}
-              xl={{ offset: 9, span: 6 }}
+        <Content>
+          <Row type='flex' align='middle' justify='center' style={ style.content } >
+            <Card 
+              cover={
+                <div style={ style.frame } >
+                  <img alt="cohub" src={ cohub } style={ style.img } />
+                </div> }
+              style={ style.card } 
             >
-              <Card title="Authentification" style={{ width: 300 }} >
-                <SignInForm routerHistory={this.props.history} />
-              </Card>
-            </Col>
+              <Meta title="Se connecter à CoHub" />
+              <br/>
+              <SignInForm routerHistory={this.props.history} />
+            </Card>
           </Row>
         </Content>
+        <Footer></Footer>
       </Layout>
     )
   }

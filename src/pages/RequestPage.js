@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import logo from './logo.svg';
 import Top from '../components/Top'
+import Bot from '../components/Bot'
 import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
 const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;
@@ -188,6 +189,7 @@ class Demande_Consultation  extends Component {
 				
 				
 			</Content>
+			<Bot />
 		</Layout>
 	</Layout>
     );

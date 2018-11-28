@@ -1,3 +1,7 @@
+import React, {Component} from 'react'
+import {Route, Redirect} from 'react-router-dom'
+import { SessionStore } from '../stores/session-store'
+
 /**
  * Ce fichier contient l'ensemble des routes de notre application
  * Il est utilisé :
@@ -34,4 +38,38 @@ export const applyRouteParams = function(route, params){
         r = r.replace(`:${key}`, value)
     })
     return r
+}
+
+export class PublicRoute extends Component {
+    
+    createElementWithProps(component, ...rest) {
+        const finalProps = Object.assign({}, ...rest)
+        return React.createElement(component, finalProps)
+    }
+    
+    render() {
+        let { component, computedMatch, path, ...otherProps } = this.props
+        return (
+            <Route 
+                path={path}
+                render={ (routeProps) => this.createElementWithProps(component, routeProps, otherProps) }
+            />
+        )
+    }
+}
+
+
+export class PrivateRoute extends Component {
+    static contextType = SessionStore
+    render() {
+        let { component, path, computedMatch, redirectTo, ...otherProps } = this.props
+        const session = this.context
+        return session.isConnected() ? <PublicRoute 
+                                        component={component}
+                                        path={path}
+                                        {...otherProps} /> 
+                                    : <Redirect 
+                                        from={path}
+                                        to={applyRouteParams(redirectTo, computedMatch.params)} />
+    }
 }

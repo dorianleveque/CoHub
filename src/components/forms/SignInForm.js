@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
 import {auth} from '../../firebase'
-import {SIGN_UP} from '../../router/routes'
+import {SIGN_UP, HOME} from '../../router/routes'
 
 const FormItem = Form.Item;
 
@@ -55,12 +55,29 @@ class LoginForm extends Component {
       if (!err) {
         const { email, password } = values
         const history = this.props.routerHistory
-
+        
+        /*login.connect(email, password)
+        .then(() => {
+          alert('Hello')
+        })
+          /*this.setState({ submitButtonLoading: false })
+          message.success("Vous êtes maintenant connecté")
+          history.goBack()
+        })
+        .catch(error => {
+          this.setState({ submitButtonLoading: false })
+          message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
+        })*/
+        
         auth.doSignInWithEmailAndPassword(email, password)
             .then(()=>{
               this.setState({ submitButtonLoading: false })
               message.success("Vous êtes maintenant connecté")
-              history.goBack()
+              if (history.action === 'PUSH') {
+                history.goBack()
+              } else {
+                history.push(HOME)
+              }
             })
             .catch(error => {
               this.setState({ submitButtonLoading: false })

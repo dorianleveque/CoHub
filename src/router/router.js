@@ -1,7 +1,16 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route as PublicRoute } from 'react-router-dom'
-import PrivateRoute from './PrivateRoute'
-import * as routes from './routes'
+import React, {Component} from 'react'
+import { BrowserRouter, Switch } from 'react-router-dom'
+//import PrivateRoute from './PrivateRoute'
+import { HOME,
+         SIGN_IN, 
+         SIGN_UP, 
+         LOGOUT, 
+         CREATE_DEMAND, 
+         DISPLAY_DEMAND, 
+         EDIT_DEMAND,
+         PublicRoute,
+         PrivateRoute
+        } from './routes'
 
 /**
  * Importation des différentes pages de notre application
@@ -17,19 +26,25 @@ import NotFoundPage         from '../pages/NotFoundPage'
  * Définition de l'ensemble des différentes routes de notre application
  */
 
-const Router = (props) => (
-    <BrowserRouter>
-        <Switch>
-            <PublicRoute  component={HomePage}           exact path={routes.HOME}           />
-            <PublicRoute  component={RequestCreatorPage} exact path={routes.CREATE_DEMAND}  />
-            <PublicRoute  component={SignInPage}         exact path={routes.SIGN_IN}        />
-            <PublicRoute  component={SignUpPage}         exact path={routes.SIGN_UP}        />
-            <PublicRoute                                 exact path={routes.LOGOUT}         />
-            <PublicRoute  component={RequestPage}        exact path={routes.DISPLAY_DEMAND} />
-            <PrivateRoute component={RequestPage}              path={routes.EDIT_DEMAND}    to={routes.SIGN_IN} isConnect={props.isConnect} />
-            <PublicRoute  component={NotFoundPage} />
-        </Switch>
-    </BrowserRouter>
-);
+class Router extends Component {
+
+    render() {
+        const authUser = this.props.authUser
+        return(
+        <BrowserRouter>
+            <Switch>
+                <PublicRoute  component={HomePage           } authUser={authUser} exact path={HOME}           />
+                <PublicRoute  component={RequestCreatorPage } authUser={authUser} exact path={CREATE_DEMAND}  />
+                <PublicRoute  component={SignInPage         } authUser={authUser} exact path={SIGN_IN}        />
+                <PublicRoute  component={SignUpPage         } authUser={authUser} exact path={SIGN_UP}        />
+                <PublicRoute                                  authUser={authUser} exact path={LOGOUT}         />
+                <PublicRoute  component={RequestPage        } authUser={authUser} exact path={DISPLAY_DEMAND} />
+                <PrivateRoute component={RequestPage        } authUser={authUser}       path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
+                <PublicRoute  component={NotFoundPage       } authUser={authUser} />
+ }           </Switch>
+        </BrowserRouter>
+        )
+    }
+}
 
 export default Router;

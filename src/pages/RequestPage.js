@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Input,Divider,Layout,Row, Col, Mention, Button} from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
-const { toString } = Mention;
-function onChange(editorState) {console.log(toString(editorState));}
-
+const { Header, Footer, Content } = Layout;
 
 class RequestPage  extends Component {
   render() {

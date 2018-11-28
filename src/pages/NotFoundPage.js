@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 import { Layout, Row, Col, Icon } from 'antd'
 import Top from '../components/Top'
 import { HOME } from '../router/routes'
-import errorImg from '../images/404Error.png'
 
 const { Content } = Layout
 

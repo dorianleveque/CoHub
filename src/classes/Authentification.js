@@ -54,7 +54,7 @@ class Authentification {
      */
     removeCallbackOnAuthStateChanged(func){
         const index = this.authStateChangedCallback.findIndex(function(element) {
-            return element == this
+            return element === this
         }, func)
         // on supprime la fonction de la liste callback
         this.authStateChangedCallback.slice(index, 1)

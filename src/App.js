@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     // Lorsque la session est prête, on affiche notre application
-    let a = this.state.auth.onAuthStateChanged(() => {
+    this.state.auth.onAuthStateChanged(() => {
       this.setState({ displayApp: true })
     })
   }

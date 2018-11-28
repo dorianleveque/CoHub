@@ -20,7 +20,6 @@ class DemandeCard extends Component {
           </div>
         </div>
       </div>
->>>>>>> Home_page_html
     );
   }
 }

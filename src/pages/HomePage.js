@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import { Layout, Row, Pagination } from 'antd'
-=======
-import { Layout, Col, Row, Pagination , Icon} from 'antd'
->>>>>>> Home_page_html
 import Top from '../components/Top'
 import Sider_menu from '../components/SiderMenu'
 import Demande_card from '../components/DemandeCard';
-
-import {NavLink} from 'react-router-dom'
-import {DISPLAY_DEMAND, EDIT_DEMAND, applyRouteParams} from '../router/routes'
-import { SessionStore } from '../stores/session-store';
 const { Content } = Layout;
 
 class HomePage extends Component {

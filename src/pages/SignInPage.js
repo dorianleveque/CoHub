@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import SignInForm from '../components/forms/SignInForm'
 import Top from '../components/Top'
-import { Layout, Row, Col, Card } from 'antd';
+import { Layout, Row, Card } from 'antd';
 import cohub from '../images/CoHub.png'
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
+
 const style = {
   layout: {
     height: '100vh'
@@ -14,7 +15,8 @@ const style = {
     height: '100%'
   },
   card: {
-    height: '440px'
+    minWidth: '320px',
+    maxWidth: '400px'
   },
   frame: {
     display: 'flex',
@@ -30,9 +32,26 @@ const style = {
 }
 
 class SignInPage extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      title: 'Se connecter à CoHub'
+    }
+  }
+
+  updateTitle = (lostPassword) => {
+    this.setState({ 
+      title: (lostPassword) ? 'Ré-initialiser son mot de passe' : 'Se connecter à CoHub' 
+    })
+  }
+
+  /**
+   * Affiche la page
+   */
   render() {
     return (
-      <Layout style={ style.layout }>
+      <Layout style={ style.layout } >
         <Top/>
         <Content>
           <Row type='flex' align='middle' justify='center' style={ style.content } >
@@ -43,9 +62,9 @@ class SignInPage extends Component {
                 </div> }
               style={ style.card } 
             >
-              <Meta title="Se connecter à CoHub" />
+              <Meta title={ this.state.title } />
               <br/>
-              <SignInForm routerHistory={this.props.history} />
+              <SignInForm routerHistory={ this.props.history } onUpdateTitle={ this.updateTitle } />
             </Card>
           </Row>
         </Content>

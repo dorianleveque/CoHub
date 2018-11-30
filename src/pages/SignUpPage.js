@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 import SignUpForm from '../components/forms/SignUpForm'
-import {Layout,  Row, Col, Card } from 'antd';
+import {Layout,  Row, Card } from 'antd';
 import Top from '../components/Top';
 import cohub from '../images/CoHub.png'
 
 const { Content, Footer } = Layout;
 const { Meta } = Card;
+
+// style de la page
 const style = {
   layout: {
     height: '100vh'
@@ -14,7 +16,8 @@ const style = {
     height: '100%'
   },
   card: {
-    width: '400px'
+    minWidth: '320px',
+    maxWidth: '400px'
   },
   frame: {
     display: 'flex',
@@ -30,6 +33,10 @@ const style = {
 }
 
 class SignUpPage extends Component {
+
+  /**
+   * Affiche la page
+   */
     render() {
         return (
           <Layout style={ style.layout } >

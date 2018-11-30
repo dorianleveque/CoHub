@@ -25,7 +25,7 @@ class App extends Component {
    */
   render() {
     let router = (this.state.displayApp) 
-                    ? <Router authUser={this.state.session}/>
+                    ? <Router />
                     : null
 		  return (
       <div className="App">

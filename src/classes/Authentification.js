@@ -7,12 +7,12 @@ import firebase, { auth } from '../firebase'
  */
 class Authentification {
 
-    //#currentUser;
-    //#authObject;
+    #currentUser;
+    #firebaseObject;
 
     constructor() {
-        this.currentUser = null             // User Object
-        this.firebaseObject = null          // Authentification Object firebase
+        this.#currentUser = null             // User Object
+        this.#firebaseObject = null          // Authentification Object firebase
         this.authStateChangedCallback = []  //()=>{}    // callback list
 
         auth.onAuthStateChanged((auth) => {
@@ -33,7 +33,7 @@ class Authentification {
     }
 
     setAuth(auth) {
-        this.firebaseObject = auth
+        this.#firebaseObject = auth
     }
 
     /**
@@ -76,12 +76,16 @@ class Authentification {
     }
 
     /**
-     * Créé un compte à l'aide d'une adresse mail et
-     * d'un mot de passe
+     * Créé un compte à l'aide d'une adresse mail,
+     * d'un mot de passe et de toutes les autres infos 
+     * de l'utilisateur
+     * @param {String} lastName nom de famille
+     * @param {String} firstName prénom
+     * @param {String} nickName surnom
      * @param {String} email adresse mail
      * @param {String} password mot de passe
      */
-    async createUserWithEmailAndPassword(email, password) {
+    async createUser(lastName, firstName, nickName, email, password) {
         await auth.createUserWithEmailAndPassword(email, password)
     }
 
@@ -91,6 +95,15 @@ class Authentification {
      */
     async sendPassWordResetWithEmail(email) {
         await auth.sendPasswordResetEmail(email)
+    }
+
+    /**
+     * Confirme et enregistre le nouveau mot de passe de l'utilisateur
+     * @param {String} code code identification fourni dans l'email
+     * @param {String} newPassword nouveau mot de passe
+     */
+    async confirmPasswordReset(code, newPassword) {
+        await auth.confirmPasswordReset(code, newPassword)
     }
 
     /**
@@ -130,7 +143,7 @@ class Authentification {
      * @return vrai (true) si l'authentification est valide
      */
     isValide() {
-        return this.firebaseObject ? true : false
+        return this.#firebaseObject ? true : false
     }
 
 }

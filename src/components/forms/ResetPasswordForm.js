@@ -82,7 +82,13 @@ class ResetPasswordForm extends Component {
           })
           .catch(error => {
             this.setState({ submitButtonLoading: false, validateStatus: 'error' })
-            message.error("L'URL est invalide. Ceci peut arriver si l'url est mal formé, a expiré, ou a déjà été utilisé.")
+            switch(error.code) {
+              case "auth/user-not-found":
+                message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
+              break;
+              default:
+                message.error("L'URL est invalide. Ceci peut arriver si l'url est mal formé, a expiré, ou a déjà été utilisé.")
+            }
           })
       }
       else {

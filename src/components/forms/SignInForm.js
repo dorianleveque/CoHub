@@ -103,7 +103,13 @@ class SignInForm extends Component {
             })
             .catch(error => {
               this.setState({ submitButtonLoading: false })
-              message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
+              switch(error.code) {
+                case "auth/user-not-found":
+                  message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
+                break;
+                default:
+                  message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
+              }
             })
       }
       else{
@@ -133,7 +139,13 @@ class SignInForm extends Component {
             .catch(error => {
               this.setState({ submitButtonLoading: false, lostPassword: false })
               this.props.onUpdateTitle(false)
-              message.error("Impossible d'envoyer. Réessayez plus tard")
+              switch(error.code) {
+                case "auth/user-not-found":
+                  message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
+                break;
+                default:
+                  message.error("Impossible d'envoyer. Réessayez plus tard")
+              }
             })
       }
       else{

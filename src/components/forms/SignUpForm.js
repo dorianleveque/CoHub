@@ -154,8 +154,14 @@ class SignUpForm extends Component {
           })
           .catch(error => {
             this.prevSlide()
-            message.error("Un compte à déjà été créé à partir de cette adresse mail")
             this.setState({ fieldValidateStatus: 'error', stepIconLoading: false })
+            switch(error.code) {
+              case "auth/email-already-in-use":
+                message.error("L'adresse mail est déjà utilisée par un autre compte")
+              break;
+              default:
+                message.error("Impossible de créer votre compte. Réessayez plus tard")
+            }
           })
   }
 

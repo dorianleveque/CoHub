@@ -66,22 +66,20 @@ class TicketListControleur{
 		// });
 
 		var query = database.ref("User").orderByKey();
-		
+		 var users = [];
 		return query.once("value").then(function(snapshot) {
-			 var users = [];
-   			 snapshot.forEach(function(childSnapshot) {
-     		 var key = childSnapshot.key;
-			 var childData = childSnapshot.val();
+   			snapshot.forEach(function(childSnapshot) {
+     		var key = childSnapshot.key;
+			var childData = childSnapshot.val();
 
-			  users.push(new User (key, childData.Name, childData.Surname, childData.Nickname));
+			users.push(new User (key, childData.Name, childData.Surname, childData.Nickname));
 			  
 			  });
-			  
 			  return users
 		}, function(error) {
 			console.error(error);
 		}).then(function(values) { 
-			console.log('all done', values); 
+			//console.log('all done', values); 
 			return values
 		}); 
 
@@ -99,21 +97,37 @@ class TicketListControleur{
 
 
  
-	// searchTicket(filter)
-	// {
-	// 	return this.searchUser().then(function(users){
-	// 		var tickets = [];
-	// 		for(var i=0; i < Object.keys(users).length; i++){
-	// 			database.ref('Ticket/').orderByChild('idRequester').equalTo((users[Object.keys(users)[i]].__private_0_id)).once('value').then(function(snapshot) {
-	// 				var ticket = snapshot.val();
-	// 				for (var i = 0; i < Object.keys(ticket).length; i++) {
-	// 						tickets.push(ticket);
-	// 				};
-	// 				return tickets;
-	// 			});
-	// 		}
-	// 	});
-	// }
+	//searchTicket(filter = null)
+	//{
+		//var query = database.ref("Ticket").orderByKey();
+		//var tmpTickets = [];	
+		//return query.once("value").then(function(snapshot) {
+			//snapshot.forEach(function(childSnapshot) {
+     		 //var key = childSnapshot.key;
+			 //var childData = childSnapshot.val();
+			 //tmpTickets.push(childData);
+			  //});
+			//tmpSliced = tmpTickets.slice(tmpTickets.length - 4)// TODO a modifier la valeur 4
+			//for (var i = 0; i < tmpSliced.length; i++) {
+				//if (tmpSliced.Category ===  "maths")
+				
+				
+
+
+				//users.push(new User (key, childData.Name, childData.Surname, childData.Nickname));
+			//};
+			 //return tmpTickets;
+		//}, function(error) {
+			//console.error(error);
+		//}).then(function(values) { 
+			//console.log('all done', values); 
+			//return values
+
+		//});
+
+
+	
+	//}
 
 	displayTickets()
 	{

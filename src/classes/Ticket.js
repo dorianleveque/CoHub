@@ -138,7 +138,7 @@ class Ticket{//rendre la classe abstarite
 	{
 		var helper = [];
 		for (var i = 0; i < this.#helper.length; i++) {
-			helper[i] =  this.helper[i].getId();
+			helper[i] =  this.#helper[i].getId();
 		}
 		database.ref('Ticket/' + this.#id).set({
 			Title : this.#title,

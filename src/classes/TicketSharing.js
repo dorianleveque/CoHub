@@ -6,10 +6,10 @@ class TicketSharing extends Ticket{
 
 	#item
 
-	constructor(id, title, description, category, creationDate, requester, item)
+	constructor(id, title, description, creationDate, requester, item, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
-		this.item = #item;
+		super(id, title, description, "Sharing", creationDate, requester, idConversation);
+		this.#item =item;
 	}
 
 	getItem()
@@ -36,7 +36,7 @@ class TicketSharing extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketSharing/' + this.id).set({//pb de réfrérance?
+		database.ref('TicketSharing/' + super.getId()).set({//pb de réfrérance?
 			Item : this.#item
 		});
 	}
@@ -44,7 +44,7 @@ class TicketSharing extends Ticket{
 	delete()//methode non défini sur le diagrame de classe mais nessesaire
 	{
 		super.delete()
-		database.ref('TicketSharing/' + this.id).remove();
+		database.ref('TicketSharing/' + super.getId()).remove();
 	}
 
 };

@@ -5,6 +5,12 @@ import Top from '../components/Top'
 import { HOME } from '../router/routes'
 import errorImg from '../images/404Error.png'
 import { relative } from 'path';
+import TicketListControleur from '../classes/TicketListControleur'
+import User from '../classes/User'
+import Ticket from '../classes/Ticket'
+import TicketCarPooling from '../classes/TicketCarPooling'
+import TicketSharing from '../classes/TicketSharing'
+import TicketStudy from '../classes/TicketStudy'
 
 const { Content } = Layout
 
@@ -54,6 +60,31 @@ const style = {
 
 class NotFoundPage extends Component {
   render() {
+
+    var u1 = new User(3, "Jarod", "Delabre", "Léon")
+    var u2 = new User(4, "Jarod", "Delabre", "Léon")
+    var u3 = new User(5, "Jarod", "Delabre", "Léon")
+
+    u1.save();
+    u2.save();
+    u3.save();
+
+    var t1 = new TicketCarPooling(1, "Brest - Rennes", "depart de Brest arriver a Rennes", "28/11/2017", u1, "Brest", "Rennnes", "21h00", "23h00", 5, 1)
+    var t2 = new TicketSharing (2, "Besoin de colle", "J'ai besoin de cole", "27/11/2018", u2, "colle", 2)
+    var t3 = new TicketStudy (3, "Help", "J'ai bessoins d'aide en ELP", "21/10/2018", u3, "ELP", "S6", "Enrico Lerouge", "les IGBT", 3);
+    t1.save();
+    t2.save();
+    t3.save();
+    var tl1 = new TicketListControleur();
+    //tl1.searchUser().then(function(results){
+      //for (var i = 0; i < results.length; i++) {
+        //console.log(results[i].getId());
+      //};
+    //});
+
+    tl1.searchTicket();
+
+
     return (
       <Layout>
         <Top />

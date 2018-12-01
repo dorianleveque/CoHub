@@ -8,9 +8,9 @@ class TicketStudy extends Ticket{
 	#teacher
 	#theme
 
-	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme)
+	constructor(id, title, description, creationDate, requester, subject, semester, teacher, theme, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
+		super(id, title, description, "Study", creationDate, requester, idConversation);
 		this.#subject = subject;
 		this.#semester = semester;// ne serce pas mieux de metre cette attribu dans la classe User
 		this.#teacher = teacher;
@@ -85,7 +85,7 @@ class TicketStudy extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketStudy/' + this.id).set({//pb de réfrérance?
+		database.ref('TicketStudy/' + super.getId()).set({//pb de réfrérance?
 			Subject : this.#subject,
 			Semester : this.#semester,
 			Teacher : this.#teacher,
@@ -96,7 +96,7 @@ class TicketStudy extends Ticket{
 	delete()//methode non défini sur le diagrame de classe mais nessesaire
 	{
 		super.delete()
-		database.ref('TicketStudy/' + this.id).remove();
+		database.ref('TicketStudy/' + super.getId()).remove();
 	}
 
 };

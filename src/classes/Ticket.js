@@ -1,5 +1,5 @@
 import Conversation from './Conversation' 
-import {database} from '../firebase/firebase'
+import { database } from '../firebase'
 
 
 class Ticket{//rendre la classe abstarite

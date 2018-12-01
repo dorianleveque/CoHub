@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-import {database} from '../firebase/firebase'
+import { database } from '../firebase'
 
 class TicketStudy extends Ticket{
 

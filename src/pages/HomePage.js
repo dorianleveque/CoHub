@@ -6,7 +6,6 @@ import Demande_card from '../components/DemandeCard';
 const { Content } = Layout;
 
 class HomePage extends Component {
-	//static contextType = SessionStore
 
 	constructor(props) { // constructuer de Top
 		super(props);
@@ -54,6 +53,5 @@ class HomePage extends Component {
 		);
 	}
 }
-
 
 export default HomePage;

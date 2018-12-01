@@ -1,78 +1,100 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Form, Icon, Input, Button, Checkbox, Row, Col, message} from 'antd';
-import {auth} from '../../firebase'
 import {SIGN_UP, HOME} from '../../router/routes'
+import { SessionStore } from '../../stores';
 
 const FormItem = Form.Item;
 
 
-class LoginForm extends Component {
+class SignInForm extends Component {
 
+  static contextType = SessionStore
   constructor() {
     super()
     this.state = {
-      userNameField: {
-        var: 'email',
-        placeholder: 'adresse mail',
-        rules: [
-          { required: true, message: 'une adresse mail est requise' },
-          { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
-        ]
-      },
-      passWordField: {
-        var: 'password',
-        placeholder: 'mot de passe',
-        rules: [
-          { required: true, message: 'un mot de passe est requis' },
-          { min: 8, message: "Votre mot de passe n'est pas assez long\n"}
-        ]
-      },
-      submitButtonLoading: false
+      fields: [
+        {
+          var: 'email',
+          options: {
+            rules: [
+              { required: true, message: 'une adresse mail est requise' },
+              { pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
+            ]
+          },
+          component: <Input 
+                      prefix={ <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> } 
+                      placeholder='adresse mail' 
+                      />
+        },
+        {
+          var: 'password',
+          options: {
+            rules: [
+              { required: true, message: 'un mot de passe est requis' }
+            ]
+          },
+          component: <Input 
+                      type='password'
+                      prefix={ <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} /> } 
+                      placeholder='mot de passe' 
+                      />          
+        },
+        {
+          var: 'remember',
+          options: { 
+            valuePropName: 'checked', 
+            initialValue: true 
+          },
+          component: <Checkbox> Se souvenir de moi </Checkbox>
+        }
+      ],
+      submitButtonLoading: false,
+      lostPassword: false
     }
   }
 
 
   /**
-   * Fonction déclenchée lors de la soumission du formulaire
-   * Un loader sur le bouton informe l'utilisateur du traitement de sa demande
-   * 
-   * Après vérification de la validité des différents champs du formulaire, 
-   * s'il n'y a pas d'erreur, on contacte la base de donnée afin vérifier si 
-   * les identifiants rentrés sont correct
-   * 
-   * - si la vérification avec la base de données est correct
-   *   alors on crée l'objet user et redirige l'utilisateur sur la page HOME
-   * - sinon on lui affiche un message d'erreur
+   * Appelé à chaque fois que le formulaire est soumis 
    */
   onSubmit = (event) => {
     // on arrête la propagation de l'évènement
     event.preventDefault()
     this.setState({ submitButtonLoading: true })
 
+    // si le mot de passe n'est pas perdu, on authentifie le user
+    // sinon on reset son mot de passe
+    if (!this.state.lostPassword) {
+      this.signIn()
+    }
+    else {
+      this.resetPassword()
+    }
+  }
+
+  /**
+   * Authentifie le user si pas erreur
+   */
+  signIn() {
     this.props.form.validateFields((err, values) => {
       
       // Lorsqu'il n'y a pas d'erreur de saisie
       if (!err) {
-        const { email, password } = values
+        // on récupère notre authentification, 
+        // les valeurs des champs et une référence sur le router
+        const auth = this.context
+        const { email, password, remember } = values
         const history = this.props.routerHistory
         
-        /*login.connect(email, password)
-        .then(() => {
-          alert('Hello')
-        })
-          /*this.setState({ submitButtonLoading: false })
-          message.success("Vous êtes maintenant connecté")
-          history.goBack()
-        })
-        .catch(error => {
-          this.setState({ submitButtonLoading: false })
-          message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
-        })*/
-        
-        auth.doSignInWithEmailAndPassword(email, password)
+        // on authentifie le user
+        auth.signInWithEmailAndPassword(email, password, remember)
             .then(()=>{
               this.setState({ submitButtonLoading: false })
               message.success("Vous êtes maintenant connecté")
+
+              // on redirige ensuite le user soit sur la page d'acceuil, 
+              // soit sur la page précédente
               if (history.action === 'PUSH') {
                 history.goBack()
               } else {
@@ -81,61 +103,123 @@ class LoginForm extends Component {
             })
             .catch(error => {
               this.setState({ submitButtonLoading: false })
-              message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
+              switch(error.code) {
+                case "auth/user-not-found":
+                  message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
+                break;
+                default:
+                  message.error("Votre identifiant et/ou votre mot de passe sont incorrects")
+              }
             })
       }
       else{
         this.setState({ submitButtonLoading: false })
       }
-    });
+    })
   }
 
+  /**
+   * Reset le mot de passe si pas erreur
+   */
+  resetPassword() {
+    // on récupère notre authentification 
+    const auth = this.context
+    this.props.form.validateFields((err, values) => {
+      
+      // Lorsqu'il n'y a pas d'erreur de saisie
+      if (!err) {
+        const { email } = values
+                       
+        auth.sendPassWordResetWithEmail(email)
+            .then(()=>{
+              this.setState({ submitButtonLoading: false, lostPassword: false })
+              this.props.onUpdateTitle(false)
+              message.success("Envoyé")
+            })
+            .catch(error => {
+              this.setState({ submitButtonLoading: false, lostPassword: false })
+              this.props.onUpdateTitle(false)
+              switch(error.code) {
+                case "auth/user-not-found":
+                  message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
+                break;
+                default:
+                  message.error("Impossible d'envoyer. Réessayez plus tard")
+              }
+            })
+      }
+      else{
+        this.setState({ submitButtonLoading: false })
+      }
+    })
+  }
+
+  /**
+   * Evenement boutons
+   */
+  clickOnForgetPassword = (event) => {
+    event.preventDefault()
+    this.setState({ lostPassword: true })
+    this.props.onUpdateTitle(true)
+  }
+
+  clickOnRememberPassword = (event) => {
+    event.preventDefault()
+    this.setState({ lostPassword: false })
+    this.props.onUpdateTitle(false)
+  }
+
+  /**
+   * Afficher le formulaire en fonction notamment
+   * de l'état de la variable lostPassword
+   */
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <Form onSubmit={this.onSubmit} className="login-form">
-        <FormItem> 
-          { 
-            getFieldDecorator(this.state.userNameField.var, { rules: this.state.userNameField.rules })
-            (<Input 
-                prefix={ <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> } 
-                placeholder={this.state.userNameField.placeholder} 
-            />)
-          }
-        </FormItem>
-        <FormItem>
-          {
-            getFieldDecorator(this.state.passWordField.var, { rules: this.state.passWordField.rules })
-            (<Input 
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-                type="password" 
-                placeholder={this.state.passWordField.placeholder}
-            />)
-          }
-        </FormItem>
-        <FormItem>
-          {getFieldDecorator('remember', {
-            valuePropName: 'checked',
-            initialValue: true,
-          })(
-            <Checkbox>Rester connecter</Checkbox>
-          )}
-          
-          <Row gutter={20}>
-            <Col span={14}>
-              <Button block type="primary"   htmlType="submit" className="login-form-button" loading={this.state.submitButtonLoading} >Se connecter</Button>
-            </Col>
-            <Col span={10}>
-              <Button block type="secondary" href={SIGN_UP} className="login-form-button" >S'inscrire</Button>
-            </Col>
-          </Row>
-          <a className="login-form-forgot" href="">Mot de passe oublié</a>
-        </FormItem>
+      <Form onSubmit={this.onSubmit} >
+      {
+        this.state.fields.map((element, index) => {
+          const formItem = <FormItem key={index} > 
+                            {
+                              getFieldDecorator(element.var, element.options) (element.component)
+                            }
+                          </FormItem>
+
+          if (!this.state.lostPassword) {
+            return formItem
+          } 
+          else {
+            return (index === 0) ? formItem : null
+          } 
+        })
+      }
+
+        <Row gutter={20}>
+          <Col span={14}>
+            <Button block type="primary" htmlType="submit" loading={this.state.submitButtonLoading} >
+              { (this.state.lostPassword) ? 'Envoyer' : 'Se connecter' }
+            </Button>
+          </Col>
+          <Col span={10}>
+            { (this.state.lostPassword) 
+              ? null
+              : <NavLink to={SIGN_UP} >
+                  <Button block type="secondary" >S'inscrire</Button>
+                </NavLink>
+            }
+          </Col>
+        </Row>
+        <Row style={{ marginTop: '5px', color: 'rgb(24, 144, 255)', cursor: 'pointer' }}>
+            { (this.state.lostPassword)
+              ? <span onClick={ this.clickOnRememberPassword } >Je me rappelle de mon mot de passe</span>
+              : <span onClick={ this.clickOnForgetPassword }   >J'ai oublié mon mot de passe</span>
+            }
+        </Row>
       </Form>
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(LoginForm);
+const WrappedNormalLoginForm = Form.create()(SignInForm);
 
 
 export default WrappedNormalLoginForm;

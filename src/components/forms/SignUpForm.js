@@ -1,103 +1,306 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input, Button, Checkbox, message} from 'antd';
-import {auth} from '../../firebase'
+import { NavLink } from 'react-router-dom';
+import { SIGN_IN, HOME } from '../../router/routes'
+import { Form, Icon, Input, Button, Carousel, message, Steps} from 'antd';
+import { SessionStore } from '../../stores';
 
 const FormItem = Form.Item;
+const Step = Steps.Step;
 
+class SignUpForm extends Component {
 
-class LoginForm extends Component {
-
+  static contextType = SessionStore
   constructor() {
     super()
     this.state = {
-      userNameField: {
-        var: 'email',
-        placeholder: 'adresse mail',
-        rules: [
-          { required: true, message: 'une adresse mail est requise' },
-          { pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
-        ]
-      },
-      passWordField: {
-        var: 'password',
-        placeholder: 'mot de passe',
-        rules: [
-          { required: true, message: 'un mot de passe est requis' },
-          { min: 8, message: "Votre mot de passe n'est pas assez long\n"}
-        ]
-      },
-      submitButtonLoading: false
+      firstSlideFields: [
+        {
+          var: 'lastName',
+          label: 'Votre nom',
+          options: {
+            rules: [
+              { required: true, message: 'votre nom est requis' }
+            ]
+          },
+          component: <Input 
+                      prefix={ <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> } 
+                      />
+        },
+        {
+          var: 'firstName',
+          label: 'Votre prénom',
+          options: {
+            rules: [
+              { required: true, message: 'votre prénom est requis' }
+            ]
+          },
+          component: <Input 
+                      prefix={ <Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} /> }
+                      />
+        },
+        {
+          var: 'nickName',
+          label: 'Votre surnom',
+          options: { },
+          component: <Input 
+                      prefix={ <Icon type="tag" style={{ color: 'rgba(0,0,0,.25)' }} /> }
+                      />
+        }
+      ],
+      secondSlideFields: [
+        {
+          var: 'email',
+          label: 'Adresse mail',
+          options: {
+            rules: [
+              { required: true, message: 'une adresse mail est requise' },
+              { pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
+            ]
+          },
+          component: <Input 
+                      prefix={ <Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} /> }
+                      />
+        },
+        {
+          var: 'password',
+          label: 'Mot de passe',
+          options: {
+            rules: [
+              { required: true, message: 'un mot de passe est requis' },
+              { min: 8, message: "Votre mot de passe n'est pas assez long"}
+            ]
+          },
+          component: <Input 
+                      type='password'
+                      prefix={ <Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} /> }
+                      />
+        },
+        {
+          var: 'confPassword',
+          label: 'Confirmez mot de passe',
+          options: {
+            rules: [
+              { required: true, message: 'un mot de passe est requis' },
+              { validator: (rule, value, callback) => {
+                const { password } = this.props.form.getFieldsValue()
+                let errors = [];
+                if (password !== value) {
+                  errors.push(new Error())
+                }
+                callback(errors)
+              }, message: "Votre mot de passe n'est pas identique"}
+            ]
+          },
+          component: <Input 
+                      type='password'
+                      prefix={ <Icon type="lock" theme='filled' style={{ color: 'rgba(0,0,0,.25)' }} /> }
+                      />
+        }
+      ],
+      disabledNextButton: true,
+      fieldValidateStatus: '',
+      stepIconLoading: false,
+      carouselSlideIndex: 0
     }
   }
 
+  /**
+   * Appelé à chaque fois que le formulaire est soumis 
+   */
   onSubmit = (event) => {
     // on arrête la propagation de l'évènement
     event.preventDefault()
-    // on informe l'utilisateur que sa demande à été prise en compte par un loader
-    this.setState({ submitButtonLoading: true })
-
-    this.props.form.validateFields((err, values) => {
-      
-      // Lorsqu'il n'y a pas d'erreur de saisie
+    this.setState({ fieldValidateStatus: '' }) // ?
+    
+    this.props.form.validateFields((err) => {
       if (!err) {
-        /* 
-        on contacte la base de donnée afin vérifier si les identifiants
-        rentrés sont correct
-        */
-        const { email, password } = values
-        const history = this.props.routerHistory
+        /* Lorsqu'il n'y a pas d'erreur de saisie,
+          on informe l'utilisateur que sa demande
+          de création de compte à bien été prise en compte
 
-        auth.doSignInWithEmailAndPassword(email, password)
-            .then(()=>{
-              /* 
-              si la vérification avec la base de données est correct
-              alors on crée l'objet user et redirige l'utilisateur sur la page HOME
-              */
-              message.success("Vous êtes maintenant connecté")
-              history.goBack()
-            })
-            .catch(error => {
-              this.setState({ submitButtonLoading: false })
-              if (error.code === "auth/wrong-password") { 
-                message.error("Votre identifiant et/ou votre mot de passe sont incorrects") 
-              }
-              else { 
-                message.error(error.message)
-              }
-            })
+          Après la fin de l'animation de la slide, 
+          un évènement appelera la fontion afin de créer
+          le compte de la personne
+        */
+        this.nextSlide()
       }
+      else {
+        /* Si il y a une erreur, on ne change pas
+          de slide mais on informe l'utilisateur du
+          problème en lui envoyant un message
+        */
+       message.error("Des champs sont mal complétés")
+      } 
     });
   }
 
+  /**
+   * Créer un compte
+   */
+  createAccount() {
+    // on récupère notre authentification
+    const auth = this.context
+    const { lastName, 
+            firstName,
+            nickName,
+            email,
+            password } = this.props.form.getFieldsValue()
+          
+          // on crée le user
+          auth.createUser(lastName, firstName, nickName, email, password)
+          .then( () => {
+            this.nextSlide()
+            this.setState({ fieldValidateStatus: 'sucess', stepIconLoading: false })
+          })
+          .catch(error => {
+            this.prevSlide()
+            this.setState({ fieldValidateStatus: 'error', stepIconLoading: false })
+            switch(error.code) {
+              case "auth/email-already-in-use":
+                message.error("L'adresse mail est déjà utilisée par un autre compte")
+              break;
+              default:
+                message.error("Impossible de créer votre compte. Réessayez plus tard")
+            }
+          })
+  }
+
+  /**
+   * Affiche le slide du carousel ayant l'index renseigné en paramètre
+   * @param {int} index index du carousel que l'on souhaite afficher
+   */
+  goToSlide(index) {
+    if (index >= 0) {
+      this.setState({ carouselSlideIndex: index, stepIconLoading: (index === 2) })
+      this.formCarousel.goTo(index)
+    }
+  }
+
+  /**
+   * Afficher la slide suivante 
+   */
+  nextSlide() {
+    this.goToSlide(this.state.carouselSlideIndex + 1)
+  }
+
+  /**
+   * Afficher la slide précédente
+   */
+  prevSlide() {
+    this.goToSlide(this.state.carouselSlideIndex - 1)
+  }
+
+  /**
+   * Lorsque l'animation de la slide est terminé,
+   * on execute la fonction createAccount() qu'à 
+   * l'index affichant la slide de récupération des
+   * données
+   */
+  doActionAfterSlidding = (currentSlideIndex) => {
+    switch(currentSlideIndex) {
+      case 2 :
+        this.createAccount()
+      break;
+      default:
+
+    }
+  }
+
+  componentWillReceiveProps(){
+    /**
+     * Permet de désactiver le premier bouton 'suivant' si
+     * les champs lastname et firstname ne sont pas renseignés
+     */
+    const { lastName, firstName } = this.props.form.getFieldsValue()
+    if (lastName !== undefined && firstName !== undefined) {
+      this.setState({ disabledNextButton: !(lastName.length && firstName.length) }) 
+    }
+    else {
+      this.setState({ disabledNextButton: true })
+    }
+  }
+
+  /**
+   * Afficher le formulaire
+   */
   render() {
     const { getFieldDecorator } = this.props.form
     return (
-      <Form layout='vertical' onSubmit={this.onSubmit} className="login-form">
-        <FormItem label={'Nom'}> 
-          <Input
-            addonBefore={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} 
-          />
-        </FormItem>
-        <FormItem>
-          <Input addonBefore={'Prénom'} />
-        </FormItem>
-        <FormItem>
-          <Input addonBefore={'Adresse mail'} />
-        </FormItem>
-        <FormItem>
-          <Input addonBefore={'Mot de passe'} />
-        </FormItem>
-        <FormItem>
-          <Input addonBefore={'Confirmer le mot de passe'} />
-        </FormItem>
-        <FormItem>
-          <Button type="primary" htmlType="submit" className="login-form-button" loading={this.state.submitButtonLoading} >Se connecter</Button>
-        </FormItem>
-      </Form>
+        <div>
+          <div >
+            <Steps size='small' labelPlacement='vertical' current={ this.state.carouselSlideIndex } >
+                <Step /* Vos infos *//>
+                <Step /* Vos identifiants */ />
+                <Step icon={ (this.state.stepIconLoading) ? <Icon type="loading" /> : null } status=''  /* Vérification*/ />
+            </Steps>  
+          </div>
+
+          <div>
+            <Form onSubmit={this.onSubmit} >
+              <Carousel dots={false} ref={node => (this.formCarousel = node) } afterChange={ this.doActionAfterSlidding } >
+                <div>
+                  <h3>Vos informations: </h3>
+                  { 
+                    this.state.firstSlideFields.map((element, index) => (
+                      <FormItem key={index} label={element.label} fieldValidateStatus={this.state.fieldValidateStatus} colon={false} > 
+                        { 
+                          getFieldDecorator(element.var, element.options) (element.component)
+                        }
+                      </FormItem>
+                    ))
+                  }
+                  
+                  <div style={{ display: 'flex', alignItems: 'center' }} >
+                    <Button disabled={ this.state.disabledNextButton } type='primary' onClick={ () => this.nextSlide() } >Suivant</Button>
+                    <NavLink to={SIGN_IN} style={{ marginLeft: '10px' }} >
+                      <span>J'ai déjà un compte</span>
+                    </NavLink>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3>Vos identifiants: </h3>
+                  { 
+                    this.state.secondSlideFields.map((element, index) => (
+                      <FormItem key={index} label={element.label} fieldValidateStatus={this.state.fieldValidateStatus} colon={false} > 
+                        { 
+                          getFieldDecorator(element.var, element.options) (element.component)
+                        }
+                      </FormItem>
+                    ))
+                  }
+                  <div style={{ display: 'flex', alignItems: 'center' }} >
+                    <Button type='default' onClick={ ()=>{ this.prevSlide() } } >Précédent</Button>
+                    <Button type='primary' htmlType="submit" style={{ marginLeft: '10px' }} >Créer le compte</Button>
+                  </div>
+                </div>
+
+                <div>                  
+                    <h2 style={{  marginTop: '30px', textAlign: 'center' }}>Création de votre compte en cours ...</h2>
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }} >
+                    <h2 style={{ marginTop: '30px', textAlign: 'center' }} >Votre compte à été créé avec succès !</h2>
+                    <div style={{ textAlign: 'left', marginTop: '30px', lineHeight: '1.8' }}>
+                      <h3>Vous pouvez maintenant :</h3>
+                      <ul>
+                        <li>Créer des demandes et obtenir de l'aide</li>
+                        <li>Dialoguer, coopérer et proposer de l'aide aux demandeurs</li>
+                      </ul>
+                      <NavLink to={HOME} >
+                        <Button type="primary" style={{ marginTop: '20px' }} >Découvrir cela</Button>
+                      </NavLink>
+                    </div>
+                  </div>
+                </div>
+                <div></div>
+              </Carousel>
+            </Form>
+          </div>
+      </div>
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(LoginForm);
-
-
+const WrappedNormalLoginForm = Form.create()(SignUpForm);
 export default WrappedNormalLoginForm;

@@ -102,11 +102,11 @@ class TicketCarPooling extends Ticket{
 	{
 		super.save();
 		database.ref('TicketCarPooling/' + super.getId()).set({//pb de réfrérance?
-			DeparturLocation : this.#departurLocation,
-			ArrivalLocation : this.#arrivalLocation,
-			DeparturTime : this.#departurTime,
-			ArrivalTime : this.#arrivalTime,
-			Places : this.#places
+			departurLocation : this.#departurLocation,
+			arrivalLocation : this.#arrivalLocation,
+			departurTime : this.#departurTime,
+			arrivalTime : this.#arrivalTime,
+			places : this.#places
 		});
 		
 	}

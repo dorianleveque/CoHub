@@ -141,13 +141,13 @@ class Ticket{//rendre la classe abstarite
 			helper[i] =  this.#helper[i].getId();
 		}
 		database.ref('Ticket/' + this.#id).set({
-			Title : this.#title,
-			Description : this.#description,
-			Category : this.#category,
-			CreationDate : this.#creationDate,
-			IdRequester : this.#requester.getId(),
-			IdHelper : helper,
-			IdConversation : this.#conversation.getId()
+			title : this.#title,
+			description : this.#description,
+			category : this.#category,
+			creationDate : this.#creationDate,
+			idRequester : this.#requester.getId(),
+			idHelper : helper,
+			idConversation : this.#conversation.getId()
 		});
 		this.#conversation.save(); // a modifier
 	}

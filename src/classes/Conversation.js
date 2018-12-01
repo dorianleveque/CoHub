@@ -34,7 +34,7 @@ class Conversation{
 			this.#messages[i].save();
 		}
 		database.ref('Conversation/' + this.id).set({
-			IdMessage : idmessage
+			idMessage : idmessage
 
 		});
 	}

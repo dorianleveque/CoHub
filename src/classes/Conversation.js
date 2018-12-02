@@ -26,6 +26,16 @@ class Conversation{
 		return this.#messages;
 	}
 
+	getMessage(id)
+	{
+		for (var i = 0; i < this.#messages.length; i++) {
+			if (this.#messages[i].getId() == id)
+			{
+				return this.#messages[i];
+			}
+		}
+	}
+
 	save()
 	{
 		var idmessage = [];

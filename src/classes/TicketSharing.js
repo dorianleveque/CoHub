@@ -37,7 +37,7 @@ class TicketSharing extends Ticket{
 	{
 		super.save();
 		database.ref('TicketSharing/' + this.id).set({//pb de réfrérance?
-			Item : this.#item
+			item : this.#item
 		});
 	}
 

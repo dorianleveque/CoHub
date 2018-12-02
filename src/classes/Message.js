@@ -38,9 +38,9 @@ class Message {
 	save()
 	{
 		database.ref('Message/' + this.#id).set({
-			Message : this.#text,
-			Sender : this.#sender.getId(),
-			Date : this.#date
+			message : this.#text,
+			sender : this.#sender.getId(),
+			date : this.#date
 		});
 	}
 

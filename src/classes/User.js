@@ -53,9 +53,9 @@ class User {
 	save()// modification des doner du user en cas de modification du sunon
 	{
 		database.ref('User/' + this.#id).set({
-			Name : this.#name,
-			Surname : this.#surname,
-			Nickname : this.#nickname
+			name : this.#name,
+			surname : this.#surname,
+			nickname : this.#nickname
 		});
 	}
 

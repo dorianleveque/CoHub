@@ -4,18 +4,25 @@ class Conversation{
 
 	#id;
 	#messages;
-
+	
+	/**
+	 * 
+	 * @param {int} id : unique key
+	 */
 	constructor(id)
 	{
-		this.#id = id;//pas dans le diagrame de classe mais nessesaire
+		this.#id = id;
 		this.#messages = [];
 	}
-
+	
 	getId()
 	{
 		return this.#id;
 	}
-
+	/**
+	 * Add a message to a conversation
+	 * @param {Message} message 
+	 */
 	addMessage(message)
 	{
 		this.#messages.push(message);
@@ -36,6 +43,9 @@ class Conversation{
 		}
 	}
 
+	/**
+	 * Save the converation and messages on firebase
+	 */
 	save()
 	{
 		var idmessage = [];
@@ -49,6 +59,9 @@ class Conversation{
 		});
 	}
 
+	/**
+	 * Delete the converation and messages on firebase
+	 */
 	delete()
 	{
 		database.ref('Conversation/' + this.#id).remove();

@@ -5,7 +5,7 @@ import Ticket from './Ticket'
 
 class TicketListControleur {
 
-	#tickets
+	#tickets;
 
 	constructor() {
 		this.#tickets = [];
@@ -17,27 +17,36 @@ class TicketListControleur {
 
 	getTicket(id)// a tester
 	{
-		for (var i = 0; i < this.#tickets.length; i++) {
-			if (this.#tickets[i].getId() == id)
+		for (var i = 0; i < this.getTickets().length; i++) {
+			if (id === this.getTickets()[i].getId())
 			{
-				return this.#tickets[i];
+				return this.getTickets()[i];
 			};
 		};
 	}
 
+	/**
+	 * get a user by id in firebase and create User 
+	 * @param {int} id 
+	 */
 	searchUser(id) 
 	{
 		return database.ref('User/'+id).once('value').then(function(snapshot){
 				var { name, nickname, surname } = snapshot.val();
 				var u = new User(id, name, surname, nickname);
 				return u;
-		}; function (error) {
+		}, function (error) {
 			console.error(error);//TODO
 		}).then(function (values) {
 			return values
 		});
 	}
 
+	/**
+	 * get ticket by page and filter and create Ticket
+	 * @param {*} filter not functionnal now
+	 * @param {int} page 
+	 */
 	searchTickets(filter = null, page)
 	{
 		var query = database.ref("Ticket").orderByKey();
@@ -64,12 +73,16 @@ class TicketListControleur {
 			{
 				const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
 				this.searchUser(idRequester).then((user) => {
-					this.#tickets.push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
+					this.getTickets().push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
 				})
 			}
 		});
 	}	
-
+	 
+	/**
+	 * get ticket by id and create Ticket
+	 * @param {int} id
+	 */
 	retriveTicket = (id) =>
 	{
 		return database.ref('Ticket/'+id).once('value').then((snapshot) => {
@@ -105,14 +118,21 @@ class TicketListControleur {
 		});
 	}
 
+	/**
+	 * Display all tickets
+	 */
 	displayTickets() 
 	{
 		for (var i = 0; i < this.#tickets.length; i++) 
 		{
-			this.#tickets[i].display();
+			this.#tickets[i].displayThmbnail();
 		};
 	}
 
+	/**
+	 * display a ticket
+	 * @param {int} id 
+	 */
 	displayTicket(id)
 	{
 		for (var i = 0; i < this.#tickets.length; i++) 
@@ -126,6 +146,10 @@ class TicketListControleur {
 
 	//save()
 
+
+	/**
+	 * delete ticket from class
+	 */
 	clearTickets() 
 	{
 		for (var i = 0; i < this.#tickets.length; i++) 

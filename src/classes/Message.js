@@ -7,15 +7,22 @@ class Message {
 	#sender;
 	#date;
 
+	/**
+	 * 
+	 * @param {int} id : unique key
+	 * @param {string} text 
+	 * @param {User} sender 
+	 * @param {string} date 
+	 */
 	constructor(id, text, sender, date)
 	{
-		this.#id = id;//pas dans le diagrame de classe mais nessesaire
+		this.#id = id;
 		this.#text = text;
 		this.#sender = sender;
-		this.#date = date;//pas prévue mais néssésair pour ordonée les message lors du display
+		this.#date = date; //TODO utiliser moment ou Date
 	}
 
-	getId()//pas dans le diagrame de classe mais nessesaire
+	getId()
 	{
 		return this.#id;
 	}
@@ -30,11 +37,14 @@ class Message {
 		return this.#sender;
 	}
 
-	getDate()//pas dans le diagrame de classe mais nessesaire
+	getDate()
 	{
 		return this.#date;
 	}
 
+	/**
+	 * Save the message on firebase
+	 */
 	save()
 	{
 		database.ref('Message/' + this.#id).set({
@@ -44,6 +54,9 @@ class Message {
 		});
 	}
 
+	/**
+	 * Delete the message on firebase
+	 */
 	delete()
 	{
 		database.ref('Message/' + this.#id).remove();

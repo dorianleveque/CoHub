@@ -10,6 +10,20 @@ class TicketCarPooling extends Ticket{
 	#arrivalTime;
 	#places;
 
+	/**
+	 * 
+	 * @param {int} id 
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {string} departurLocation 
+	 * @param {string} arrivalLocation 
+	 * @param {string} departurTime 
+	 * @param {string} arrivalTime 
+	 * @param {int} places 
+	 */
 	constructor(id, title, description, category, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
 	{
 		super(id, title, description, category, creationDate, requester);
@@ -47,12 +61,12 @@ class TicketCarPooling extends Ticket{
 
 	setDeparturTime(departurTime)
 	{
-		this.#departurTime = departurTime;//verification du format de l'heure
+		this.#departurTime = departurTime;
 	}
 
 	getArrivalTime()
 	{
-		return this.#arrivalTime;//verification du format de l'heure
+		return this.#arrivalTime;
 	}
 
 	setArrivalTime(arrivalTime)
@@ -72,6 +86,17 @@ class TicketCarPooling extends Ticket{
 
 	//display()
 
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} departurLocation 
+	 * @param {string} arrivalLocation 
+	 * @param {string} departurTime 
+	 * @param {string} arrivalTime 
+	 * @param {int} places 
+	 */
 	edit(title, description, category, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
 	{
 		super.edit(title, description, category)
@@ -97,11 +122,13 @@ class TicketCarPooling extends Ticket{
 		}
 	}
 
-
+/**
+ * Save ticket on firebase
+ */
 	save()
 	{
 		super.save();
-		database.ref('TicketCarPooling/' + this.id).set({//pb de réfrérance?
+		database.ref('TicketCarPooling/' + super.getId()).set({
 			departurLocation : this.#departurLocation,
 			arrivalLocation : this.#arrivalLocation,
 			departurTime : this.#departurTime,
@@ -111,10 +138,13 @@ class TicketCarPooling extends Ticket{
 		
 	}
 
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	/**
+	 * Delete ticket from firebase
+	 */
+	delete()
 	{
 		super.delete()
-		database.ref('TicketCarPooling/' + this.id).remove();
+		database.ref('TicketCarPooling/' + super.getId()).remove();
 	}
 
 };

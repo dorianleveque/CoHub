@@ -13,6 +13,17 @@ class Ticket{//rendre la classe abstarite
 	#helper;
 	#conversation;
 
+	/**
+	 * 
+	 * @param {int} id :unique key
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {int} idConversation :unique key of conversation
+	 */
+
 	constructor(id, title, description, category, creationDate, requester, idConversation)
 	{
 		this.#id = id;
@@ -81,9 +92,13 @@ class Ticket{//rendre la classe abstarite
 		return this.#conversation;
 	}
 
+	/**
+	 * Add an helper
+	 * @param {User} helper 
+	 */
 	addHelper(helper)
 	{
-		if (helper === this.#requester)
+		if (helper === this.getRequester())
 		{
 			console.log("On ne peut pas etre aidant et aider en meme temps");
 		}
@@ -93,6 +108,10 @@ class Ticket{//rendre la classe abstarite
 		}
 	}
 
+	/**
+	 * return true if param user is a helper
+	 * @param {User} user 
+	 */
 	isHelper(user)
 	{
 		for (var i = 0; i < this.#helper.length; i++) {
@@ -100,24 +119,29 @@ class Ticket{//rendre la classe abstarite
 			{
 					return true;
 			}
-			else
-			{
-				return false;
-			}
 		}
+		return false
 	}
 
 	//ce qui reste a coder (c.f diagrame de classe)
 
-	//displayThumbnail() 
+	//displayThmbnail() 
 
 	display(){}// methode abstraite
-
+/**
+ * Add a message to the Conversation
+ * @param {Message} message 
+ */
 	addMessage(message)
 	{
 		this.#conversation.addMessage(message);
 	} 
-
+/**
+ * Edit ticket parameter
+ * @param {string} title 
+ * @param {string} description 
+ * @param {string} category 
+ */
 	edit(title, description, category)
 	{
 		if(title != null)
@@ -134,6 +158,9 @@ class Ticket{//rendre la classe abstarite
 		}
 	}
 
+	/**
+	 * Save ticket on firebase
+	 */
 	save() 
 	{
 		var helper = [];
@@ -152,6 +179,9 @@ class Ticket{//rendre la classe abstarite
 		this.#conversation.save(); // a modifier
 	}
 
+	/**
+	 * Delete ticket from firebase
+	 */
 	delete()
 	{
 		database.ref('Ticket/' + this.#id).remove();

@@ -8,6 +8,19 @@ class TicketStudy extends Ticket{
 	#teacher
 	#theme
 
+	/**
+	 * 
+	 * @param {int} id : unique key
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {string} subject 
+	 * @param {string} semester 
+	 * @param {string} teacher 
+	 * @param {string} theme 
+	 */
 	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme)
 	{
 		super(id, title, description, category, creationDate, requester);
@@ -59,7 +72,16 @@ class TicketStudy extends Ticket{
 
 	//display()
 
-
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} subject 
+	 * @param {string} semester 
+	 * @param {string} teacher 
+	 * @param {string} theme 
+	 */
 	edit(title, description, category, subject, semester, teacher, theme)
 	{
 		super.edit(title, description, category)
@@ -81,11 +103,13 @@ class TicketStudy extends Ticket{
 		}
 	}
 
-
+	/**
+	 * Save ticket on firebase
+	 */
 	save()
 	{
 		super.save();
-		database.ref('TicketStudy/' + this.id).set({//pb de réfrérance?
+		database.ref('TicketStudy/' + super.getId()).set({
 			subject : this.#subject,
 			semester : this.#semester,
 			seacher : this.#teacher,
@@ -93,10 +117,13 @@ class TicketStudy extends Ticket{
 		});
 	}
 
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	/**
+	 * Delete ticket from firebase
+	 */
+	delete()
 	{
 		super.delete()
-		database.ref('TicketStudy/' + this.id).remove();
+		database.ref('TicketStudy/' + super.getId()).remove();
 	}
 
 };

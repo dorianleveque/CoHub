@@ -2,7 +2,7 @@ import Conversation from './Conversation'
 import {database} from '../firebase/firebase'
 
 
-class Ticket{//rendre la classe abstarite
+class Ticket{
 
 	#id
 	#title;
@@ -114,8 +114,9 @@ class Ticket{//rendre la classe abstarite
 	 */
 	isHelper(user)
 	{
-		for (var i = 0; i < this.#helper.length; i++) {
-			if (this.helper[i] === user) 
+		for (var i = 0; i < this.#helper.length; i++) 
+		{
+			if (this.#helper[i] === user) 
 			{
 					return true;
 			}
@@ -123,25 +124,25 @@ class Ticket{//rendre la classe abstarite
 		return false
 	}
 
-	//ce qui reste a coder (c.f diagrame de classe)
-
 	//displayThmbnail() 
 
 	display(){}// methode abstraite
-/**
- * Add a message to the Conversation
- * @param {Message} message 
- */
+	
+	/**
+	 * Add a message to the Conversation
+	 * @param {Message} message 
+	 */
 	addMessage(message)
 	{
 		this.#conversation.addMessage(message);
 	} 
-/**
- * Edit ticket parameter
- * @param {string} title 
- * @param {string} description 
- * @param {string} category 
- */
+
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 */
 	edit(title, description, category)
 	{
 		if(title != null)

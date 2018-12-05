@@ -86,10 +86,10 @@ class TicketStudy extends Ticket{
 	{
 		super.save();
 		database.ref('TicketStudy/' + super.getId()).set({//pb de réfrérance?
-			Subject : this.#subject,
-			Semester : this.#semester,
-			Teacher : this.#teacher,
-			Theme : this.#theme
+			subject : this.#subject,
+			semester : this.#semester,
+			teacher : this.#teacher,
+			theme : this.#theme
 		});
 	}
 

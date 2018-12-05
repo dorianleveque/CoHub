@@ -1,4 +1,5 @@
-import firebase, { auth } from '../firebase'
+import firebase, { auth, database } from '../firebase'
+import User from './User';
 /**
  * Cette classe remplace notre première version 
  * de classe prénommé "Login"
@@ -8,32 +9,57 @@ import firebase, { auth } from '../firebase'
 class Authentification {
 
     #currentUser;
-    #firebaseObject;
+    #authStateChangedCallback;
 
     constructor() {
         this.#currentUser = null             // User Object
-        this.#firebaseObject = null          // Authentification Object firebase
-        this.authStateChangedCallback = []  //()=>{}    // callback list
+        this.#authStateChangedCallback = []  //()=>{}    // callback list
 
         auth.onAuthStateChanged((auth) => {
             if (auth) {
-                console.log(`FIREBASE CONNECT - ${auth.email}`)
                 // On crée ici l'object current User de notre application
                 // à l'aide des infos de la database
-
-                // on enregistre notre object dans notre session
-                this.setAuth(auth)
+                this._createCurrentUser(auth.email)
+                .then( () => {
+                    // si l'authentification est réussit et que le currentUser est créé
+                    // on peut executer l'ensembles des fonctions callback
+                    this.#authStateChangedCallback.forEach(element => { element() });
+                })
+                .catch( () => {
+                    // si on arrive pas à créer le currentUser, on met à jour
+                    // l'attribut pour l'authentification (router)
+                    this._setCurrentUser(null)
+                })
             }
             else {
-                console.log(`FIREBASE DISCONNECT`)
-                this.setAuth(null)
+                // si on n'a pas de connection avec firebase
+                // impossible de vérifier si l'authentification est correct
+                this._setCurrentUser(null)
             }
-            this.authStateChangedCallback.forEach(element => { element() });
         })
     }
 
-    setAuth(auth) {
-        this.#firebaseObject = auth
+    /**
+     * Créer l'objet currentUser à partir de l'ensemble de ses informations 
+     * dans la base de données.
+     * @param {String} email adresse mail
+     */
+    async _createCurrentUser(email) {
+        await database.ref('Users').orderByChild('email').equalTo(email).once('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+                const id = childSnapshot.key
+                const { name, surname, email, nickname } = childSnapshot.val()
+                this._setCurrentUser(new User(id, name, surname, email, nickname))
+            })
+        })
+    }
+
+    getCurrentUser() {
+        return this.#currentUser
+    }
+
+    _setCurrentUser(user) {
+        this.#currentUser = user
     }
 
     /**
@@ -43,7 +69,7 @@ class Authentification {
      * @return retourne la fonction passer en paramètre
      */
     onAuthStateChanged(func){
-        this.authStateChangedCallback.push(func)
+        this.#authStateChangedCallback.push(func)
         return func
     }
 
@@ -53,11 +79,11 @@ class Authentification {
      * @param {function} func référence de la fonction à supprimer
      */
     removeCallbackOnAuthStateChanged(func){
-        const index = this.authStateChangedCallback.findIndex(function(element) {
+        const index = this.#authStateChangedCallback.findIndex(function(element) {
             return element === this
         }, func)
         // on supprime la fonction de la liste callback
-        this.authStateChangedCallback.slice(index, 1)
+        this.#authStateChangedCallback.slice(index, 1)
     }
 
     /**
@@ -86,7 +112,12 @@ class Authentification {
      * @param {String} password mot de passe
      */
     async createUser(lastName, firstName, nickName, email, password) {
-        await auth.createUserWithEmailAndPassword(email, password)
+        await auth.createUserWithEmailAndPassword(email, password).then( () => {
+            // on crée l'objet User et on sauvegarde ses infos
+            let user = new User(null, firstName, lastName, email, nickName)
+            user.save()
+            //this.#currentUser = user
+        })
     }
 
     /**
@@ -112,38 +143,13 @@ class Authentification {
     async signOut() {
         await auth.signOut()
     }
-    
-    /**
-     * Met à jour les infos de son profil
-     * @param {String} displayName Pseudo
-     * @param {String} photoURL liens url avatar
-     */
-    async updateProfil(displayName='', photoURL='') {
-        await auth.currentUser.updateProfile({ displayName, photoURL })
-    }
-
-    /**
-     * Met à jour son mot de passe
-     * @param {String} newPassword nouveau mot de passe
-     */
-    async updatePassword(newPassword) {
-        await auth.currentUser.updatePassword(newPassword)
-    }
-
-    /**
-     * Met à jour l'adresse mail
-     * @param {String} newEmail nouvelle adresse mail
-     */
-    async updateEmail(newEmail) {
-        await auth.currentUser.updateEmail(newEmail)
-    }
 
     /**
      * Vérifie si l'authentification est valide
      * @return vrai (true) si l'authentification est valide
      */
     isValide() {
-        return this.#firebaseObject ? true : false
+        return this.getCurrentUser() ? true : false
     }
 
 }

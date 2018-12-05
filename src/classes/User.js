@@ -51,6 +51,8 @@ class User {
 		this.#nickname = nickname;
 	}
 
+
+	//TODO a tester
 	/**
 	 * create Ticket
 	 * @param {int} id 
@@ -63,7 +65,7 @@ class User {
 	 */
 	createTicket(id, title, description, category, creationDate, idConversation, options = null)
 	{
-		if (options != null)
+		if (options === null)
 		{
 			var t = new Ticket (id, title, description, category, creationDate, this, idConversation);
 		}
@@ -79,7 +81,7 @@ class User {
 				const { subject, semester, teacher, theme } = options;
 				var t = new TicketStudy(id, title, description, creationDate, this, subject, semester, teacher, theme, idConversation);
 			}
-			if  (category === "TicketSharing")
+			if  (category === "Sharing")
 			{
 				const { item } = options;
 				var t = new TicketSharing(id, title, description, creationDate, this, item, idConversation);
@@ -89,21 +91,25 @@ class User {
 	}
 
 
-	editTicket(ticket, options = null, optionsCarPooling = null, optionsSharing = null, optionsStudy = null)// a voir
+	editTicket(ticket, optionsCarPooling = null, optionsSharing = null, optionsStudy = null)// a voir
 	{
+		const {title, description, category} = ticket;
 		if (ticket instanceof TicketCarPooling && optionsCarPooling != null && optionsSharing === null && optionsStudy === null)
 		{
-			ticket.edit(options + optionsCarPooling);
+			const {departurLocation, arrivalLocation, departurTime, arrivalTime, places} = optionsCarPooling;
+			ticket.edit(title, description, category, departurLocation, arrivalLocation, departurTime, arrivalTime, places);
 			ticket.save();
 		}
 		else if (ticket instanceof TicketSharing && optionsCarPooling === null && optionsSharing != null && optionsStudy === null)
 		{
-			ticket.edit(options + optionsSharing);
+			const {item} = optionsSharing;
+			ticket.edit(title, description, category, item);
 			ticket.save();
 		}
 		else if (ticket instanceof TicketStudy && optionsCarPooling === null && optionsSharing === null && optionsStudy != null)
 		{
-			ticket.edit(options + optionsStudy);
+			const {subject, semester, teacher, theme} = optionsStudy;
+			ticket.edit(title, description, category,subject, semester, teacher, theme);
 			ticket.save();
 		}
 	}
@@ -130,7 +136,7 @@ class User {
 		});
 	}
 
-	checkRights(otherUser)
+	checkRights(otherUser) // a tester
 	{
 		if(this.getId()=== otherUser.getId())
 		{

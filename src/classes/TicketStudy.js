@@ -21,9 +21,9 @@ class TicketStudy extends Ticket{
 	 * @param {string} teacher 
 	 * @param {string} theme 
 	 */
-	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme, idConversation)
+	constructor(id, title, description, creationDate, requester, subject, semester, teacher, theme, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester, idConversation);
+		super(id, title, description, "Study", creationDate, requester, idConversation);
 		this.#subject = subject;
 		this.#semester = semester;
 		this.#teacher = teacher;

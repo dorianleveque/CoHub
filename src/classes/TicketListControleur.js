@@ -1,4 +1,4 @@
-import { database } from '../firebase'
+import { database } from '../firebase/firebase'
 import User from './User' 
 import Ticket from './Ticket'
 
@@ -11,11 +11,13 @@ class TicketListControleur {
 		this.#tickets = [];
 	}
 
-	getTickets() {
+	getTickets()
+	{
+
 		return this.#tickets;
 	}
 
-	getTicket(id)// a tester
+	getTicket(id)
 	{
 		for (var i = 0; i < this.getTickets().length; i++) {
 			if (id === this.getTickets()[i].getId())
@@ -53,7 +55,6 @@ class TicketListControleur {
 		var tmpTickets = [];	
 		query.once("value").then((snapshot) => {
 			snapshot.forEach(function(childSnapshot) {
-				//var childData = childSnapshot.val();
 				tmpTickets.push(childSnapshot);
 			});
 

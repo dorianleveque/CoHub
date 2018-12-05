@@ -6,7 +6,6 @@ class Conversation{
 	#messages;
 	
 	/**
-	 * 
 	 * @param {int} id : unique key
 	 */
 	constructor(id)
@@ -64,7 +63,7 @@ class Conversation{
 	 */
 	delete()
 	{
-		database.ref('Conversation/' + this.#id).remove();
+		database.ref('Conversation/' + this.getId()).remove();
 		for (var i = 0; i < this.#messages.length; i++) {
 			this.#messages[i].delete();
 		}

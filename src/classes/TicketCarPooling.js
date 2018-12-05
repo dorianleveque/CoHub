@@ -24,9 +24,9 @@ class TicketCarPooling extends Ticket{
 	 * @param {string} arrivalTime 
 	 * @param {int} places 
 	 */
-	constructor(id, title, description, category, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation)
+	constructor(id, title, description, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester,idConversation);
+		super(id, title, description, "CarPooling" , creationDate, requester,idConversation);
 		this.#departurLocation = departurLocation;
 		this.#arrivalLocation = arrivalLocation;
 		this.#departurTime = departurTime;

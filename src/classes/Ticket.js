@@ -30,7 +30,14 @@ class Ticket{
 		this.#title = title;
 		this.#description = description;
 		this.#category = category;
-		this.#creationDate = creationDate;
+		if (creationDate === null)
+		{
+			this.#creationDate = new Date();
+		}
+		else
+		{
+			this.#creationDate = creationDate;
+		}
 		this.#requester = requester;
 		this.#helper = [];
 		this.#conversation = new Conversation(idConversation);
@@ -98,14 +105,7 @@ class Ticket{
 	 */
 	addHelper(helper)
 	{
-		if (helper === this.getRequester())
-		{
-			console.log("On ne peut pas etre aidant et aider en meme temps");
-		}
-		else
-		{
 			this.#helper.push(helper);
-		}
 	}
 
 	/**
@@ -164,6 +164,9 @@ class Ticket{
 	 */
 	save() 
 	{
+		var year = this.getCreationDate().getFullYear();
+		var mounth =  this.getCreationDate().getMonth();
+		var day  =  this.getCreationDate().getDate();
 		var helper = [];
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.helper[i].getId();
@@ -172,7 +175,7 @@ class Ticket{
 			title : this.#title,
 			description : this.#description,
 			category : this.#category,
-			creationDate : this.#creationDate,
+			creationDate : day + "/" + mounth + "/" + year,
 			idRequester : this.#requester.getId(),
 			idHelper : helper,
 			idConversation : this.#conversation.getId()
@@ -185,7 +188,7 @@ class Ticket{
 	 */
 	delete()
 	{
-		database.ref('Ticket/' + this.#id).remove();
+		database.ref('Ticket/' + this.getId()).remove();
 		this.#conversation.delete();
 	}
 };

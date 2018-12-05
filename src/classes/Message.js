@@ -2,7 +2,7 @@ import {database} from '../firebase/firebase'
 
 class Message {
 
-	#id
+	#id;
 	#text;
 	#sender;
 	#date;
@@ -14,12 +14,19 @@ class Message {
 	 * @param {User} sender 
 	 * @param {string} date 
 	 */
-	constructor(id, text, sender, date)
+	constructor(id, text, sender, date = null)
 	{
 		this.#id = id;
 		this.#text = text;
 		this.#sender = sender;
-		this.#date = date; //TODO utiliser moment ou Date
+		if (date === null)
+		{
+			this.#date = new Date();
+		}
+		else
+		{
+			this.#date = date; 
+		}
 	}
 
 	getId()
@@ -47,10 +54,13 @@ class Message {
 	 */
 	save()
 	{
-		database.ref('Message/' + this.#id).set({
+		var year = this.getDate().getFullYear();
+		var mounth =  this.getDate().getMonth();
+		var day  =  this.getDate().getDate();
+		database.ref('Message/' + this.getId()).set({
 			message : this.#text,
 			sender : this.#sender.getId(),
-			date : this.#date
+			date : day + "/" + mounth + "/" + year
 		});
 	}
 
@@ -59,7 +69,7 @@ class Message {
 	 */
 	delete()
 	{
-		database.ref('Message/' + this.#id).remove();
+		database.ref('Message/' + this.getId()).remove();
 	}
 
 }

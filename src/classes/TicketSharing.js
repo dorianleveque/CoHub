@@ -17,9 +17,9 @@ class TicketSharing extends Ticket{
 	 * @param {string} item 
 	 */
 
-	constructor(id, title, description, category, creationDate, requester, item, idConversation)
+	constructor(id, title, description, creationDate, requester, item, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester, idConversation);
+		super(id, title, description, "Sharing", creationDate, requester, idConversation);
 		this.#item = item;
 	}
 

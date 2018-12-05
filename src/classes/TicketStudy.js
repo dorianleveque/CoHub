@@ -3,10 +3,10 @@ import {database} from '../firebase/firebase'
 
 class TicketStudy extends Ticket{
 
-	#subject
-	#semester
-	#teacher
-	#theme
+	#subject;
+	#semester;
+	#teacher;
+	#theme;
 
 	/**
 	 * 
@@ -21,11 +21,11 @@ class TicketStudy extends Ticket{
 	 * @param {string} teacher 
 	 * @param {string} theme 
 	 */
-	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme)
+	constructor(id, title, description, category, creationDate, requester, subject, semester, teacher, theme, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
+		super(id, title, description, category, creationDate, requester, idConversation);
 		this.#subject = subject;
-		this.#semester = semester;// ne serce pas mieux de metre cette attribu dans la classe User
+		this.#semester = semester;
 		this.#teacher = teacher;
 		this.#theme = theme;
 	}
@@ -40,12 +40,12 @@ class TicketStudy extends Ticket{
 		this.#subject = subject;
 	}
 
-	getSemester() // peut-etre a copier coller dans la classe User
+	getSemester() 
 	{
 		return this.#semester;
 	}
 
-	setSemester(semester) // peut-etre a copier coller dans la classe User
+	setSemester(semester) 
 	{
 		this.#semester = semester;
 	}

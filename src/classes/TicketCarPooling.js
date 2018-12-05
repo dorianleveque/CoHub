@@ -24,9 +24,9 @@ class TicketCarPooling extends Ticket{
 	 * @param {string} arrivalTime 
 	 * @param {int} places 
 	 */
-	constructor(id, title, description, category, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
+	constructor(id, title, description, category, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
+		super(id, title, description, category, creationDate, requester,idConversation);
 		this.#departurLocation = departurLocation;
 		this.#arrivalLocation = arrivalLocation;
 		this.#departurTime = departurTime;
@@ -122,9 +122,9 @@ class TicketCarPooling extends Ticket{
 		}
 	}
 
-/**
- * Save ticket on firebase
- */
+	/**
+	 * Save ticket on firebase
+	 */
 	save()
 	{
 		super.save();

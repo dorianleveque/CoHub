@@ -1,18 +1,20 @@
-import { database } from '../firebase'
+import firebase, { database } from '../firebase'
 
 class User {
 
 	#id;
 	#name;
+	#email;
 	#surname;
 	#nickname;
 
-	constructor(id, name, surname, nickname = null)
+	constructor(id, name, surname, email, nickname = null)
 	{
 		this.#id = id;
 		this.#name = name;
+		this.#email = email;
 		this.#surname = surname;
-		this.#nickname = nickname;	
+		this.#nickname = nickname;
 	}
 
  	getId()
@@ -28,6 +30,11 @@ class User {
 	getSurname()
 	{
 		return this.#surname;
+	}
+
+	getEmail()
+	{
+		return this.#email;
 	}
 
 	getNickname()
@@ -52,11 +59,29 @@ class User {
 
 	save()// modification des doner du user en cas de modification du sunon
 	{
-		database.ref('User/' + this.#id).set({
-			Name : this.#name,
-			Surname : this.#surname,
-			Nickname : this.#nickname
-		});
+		// Si l'utilisateur existe déjà dans la base
+		// de donnée, celui-ci possède un id
+		// Sinon on génère un nouvel id et on enregistre
+		// ses infos dans la base de données
+		if (this.#id) {
+			database.ref('Users/' + this.#id).set({
+				name : this.#name,
+				surname : this.#surname,
+				nickname : this.#nickname,
+				email: this.#email
+			});
+		}
+		else {
+			let id = firebase.database().ref().child('Users').push().key
+			let postData = {}
+			postData[id] = {
+				name: this.#name,
+				surname: this.#surname,
+				nickname: this.#nickname,
+				email: this.#email
+			}
+			database.ref('Users/').update(postData)
+		}
 	}
 
 	//checkRights vraiment utile???

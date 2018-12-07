@@ -80,7 +80,7 @@ class Message {
 		}
 		else
 		{
-			let id = firebase.database()ref().child('Message').push().key
+			let id = firebase.database().ref().child('Message').push().key
 			this.setId(id);
 			let postData = {}
 			postData[id] = {

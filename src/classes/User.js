@@ -3,6 +3,7 @@ import Ticket from './Ticket';
 import TicketCarPooling from './TicketCarPooling';
 import TicketStudy from './TicketStudy';
 import TicketSharing from './TicketSharing';
+import Message from './Message';
 
 class User {
 
@@ -101,14 +102,22 @@ class User {
 		ticket.edit(options);
 	}
 
-	// handleTicket(id)
-	// {
+	handleTicket(ticket, message)
+	{
+		if(ticket.isHelpe(this)=== false)
+		{
+			ticket.addHelper(this);
+		}
+		var m = new Message(null, message, this, null);
+		ticket.addMessage(m);
 
-	// }
+	}
 
-	// deleteTicket(id)
-	// {
-	// }
+	deleteTicket(ticket)
+	{
+		ticket.delete();
+		ticket = null;
+	}
 
 	/**
 	 * Save user on firebase

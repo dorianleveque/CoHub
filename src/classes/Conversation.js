@@ -18,6 +18,12 @@ class Conversation{
 	{
 		return this.#id;
 	}
+
+	setId(id)
+	{
+		this.#id = id;
+	}
+
 	/**
 	 * Add a message to a conversation
 	 * @param {Message} message 
@@ -35,7 +41,7 @@ class Conversation{
 	getMessage(id)
 	{
 		for (var i = 0; i < this.#messages.length; i++) {
-			if (this.#messages[i].getId() == id)
+			if (this.#messages[i].getId() === id)
 			{
 				return this.#messages[i];
 			}
@@ -49,8 +55,8 @@ class Conversation{
 	{
 		var idmessage = [];
 		for (var i = 0; i < this.#messages.length; i++) {
-			idmessage[i] =  this.#messages[i].getId();
 			this.#messages[i].save();
+			idmessage[i] =  this.#messages[i].getId();
 		}
 		if(this.getId() != null)
 		{
@@ -61,6 +67,7 @@ class Conversation{
 		else
 		{
 			let id = database.ref().child('Conversation').push().key
+			this.setId(id);
 			let postData = {}
 			postData[id] = {
 				idMessage : idmessage

@@ -34,6 +34,11 @@ class Message {
 		return this.#id;
 	}
 
+	setId(id)
+	{
+		this.#id = id;
+	}
+
 	getText()
 	{
 		return this.#text; 
@@ -76,6 +81,7 @@ class Message {
 		else
 		{
 			let id = database.ref().child('Message').push().key
+			this.setId(id);
 			let postData = {}
 			postData[id] = {
 				message : this.#text,

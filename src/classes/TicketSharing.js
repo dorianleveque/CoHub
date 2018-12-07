@@ -58,7 +58,7 @@ class TicketSharing extends Ticket{
 	save()
 	{
 		super.save();
-		database.ref('TicketSharing/' + super.getId()).set({//pb de réfrérance?
+		database.ref('TicketSharing/' + super.getId()).set({
 			item : this.#item
 		});
 	}
@@ -66,7 +66,7 @@ class TicketSharing extends Ticket{
 	/**
 	 * Delete ticket from firebase
 	 */
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	delete()
 	{
 		super.delete()
 		database.ref('TicketSharing/' + super.getId()).remove();

@@ -48,6 +48,11 @@ class Ticket{
 		return this.#id;
 	}
 
+	setid(id)
+	{
+		this.#id = id;
+	}
+
 	getTitle()
 	{
 		return this.#title;
@@ -162,11 +167,11 @@ class Ticket{
 	/**
 	 * Save ticket on firebase
 	 */
-	save() 
+	save()
 	{
-		var year = this.getDate().getFullYear();
-		var month =  this.getDate().getMonth();
-		var day  =  this.getDate().getDate();
+		var year = this.getCreationDate().getFullYear();
+		var month =  this.getCreationDate().getMonth();
+		var day  =  this.getCreationDate().getDate();
 		if (month<10)
 		{
 			month = "0" + month;
@@ -179,6 +184,7 @@ class Ticket{
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.helper[i].getId();
 		}
+		this.getConversation().save();
 		if (this.getId() != null)
 		{
 			database.ref('Ticket/' + this.#id).set({
@@ -189,12 +195,12 @@ class Ticket{
 				idRequester : this.#requester.getId(),
 				idHelper : helper,
 				idConversation : this.#conversation.getId()
-			});
-			this.#conversation.save(); 
+			}); 
 		}
 		else
 		{
 			let id = database.ref().child('Ticket').push().key
+			this.setid(id);
 			let postData = {}
 			postData[id] = {
 				title : this.#title,

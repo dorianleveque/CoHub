@@ -6,15 +6,22 @@ import Ticket from './Ticket'
 class TicketListControleur {
 
 	#tickets;
+	#totalTickets;
 
 	constructor() {
 		this.#tickets = [];
+		this.#totalTickets = [];
 	}
 
 	getTickets()
 	{
 
 		return this.#tickets;
+	}
+
+	getTotalTickets()
+	{
+		return this.#totalTickets;
 	}
 
 	getTicket(id)
@@ -38,7 +45,7 @@ class TicketListControleur {
 				var u = new User(id, name, surname, nickname);
 				return u;
 		}, function (error) {
-			console.error(error);//TODO
+			console.error(error);
 		}).then(function (values) {
 			return values
 		});
@@ -49,35 +56,40 @@ class TicketListControleur {
 	 * @param {*} filter not functionnal now
 	 * @param {int} page 
 	 */
-	searchTickets(filter = null, page)
+	searchTickets = (filter = null) =>
 	{
-		var query = database.ref("Ticket").orderByKey();
-		var tmpTickets = [];	
-		query.once("value").then((snapshot) => {
-			snapshot.forEach(function(childSnapshot) {
-				tmpTickets.push(childSnapshot);
-			});
-
-			var min = (tmpTickets.length)-12*(page);
-			if (min < 0) 
-			{
-				min = 0;
-			}
-			var max = (tmpTickets.length)-12*(page-1) ;
-			if (max < 12) 
-			{
-				max = 12;
-			}
-			var tmpSliced = tmpTickets.slice(min,max);
+		var query = database.ref("Ticket").orderByKey();	
+		query.once("value").then((snapshot) => 
+		{
 			
-			for(let [idTicket, dataTicket] of Object.entries(tmpSliced))
+			snapshot.forEach((childSnapshot) =>
 			{
-				const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
-				this.searchUser(idRequester).then((user) => {
-					this.getTickets().push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
-				})
-			}
+				this.getTotalTickets().push(childSnapshot);
+			});
 		});
+	}
+
+	seclectTicket(page)
+	{
+		var min = (this.getTotalTickets().length)-12*(page);
+		if (min < 0) 
+		{
+		 		min = 0;
+		}
+		var max = (this.getTotalTickets().length)-12*(page-1) ;
+		if (max < 12) 
+		{
+		 		max = 12;
+		}
+		var tmpSliced = this.getTotalTickets().slice(min,max);
+			
+		for(let [idTicket, dataTicket] of Object.entries(tmpSliced))
+		{
+			const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
+			this.searchUser(idRequester).then((user) => {
+			this.getTickets().push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
+			})
+		}
 	}	
 	 
 	/**
@@ -144,9 +156,6 @@ class TicketListControleur {
 			};
 		};
 	}
-
-	//save()
-
 
 	/**
 	 * delete ticket from class

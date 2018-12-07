@@ -91,27 +91,9 @@ class User {
 	}
 
 
-	editTicket(ticket, optionsCarPooling = null, optionsSharing = null, optionsStudy = null)// a voir
+	editTicket(ticket, options)
 	{
-		const {title, description, category} = ticket;
-		if (ticket instanceof TicketCarPooling && optionsCarPooling != null && optionsSharing === null && optionsStudy === null)
-		{
-			const {departurLocation, arrivalLocation, departurTime, arrivalTime, places} = optionsCarPooling;
-			ticket.edit(title, description, category, departurLocation, arrivalLocation, departurTime, arrivalTime, places);
-			ticket.save();
-		}
-		else if (ticket instanceof TicketSharing && optionsCarPooling === null && optionsSharing != null && optionsStudy === null)
-		{
-			const {item} = optionsSharing;
-			ticket.edit(title, description, category, item);
-			ticket.save();
-		}
-		else if (ticket instanceof TicketStudy && optionsCarPooling === null && optionsSharing === null && optionsStudy != null)
-		{
-			const {subject, semester, teacher, theme} = optionsStudy;
-			ticket.edit(title, description, category,subject, semester, teacher, theme);
-			ticket.save();
-		}
+		ticket.edit(options);
 	}
 
 	// handleTicket(id)
@@ -136,7 +118,7 @@ class User {
 		});
 	}
 
-	checkRights(otherUser) // a tester
+	checkRights(otherUser) 
 	{
 		if(this.getId()=== otherUser.getId())
 		{

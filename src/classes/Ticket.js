@@ -19,7 +19,7 @@ class Ticket{
 	 * @param {string} title 
 	 * @param {string} description 
 	 * @param {string} category 
-	 * @param {string} creationDate 
+	 * @param {Date} creationDate 
 	 * @param {User} requester 
 	 * @param {int} idConversation :unique key of conversation
 	 */
@@ -36,7 +36,7 @@ class Ticket{
 		}
 		else
 		{
-			this.#creationDate = creationDate;
+			this.#creationDate = new Date(creationDate.substring(8),creationDate.substring(3,5),creationDate.substring(0,2)); 
 		}
 		this.#requester = requester;
 		this.#helper = [];
@@ -75,7 +75,6 @@ class Ticket{
 
 	setCategory(category)
 	{
-		//verrifier que la categorie existe
 		this.#category = category;
 	}
 
@@ -143,8 +142,9 @@ class Ticket{
 	 * @param {string} description 
 	 * @param {string} category 
 	 */
-	edit(title, description, category)
+	edit(options)
 	{
+		var {title, description, category} = options;
 		if(title != null)
 		{
 			this.setTitle(title);
@@ -164,9 +164,17 @@ class Ticket{
 	 */
 	save() 
 	{
-		var year = this.getCreationDate().getFullYear();
-		var mounth =  this.getCreationDate().getMonth();
-		var day  =  this.getCreationDate().getDate();
+		var year = this.getDate().getFullYear();
+		var month =  this.getDate().getMonth();
+		var day  =  this.getDate().getDate();
+		if (month<10)
+		{
+			month = "0" + month;
+		}
+		if (day<10)
+		{
+			day = "0" + day;
+		}
 		var helper = [];
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.helper[i].getId();
@@ -175,7 +183,7 @@ class Ticket{
 			title : this.#title,
 			description : this.#description,
 			category : this.#category,
-			creationDate : day + "/" + mounth + "/" + year,
+			creationDate : day + "/" + month + "/" + year,
 			idRequester : this.#requester.getId(),
 			idHelper : helper,
 			idConversation : this.#conversation.getId()

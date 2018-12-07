@@ -25,7 +25,7 @@ class Message {
 		}
 		else
 		{
-			this.#date = date; 
+			this.#date = new Date(date.substring(8),date.substring(3,5),date.substring(0,2)); 
 		}
 	}
 
@@ -55,12 +55,20 @@ class Message {
 	save()
 	{
 		var year = this.getDate().getFullYear();
-		var mounth =  this.getDate().getMonth();
+		var month =  this.getDate().getMonth();
 		var day  =  this.getDate().getDate();
+		if (month<10)
+		{
+			month = "0" + month;
+		}
+		if (day<10)
+		{
+			day = "0" + day;
+		}
 		database.ref('Message/' + this.getId()).set({
 			message : this.#text,
 			sender : this.#sender.getId(),
-			date : day + "/" + mounth + "/" + year
+			date : day + "/" + month + "/" + year
 		});
 	}
 

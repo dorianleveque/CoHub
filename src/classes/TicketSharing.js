@@ -42,9 +42,10 @@ class TicketSharing extends Ticket{
 	 * @param {string} category 
 	 * @param {string} item 
 	 */
-	edit(title, description, category, item)
+	edit(options)
 	{
-		super.edit(title, description, category)
+		var {item} = options;
+		super.edit(options)
 		if(item != null)
 		{
 			this.setItem(item);

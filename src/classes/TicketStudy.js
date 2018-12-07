@@ -82,9 +82,10 @@ class TicketStudy extends Ticket{
 	 * @param {string} teacher 
 	 * @param {string} theme 
 	 */
-	edit(title, description, category, subject, semester, teacher, theme)
+	edit(options)
 	{
-		super.edit(title, description, category)
+		var {subject, semester, teacher, theme} = options;
+		super.edit(options)
 		if(subject != null)
 		{
 			this.setSubject(subject);

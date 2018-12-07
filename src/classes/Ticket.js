@@ -1,8 +1,8 @@
 import Conversation from './Conversation' 
-import { database } from '../firebase'
+import firebase, {database } from '../firebase'
 
 
-class Ticket{//rendre la classe abstarite
+class Ticket{
 
 	#id
 	#title;
@@ -13,13 +13,31 @@ class Ticket{//rendre la classe abstarite
 	#helper;
 	#conversation;
 
+	/**
+	 * 
+	 * @param {int} id :unique key
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {Date} creationDate 
+	 * @param {User} requester 
+	 * @param {int} idConversation :unique key of conversation
+	 */
+
 	constructor(id, title, description, category, creationDate, requester, idConversation)
 	{
 		this.#id = id;
 		this.#title = title;
 		this.#description = description;
 		this.#category = category;
-		this.#creationDate = creationDate;
+		if (creationDate === null)
+		{
+			this.#creationDate = new Date();
+		}
+		else
+		{
+			this.#creationDate = new Date(creationDate.substring(8),creationDate.substring(3,5),creationDate.substring(0,2)); 
+		}
 		this.#requester = requester;
 		this.#helper = [];
 		this.#conversation = new Conversation(idConversation);
@@ -28,6 +46,11 @@ class Ticket{//rendre la classe abstarite
 	getId()
 	{
 		return this.#id;
+	}
+
+	setid(id)
+	{
+		this.#id = id;
 	}
 
 	getTitle()
@@ -57,7 +80,6 @@ class Ticket{//rendre la classe abstarite
 
 	setCategory(category)
 	{
-		//verrifier que la categorie existe
 		this.#category = category;
 	}
 
@@ -81,45 +103,53 @@ class Ticket{//rendre la classe abstarite
 		return this.#conversation;
 	}
 
+	/**
+	 * Add an helper
+	 * @param {User} helper 
+	 */
 	addHelper(helper)
 	{
-		if (helper === this.#requester)
-		{
-			console.log("On ne peut pas etre aidant et aider en meme temps");
-		}
-		else
-		{
 			this.#helper.push(helper);
-		}
 	}
 
+	/**
+	 * return true if param user is a helper
+	 * @param {User} user 
+	 */
 	isHelper(user)
 	{
-		for (var i = 0; i < this.#helper.length; i++) {
-			if (this.helper[i] === user) 
+		for (var i = 0; i < this.#helper.length; i++) 
+		{
+			if (this.#helper[i] === user) 
 			{
 					return true;
 			}
-			else
-			{
-				return false;
-			}
 		}
+		return false
 	}
 
-	//ce qui reste a coder (c.f diagrame de classe)
-
-	//displayThumbnail() 
+	//displayThmbnail() 
 
 	display(){}// methode abstraite
-
+	
+	/**
+	 * Add a message to the Conversation
+	 * @param {Message} message 
+	 */
 	addMessage(message)
 	{
 		this.#conversation.addMessage(message);
 	} 
 
-	edit(title, description, category)
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 */
+	edit(options)
 	{
+		var {title, description, category} = options;
 		if(title != null)
 		{
 			this.setTitle(title);
@@ -134,27 +164,63 @@ class Ticket{//rendre la classe abstarite
 		}
 	}
 
-	save() 
+	/**
+	 * Save ticket on firebase
+	 */
+	save()
 	{
+		var year = this.getCreationDate().getFullYear();
+		var month =  this.getCreationDate().getMonth();
+		var day  =  this.getCreationDate().getDate();
+		if (month<10)
+		{
+			month = "0" + month;
+		}
+		if (day<10)
+		{
+			day = "0" + day;
+		}
 		var helper = [];
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.#helper[i].getId();
 		}
-		database.ref('Ticket/' + this.#id).set({
-			title : this.#title,
-			description : this.#description,
-			category : this.#category,
-			creationDate : this.#creationDate,
-			idRequester : this.#requester.getId(),
-			idHelper : helper,
-			idConversation : this.#conversation.getId()
-		});
-		this.#conversation.save(); // a modifier
+		this.getConversation().save();
+		if (this.getId() != null)
+		{
+			firebase.database().ref('Ticket/' + this.#id).set({
+				title : this.#title,
+				description : this.#description,
+				category : this.#category,
+				creationDate : day + "/" + month + "/" + year,
+				idRequester : this.#requester.getId(),
+				idHelper : helper,
+				idConversation : this.#conversation.getId()
+			}); 
+		}
+		else
+		{
+			let id = firebase.database().ref().child('Ticket').push().key
+			this.setid(id);
+			let postData = {}
+			postData[id] = {
+				title : this.#title,
+				description : this.#description,
+				category : this.#category,
+				creationDate : day + "/" + month + "/" + year,
+				idRequester : this.#requester.getId(),
+				idHelper : helper,
+				idConversation : this.#conversation.getId()
+			}
+			firebase.database().ref('Ticket/').update(postData);
+		}
 	}
 
+	/**
+	 * Delete ticket from firebase
+	 */
 	delete()
 	{
-		database.ref('Ticket/' + this.#id).remove();
+		firebase.database().ref('Ticket/' + this.getId()).remove();
 		this.#conversation.delete();
 	}
 };

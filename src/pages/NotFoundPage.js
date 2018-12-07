@@ -13,13 +13,6 @@ class NotFoundPage extends Component {
   
   render() 
   {
-    console.log("ok");
-
-    var u1 = new User(1,"Anouk", "Chevallier", "Toupihy");
-    var tc1 = new TicketCarPooling(1, "title", "description", null, u1, "departurLocation", "arrivalLocation", "departurTime", "arrivalTime", 4, 1);
-    var options = {departurLocation : "departurLocation1", arrivalLocation : "arrivalLocation1", departurTime  : "departurTime1", arrivalTime : "arrivalTime1", places : 4};
-    u1.editTicket(tc1, options);
-    console.log(tc1.getDeparturTime());
 
     return (
       <Layout>

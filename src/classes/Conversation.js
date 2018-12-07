@@ -52,10 +52,21 @@ class Conversation{
 			idmessage[i] =  this.#messages[i].getId();
 			this.#messages[i].save();
 		}
-		database.ref('Conversation/' + this.id).set({
-			idMessage : idmessage
-
-		});
+		if(this.getId() != null)
+		{
+			database.ref('Conversation/' + this.id).set({
+				idMessage : idmessage
+			});
+		}
+		else
+		{
+			let id = database.ref().child('Conversation').push().key
+			let postData = {}
+			postData[id] = {
+				idMessage : idmessage
+			}
+			database.ref('Conversation/').update(postData);
+		}	
 	}
 
 	/**

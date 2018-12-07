@@ -179,16 +179,34 @@ class Ticket{
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.helper[i].getId();
 		}
-		database.ref('Ticket/' + this.#id).set({
-			title : this.#title,
-			description : this.#description,
-			category : this.#category,
-			creationDate : day + "/" + month + "/" + year,
-			idRequester : this.#requester.getId(),
-			idHelper : helper,
-			idConversation : this.#conversation.getId()
-		});
-		this.#conversation.save(); // a modifier
+		if (this.getId() != null)
+		{
+			database.ref('Ticket/' + this.#id).set({
+				title : this.#title,
+				description : this.#description,
+				category : this.#category,
+				creationDate : day + "/" + month + "/" + year,
+				idRequester : this.#requester.getId(),
+				idHelper : helper,
+				idConversation : this.#conversation.getId()
+			});
+			this.#conversation.save(); 
+		}
+		else
+		{
+			let id = database.ref().child('Ticket').push().key
+			let postData = {}
+			postData[id] = {
+				title : this.#title,
+				description : this.#description,
+				category : this.#category,
+				creationDate : day + "/" + month + "/" + year,
+				idRequester : this.#requester.getId(),
+				idHelper : helper,
+				idConversation : this.#conversation.getId()
+			}
+			database.ref('Ticket/').update(postData);
+		}
 	}
 
 	/**

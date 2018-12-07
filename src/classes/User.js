@@ -52,7 +52,6 @@ class User {
 	}
 
 
-	//TODO a tester
 	/**
 	 * create Ticket
 	 * @param {int} id 
@@ -101,9 +100,8 @@ class User {
 
 	// }
 
-	//deleteTicket(id)
+	// deleteTicket(id)
 	// {
-
 	// }
 
 	/**

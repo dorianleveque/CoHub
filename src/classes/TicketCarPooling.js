@@ -135,8 +135,7 @@ class TicketCarPooling extends Ticket{
 			departurTime : this.#departurTime,
 			arrivalTime : this.#arrivalTime,
 			places : this.#places
-		});
-		
+		});	
 	}
 
 	/**

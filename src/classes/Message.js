@@ -14,7 +14,7 @@ class Message {
 	 * @param {User} sender 
 	 * @param {string} date 
 	 */
-	constructor(id, text, sender, date = null)
+	constructor(id, text, sender, date)
 	{
 		this.#id = id;
 		this.#text = text;
@@ -65,11 +65,25 @@ class Message {
 		{
 			day = "0" + day;
 		}
-		database.ref('Message/' + this.getId()).set({
-			message : this.#text,
-			sender : this.#sender.getId(),
-			date : day + "/" + month + "/" + year
-		});
+		if (this.getId() != null)
+		{
+			database.ref('Message/' + this.getId()).set({
+				message : this.#text,
+				sender : this.#sender.getId(),
+				date : day + "/" + month + "/" + year
+			});
+		}
+		else
+		{
+			let id = database.ref().child('Message').push().key
+			let postData = {}
+			postData[id] = {
+				message : this.#text,
+				sender : this.#sender.getId(),
+				date : day + "/" + month + "/" + year
+			}
+			database.ref('Message/').update(postData);
+		}
 	}
 
 	/**

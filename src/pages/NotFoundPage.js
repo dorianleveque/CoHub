@@ -13,7 +13,10 @@ class NotFoundPage extends Component {
   
   render() 
   {
-
+    var u1 = new User (1, "Anouk", "Chevallier", "Toupihy");
+    var m1 = new Message(null, "text", u1, null);
+    m1.save();
+    
     return (
       <Layout>
         <Top />

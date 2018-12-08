@@ -6,22 +6,15 @@ import Ticket from './Ticket'
 class TicketListControleur {
 
 	#tickets;
-	#totalTickets;
 
 	constructor() {
 		this.#tickets = [];
-		this.#totalTickets = [];
 	}
 
 	getTickets()
 	{
 
 		return this.#tickets;
-	}
-
-	getTotalTickets()
-	{
-		return this.#totalTickets;
 	}
 
 	getTicket(id)
@@ -41,8 +34,8 @@ class TicketListControleur {
 	searchUser(id) 
 	{
 		return firebase.database().ref('Users/'+id).once('value').then(function(snapshot){
-				var { name, nickname, surname } = snapshot.val();
-				var u = new User(id, name, surname, nickname);
+				var { name, nickname, email, surname } = snapshot.val();
+				var u = new User(id, name, surname, email, nickname);
 				return u;
 		}, function (error) {
 			console.error(error);
@@ -56,40 +49,48 @@ class TicketListControleur {
 	 * @param {*} filter not functionnal now
 	 * @param {int} page 
 	 */
-	searchTickets = (filter = null) =>
+	searchTickets = (filter = null, page) =>
 	{
+		var totalTicket = [];
 		var query = firebase.database().ref("Tickets").orderByKey();	
 		query.once("value").then((snapshot) => 
 		{
-			
 			snapshot.forEach((childSnapshot) =>
 			{
-				this.getTotalTickets().push(childSnapshot);
-			});
-		});
-	}
-
-	seclectTicket(page)
-	{
-		var min = (this.getTotalTickets().length)-12*(page);
+				totalTicket.push(childSnapshot);
+			
+		
+		var min = (totalTicket.length)-12*(page);
 		if (min < 0) 
 		{
 		 		min = 0;
 		}
-		var max = (this.getTotalTickets().length)-12*(page-1) ;
+		var max = (totalTicket.length)-12*(page-1) ;
 		if (max < 12) 
 		{
 		 		max = 12;
 		}
-		var tmpSliced = this.getTotalTickets().slice(min,max);
-			
+		if (totalTicket.length > 1)
+		{
+			var tmpSliced = totalTicket.slice(min,max);
+		}
+		else
+		{
+			var tmpSliced = totalTicket;
+		}
+		//idTicket not used but it is a key to find the ticket in tmpSliced
 		for(let [idTicket, dataTicket] of Object.entries(tmpSliced))
 		{
+			
+			
 			const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
+			
 			this.searchUser(idRequester).then((user) => {
-			this.getTickets().push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
+				this.getTickets().push(user.createTicket(childSnapshot.key , title , description, category, creationDate, idConversation));
 			})
 		}
+		});
+		})
 	}	
 	 
 	/**

@@ -34,6 +34,11 @@ class User {
 		return this.#id;
 	}
 
+	setId(id)
+	{
+		this.#id = id;
+	}
+
 	getName()
 	{
 		return this.#name;
@@ -138,6 +143,7 @@ class User {
 		}
 		else {
 			let id = firebase.database().ref().child('Users').push().key
+			this.setId(id);
 			let postData = {}
 			postData[id] = {
 				name: this.#name,

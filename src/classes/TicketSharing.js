@@ -1,15 +1,26 @@
 import Ticket from './Ticket' 
-import {database} from '../firebase/firebase'
+import firebase, {database } from '../firebase'
 
 
 class TicketSharing extends Ticket{
 
-	#item
+	#item;
 
-	constructor(id, title, description, category, creationDate, requester, item)
+	/**
+	 * 
+	 * @param {int} id  : unique key
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {string} item 
+	 */
+
+	constructor(id, title, description, creationDate, requester, item, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
-		this.item = #item;
+		super(id, title, description, "Sharing", creationDate, requester, idConversation);
+		this.#item = item;
 	}
 
 	getItem()
@@ -23,28 +34,42 @@ class TicketSharing extends Ticket{
 	}
 
 	//display()
-
-	edit(title, description, category, item)
+	
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} item 
+	 */
+	edit(options)
 	{
-		super.edit(title, description, category)
+		var {item} = options;
+		super.edit(options)
 		if(item != null)
 		{
 			this.setItem(item);
 		}
 	}
 
+	/**
+	 * Save ticket on firebase
+	 */
 	save()
 	{
 		super.save();
-		database.ref('TicketSharing/' + this.id).set({//pb de réfrérance?
-			Item : this.#item
+		firebase.database().ref('TicketSharing/' + super.getId()).set({
+			item : this.#item
 		});
 	}
 
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	/**
+	 * Delete ticket from firebase
+	 */
+	delete()
 	{
 		super.delete()
-		database.ref('TicketSharing/' + this.id).remove();
+		firebase.database().ref('TicketSharing/' + super.getId()).remove();
 	}
 
 };

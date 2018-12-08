@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-import {database} from '../firebase/firebase'
+import firebase, {database } from '../firebase'
 
 
 class TicketCarPooling extends Ticket{
@@ -10,9 +10,23 @@ class TicketCarPooling extends Ticket{
 	#arrivalTime;
 	#places;
 
-	constructor(id, title, description, category, creationDate, requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
+	/**
+	 * 
+	 * @param {int} id 
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {string} departurLocation 
+	 * @param {string} arrivalLocation 
+	 * @param {string} departurTime 
+	 * @param {string} arrivalTime 
+	 * @param {int} places 
+	 */
+	constructor(id, title, description, creationDate , requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation)
 	{
-		super(id, title, description, category, creationDate, requester);
+		super(id, title, description, "CarPooling" , creationDate, requester,idConversation);
 		this.#departurLocation = departurLocation;
 		this.#arrivalLocation = arrivalLocation;
 		this.#departurTime = departurTime;
@@ -47,12 +61,12 @@ class TicketCarPooling extends Ticket{
 
 	setDeparturTime(departurTime)
 	{
-		this.#departurTime = departurTime;//verification du format de l'heure
+		this.#departurTime = departurTime;
 	}
 
 	getArrivalTime()
 	{
-		return this.#arrivalTime;//verification du format de l'heure
+		return this.#arrivalTime;
 	}
 
 	setArrivalTime(arrivalTime)
@@ -72,9 +86,21 @@ class TicketCarPooling extends Ticket{
 
 	//display()
 
-	edit(title, description, category, departurLocation, arrivalLocation, departurTime, arrivalTime, places)
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} departurLocation 
+	 * @param {string} arrivalLocation 
+	 * @param {string} departurTime 
+	 * @param {string} arrivalTime 
+	 * @param {int} places 
+	 */
+	edit(options)
 	{
-		super.edit(title, description, category)
+		var {departurLocation, arrivalLocation, departurTime, arrivalTime, places} = options;
+		super.edit(options)
 		if(departurLocation != null)
 		{
 			this.setDeparturLocation(departurLocation);
@@ -97,24 +123,28 @@ class TicketCarPooling extends Ticket{
 		}
 	}
 
-
+	/**
+	 * Save ticket on firebase
+	 */
 	save()
 	{
 		super.save();
-		database.ref('TicketCarPooling/' + this.id).set({//pb de réfrérance?
-			DeparturLocation : this.#departurLocation,
-			ArrivalLocation : this.#arrivalLocation,
-			DeparturTime : this.#departurTime,
-			ArrivalTime : this.#arrivalTime,
-			Places : this.#places
-		});
-		
+		firebase.database().ref('TicketCarPooling/' + super.getId()).set({
+			departurLocation : this.#departurLocation,
+			arrivalLocation : this.#arrivalLocation,
+			departurTime : this.#departurTime,
+			arrivalTime : this.#arrivalTime,
+			places : this.#places
+		});	
 	}
 
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	/**
+	 * Delete ticket from firebase
+	 */
+	delete()
 	{
 		super.delete()
-		database.ref('TicketCarPooling/' + this.id).remove();
+		firebase.database().ref('TicketCarPooling/' + super.getId()).remove();
 	}
 
 };

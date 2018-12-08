@@ -1,144 +1,171 @@
-import {database} from '../firebase/firebase'
+import firebase, {database } from '../firebase'
 import User from './User' 
 import Ticket from './Ticket'
+//import { min } from 'moment'; --> gestion de date
 
-class TicketListControleur{
+class TicketListControleur {
 
-	#tickets
+	#tickets;
+	#totalTickets;
 
-	constructor()
-	{
+	constructor() {
 		this.#tickets = [];
+		this.#totalTickets = [];
 	}
 
 	getTickets()
 	{
+
 		return this.#tickets;
 	}
 
-	getTicket(id)// a tester
+	getTotalTickets()
 	{
-		for (var i = 0; i < this.#tickets.length; i++) {
-			if (this.#tickets[i].getId() == id) 
+		return this.#totalTickets;
+	}
+
+	getTicket(id)
+	{
+		for (var i = 0; i < this.getTickets().length; i++) {
+			if (id === this.getTickets()[i].getId())
 			{
-				return this.#tickets[i];
+				return this.getTickets()[i];
 			};
 		};
 	}
 
-	//retriveTickets(id)
-
-	//searchTicket()
-
-	searchUser()
-	{	
-		// return database.ref('User/').once('value').then(function(snapshot) {
-		// 	var user = snapshot.val();
-		// 	var u = []
-		// 	for (var i = 0; i <= Object.keys(user).length; i++) {
-		// 		if (user[Object.keys(user)[i]] != null)
-		// 		{
-		// 			var id = Object.keys(user)[i];
-		// 			u.push(new User (id, user[id].Name, user[id].Surname, user[id].Nickname));
-		// 		}
-		// 	};
-		// 	return u;
-		// });
-		
-		// var query = database.ref("User").orderByKey();
-		
-		// return query.once("value").then(function(snapshot) {
-		// 	 var users = [];
-   		// 	 snapshot.forEach(function(childSnapshot) {
-     	// 	 var key = childSnapshot.key;
-		// 	 var childData = childSnapshot.val();
-
-		// 	  users.push(new User (key, childData.Name, childData.Surname, childData.Nickname));
-			  
-		// 	  });
-			  
-		// 	  return users
-		// }, function(error) {
-		// 	console.error(error);
-		// }).then(function(values) { 
-		// 	console.log('all done', values); 
-		// 	return values
-		// });
-
-		var query = database.ref("User").orderByKey();
-		
-		return query.once("value").then(function(snapshot) {
-			 var users = [];
-   			 snapshot.forEach(function(childSnapshot) {
-     		 var key = childSnapshot.key;
-			 var childData = childSnapshot.val();
-
-			  users.push(new User (key, childData.Name, childData.Surname, childData.Nickname));
-			  
-			  });
-			  
-			  return users
-		}, function(error) {
+	/**
+	 * get a user by id in firebase and create User 
+	 * @param {int} id 
+	 */
+	searchUser(id) 
+	{
+		return firebase.database().ref('User/'+id).once('value').then(function(snapshot){
+				var { name, nickname, surname } = snapshot.val();
+				var u = new User(id, name, surname, nickname);
+				return u;
+		}, function (error) {
 			console.error(error);
-		}).then(function(values) { 
-			console.log('all done', values); 
+		}).then(function (values) {
 			return values
-		}); 
-
-
-		
-
-
-
-
-
-
-
-
+		});
 	}
 
-
- 
-	// searchTicket(filter)
-	// {
-	// 	return this.searchUser().then(function(users){
-	// 		var tickets = [];
-	// 		for(var i=0; i < Object.keys(users).length; i++){
-	// 			database.ref('Ticket/').orderByChild('idRequester').equalTo((users[Object.keys(users)[i]].__private_0_id)).once('value').then(function(snapshot) {
-	// 				var ticket = snapshot.val();
-	// 				for (var i = 0; i < Object.keys(ticket).length; i++) {
-	// 						tickets.push(ticket);
-	// 				};
-	// 				return tickets;
-	// 			});
-	// 		}
-	// 	});
-	// }
-
-	displayTickets()
+	/**
+	 * get ticket by page and filter and create Ticket
+	 * @param {*} filter not functionnal now
+	 * @param {int} page 
+	 */
+	searchTickets = (filter = null) =>
 	{
-		for (var i = 0; i < this.#tickets.length; i++) {
-			this.#tickets[i].display();
+		var query = firebase.database().ref("Ticket").orderByKey();	
+		query.once("value").then((snapshot) => 
+		{
+			
+			snapshot.forEach((childSnapshot) =>
+			{
+				this.getTotalTickets().push(childSnapshot);
+			});
+		});
+	}
+
+	seclectTicket(page)
+	{
+		var min = (this.getTotalTickets().length)-12*(page);
+		if (min < 0) 
+		{
+		 		min = 0;
+		}
+		var max = (this.getTotalTickets().length)-12*(page-1) ;
+		if (max < 12) 
+		{
+		 		max = 12;
+		}
+		var tmpSliced = this.getTotalTickets().slice(min,max);
+			
+		for(let [idTicket, dataTicket] of Object.entries(tmpSliced))
+		{
+			const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
+			this.searchUser(idRequester).then((user) => {
+			this.getTickets().push(user.createTicket(idTicket , title , description, category, creationDate, idConversation));
+			})
+		}
+	}	
+	 
+	/**
+	 * get ticket by id and create Ticket
+	 * @param {int} id
+	 */
+	retriveTicket = (id) =>
+	{
+		return firebase.database().ref('Ticket/'+id).once('value').then((snapshot) => {
+			var { category, creationDate, description, idConversation, idRequester, title} = snapshot.val();
+			this.searchUser(idRequester).then((user) => {
+				if (category === "CarPooling" )
+				{
+					return firebase.database().ref('TicketCarPooling/'+id).once('value').then((snapshot) =>{
+						var { arrivalLocation, arrivalTime, departurLocation, departurTime, places } = snapshot.val();
+						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { arrivalLocation, arrivalTime, departurLocation, departurTime, places } );
+						console.log(t)
+						return t
+					});
+				}
+				if (category === "Study" )
+				{
+					return firebase.database().ref('TicketStudy/'+id).once('value').then((snapshot) =>{
+						const { subject, semester, teacher, theme } = snapshot.val();
+						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { subject, semester, teacher, theme } );
+						return t
+					});
+				}
+				if  (category === "TicketSharing") 		
+				{
+					return firebase.database().ref('TicketSharing/'+id).once('value').then((snapshot) => {
+						const { Item } = snapshot.val();
+						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { Item } );
+						console.log(t)
+						return t
+					});
+				}
+			});
+		});
+	}
+
+	/**
+	 * Display all tickets
+	 */
+	displayTickets() 
+	{
+		for (var i = 0; i < this.#tickets.length; i++) 
+		{
+			this.#tickets[i].displayThmbnail();
 		};
 	}
 
-	displayTicket(id)//	a tester
+	/**
+	 * display a ticket
+	 * @param {int} id 
+	 */
+	displayTicket(id)
 	{
-		for (var i = 0; i < this.#tickets.length; i++) {
-			if (this.#tickets[i].getId() == id) 
+		for (var i = 0; i < this.#tickets.length; i++) 
+		{
+			if (this.#tickets[i].getId() == id)
 			{
 				this.#tickets[i].display();
 			};
 		};
 	}
 
-	//save()
-
-	clearTickets()
+	/**
+	 * delete ticket from class
+	 */
+	clearTickets() 
 	{
-		for (var i = 0; i < this.#tickets.length; i++) {
+		for (var i = 0; i < this.#tickets.length; i++) 
+		{
 			this.#tickets[i] = null;
 		};
 	}
-}
-export default TicketListControleur
+
+}export default TicketListControleur

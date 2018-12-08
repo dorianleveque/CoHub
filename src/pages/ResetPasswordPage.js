@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import SignInForm from '../components/forms/SignInForm'
 import Top from '../components/Top'
 import { Layout, Row, Card } from 'antd';
+import ResetPasswordForm from '../components/forms/ResetPasswordForm'
 import cohub from '../images/CoHub.png'
 
 const { Content, Footer } = Layout;
@@ -31,24 +31,7 @@ const style = {
   }
 }
 
-class SignInPage extends Component {
-
-  constructor() {
-    super()
-    this.state = {
-      title: 'Se connecter à CoHub'
-    }
-  }
-
-  updateTitle = (lostPassword) => {
-    this.setState({ 
-      title: (lostPassword) ? 'Ré-initialiser son mot de passe' : 'Se connecter à CoHub' 
-    })
-  }
-
-  /**
-   * Affiche la page
-   */
+class ResetPasswordPage extends Component {
   render() {
     return (
       <Layout style={ style.layout } >
@@ -62,9 +45,9 @@ class SignInPage extends Component {
                 </div> }
               style={ style.card } 
             >
-              <Meta title={ this.state.title } />
+              <Meta title="Ré-initialisation mot de passe" />
               <br/>
-              <SignInForm routerHistory={ this.props.history } onUpdateTitle={ this.updateTitle } />
+              <ResetPasswordForm routerHistory={this.props.history} />
             </Card>
           </Row>
         </Content>
@@ -74,4 +57,4 @@ class SignInPage extends Component {
   }
 }
 
-export default SignInPage;
+export default ResetPasswordPage;

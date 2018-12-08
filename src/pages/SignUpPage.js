@@ -1,32 +1,62 @@
 import React, {Component} from 'react'
 import SignUpForm from '../components/forms/SignUpForm'
-import {Layout,  Row, Col, Card } from 'antd';
+import {Layout,  Row, Card } from 'antd';
+import Top from '../components/Top';
+import cohub from '../images/CoHub.png'
 
-const { Header, Content } = Layout;
+const { Content, Footer } = Layout;
+const { Meta } = Card;
+
+// style de la page
+const style = {
+  layout: {
+    height: '100vh'
+  },
+  content: {
+    height: '100%'
+  },
+  card: {
+    minWidth: '320px',
+    maxWidth: '400px'
+  },
+  frame: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    marginTop: '20px'
+  },
+  img: {
+    width: '90px',
+    height: 'auto',
+    position: 'relative'
+  }
+}
 
 class SignUpPage extends Component {
+
+  /**
+   * Affiche la page
+   */
     render() {
         return (
-
-          <Layout>
-            <Header>Header</Header>
-          <Layout style = {{background: '#ffffff'}}>
-              <Content style={{paddingTop: '60px'}}>
-                <Row>
-                  <Col 
-                    xs={{offset:1, span:22}} 
-                    sm={{offset:6 ,span:12}} 
-                    md={{offset:7, span:10}} 
-                    lg={{offset:8, span:8}} 
-                    xl={{offset:9, span:6}}
-                  >
-                    <Card title="Bonjour" style={{ width: 300 }} >
-                      <SignUpForm routerHistory={this.props.history} />
-                    </Card>
-                  </Col>
-                </Row> 
-              </Content>
-          </Layout>
+          <Layout style={ style.layout } >
+            <Top/>
+            <Content>
+              <Row type='flex' align='middle' justify='center' style={style.content} >
+                <Card 
+                  cover={
+                    <div style={ style.frame } >
+                      <img alt="cohub" src={ cohub } style={ style.img } />
+                    </div> }
+                  style={ style.card } 
+                >
+                  <Meta title="S'inscrire à CoHub" />
+                  <br/>
+                  <SignUpForm routerHistory={this.props.history} />
+                </Card>
+              </Row> 
+            </Content>
+            <Footer></Footer>
           </Layout>
         )
     }

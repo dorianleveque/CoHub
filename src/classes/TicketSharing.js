@@ -58,7 +58,7 @@ class TicketSharing extends Ticket{
 	save()
 	{
 		super.save();
-		firebase.database().ref('TicketSharing/' + super.getId()).set({
+		firebase.database().ref('TicketsSharing/' + super.getId()).set({
 			item : this.#item
 		});
 	}
@@ -69,7 +69,7 @@ class TicketSharing extends Ticket{
 	delete()
 	{
 		super.delete()
-		firebase.database().ref('TicketSharing/' + super.getId()).remove();
+		firebase.database().ref('TicketsSharing/' + super.getId()).remove();
 	}
 
 };

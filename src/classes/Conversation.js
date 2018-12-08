@@ -60,19 +60,19 @@ class Conversation{
 		}
 		if(this.getId() != null)
 		{
-			firebase.database().ref('Conversation/' + this.id).set({
+			firebase.database().ref('Conversations/' + this.id).set({
 				idMessage : idmessage
 			});
 		}
 		else
 		{
-			let id = firebase.database().ref().child('Conversation').push().key
+			let id = firebase.database().ref().child('Conversations').push().key
 			this.setId(id);
 			let postData = {}
 			postData[id] = {
 				idMessage : idmessage
 			}
-			firebase.database().ref('Conversation/').update(postData);
+			firebase.database().ref('Conversations/').update(postData);
 		}	
 	}
 
@@ -81,7 +81,7 @@ class Conversation{
 	 */
 	delete()
 	{
-		firebase.database().ref('Conversation/' + this.getId()).remove();
+		firebase.database().ref('Conversations/' + this.getId()).remove();
 		for (var i = 0; i < this.#messages.length; i++) {
 			this.#messages[i].delete();
 		}

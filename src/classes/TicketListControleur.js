@@ -1,7 +1,7 @@
 import firebase, {database } from '../firebase'
 import User from './User' 
 import Ticket from './Ticket'
-//import { min } from 'moment'; --> gestion de date
+
 
 class TicketListControleur {
 
@@ -40,7 +40,7 @@ class TicketListControleur {
 	 */
 	searchUser(id) 
 	{
-		return firebase.database().ref('User/'+id).once('value').then(function(snapshot){
+		return firebase.database().ref('Users/'+id).once('value').then(function(snapshot){
 				var { name, nickname, surname } = snapshot.val();
 				var u = new User(id, name, surname, nickname);
 				return u;
@@ -58,7 +58,7 @@ class TicketListControleur {
 	 */
 	searchTickets = (filter = null) =>
 	{
-		var query = firebase.database().ref("Ticket").orderByKey();	
+		var query = firebase.database().ref("Tickets").orderByKey();	
 		query.once("value").then((snapshot) => 
 		{
 			
@@ -98,12 +98,12 @@ class TicketListControleur {
 	 */
 	retriveTicket = (id) =>
 	{
-		return firebase.database().ref('Ticket/'+id).once('value').then((snapshot) => {
+		return firebase.database().ref('Tickets/'+id).once('value').then((snapshot) => {
 			var { category, creationDate, description, idConversation, idRequester, title} = snapshot.val();
 			this.searchUser(idRequester).then((user) => {
 				if (category === "CarPooling" )
 				{
-					return firebase.database().ref('TicketCarPooling/'+id).once('value').then((snapshot) =>{
+					return firebase.database().ref('TicketsCarPooling/'+id).once('value').then((snapshot) =>{
 						var { arrivalLocation, arrivalTime, departurLocation, departurTime, places } = snapshot.val();
 						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { arrivalLocation, arrivalTime, departurLocation, departurTime, places } );
 						console.log(t)
@@ -112,7 +112,7 @@ class TicketListControleur {
 				}
 				if (category === "Study" )
 				{
-					return firebase.database().ref('TicketStudy/'+id).once('value').then((snapshot) =>{
+					return firebase.database().ref('TicketsStudy/'+id).once('value').then((snapshot) =>{
 						const { subject, semester, teacher, theme } = snapshot.val();
 						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { subject, semester, teacher, theme } );
 						return t
@@ -120,7 +120,7 @@ class TicketListControleur {
 				}
 				if  (category === "TicketSharing") 		
 				{
-					return firebase.database().ref('TicketSharing/'+id).once('value').then((snapshot) => {
+					return firebase.database().ref('TicketsSharing/'+id).once('value').then((snapshot) => {
 						const { Item } = snapshot.val();
 						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { Item } );
 						console.log(t)

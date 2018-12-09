@@ -222,7 +222,5 @@ class SignInForm extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(SignInForm);
 
-
-export default WrappedNormalLoginForm;
+export default Form.create()(SignInForm);

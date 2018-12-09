@@ -120,7 +120,5 @@ class ResetPasswordForm extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(ResetPasswordForm);
 
-
-export default WrappedNormalLoginForm;
+export default Form.create()(ResetPasswordForm);;

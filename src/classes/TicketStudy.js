@@ -1,18 +1,31 @@
 import Ticket from './Ticket' 
-import { database } from '../firebase'
+import firebase, {database } from '../firebase'
 
 class TicketStudy extends Ticket{
 
-	#subject
-	#semester
-	#teacher
-	#theme
+	#subject;
+	#semester;
+	#teacher;
+	#theme;
 
+	/**
+	 * 
+	 * @param {int} id : unique key
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} creationDate 
+	 * @param {User} requester 
+	 * @param {string} subject 
+	 * @param {string} semester 
+	 * @param {string} teacher 
+	 * @param {string} theme 
+	 */
 	constructor(id, title, description, creationDate, requester, subject, semester, teacher, theme, idConversation)
 	{
 		super(id, title, description, "Study", creationDate, requester, idConversation);
 		this.#subject = subject;
-		this.#semester = semester;// ne serce pas mieux de metre cette attribu dans la classe User
+		this.#semester = semester;
 		this.#teacher = teacher;
 		this.#theme = theme;
 	}
@@ -27,12 +40,12 @@ class TicketStudy extends Ticket{
 		this.#subject = subject;
 	}
 
-	getSemester() // peut-etre a copier coller dans la classe User
+	getSemester() 
 	{
 		return this.#semester;
 	}
 
-	setSemester(semester) // peut-etre a copier coller dans la classe User
+	setSemester(semester) 
 	{
 		this.#semester = semester;
 	}
@@ -59,10 +72,20 @@ class TicketStudy extends Ticket{
 
 	//display()
 
-
-	edit(title, description, category, subject, semester, teacher, theme)
+	/**
+	 * Edit ticket parameter
+	 * @param {string} title 
+	 * @param {string} description 
+	 * @param {string} category 
+	 * @param {string} subject 
+	 * @param {string} semester 
+	 * @param {string} teacher 
+	 * @param {string} theme 
+	 */
+	edit(options)
 	{
-		super.edit(title, description, category)
+		var {subject, semester, teacher, theme} = options;
+		super.edit(options)
 		if(subject != null)
 		{
 			this.setSubject(subject);
@@ -81,11 +104,13 @@ class TicketStudy extends Ticket{
 		}
 	}
 
-
+	/**
+	 * Save ticket on firebase
+	 */
 	save()
 	{
 		super.save();
-		database.ref('TicketStudy/' + super.getId()).set({//pb de réfrérance?
+		firebase.database().ref('TicketsStudy/' + super.getId()).set({
 			subject : this.#subject,
 			semester : this.#semester,
 			teacher : this.#teacher,
@@ -93,10 +118,13 @@ class TicketStudy extends Ticket{
 		});
 	}
 
-	delete()//methode non défini sur le diagrame de classe mais nessesaire
+	/**
+	 * Delete ticket from firebase
+	 */
+	delete()
 	{
 		super.delete()
-		database.ref('TicketStudy/' + super.getId()).remove();
+		firebase.database().ref('TicketsStudy/' + super.getId()).remove();
 	}
 
 };

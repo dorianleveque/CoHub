@@ -1,172 +1,112 @@
-import firebase, {database } from '../firebase'
+import {database } from '../firebase'
 import User from './User' 
 import Ticket from './Ticket'
 
 
 class TicketListControleur {
 
-	#tickets;
-
-	constructor() {
-		this.#tickets = [];
-	}
-
-	getTickets()
-	{
-
-		return this.#tickets;
-	}
-
-	getTicket(id)
-	{
-		for (var i = 0; i < this.getTickets().length; i++) {
-			if (id === this.getTickets()[i].getId())
-			{
-				return this.getTickets()[i];
-			};
-		};
-	}
-
 	/**
 	 * get a user by id in firebase and create User 
-	 * @param {int} id 
+	 * @param {int} id
+	 * @returns User
 	 */
-	searchUser(id) 
+	async searchUser(id) 
 	{
-		return firebase.database().ref('Users/'+id).once('value').then(function(snapshot){
-				var { name, nickname, email, surname } = snapshot.val();
-				var u = new User(id, name, surname, email, nickname);
-				return u;
-		}, function (error) {
-			console.error(error);
-		}).then(function (values) {
-			return values
-		});
+		try {
+			var snapshot = await database.ref('Users/'+id).once('value')
+			var { name, nickname, email, surname } = snapshot.val();
+			return new User(id, name, surname, email, nickname);
+		}
+		catch(error) {
+			throw error
+		}
 	}
 
 	/**
 	 * get ticket by page and filter and create Ticket
-	 * @param {*} filter not functionnal now
-	 * @param {int} page 
+	 * @param {Int} page page à afficher
+	 * @param {Int} limit nombre de ticket par page
+	 * @param {String} category (optional) catégorie du ticket
+	 * @param {String} filter (optional) mot clé présent dans le titre ou dans la description du ticket
+	 * @returns un objet contenant une liste de Ticket et le nombre total de page
 	 */
-	searchTickets = (filter = null, page) =>
-	{
-		var totalTicket = [];
-		var query = firebase.database().ref("Tickets").orderByKey();	
-		query.once("value").then((snapshot) => 
-		{
-			snapshot.forEach((childSnapshot) =>
-			{
-				totalTicket.push(childSnapshot);
-			
-		
-		var min = (totalTicket.length)-12*(page);
-		if (min < 0) 
-		{
-		 		min = 0;
-		}
-		var max = (totalTicket.length)-12*(page-1) ;
-		if (max < 12) 
-		{
-		 		max = 12;
-		}
-		if (totalTicket.length > 1)
-		{
-			var tmpSliced = totalTicket.slice(min,max);
-		}
-		else
-		{
-			var tmpSliced = totalTicket;
-		}
-		//idTicket not used but it is a key to find the ticket in tmpSliced
-		for(let [idTicket, dataTicket] of Object.entries(tmpSliced))
-		{
-			
-			
-			const { title, description, category, creationDate, idConversation, idRequester } = dataTicket.val()
-			
-			this.searchUser(idRequester).then((user) => {
-				this.getTickets().push(user.createTicket(childSnapshot.key , title , description, category, creationDate, idConversation));
+	async searchTickets(page=0, limit=20, category=null, filter='') {
+		try {
+			const nbTicket = limit
+			var tickets = []
+
+			// récupérations des données du ticket
+			var snapshot = (category)
+							? await database.ref('Tickets').orderByChild('category').equalTo(category).limitToLast(1000).once('value')
+							: await database.ref('Tickets').orderByChild('creationDate').limitToLast(1000).once('value')
+
+			// on récupère un intervalle de ticket
+			var idTicketList = []
+			snapshot.forEach((childSnapshot) => {
+				const idTicket = childSnapshot.key
+				const { title, description } = childSnapshot.val()
+				
+				// application du filtre
+				if (title.includes(filter) || description.includes(filter)) {
+					idTicketList.push( idTicket )
+				}
 			})
+			const pageCount = parseInt(idTicketList.length / nbTicket) + idTicketList.length % nbTicket
+			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
+			
+			// création des tickets
+			for (var idTicket of idTicketList) {
+				var ticket = await this.retriveTicket(idTicket)
+				tickets.push(ticket)
+			}
+
+			return { tickets, pageCount }
 		}
-		});
-		})
-	}	
+		catch (error) {
+			throw error
+		}
+	}
 	 
 	/**
 	 * get ticket by id and create Ticket
 	 * @param {int} id
+	 * @returns Ticket
 	 */
-	retriveTicket = (id) =>
+	async retriveTicket(id)
 	{
-		return firebase.database().ref('Tickets/'+id).once('value').then((snapshot) => {
+		try {
+			var snapshot = await database.ref('Tickets/'+id).once('value')
 			var { category, creationDate, description, idConversation, idRequester, title} = snapshot.val();
-			this.searchUser(idRequester).then((user) => {
-				if (category === "CarPooling" )
-				{
-					return firebase.database().ref('TicketsCarPooling/'+id).once('value').then((snapshot) =>{
-						var { arrivalLocation, arrivalTime, departurLocation, departurTime, places } = snapshot.val();
-						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { arrivalLocation, arrivalTime, departurLocation, departurTime, places } );
-						console.log(t)
-						return t
-					});
-				}
-				if (category === "Study" )
-				{
-					return firebase.database().ref('TicketsStudy/'+id).once('value').then((snapshot) =>{
-						const { subject, semester, teacher, theme } = snapshot.val();
-						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { subject, semester, teacher, theme } );
-						return t
-					});
-				}
-				if  (category === "TicketSharing") 		
-				{
-					return firebase.database().ref('TicketsSharing/'+id).once('value').then((snapshot) => {
-						const { Item } = snapshot.val();
-						var t = user.createTicket(id , title , description, category, creationDate, idConversation, { Item } );
-						console.log(t)
-						return t
-					});
-				}
-			});
-		});
-	}
 
-	/**
-	 * Display all tickets
-	 */
-	displayTickets() 
-	{
-		for (var i = 0; i < this.#tickets.length; i++) 
-		{
-			this.#tickets[i].displayThmbnail();
-		};
-	}
-
-	/**
-	 * display a ticket
-	 * @param {int} id 
-	 */
-	displayTicket(id)
-	{
-		for (var i = 0; i < this.#tickets.length; i++) 
-		{
-			if (this.#tickets[i].getId() == id)
+			var user = await this.searchUser(idRequester)
+			
+			var ticket = null
+			if (category === "CarPooling" )
 			{
-				this.#tickets[i].display();
-			};
-		};
-	}
-
-	/**
-	 * delete ticket from class
-	 */
-	clearTickets() 
-	{
-		for (var i = 0; i < this.#tickets.length; i++) 
-		{
-			this.#tickets[i] = null;
-		};
+				await database.ref('TicketsCarPooling/'+id).once('value').then((snapshot) =>{
+					var { arrivalLocation, arrivalTime, departurLocation, departurTime, places } = snapshot.val();
+					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { arrivalLocation, arrivalTime, departurLocation, departurTime, places } );
+				});
+			}
+			if (category === "Study" )
+			{
+				await database.ref('TicketsStudy/'+id).once('value').then((snapshot) =>{
+					const { subject, semester, teacher, theme } = snapshot.val();
+					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { subject, semester, teacher, theme } );
+				});
+			}
+			if  (category === "Sharing") 		
+			{
+				await database.ref('TicketsSharing/'+id).once('value').then((snapshot) => {
+					const { item } = snapshot.val();
+					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { item } );
+				});
+			}
+			return ticket;
+		}
+		catch (error) {
+			throw error
+		}
 	}
 
 }export default TicketListControleur

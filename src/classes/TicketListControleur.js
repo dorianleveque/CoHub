@@ -30,7 +30,7 @@ class TicketListControleur {
 	 * @param {String} filter (optional) mot clé présent dans le titre ou dans la description du ticket
 	 * @returns un objet contenant une liste de Ticket et le nombre total de page
 	 */
-	async searchTickets(page=0, limit=20, category=null, filter='') {
+	async searchTickets(page, limit, category=null, filter='') {
 		try {
 			const nbTicket = limit
 			var tickets = []

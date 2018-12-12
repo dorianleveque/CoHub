@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Top from '../components/Top'
 import { Layout, Row, Card } from 'antd';
 import ResetPasswordForm from '../components/forms/ResetPasswordForm'
+import Bottom from '../components/Bottom'
 import cohub from '../images/CoHub.png'
 
 const { Content, Footer } = Layout;
@@ -51,7 +52,7 @@ class ResetPasswordPage extends Component {
             </Card>
           </Row>
         </Content>
-        <Footer></Footer>
+        <Bottom/>
       </Layout>
     )
   }

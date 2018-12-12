@@ -2,15 +2,43 @@ import React, { Component } from 'react';
 import { Icon, Col , Input  } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { SIGN_IN , HOME } from '../router/routes'
+import { SessionStore } from '../stores';
+import { Popconfirm, message, Button } from 'antd';
+
 const Search = Input.Search;
 
 class MenuBurger extends Component {
+
+
+  static contextType = SessionStore
 
   togleSideBar() {
     this.props.togleSideBar();
   }
 
+confirm = () => {
+	this.context.signOut()
+}
+
   render() {
+	let account ;
+	let connected = this.context.isValide()
+	if (connected) {
+		account =  <Popconfirm placement="bottomRight" title="Voulez-vous vous déconecter ?" onConfirm={this.confirm} okText="Yes" cancelText="No">
+            		<Icon type="user" />
+			</Popconfirm> ;
+	}
+	else  {
+
+		account = <NavLink to={SIGN_IN} style={{color: 'white'}}>
+            <Icon type="user" />
+          </NavLink>
+	}
+	  
+	  
+	  //if connected PopComfirm br
+	  //if not connected Navlink
+
     return (
       <div>
         <Col span={2}> 
@@ -28,9 +56,7 @@ class MenuBurger extends Component {
             />
         </Col>
         <Col span={1} offset={5}> 
-          <NavLink to={SIGN_IN} style={{color: 'white'}}>
-            <Icon type="user" />
-          </NavLink>
+	    {account}
         </Col>
       </div>
     );

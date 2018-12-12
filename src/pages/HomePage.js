@@ -1,23 +1,46 @@
 import React, { Component } from 'react';
 import { Layout, Row, Pagination } from 'antd'
 import Top from '../components/Top'
-import Sider_menu from '../components/SiderMenu'
-import Demande_card from '../components/DemandeCard';
+import SiderMenu from '../components/SiderMenu'
+import DemandeCard from '../components/DemandeCard';
+import TicketListControler from '../classes/TicketListControleur'
+import BoutonCreationDemande from '../components/boutons/BoutonCreationDemande'
+import TicketCarPooling from "../classes/TicketCarPooling"
+import User from "../classes/User"
+import Ticket from '../classes/Ticket'
 const { Content } = Layout;
 
 class HomePage extends Component {
 
 	constructor(props) { // constructuer de Top
+
 		super(props);
 		this.ismenu = true;
 		const isDesktop =  window.innerWidth <= 500;
-		this.state = { visible: isDesktop }
 
-	}
+		this.state = { visible: isDesktop , 
+			       cardsData :[],
+				numberOfPages : 5
+			      }
+
+		var tlc = new TicketListControler();	
+
+		tlc.searchTickets(0).then((value) => {
+			
+			var tickets = value.tickets
+			var pages  = value.pageCount
+			this.setState({
+				cardsData : [...this.state.cardsData,...tickets],
+				numerOfPages : pages ,
+			})//setState
+		}) //Then searchTickets
 
 
-	// make sure to remove the listener
-	// when the component is not mounted anymore
+	} //costructor
+
+
+
+
 	togleSideBar = () => {
 		if (this.state.visible === true) {
 			this.setState({
@@ -30,28 +53,94 @@ class HomePage extends Component {
 			});
 		}
 	}
+
+	onChange = (pageNumber) => {  //prblème de début du num de page TODO : Modification de la page
+
+		this.tlc.searchTickets(pageNumber).then((value) => {
+
+			this.changeCards(value);
+
+		})
+	}
+	
+
+	searchItems = (text) =>{
+
+		this.tlc.searchTickets(0,20,null,text).then((value) => {
+			this.changeCards(value);
+
+		})
+	}
+
+	
+	sortItems = (category) =>{
+
+		this.tlc.searchTickets(0,20,category).then((value) => {
+			this.changeCards(value);
+
+		})
+	}
+
+
+	changeCards = (value) => {
+
+			var tickets = value.tickets
+			var pages  = value.pageCount
+			this.setState({
+				cardsData : [...this.state.cardsData,...tickets],
+				numerOfPages : pages ,
+			})
+
+	}
+
+
+	Cards = () => {
+		
+		var values  = []
+		this.state.cardsData.forEach(function(entry){
+			values.push({ title : entry.getTitle()  , author : entry.getRequester() , description :entry.getDescription() , category : entry.getCategory() , key : entry.getId() , })
+		});
+
+		return values.map(item => {
+			return (
+				<DemandeCard args = {item} key ={item.key} />);
+					});
+
+	}
+
 	render() {
+
 		let cards;
 		let space;
 		let pagination;
+	
+		
+		
+	 	cards =  <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly' }} >
+			{this.Cards()}						
+			</ul>
+		
+		
+		
 		space = <Row><br /></Row>;
-		cards = <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly'}} ><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/><Demande_card/></ul>
-		pagination = <Row> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={50} />  </div> </Row>;
+		pagination = <Row> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages} onChange={this.onChange.bind(this)}  />  </div> </Row>;
+		
+		
 		return (
 				<Layout style={{ height: "100vh" }}>
-					< Sider_menu {...this.state} />
+					< SiderMenu {...this.state} />
 					<Layout>
-						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} />
-						<Content>
+						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} sortItems={this.sortItems} orderItems = {this.orderItems} />
+						<Content style={{ padding: "0 40px" }}>
 							{cards}
 							{space}
 							{pagination}
 							{space}
+							<BoutonCreationDemande />
 						</Content>
 					</Layout>
 				</Layout>
 		);
-	}
-}
+	}}
 
 export default HomePage;

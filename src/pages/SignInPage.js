@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SignInForm from '../components/forms/SignInForm'
 import Top from '../components/Top'
+import Bottom from '../components/Bottom'
 import { Layout, Row, Card } from 'antd';
 import cohub from '../images/CoHub.png'
 
@@ -68,7 +69,7 @@ class SignInPage extends Component {
             </Card>
           </Row>
         </Content>
-        <Footer></Footer>
+        <Bottom/>
       </Layout>
     )
   }

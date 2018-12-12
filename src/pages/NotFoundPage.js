@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Layout, Row, Col, Icon } from 'antd'
 import Top from '../components/Top'
+import Bottom from '../components/Bottom'
 import { HOME } from '../router/routes'
 
 const { Content, Footer } = Layout
@@ -85,7 +86,7 @@ class NotFoundPage extends Component {
             </Col>
           </Row>
         </Content>
-        <Footer></Footer>
+        <Bottom/>
       </Layout>
     )
   }

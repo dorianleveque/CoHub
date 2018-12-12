@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import SignUpForm from '../components/forms/SignUpForm'
 import {Layout,  Row, Card } from 'antd';
 import Top from '../components/Top';
+import Bottom from '../components/Bottom'
 import cohub from '../images/CoHub.png'
 
 const { Content, Footer } = Layout;
@@ -56,7 +57,7 @@ class SignUpPage extends Component {
                 </Card>
               </Row> 
             </Content>
-            <Footer></Footer>
+            <Bottom/>
           </Layout>
         )
     }

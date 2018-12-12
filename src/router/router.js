@@ -39,7 +39,7 @@ class Router extends Component {
         <BrowserRouter>
             <Switch>
                 <PublicRoute    component={HomePage           } exact path={HOME}           />
-                <PublicRoute    component={RequestCreatorPage } exact path={CREATE_DEMAND}  />
+                <PrivateRoute   component={RequestCreatorPage } exact path={CREATE_DEMAND}  redirectTo={SIGN_IN} />
                 <PublicRoute    component={SignInPage         } exact path={SIGN_IN}        />
                 <PublicRoute    component={SignUpPage         } exact path={SIGN_UP}        />
                 <PublicRoute    component={RequestPage        } exact path={DISPLAY_DEMAND} />

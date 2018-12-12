@@ -42,17 +42,16 @@ class Demande_Consultation  extends Component {
 	onCascaderChange = (value) => {
 		switch(String(value)) { 
 			case "Tutorat": 
-				this.setState({isSharing: false, isStudy: true, isCarPooling: false, Categorie:"Tutorat" })
+				this.setState({isSharing: false, isStudy: true, isCarPooling: false })
 				break;
 			case "Objet":
-				this.setState({isSharing: true, isStudy: false, isCarPooling: false, Categorie:"Objet" })
+				this.setState({isSharing: true, isStudy: false, isCarPooling: false })
 				break;
 			case "Covoiturage":
-				this.setState({isSharing: false, isStudy: false, isCarPooling: true, Categorie:"Covoiturage" })
+				this.setState({isSharing: false, isStudy: false, isCarPooling: true })
 				break;
 			default:
-				this.setState({isSharing: false, isStudy: false, isCarPooling: false, Categorie:"" })
-				alert("Pas de Categorie")
+				this.setState({isSharing: false, isStudy: false, isCarPooling: false })
 		}
 	}
 	

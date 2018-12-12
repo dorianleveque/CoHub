@@ -8,7 +8,6 @@ import { HOME,
          DISPLAY_DEMAND, 
          EDIT_DEMAND,
          ACCOUNT,
-         PAGE_TEST_DODO,
          TEST_JAROD_ANOUK,
          PublicRoute,
          PrivateRoute,
@@ -26,7 +25,6 @@ import SignUpPage           from '../pages/SignUpPage'
 import NotFoundPage         from '../pages/NotFoundPage'
 import ResetPasswordPage from '../pages/ResetPasswordPage';
 
-import TestPageDodo from '../pages/test/TestPageDodo';
 import TestAnoukJarod from '../pages/test/TestAnoukJarod'
 /**
  * Définition de l'ensemble des différentes routes de notre application
@@ -39,14 +37,13 @@ class Router extends Component {
         <BrowserRouter>
             <Switch>
                 <PublicRoute    component={HomePage           } exact path={HOME}           />
-                <PublicRoute    component={RequestCreatorPage } exact path={CREATE_DEMAND}  />
+                <PrivateRoute   component={RequestCreatorPage } exact path={CREATE_DEMAND}  redirectTo={HOME} />
                 <PublicRoute    component={SignInPage         } exact path={SIGN_IN}        />
                 <PublicRoute    component={SignUpPage         } exact path={SIGN_UP}        />
                 <PublicRoute    component={RequestPage        } exact path={DISPLAY_DEMAND} />
                 <PrivateRoute   component={RequestPage        }       path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
                 <ProtectedRoute component={ResetPasswordPage  }       path={ACCOUNT}        withSearchParams={{ mode: 'resetPassword' }} />
                 
-                <PublicRoute    component={TestPageDodo       } exact path={PAGE_TEST_DODO} />
                 <PublicRoute    component={TestAnoukJarod     } exact path={TEST_JAROD_ANOUK} />
                 <PublicRoute    component={NotFoundPage       } />
             </Switch>

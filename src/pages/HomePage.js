@@ -4,6 +4,7 @@ import Top from '../components/Top'
 import SiderMenu from '../components/SiderMenu'
 import DemandeCard from '../components/DemandeCard';
 import TicketListControler from '../classes/TicketListControleur'
+import BoutonCreationDemande from '../components/boutons/BoutonCreationDemande'
 import TicketCarPooling from "../classes/TicketCarPooling"
 import User from "../classes/User"
 import Ticket from '../classes/Ticket'
@@ -115,7 +116,7 @@ class HomePage extends Component {
 	
 		
 		
-	 	cards =  <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly'}} >
+	 	cards =  <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly' }} >
 			{this.Cards()}						
 			</ul>
 		
@@ -130,11 +131,12 @@ class HomePage extends Component {
 					< SiderMenu {...this.state} />
 					<Layout>
 						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} sortItems={this.sortItems} orderItems = {this.orderItems} />
-						<Content>
+						<Content style={{ padding: "0 40px" }}>
 							{cards}
 							{space}
 							{pagination}
 							{space}
+							<BoutonCreationDemande />
 						</Content>
 					</Layout>
 				</Layout>

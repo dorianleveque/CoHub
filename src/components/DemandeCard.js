@@ -44,7 +44,7 @@ class DemandeCard extends Component {
 
 
     return (
-      <div style={{ overflow: 'hidden', width: '250px' }}>
+      <div style={{ overflow: 'hidden', width: '250px', margin: '0px 20px' }}>
         <div style={{ marginTop: '40px', width: '250px', height: '120px', backgroundColor: '#FFF', overflowY: 'scroll', textOverflow: 'ellipsis' }}>
           <div style={{ display: 'flex', width: '100%' }} >
             	<div style={{  flexGrow : "1" ,overflow: 'hidden', wordWrap: 'break-word', whiteSpace: 'normal', fontWeight: 'bold' , textAlign :'center' }} >

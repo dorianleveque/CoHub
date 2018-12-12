@@ -5,8 +5,9 @@
   "dependencies": {
     "antd": "^3.10.4",
     "console-dialog": "^1.0.6",
-    "firebase": "^5.5.8",
+    "firebase": "^5.7.0",
     "firebase-tools": "^6.1.0",
+    "force": "0.0.3",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

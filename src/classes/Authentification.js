@@ -13,46 +13,64 @@ class Authentification {
 
     constructor() {
         this.#currentUser = null             // User Object
-        this.#authStateChangedCallback = []  //()=>{}    // callback list
+        this.#authStateChangedCallback = []  // callback list
 
-        auth.onAuthStateChanged((auth) => {
+        // événement lors d'une nouvelle reconnection avec firebase
+        auth.onAuthStateChanged(async (auth) => {
             if (auth) {
                 // On crée ici l'object current User de notre application
                 // à l'aide des infos de la database
-                this._createCurrentUser(auth.email)
-                .then( () => {
-                    // si l'authentification est réussit et que le currentUser est créé
-                    // on peut executer l'ensembles des fonctions callback
-                    this.#authStateChangedCallback.forEach(element => { element() });
-                })
-                .catch( () => {
+                try {
+                    // si l'authentification est réussit
+                    const { id, name, surname, email, nickname } = await this._retriveUserData(auth.email)
+                    this._setCurrentUser(new User(id, name, surname, email, nickname))
+
+                    this.#authStateChangedCallback.forEach(element => { element() })
+                }
+                catch(error) {
                     // si on arrive pas à créer le currentUser, on met à jour
                     // l'attribut pour l'authentification (router)
                     this._setCurrentUser(null)
-                })
+                }
             }
             else {
                 // si on n'a pas de connection avec firebase
                 // impossible de vérifier si l'authentification est correct
                 this._setCurrentUser(null)
             }
+            this.#authStateChangedCallback.forEach(element => { element() })
         })
     }
 
     /**
-     * Créer l'objet currentUser à partir de l'ensemble de ses informations 
-     * dans la base de données.
+     * Récupère l'ensembles des données de l'utilisateur à partir de son adresse mail
      * @param {String} email adresse mail
+     * @returns retourne un Objet avec l'ensemble des données de l'utilisateur
      */
-    async _createCurrentUser(email) {
-        await database.ref('Users').orderByChild('email').equalTo(email).once('value', (snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-                const id = childSnapshot.key
-                const { name, surname, email, nickname } = childSnapshot.val()
-                this._setCurrentUser(new User(id, name, surname, email, nickname))
-            })
-        })
+    async _retriveUserData(email) {
+        try {
+            const snapshot = await database.ref('Users').orderByChild('email').equalTo(email).once('value')
+            if (snapshot.hasChildren()) {
+                let data = null
+                snapshot.forEach((childSnapshot) => {
+                    const id = childSnapshot.key
+                    const { name, surname, email, nickname } = childSnapshot.val()
+                    data = { id, name, surname, email, nickname }
+                })
+                return data
+            }
+            else {
+                throw { 
+                    code: "user-data-not-found",
+                    message: "Aucune données utilisateur n'a été trouvé à partir de cet adresse mail"
+                }
+            }
+        }
+        catch(error) {
+            throw error
+        }
     }
+
 
     getCurrentUser() {
         return this.#currentUser
@@ -98,7 +116,8 @@ class Authentification {
             ? firebase.auth.Auth.Persistence.LOCAL
             : firebase.auth.Auth.Persistence.SESSION
         )
-        await auth.signInWithEmailAndPassword(email, password);
+        await this._retriveUserData(email)
+        await auth.signInWithEmailAndPassword(email, password)
     }
 
     /**
@@ -112,12 +131,20 @@ class Authentification {
      * @param {String} password mot de passe
      */
     async createUser(lastName, firstName, nickName, email, password) {
-        await auth.createUserWithEmailAndPassword(email, password).then( () => {
-            // on crée l'objet User et on sauvegarde ses infos
-            let user = new User(null, firstName, lastName, email, nickName)
-            user.save()
-            //this.#currentUser = user
-        })
+        // on crée l'authentification dans firebase
+        await auth.createUserWithEmailAndPassword(email, password)
+        // on crée l'objet User et on sauvegarde ses infos dans la base de données de firebase
+        // si un id existe pour une adresse mail, alors pas besoin de générer un nouvel id
+        let userId = null
+        try {
+            const { id } = await this._retriveUserData(email)
+            userId = id
+        }
+        catch {
+            userId = firebase.database().ref().child('Users').push().key
+        }
+        let user = new User(userId, firstName, lastName, email, nickName)
+        await user.save()
     }
 
     /**

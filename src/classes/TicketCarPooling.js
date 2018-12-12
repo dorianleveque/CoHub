@@ -129,7 +129,7 @@ class TicketCarPooling extends Ticket{
 	save()
 	{
 		super.save();
-		firebase.database().ref('TicketCarPooling/' + super.getId()).set({
+		firebase.database().ref('TicketsCarPooling/' + super.getId()).set({
 			departurLocation : this.#departurLocation,
 			arrivalLocation : this.#arrivalLocation,
 			departurTime : this.#departurTime,
@@ -144,7 +144,7 @@ class TicketCarPooling extends Ticket{
 	delete()
 	{
 		super.delete()
-		firebase.database().ref('TicketCarPooling/' + super.getId()).remove();
+		firebase.database().ref('TicketsCarPooling/' + super.getId()).remove();
 	}
 
 };

@@ -41,7 +41,7 @@ class Router extends Component {
                 <PublicRoute    component={SignInPage         } exact path={SIGN_IN}        />
                 <PublicRoute    component={SignUpPage         } exact path={SIGN_UP}        />
                 <PublicRoute    component={RequestPage        } exact path={DISPLAY_DEMAND} />
-                <PrivateRoute   component={RequestPage        }       path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
+                <PrivateRoute   component={RequestPage        } exact path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
                 <ProtectedRoute component={ResetPasswordPage  }       path={ACCOUNT}        withSearchParams={{ mode: 'resetPassword' }} />
                 
                 <PublicRoute    component={TestAnoukJarod     } exact path={TEST_JAROD_ANOUK} />

@@ -34,6 +34,11 @@ class User {
 		return this.#id;
 	}
 
+	setId(id)
+	{
+		this.#id = id;
+	}
+
 	getName()
 	{
 		return this.#name;
@@ -124,29 +129,12 @@ class User {
 	 */
 	save()
 	{
-		// Si l'utilisateur existe déjà dans la base
-		// de donnée, celui-ci possède un id
-		// Sinon on génère un nouvel id et on enregistre
-		// ses infos dans la base de données
-		if (this.#id) {
-			database.ref('Users/' + this.#id).set({
-				name : this.#name,
-				surname : this.#surname,
-				nickname : this.#nickname,
-				email: this.#email
-			});
-		}
-		else {
-			let id = firebase.database().ref().child('Users').push().key
-			let postData = {}
-			postData[id] = {
-				name: this.#name,
-				surname: this.#surname,
-				nickname: this.#nickname,
-				email: this.#email
-			}
-			database.ref('Users/').update(postData)
-		}
+		database.ref('Users/' + this.#id).set({
+			name : this.#name,
+			surname : this.#surname,
+			nickname : this.#nickname,
+			email: this.#email
+		});
 	}
 
 	checkRights(otherUser) 

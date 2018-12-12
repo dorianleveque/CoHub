@@ -130,7 +130,7 @@ class Ticket{
 
 	//displayThmbnail() 
 
-	display(){}// methode abstraite
+	display(){}
 	
 	/**
 	 * Add a message to the Conversation
@@ -143,9 +143,7 @@ class Ticket{
 
 	/**
 	 * Edit ticket parameter
-	 * @param {string} title 
-	 * @param {string} description 
-	 * @param {string} category 
+	 * @param {*} options : title, description, category
 	 */
 	edit(options)
 	{
@@ -187,7 +185,7 @@ class Ticket{
 		this.getConversation().save();
 		if (this.getId() != null)
 		{
-			firebase.database().ref('Ticket/' + this.#id).set({
+			firebase.database().ref('Tickets/' + this.#id).set({
 				title : this.#title,
 				description : this.#description,
 				category : this.#category,
@@ -199,7 +197,7 @@ class Ticket{
 		}
 		else
 		{
-			let id = firebase.database().ref().child('Ticket').push().key
+			let id = firebase.database().ref().child('Tickets').push().key
 			this.setid(id);
 			let postData = {}
 			postData[id] = {
@@ -211,7 +209,7 @@ class Ticket{
 				idHelper : helper,
 				idConversation : this.#conversation.getId()
 			}
-			firebase.database().ref('Ticket/').update(postData);
+			firebase.database().ref('Tickets/').update(postData);
 		}
 	}
 
@@ -220,7 +218,7 @@ class Ticket{
 	 */
 	delete()
 	{
-		firebase.database().ref('Ticket/' + this.getId()).remove();
+		firebase.database().ref('Tickets/' + this.getId()).remove();
 		this.#conversation.delete();
 	}
 };

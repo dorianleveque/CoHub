@@ -25,7 +25,7 @@ class Message {
 		}
 		else
 		{
-			this.#date = new Date(date.substring(8),date.substring(3,5),date.substring(0,2)); 
+			this.#date = new Date(date); 
 		}
 	}
 
@@ -62,25 +62,20 @@ class Message {
 		var year = this.getDate().getFullYear();
 		var month =  this.getDate().getMonth();
 		var day  =  this.getDate().getDate();
-		if (month<10)
-		{
-			month = "0" + month;
-		}
-		if (day<10)
-		{
-			day = "0" + day;
-		}
+		var hours = this.getDate().getHours();
+		var minutes = this.getDate().getMinutes();
+		var seconds = this.getDate().getSeconds();
 		if (this.getId() != null)
 		{
-			firebase.database().ref('Message/' + this.getId()).set({
+			firebase.database().ref('Messages/' + this.getId()).set({
 				message : this.#text,
 				sender : this.#sender.getId(),
-				date : day + "/" + month + "/" + year
+				date : day + "-" + month + "-" + year + " "+ hours + ":" + minutes + ":" + seconds
 			});
 		}
 		else
 		{
-			let id = firebase.database().ref().child('Message').push().key
+			let id = firebase.database().ref().child('Messages').push().key
 			this.setId(id);
 			let postData = {}
 			postData[id] = {
@@ -88,7 +83,7 @@ class Message {
 				sender : this.#sender.getId(),
 				date : day + "/" + month + "/" + year
 			}
-			firebase.database().ref('Message/').update(postData);
+			firebase.database().ref('Messages/').update(postData);
 		}
 	}
 
@@ -97,7 +92,7 @@ class Message {
 	 */
 	delete()
 	{
-		firebase.database().ref('Message/' + this.getId()).remove();
+		firebase.database().ref('Messages/' + this.getId()).remove();
 	}
 
 }

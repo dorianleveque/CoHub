@@ -20,7 +20,7 @@ class BoutonCreationDemande extends React.Component {
   render(){
     var title = <div style={style.title}>
       Besoin d'aide ? <br/>
-      Créer une demande
+      Créez une demande
     </div>
    	return (
   	<div>

@@ -21,6 +21,8 @@ class CommentEditor extends Component {
         // on envoie l'ensembles des informations au composant parent
         this.props.onSubmit(values.editor).then( () => {
           this.setState({ submitting: false })
+          
+          this.props.form.setFieldsValue({ editor: '' })
         })
         .catch((error) => {
           this.setState({ submitting: false })
@@ -42,7 +44,7 @@ class CommentEditor extends Component {
       <Form onSubmit={this.onSubmit} >
         <Form.Item>
           { 
-            getFieldDecorator('editor') (<TextArea rows={3} value="" />)
+            getFieldDecorator('editor') (<TextArea rows={3} />)
           }
         </Form.Item>
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Comment, Avatar } from 'antd'
+import { Comment } from 'antd'
 import CommentEditor from './CommentEditor'
 import CommentList from './CommentList'
 import { SessionStore } from '../../stores';
-import { registerDatabase } from '@firebase/database';
+import Avatar from '../Avatar'
 
 class CommentSystem extends Component {
 
@@ -26,34 +26,19 @@ class CommentSystem extends Component {
   addComment(user, content, date) {
     const firstname = user.getName()
     const surname   = user.getSurname()
+    var name = `${ firstname } ${ surname }`
     this.setState({ 
       comments: [
         {
-          author: `${ firstname } ${ surname }`,
-          avatar: this._userAvatar(user),
-          content: <p> {content} </p>
+          author: name,
+          avatar: <Avatar name={name} />,
+          content: <p> {content} </p>,
+          datetime: '20/02/1997'
         },
         ...this.state.comments
       ]
     })
   }
-
-  _userAvatar(user) {
-    const id        = user.getId()
-    const firstname = user.getName()
-    const surname   = user.getSurname()
-    const nickname  = user.getNickname()
-    const curentUserId = this.context.getCurrentUser().getId()
-
-    return <Avatar style={{ backgroundColor: (id === curentUserId) ? 'rgba(0,0,0,0.3)': 'rgba(0,0,0,0.8)', verticalAlign: 'middle' }} size="large">
-            {
-              (nickname.length) 
-              ? `${ nickname.substring(0, 4) }`
-              : `${ firstname.substring(0, 1) }${ surname.substring(0, 1) }`
-            }
-          </Avatar>
-  }
-
 
   // valeurs renvoyées lors d'un submit de l'éditeur
   onSubmit = async (value) => {
@@ -65,13 +50,16 @@ class CommentSystem extends Component {
   render() {
     const auth = this.context
     const curentUser = auth.getCurrentUser()
+    const firstname = curentUser.getName()
+    const surname   = curentUser.getSurname()
+    var name = `${ firstname } ${ surname }`
     return (
       <div>
         <CommentList comments={this.state.comments} />
         {
           (this.props.allowPublication)
           ? <Comment
-              avatar={ this._userAvatar(curentUser) }
+              avatar={ <Avatar name={name} /> }
               content={
                 <CommentEditor
                   onSubmit={this.onSubmit}

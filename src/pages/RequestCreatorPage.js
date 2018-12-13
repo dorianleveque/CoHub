@@ -12,7 +12,7 @@ const Search = Input.Search;
 const FormItem = Form.Item;
 function onChange(value) {console.log(value);}
 
-function leaule()
+function leaule() // Fonction de test 
 	{
 		//var hu = document.getElementById("semestre").value;
 		//alert(hu);
@@ -24,7 +24,7 @@ class Demande_Consultation  extends Component {
 	static contextType = SessionStore
 	constructor() {
 		super();
-		this.state = {
+		this.state = { 
 			isSharing: false,
 			isStudy: false,
 			isCarPooling: false,
@@ -34,13 +34,13 @@ class Demande_Consultation  extends Component {
 				{value: 'Tutorat',label: 'Tutorat'},
 				{value: 'Objet',label: "Prêt d'objet"},
 				{value: 'Covoiturage',label: 'Covoiturage'}
-			]
+			],
 		}
 	}
 	
 	
 	onCascaderChange = (value) => {
-		switch(String(value)) { 
+		switch(String(value)) { // J'ai du appeller la fonction string car sinon il allait sur default 
 			case "Tutorat": 
 				this.setState({isSharing: false, isStudy: true, isCarPooling: false })
 				break;
@@ -61,12 +61,33 @@ class Demande_Consultation  extends Component {
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				console.log(values);
+				console.log(this.state.Categorie);
 				const auth = this.context;
-				/*const user = auth.getCurrentUser();
-				var options = { "subject": "Maths", "semester":"S6","teacher":"Mr Truc","theme":"Equa diff"}
-				var t =user.createTicket(null,"Je suis le titre","I am the description","Study",null,null, options)
+				const user = auth.getCurrentUser();
+				
+				// creation du bon type de ticket
+				if(this.state.isStudy)
+				{
+					var options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
+					var t =user.createTicket(null,values.title,values.description,"Study",null,null, options);
+				}
+				else if(this.state.isSharing)
+				{
+					var options = { "item": values.objet};
+					var t =user.createTicket(null,values.title,values.description,"Sharing",null,null, options);
+				}
+				else if(this.state.isCarPooling)
+				{
+					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
+					var t =user.createTicket(null,values.title,values.description,"CarPooling",null,null, options);
+				}
+				else
+				{
+					alert("Il n'y a pas de catégorie. Ce message est normalement useless car la categorie est requise. Mais bon au cas où...");
+					throw "PROBLEME AU NIVEAU DES CATEGORIES ET DE L'ENVOI DU FORMULAIRE";
+				}
+				
 				t.save();
-				//var tic=new Ticket();*/
 			}
 			else {
 				console.log("Erreur fonction on submit"); 

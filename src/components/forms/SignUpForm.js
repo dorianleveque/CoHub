@@ -54,7 +54,7 @@ class SignUpForm extends Component {
           options: {
             rules: [
               { required: true, message: 'une adresse mail est requise' },
-              { pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
+              { type: 'email' , message: "Votre adresse mail est invalide"}
             ]
           },
           component: <Input 

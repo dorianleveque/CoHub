@@ -136,10 +136,10 @@ class Ticket{
 	 * Add a message to the Conversation
 	 * @param {Message} message 
 	 */
-	addMessage(message)
+	/*addMessage(message)
 	{
 		this.#conversation.addMessage(message);
-	} 
+	} */
 
 	/**
 	 * Edit ticket parameter
@@ -182,7 +182,7 @@ class Ticket{
 		for (var i = 0; i < this.#helper.length; i++) {
 			helper[i] =  this.#helper[i].getId();
 		}
-		this.getConversation().save();
+		//this.getConversation().save();
 		if (this.getId() != null)
 		{
 			firebase.database().ref('Tickets/' + this.#id).set({

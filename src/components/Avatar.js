@@ -53,7 +53,8 @@ class MyAvatar extends Component {
         
         return { 
             backgroundColor: this.state.colours[colourIndex - 1],
-            color: 'white'
+            color: 'white',
+            fontWeight: 'bold'
         }
     }
 

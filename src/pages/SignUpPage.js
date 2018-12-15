@@ -16,7 +16,7 @@ const style = {
   card: {
     minWidth: '320px',
     maxWidth: '400px',
-    margin: '20px 0'
+    margin: '50px 0'
   },
   frame: {
     display: 'flex',

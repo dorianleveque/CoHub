@@ -9,15 +9,13 @@ const { Content, Footer } = Layout;
 const { Meta } = Card;
 
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
     height: '100%'
   },
   card: {
     minWidth: '320px',
-    maxWidth: '400px'
+    maxWidth: '400px',
+    margin: '20px 0'
   },
   frame: {
     display: 'flex',
@@ -52,7 +50,7 @@ class SignInPage extends Component {
    */
   render() {
     return (
-      <Layout style={ style.layout } >
+      <Layout>
         <Top/>
         <Content>
           <Row type='flex' align='middle' justify='center' style={ style.content } >

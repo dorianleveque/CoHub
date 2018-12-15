@@ -8,9 +8,6 @@ import TicketListControleur from '../../classes/TicketListControleur';
 const { Content, Footer } = Layout
 
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
     height: '100%'
   },
@@ -30,7 +27,7 @@ class TestPageDodo extends Component {
       console.log(value)
     })
     .catch((error) => console.log(error))*/
-    tlc.searchTickets(0, 2, 'CarPooling').then((values) => {
+    tlc.searchTickets(2, 12, 'CarPooling').then((values) => {
       console.log(values)
     })
     /*tlc.searchUser('-LTIgZkWXbHTiJDPx4SE').then((values) => {
@@ -40,7 +37,7 @@ class TestPageDodo extends Component {
 
   render() {
     return (
-      <Layout style={style.layout} >
+      <Layout>
         <Top style={style.top} />
         <Content >
           <Row type='flex' align='middle' justify='center' style={style.content} >

@@ -9,9 +9,6 @@ const { Content, Footer } = Layout;
 const { Meta } = Card;
 
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
     height: '100%'
   },
@@ -35,7 +32,7 @@ const style = {
 class ResetPasswordPage extends Component {
   render() {
     return (
-      <Layout style={ style.layout } >
+      <Layout>
         <Top/>
         <Content>
           <Row type='flex' align='middle' justify='center' style={ style.content } >

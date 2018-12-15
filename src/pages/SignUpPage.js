@@ -10,9 +10,6 @@ const { Meta } = Card;
 
 // style de la page
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
     height: '100%'
   },
@@ -40,7 +37,7 @@ class SignUpPage extends Component {
    */
     render() {
         return (
-          <Layout style={ style.layout } >
+          <Layout>
             <Top/>
             <Content>
               <Row type='flex' align='middle' justify='center' style={style.content} >

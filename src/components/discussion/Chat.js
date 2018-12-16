@@ -21,22 +21,10 @@ class Chat extends Component {
     const conversation = props.conversation
     if (conversation) {
       if (!this.state.commentsRetrieved) {
-        conversation.onMessageAdded(() => {
-          this.setState({ 
-            comments: conversation.getMessages(),
-            commentsRetrieved: true
-          })
-        })
-        conversation.onMessageChanged(() => {
-          this.setState({ 
-            comments: conversation.getMessages()
-          })
-        })
-        conversation.onMessageDeleted(() => {
-          this.setState({ 
-            comments: conversation.getMessages()
-          })
-        })
+        this.setState({ commentsRetrieved: true })
+        conversation.onMessageAdded(() => this.setState({ comments: conversation.getMessages() }))
+        conversation.onMessageChanged(() => this.setState({ comments: conversation.getMessages() }))
+        conversation.onMessageDeleted(() => this.setState({ comments: conversation.getMessages() }))
       }
     }
   }

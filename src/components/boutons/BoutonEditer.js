@@ -1,12 +1,28 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { NavLink } from 'react-router-dom'
+import { Button, Tooltip } from 'antd';
+import { EDIT_DEMAND, applyRouteParams } from '../../router/routes';
 
+const style = {
+  button: {
+    position: 'fixed',
+    right: '40px',
+    bottom: '40px',
+    width: '50px',
+    height: '50px'
+  },
+  title: {
+    textAlign: 'center'
+  }
+}
 
 class BoutonEditer extends React.Component {
   render(){
    	return (
-  	<div>
-        <Button icon={"edit"} ></Button>
+      <div>
+      <NavLink to={applyRouteParams(EDIT_DEMAND, {id: this.props.id })}>
+        <Button type="primary" shape="circle" icon="edit" size="large" style={style.button} />
+      </NavLink>
     </div>
   );
  }

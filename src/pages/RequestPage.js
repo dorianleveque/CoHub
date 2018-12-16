@@ -6,6 +6,7 @@ import { Input,Layout,Row, Col, Button, Cascader, Divider } from 'antd';
 import { SessionStore } from '../stores';
 import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
+import EditButton from '../components/boutons/BoutonEditer'
 import { HOME } from '../router/routes';
 
 const { Content } = Layout;
@@ -16,6 +17,7 @@ class Demande_Consultation  extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			ticket: null,
 			isSharing: false,
 			isStudy: false,
 			isCarPooling: false,
@@ -39,6 +41,7 @@ class Demande_Consultation  extends Component {
 			switch(String(cat)) {
 			case "Study": 
 				this.setState({
+					ticket: value,
 					isSharing: false, 
 					isStudy: true, 
 					isCarPooling: false, 
@@ -58,6 +61,7 @@ class Demande_Consultation  extends Component {
 				break;
 			case "Sharing":
 				this.setState({
+					ticket: value,
 					isSharing: true,
 					isStudy: false,
 					isCarPooling: false,
@@ -76,6 +80,7 @@ class Demande_Consultation  extends Component {
 				break;
 			case "CarPooling":
 				this.setState({
+					ticket: value,
 					isSharing: false,
 					isStudy: false,
 					isCarPooling: true,
@@ -96,6 +101,7 @@ class Demande_Consultation  extends Component {
 				break;
 			default:
 				this.setState({
+					ticket: value,
 					isSharing: false,
 					isStudy: false,
 					isCarPooling: false,
@@ -114,7 +120,17 @@ class Demande_Consultation  extends Component {
 		return ticket
 	}
 	
-	
+	checkRights() {
+		let ticket = this.state.ticket
+		if (ticket) {
+			let requester = ticket.getRequester()
+			let currentUser = this.context.getCurrentUser()
+			return requester.checkRights(currentUser)
+		}
+		else {
+			return false
+		}
+	}
 	
 	
   render() {
@@ -163,7 +179,7 @@ class Demande_Consultation  extends Component {
 				</Row>
 				<Row type="flex" justify="space-between"  style={{ textAlign:'center'}}>
 					<div style={{ width: '600px'}}>
-						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title')}
+						{h3PlusInput('#7F7F7F',"Titre",this.state.ticGlobalInfo.titre,'#42A6FB','title')}
 					</div>
 					<div>
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
@@ -192,6 +208,11 @@ class Demande_Consultation  extends Component {
 						</NavLink>
 					</Col>
 				</Row>
+				{
+					(this.checkRights())
+					? <EditButton id={this.props.match.params.id} />
+					: null
+				}
 			</Layout>
 		</Content>
 		<Bottom/>

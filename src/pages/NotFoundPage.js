@@ -9,7 +9,8 @@ const { Content, Footer } = Layout
 
 const style = {
   content: {
-    height: '100%'
+    marginTop: '80px',
+    marginBottom: '120px'
   },
   linkBox: {
     position: 'relative',
@@ -69,8 +70,8 @@ class NotFoundPage extends Component {
                   <br/>
                   <h1>Vous vous êtes perdu ?</h1>
                   <div>
-                    <b>Laissez nous vous tendre une main</b> à 
-                    notre tour en vous suggérant quelques pages 
+                    <b>Laissez nous vous tendre une main</b> en 
+                    vous suggérant quelques pages 
                     pour vous permettre de retrouver votre chemin ;)
                   </div>
                   <NavLink to={HOME}>

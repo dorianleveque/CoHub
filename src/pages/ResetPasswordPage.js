@@ -10,7 +10,7 @@ const { Meta } = Card;
 
 const style = {
   content: {
-    height: '100%'
+    margin: '100px 0'
   },
   card: {
     minWidth: '320px',

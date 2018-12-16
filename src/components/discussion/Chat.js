@@ -21,41 +21,12 @@ class Chat extends Component {
     const conversation = props.conversation
     if (conversation) {
       if (!this.state.commentsRetrieved) {
-        conversation.onMessageAdded(() => {
-          this.setState({ 
-            comments: conversation.getMessages(),
-            commentsRetrieved: true
-          })
-        })
-        conversation.onMessageChanged(() => {
-          this.setState({ 
-            comments: conversation.getMessages()
-          })
-        })
-        conversation.onMessageDeleted(() => {
-          this.setState({ 
-            comments: conversation.getMessages()
-          })
-        })
+        this.setState({ commentsRetrieved: true })
+        conversation.onMessageAdded(() => this.setState({ comments: conversation.getMessages() }))
+        conversation.onMessageChanged(() => this.setState({ comments: conversation.getMessages() }))
+        conversation.onMessageDeleted(() => this.setState({ comments: conversation.getMessages() }))
       }
     }
-  }
-
-  addComment(user, content, date) {
-    const firstname = user.getName()
-    const surname   = user.getSurname()
-    var name = `${ firstname } ${ surname }`
-    this.setState({ 
-      comments: [
-        {
-          author: name,
-          avatar: <Avatar name={name} />,
-          content: <p> {content} </p>,
-          datetime: '20/02/1997'
-        },
-        ...this.state.comments
-      ]
-    })
   }
 
   // valeurs renvoyées lors d'un submit de l'éditeur

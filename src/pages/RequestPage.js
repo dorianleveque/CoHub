@@ -1,36 +1,15 @@
 import React, { Component } from 'react';
-import Top from '../components/Top'
-import TicketListControleur from '../classes/TicketListControleur.js'
-import { Ticket } from '../classes/Ticket.js'
-import { TicketStudy } from '../classes/TicketStudy.js'
-import { TicketSharing } from '../classes/TicketSharing.js'
-import { TicketCarPooling } from '../classes/TicketCarPooling.js'
-import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
-import { SessionStore } from '../stores'
-import Chat from '../components/discussion/Chat.js'
+import { NavLink } from 'react-router-dom';
+import Top from '../components/Top';
+import TicketListControleur from '../classes/TicketListControleur.js';
+import { Input,Layout,Row, Col, Button, Cascader, Divider } from 'antd';
+import { SessionStore } from '../stores';
+import Chat from '../components/discussion/Chat.js';
+import Bottom from '../components/Bottom';
+import { HOME } from '../router/routes';
 
-const { Header, Footer, Sider, Content } = Layout;
-const { toString } = Mention;
-const Search = Input.Search;
+const { Content } = Layout;
 const { TextArea } = Input
-const options = [{value: 'Tutorat',label: 'Tutorat'},{value: 'Objet',label: 'Pret d objet'},{value: 'Covoiturage',label: 'Covoiturage'}];
-function onChange(value) {console.log(value);}
-
-/*
-function ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
-	{
-		//const IdTicket= this.props.match.params.id ; //
-		var IdTicket="-LTdiqMjM6UUvG2TO2ws";
-		console.log(IdTicket);
-		var tlc= new TicketListControleur;
-		var t = null;
-		t=tlc.retriveTicket(IdTicket);
-		console.log(t);
-		return t;
-	}
-*/	
-	var t=null;
-	var IdTicket=null;
 
 class Demande_Consultation  extends Component {
 	static contextType = SessionStore
@@ -40,7 +19,6 @@ class Demande_Consultation  extends Component {
 			isSharing: false,
 			isStudy: true,
 			isCarPooling: false,
-			isViewMode: true,
 			Categorie:"Tutorat",
 			categorieOptions: [
 				{value: 'Tutorat',label: 'Tutorat'},
@@ -48,165 +26,175 @@ class Demande_Consultation  extends Component {
 				{value: 'Covoiturage',label: 'Covoiturage'}
 			],
 			conversation: null,
-			
 			ticGlobalInfo: {titre: null, categorie: null, description: null},
 			ticSharingInfo: {objet: null},
 			ticStudyInfo: {matiere:null, prof:null, theme:null, semestre: null},
-			ticCarpoolingInfo: {arrivee:null, depart:null, arriveeTime:null, departTime:null, places:null},
-			
-			
+			ticCarpoolingInfo: {arrivee:null, depart:null, arriveeTime:null, departTime:null, places:null},	
 		}
-		
-		
-		this.ticketRecup().then((value)=> 
-		{
-			let cat = value.getCategory();
-			console.log(cat);
+
+		this.ticketRecup().then((value)=> {
+			const cat = value.getCategory();
+			const conversation = value.getConversation() 
 			
 			switch(String(cat)) {
 			case "Study": 
-				this.setState({isSharing: false, isStudy: true, isCarPooling: false, Categorie: "Tutorat", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()},ticStudyInfo: {matiere:value.getSubject(), prof:value.getTeacher(), theme:value.getTheme(), semestre:value.getSemester()}, })
+				this.setState({
+					isSharing: false, 
+					isStudy: true, 
+					isCarPooling: false, 
+					Categorie: "Tutorat",
+					conversation: conversation, 
+					ticGlobalInfo:{ 
+						titre: value.getTitle(),
+						description:value.getDescription()
+					},
+					ticStudyInfo: {
+						matiere:value.getSubject(), 
+						prof:value.getTeacher(), 
+						theme:value.getTheme(), 
+						semestre:value.getSemester()
+					}
+				})
 				break;
 			case "Sharing":
-				this.setState({isSharing: true, isStudy: false, isCarPooling: false, Categorie: "Objet", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()}, ticSharingInfo: {objet: value.getItem()},})
+				this.setState({
+					isSharing: true,
+					isStudy: false,
+					isCarPooling: false,
+					Categorie: "Objet",
+					conversation: conversation, 
+					ticGlobalInfo: {
+						titre: value.getTitle(),
+						description:value.getDescription()
+					}, 
+					ticSharingInfo: {
+						objet: value.getItem()
+					}
+				})
 				console.log(value.getDescription());
 				console.log(this.state.ticGlobalInfo.description);
 				break;
 			case "CarPooling":
-				this.setState({isSharing: false, isStudy: false, isCarPooling: true, Categorie: "Covoiturage", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()},ticCarpoolingInfo: {arrivee:value.getArrivalLocation(), depart:value.getDeparturLocation(), arriveeTime:value.getArrivalTime(), departTime:value.getDeparturTime(), places:value.getPlaces()} })
+				this.setState({
+					isSharing: false,
+					isStudy: false,
+					isCarPooling: true,
+					Categorie: "Covoiturage",
+					conversation: conversation, 
+					ticGlobalInfo: {
+						titre: value.getTitle(),
+						description: value.getDescription()
+					},
+					ticCarpoolingInfo: { 
+						arrivee: value.getArrivalLocation(), 
+						depart: value.getDeparturLocation(),
+						arriveeTime: value.getArrivalTime(),
+						departTime: value.getDeparturTime(),
+						places: value.getPlaces()
+					}
+				})
 				break;
 			default:
-				this.setState({isSharing: false, isStudy: false, isCarPooling: false, Categorie: "" })
-				alert("Pas de Categorie")
-		}
-		
+				this.setState({
+					isSharing: false,
+					isStudy: false,
+					isCarPooling: false,
+					Categorie: "",
+					conversation: conversation
+				})
+			}
 		})
-	
 	}
-
-	/*
-	onCascaderChange(value) {
-		switch(String(value)) {
-			case "Tutorat": 
-				this.setState({isSharing: false, isStudy: true, isCarPooling: false, Categorie: "Tutorat" })
-				break;
-			case "Objet":
-				this.setState({isSharing: true, isStudy: false, isCarPooling: false, Categorie: "Objet" })
-				break;
-			case "Covoiturage":
-				this.setState({isSharing: false, isStudy: false, isCarPooling: true, Categorie: "Covoiturage"})
-				break;
-			default:
-				this.setState({isSharing: false, isStudy: false, isCarPooling: false, Categorie: "" })
-				alert("Pas de Categorie")
-		}
-	}
-	*/
 	
 	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
 	{
-		console.log(this.props);
 		const IdTicket= this.props.match.params.id ; //
-		//const IdTicket="-LTdiqMjM6UUvG2TO2ws";
-		console.log(IdTicket);
 		var tlc= new TicketListControleur;
-		t = await tlc.retriveTicket(IdTicket).then((value) => {
-			return value
-		});
-		return t
-		
-			
+		let ticket = await tlc.retriveTicket(IdTicket)
+		return ticket
 	}
 	
 	
 	
 	
   render() {
-	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID="indefini",desactive) 
+	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID="indefini") 
 	{
 		return 	<div>
 					<h3 style= {{color:colorH3}}>{titreH3}</h3>
-					<Input ref={ID} disabled={desactive} defaultValue={desactive ? valueInput : ""} style= {{color:colorInput}} id={ID}/>
+					<Input ref={ID} disabled defaultValue={valueInput} style={{color:colorInput}} id={ID}/>
 				</div>;
 	}
 	
-
-
-	
-	
-	let component;
-	
+	let component = null;
 	if(this.state.isStudy)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Matiere",this.state.ticStudyInfo.matiere,'#42A6FB',"matiere", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Professeur",this.state.ticStudyInfo.prof,'#42A6FB',"prof", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Thème",this.state.ticStudyInfo.theme,'#42A6FB',"theme", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Semestre",this.state.ticStudyInfo.semestre,'#42A6FB',"semestre", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{h3PlusInput('#7F7F7F',"Matiere",this.state.ticStudyInfo.matiere,'#42A6FB',"matiere")}
+			{h3PlusInput('#7F7F7F',"Professeur",this.state.ticStudyInfo.prof,'#42A6FB',"prof")}
+			{h3PlusInput('#7F7F7F',"Thème",this.state.ticStudyInfo.theme,'#42A6FB',"theme")}
+			{h3PlusInput('#7F7F7F',"Semestre",this.state.ticStudyInfo.semestre,'#42A6FB',"semestre")}
 		</div>
 	}
 	else if(this.state.isSharing)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Objet",this.state.ticSharingInfo.objet,'#42A6FB',"objet", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{h3PlusInput('#7F7F7F',"Objet",this.state.ticSharingInfo.objet,'#42A6FB',"objet")}
 		</div>
 	}
 	else if(this.state.isCarPooling)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart")}
+			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee")}
+			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places")}
+			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date")}
+			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date")}
 		</div>
 	}
-	else
-	{
-		component = null
-	}
-	
-	
-	
-	
-	
 
-
-    return (
-	
-	<Layout style={{ height: '90vh'}} >
+	return (
+	<Layout>
 		<Top/>
-		<Content style={{ margin: '42px 16px'}}>
+		<Content style={{ margin: '42px 10%'}}>
 			<Layout>
-			
-				<Row style={{left:0, width:150 }}>
+				<Row>
 					<h1 style= {{color:'#7F7F7F'}}>DEMANDE</h1>
 				</Row>
-				<Row type="flex" justify="space-around" style={{ textAlign:'center'}}>
-					<Col span={16} >
-						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
-					</Col>
-					<Col span={6}>
-						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
-						<Cascader options={this.state.categorieOptions}  value={[this.state.Categorie]} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>
-					</Col>
-				</Row>
-				{component}
-				<Row>
-					<div style={{left:0, width:100, background: '#2699FB',textAlign:'center',padding:10}}>
-						<h5 style= {{color:'#fff'}}>DESCRIPTION</h5>
+				<Row type="flex" justify="space-between"  style={{ textAlign:'center'}}>
+					<div style={{ width: '600px'}}>
+						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title')}
 					</div>
-						<TextArea  value={this.state.isViewMode ? this.state.ticGlobalInfo.description : ""} />
-						
+					<div>
+						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
+						<Cascader options={this.state.categorieOptions}  value={[this.state.Categorie]} disabled style= {{color:'#42A6FB'}}/>
+					</div>
 				</Row>
-				<Chat conversation={this.state.conversation} allowPublication={this.context.isConnected()} />
+
+				<div style={{ marginTop: 60 }} >
+					{component}
+				</div>
+				<Divider style={{ margin: '30px 0' }} />
+				<Row>
+					<h3 style= {{color:'#7F7F7F'}}>Description</h3>
+					<TextArea disabled style= {{color:'#42A6FB'}} value={this.state.ticGlobalInfo.description} />
+				</Row>
+				<Divider style={{ margin: '30px 0' }} />
+				<Row>
+					<h3 style= {{color:'#7F7F7F'}}>Conversation</h3>
+					<Chat conversation={this.state.conversation} allowPublication={this.context.isConnected()} />
+				</Row>
+
 				<Row>
 					<Col>
+						<NavLink to={HOME} >
 							<Button type="primary" >Retour</Button>
+						</NavLink>
 					</Col>
 				</Row>
 			</Layout>
 		</Content>
+		<Bottom/>
 	</Layout>
     );
   }

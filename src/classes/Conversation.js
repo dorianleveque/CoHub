@@ -134,7 +134,7 @@ class Conversation{
 		// l'ensembles des messages de la conversation
 		// puis les messages ajoutés lorsque des messages
 		// sont ajoutés à la base de donnée
-
+		
 		database.ref().child('Conversations/'+this.getId()).on('child_added', (snapshot) => {
 			const idMessage = snapshot.key
 			const { sender, content, date } = snapshot.val()

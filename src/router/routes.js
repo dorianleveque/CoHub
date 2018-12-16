@@ -119,7 +119,7 @@ export class PrivateRoute extends Component {
     render() {
         let { component, path, computedMatch, redirectTo, ...otherProps } = this.props
         const auth = this.context
-        return auth.isValide() ? <PublicRoute 
+        return auth.isConnected() ? <PublicRoute 
                                     component={component}
                                     path={path}
                                     {...otherProps} /> 

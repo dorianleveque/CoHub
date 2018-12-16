@@ -75,8 +75,7 @@ class Demande_Consultation  extends Component {
 						objet: value.getItem()
 					}
 				})
-				console.log(value.getDescription());
-				console.log(this.state.ticGlobalInfo.description);
+				
 				break;
 			case "CarPooling":
 				this.setState({

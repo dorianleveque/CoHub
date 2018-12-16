@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import Top from '../components/Top'
 import { Input, Divider, Layout, Row, Col, Mention, Button, Cascader } from 'antd';
-import Comment from '../components/comment';
+import Chat from '../components/discussion/Chat';
 import sessionStore from '../stores/session-store';
+import { SessionStore } from '../stores';
+import TicketListControleur from '../classes/TicketListControleur';
 const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;
 //function onChange(editorState) {console.log(toString(editorState));}
@@ -15,22 +17,27 @@ function leaule()
 	{
 		//var hu = document.getElementById("semestre").value;
 		//alert(hu);
-		console.log("hey !");
+		//console.log("hey !");
 	}
 
 class Demande_Consultation  extends Component {
-
+	static contextType = SessionStore
 	constructor() {
 		super();
 		this.state = {
 			isSharing: false,
 			isStudy: false,
 			isCarPooling: false,
-			isViewMode: true
+			isViewMode: true,
+			conv: null
 		}
 	}
 	componentDidMount() {
-		
+		// pour test
+		var tlc = new TicketListControleur()
+		tlc.retriveTicket('-LTXiYIDK8SvyiK9JTom').then( (ticket) => {
+			this.setState({ conv: ticket.getConversation() })
+		})
 	}
 	
 	onCascaderChange(value) {
@@ -207,11 +214,13 @@ class Demande_Consultation  extends Component {
 								</Row>
 							</div>
 	
+
+
     return (
 
       <Layout>
         <Top />
-        <Layout style={{ background: '#F1F9FF' }}>
+        <Layout>
           <Content style={{ margin: '24px 16px', padding: 24 }}>
             <div>
               {Demande_titre}
@@ -222,8 +231,8 @@ class Demande_Consultation  extends Component {
               <Divider style={{ height: 0, position: 'relative', margin: 10 }} />
               {Ligne3}
               <Divider style={{ height: 0, position: 'relative', margin: 40 }} />
-
-              <Comment allowPublication={this.context.isValide()} />
+			
+			  <Chat conversation={this.state.conv} allowPublication={this.context.isConnected()} />
             </div>
 
 

@@ -124,7 +124,12 @@ class Demande_Consultation  extends Component {
 		if (ticket) {
 			let requester = ticket.getRequester()
 			let currentUser = this.context.getCurrentUser()
-			return requester.checkRights(currentUser)
+			if (currentUser){
+				return requester.checkRights(currentUser)
+			}
+			else {
+				return false
+			}
 		}
 		else {
 			return false

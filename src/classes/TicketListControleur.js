@@ -53,6 +53,7 @@ class TicketListControleur {
 				}
 			})
 			const pageCount = parseInt(idTicketList.length / nbTicket) + idTicketList.length % nbTicket
+			idTicketList = idTicketList.reverse()
 			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
 			
 			// création des tickets

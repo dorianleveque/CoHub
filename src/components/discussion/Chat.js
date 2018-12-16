@@ -20,7 +20,6 @@ class Chat extends Component {
   componentWillReceiveProps(props) {
     const conversation = props.conversation
     if (conversation) {
-      let messages = conversation.getMessages()
       if (!this.state.commentsRetrieved) {
         conversation.onMessageAdded(() => {
           this.setState({ 

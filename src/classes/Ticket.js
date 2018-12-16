@@ -147,7 +147,7 @@ class Ticket{
 	 */
 	edit(options)
 	{
-		var {title, description, category} = options;
+		var {title, description} = options;
 		if(title != null)
 		{
 			this.setTitle(title);
@@ -156,10 +156,7 @@ class Ticket{
 		{
 			this.setDescription(description);
 		}
-		if(category != null)
-		{
-			this.setCategory(category);
-		}
+		
 	}
 
 	/**

@@ -4,7 +4,7 @@ import { SessionStore } from '../stores'
 import { Input,Layout,Row, Col, Mention, Button, Cascader, Form, Divider} from 'antd';
 import { NavLink } from 'react-router-dom';
 import TicketListControleur from '../classes/TicketListControleur.js';
-import { SessionStore } from '../stores';
+//import { SessionStore } from '../stores';
 import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
 import { HOME } from '../router/routes';
@@ -16,8 +16,8 @@ const FormItem = Form.Item;
 class Demande_Consultation  extends Component {
 
 	static contextType = SessionStore
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = { 
 			isSharing: false,
 			isStudy: false,
@@ -29,7 +29,87 @@ class Demande_Consultation  extends Component {
 				{value: 'Objet',label: "Prêt d'objet"},
 				{value: 'Covoiturage',label: 'Covoiturage'}
 			],
+			conversation: null,
+			ticGlobalInfo: {titre: null, categorie: null, description: null},
+			ticSharingInfo: {objet: null},
+			ticStudyInfo: {matiere:null, prof:null, theme:null, semestre: null},
+			ticCarpoolingInfo: {arrivee:null, depart:null, arriveeTime:null, departTime:null, places:null},
+			idTicket:null,
+			ticket:null,
 		}
+		
+		this.ticketRecup().then((value)=> {
+			const cat = value.getCategory();
+			const conversation = value.getConversation() 
+			
+			switch(String(cat)) {
+			case "Study": 
+				this.setState({
+					isSharing: false, 
+					isStudy: true, 
+					isCarPooling: false, 
+					Categorie: "Tutorat",
+					conversation: conversation, 
+					ticGlobalInfo:{ 
+						titre: value.getTitle(),
+						description:value.getDescription()
+					},
+					ticStudyInfo: {
+						matiere:value.getSubject(), 
+						prof:value.getTeacher(), 
+						theme:value.getTheme(), 
+						semestre:value.getSemester()
+					}
+				})
+				break;
+			case "Sharing":
+				this.setState({
+					isSharing: true,
+					isStudy: false,
+					isCarPooling: false,
+					Categorie: "Objet",
+					conversation: conversation, 
+					ticGlobalInfo: {
+						titre: value.getTitle(),
+						description:value.getDescription()
+					}, 
+					ticSharingInfo: {
+						objet: value.getItem()
+					}
+				})
+				console.log(value.getDescription());
+				console.log(this.state.ticGlobalInfo.description);
+				break;
+			case "CarPooling":
+				this.setState({
+					isSharing: false,
+					isStudy: false,
+					isCarPooling: true,
+					Categorie: "Covoiturage",
+					conversation: conversation, 
+					ticGlobalInfo: {
+						titre: value.getTitle(),
+						description: value.getDescription()
+					},
+					ticCarpoolingInfo: { 
+						arrivee: value.getArrivalLocation(), 
+						depart: value.getDeparturLocation(),
+						arriveeTime: value.getArrivalTime(),
+						departTime: value.getDeparturTime(),
+						places: value.getPlaces()
+					}
+				})
+				break;
+			default:
+				this.setState({
+					isSharing: false,
+					isStudy: false,
+					isCarPooling: false,
+					Categorie: "",
+					conversation: conversation
+				})
+			}
+		})
 	}
 	
 	
@@ -59,21 +139,23 @@ class Demande_Consultation  extends Component {
 				const auth = this.context;
 				const user = auth.getCurrentUser();
 				
+				
+				
 				// creation du bon type de ticket
 				if(this.state.isStudy)
 				{
-					var options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
-					var t =user.createTicket(null,values.title,values.description,"Study",null,null, options);
+					var options = {"title":values.title , "description":values.description , "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
+					var t =user.editTicket(this.state.ticket,options);
 				}
 				else if(this.state.isSharing)
 				{
-					var options = { "item": values.objet};
-					var t =user.createTicket(null,values.title,values.description,"Sharing",null,null, options);
+					var options = {"title":values.title , "description":values.description , "item": values.objet};
+					var t =user.editTicket(this.state.ticket,options);
 				}
 				else if(this.state.isCarPooling)
 				{
-					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
-					var t =user.createTicket(null,values.title,values.description,"CarPooling",null,null, options);
+					var options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
+					var t =user.editTicket(this.state.ticket,options);
 				}
 				else
 				{
@@ -89,6 +171,18 @@ class Demande_Consultation  extends Component {
 		});
 	}
 	
+	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
+	{
+		//const IdTicket= this.props.match.params.id ; //
+		const IdTicket="-LTt4ArWywKnz3gHvh3S";
+		var tlc= new TicketListControleur; 
+		let ticket = await tlc.retriveTicket(IdTicket);
+		this.setState({idTicket: IdTicket, ticket: ticket });
+		console.log(this.state.ticket.getCreationDate(),"OK"); // DEBUG
+		return ticket
+	}
+	
+	
   render() {
 	 const { getFieldDecorator } = this.props.form
 	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID,desactive, style=null)
@@ -97,7 +191,7 @@ class Demande_Consultation  extends Component {
 					<h3 style= {{color:colorH3}}>{titreH3}</h3>
 					<FormItem required={true} >
 					{
-						getFieldDecorator(ID, {rules: [ {required: true, message: 'champ requis'}]})(<Input disabled={desactive} style= {{color:colorInput}} />)
+						getFieldDecorator(ID, {rules: [ {required: true, message: 'champ requis' }], initialValue:valueInput })(<Input disabled={desactive} style= {{color:colorInput}} />)
 					}
 					</FormItem>
 				</div>;
@@ -108,26 +202,26 @@ class Demande_Consultation  extends Component {
 	if(this.state.isStudy)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Matiere","Maths",'#42A6FB',"matiere", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Professeur","Mr le prof",'#42A6FB',"prof", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Thème","Le theme",'#42A6FB',"theme", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Semestre","SX",'#42A6FB',"semestre", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Matiere",this.state.ticStudyInfo.matiere,'#42A6FB',"matiere")}
+			{h3PlusInput('#7F7F7F',"Professeur",this.state.ticStudyInfo.prof,'#42A6FB',"prof")}
+			{h3PlusInput('#7F7F7F',"Thème",this.state.ticStudyInfo.theme,'#42A6FB',"theme")}
+			{h3PlusInput('#7F7F7F',"Semestre",this.state.ticStudyInfo.semestre,'#42A6FB',"semestre")}
 		</div>
 	}
 	else if(this.state.isSharing)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Objet","Tournevis",'#42A6FB',"objet", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Objet",this.state.ticSharingInfo.objet,'#42A6FB',"objet")}
 		</div>
 	}
 	else if(this.state.isCarPooling)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Départ","Brest",'#42A6FB',"depart", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Arrivée","Marseilles",'#42A6FB',"arrivee", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Places","3",'#42A6FB',"places", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date de départ","11/06/2018",'#42A6FB',"depart_date", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée","12/06/2018",'#42A6FB',"arrivee_date", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart")}
+			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee")}
+			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places")}
+			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date")}
+			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date")}
 		</div>
 	}
 	
@@ -148,14 +242,14 @@ class Demande_Consultation  extends Component {
 				</Row>
 				<Row type="flex" justify="space-around" style={{ textAlign:'center'}}>
 					<Col span={16} >
-						{h3PlusInput('#7F7F7F',"TITRE","Titre du ticket",'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
+						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
 					</Col>
 					<Col span={6}>
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
 						<FormItem required={true} >
 						{
-							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}]})
-							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>)
+							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}], initialValue:[this.state.Categorie] })
+							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled style= {{color:'#42A6FB'}}/>)
 						}
 						</FormItem>
 					</Col>
@@ -167,14 +261,14 @@ class Demande_Consultation  extends Component {
 					</div>
 					<FormItem>
 					{
-						getFieldDecorator('description', {rules: [ {required: true, message: 'description requise'}]})(<TextArea  />)
+						getFieldDecorator('description', {rules: [ {required: true, message: 'description requise'}], initialValue:this.state.ticGlobalInfo.description})(<TextArea style= {{color:'#42A6FB'}} />)
 					}
 					</FormItem>
 				</Row>
 				<Row>
 					<Col>
 						<FormItem style={{ textAlign:"right" }} >
-							<Button htmlType="submit" type="primary" >Aider cette personne</Button>
+							<Button htmlType="submit" type="primary" >Modifier le ticket</Button>
 						</FormItem>
 					</Col>
 				</Row>

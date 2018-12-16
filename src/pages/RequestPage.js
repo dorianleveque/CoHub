@@ -17,7 +17,7 @@ class Demande_Consultation  extends Component {
 		super(props);
 		this.state = {
 			isSharing: false,
-			isStudy: true,
+			isStudy: false,
 			isCarPooling: false,
 			Categorie:"Tutorat",
 			categorieOptions: [

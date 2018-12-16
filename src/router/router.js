@@ -19,6 +19,7 @@ import { HOME,
 import HomePage             from '../pages/HomePage'
 import RequestCreatorPage   from '../pages/RequestCreatorPage'
 import RequestPage          from '../pages/RequestPage'
+import RequestPageEdit      from '../pages/RequestPageEdit'
 import SignInPage           from '../pages/SignInPage'
 import SignUpPage           from '../pages/SignUpPage'
 import NotFoundPage         from '../pages/NotFoundPage'
@@ -35,11 +36,11 @@ class Router extends Component {
         <BrowserRouter>
             <Switch>
                 <PublicRoute    component={HomePage           } exact path={HOME}           />
-                <PrivateRoute   component={RequestCreatorPage } exact path={CREATE_DEMAND}  redirectTo={SIGN_IN} />
                 <PublicRoute    component={SignInPage         } exact path={SIGN_IN}        />
                 <PublicRoute    component={SignUpPage         } exact path={SIGN_UP}        />
                 <PublicRoute    component={RequestPage        } exact path={DISPLAY_DEMAND} />
-                <PrivateRoute   component={RequestPage        } exact path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
+                <PrivateRoute   component={RequestCreatorPage } exact path={CREATE_DEMAND}  redirectTo={SIGN_IN} />
+                <PrivateRoute   component={RequestPageEdit    } exact path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
                 <ProtectedRoute component={ResetPasswordPage  }       path={ACCOUNT}        withSearchParams={{ mode: 'resetPassword' }} />
                 <PublicRoute    component={NotFoundPage       } />
             </Switch>

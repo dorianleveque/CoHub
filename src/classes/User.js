@@ -77,26 +77,27 @@ class User {
 	 */
 	createTicket(id, title, description, category, creationDate, idConversation, options = null)
 	{
+		let idConv = (idConversation) ? idConversation : database.ref().child('Conversations').push().key
 		if (options === null)
 		{
-			var t = new Ticket (id, title, description, category, creationDate, this, idConversation);
+			var t = new Ticket (id, title, description, category, creationDate, this, idConv);
 		}
 		else
 		{
 			if (category === "CarPooling" )
 			{
 				const { departurLocation, arrivalLocation, departurTime, arrivalTime, places } = options;
-				var t = new TicketCarPooling(id, title, description, creationDate, this, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation);
+				var t = new TicketCarPooling(id, title, description, creationDate, this, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConv);
 			}
 			if (category === "Study" )
 			{
 				const { subject, semester, teacher, theme } = options;
-				var t = new TicketStudy(id, title, description, creationDate, this, subject, semester, teacher, theme, idConversation);
+				var t = new TicketStudy(id, title, description, creationDate, this, subject, semester, teacher, theme, idConv);
 			}
 			if  (category === "Sharing")
 			{
 				const { item } = options;
-				var t = new TicketSharing(id, title, description, creationDate, this, item, idConversation);
+				var t = new TicketSharing(id, title, description, creationDate, this, item, idConv);
 			}
 		}
 		return t;

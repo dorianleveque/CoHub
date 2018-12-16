@@ -162,8 +162,8 @@ class Demande_Consultation  extends Component {
 	
 	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
 	{
-		//const IdTicket= this.props.match.params.id ; //
-		const IdTicket="-LTt4ArWywKnz3gHvh3S";
+		const IdTicket= this.props.match.params.id ; //
+		//const IdTicket="-LTt4ArWywKnz3gHvh3S";
 		var tlc= new TicketListControleur; 
 		let ticket = await tlc.retriveTicket(IdTicket);
 		this.setState({idTicket: IdTicket, ticket: ticket });

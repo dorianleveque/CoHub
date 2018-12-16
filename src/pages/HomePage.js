@@ -35,7 +35,7 @@ class HomePage extends Component {
 			this.setState({
 				cardsData : [...tickets],
 				numberOfPages : pages ,
-				params : []
+				params : [12]
 			})//setState
 		}) //Then searchTickets
 
@@ -64,7 +64,7 @@ class HomePage extends Component {
 				cardsData : [],// [...this.state.cardsData,...tickets],
 			})
 		
-		
+		console.log(...this.state.params)
 		this.tlc.searchTickets(pageNumber,...this.state.params).then((value) => {
 
 			this.changeCards(value); //add param in state
@@ -113,6 +113,13 @@ class HomePage extends Component {
 				cardsData : [...tickets],// [...this.state.cardsData,...tickets],
 				numberOfPages : pages ,
 			})
+			if (this.state.cardsData.length ==0)
+				{
+					
+				this.setState({
+				cardsData : ["empty"],// [...this.state.cardsData,...tickets],
+				})
+				}
 
 	}
 
@@ -125,7 +132,11 @@ class HomePage extends Component {
 		if (this.state.cardsData.length ==0){  //show loading when cards are empty
 			return (<div><br/><br/><Spin size = "large"/><br/><br/></div>)
 		}
+		
+		else if (this.state.cardsData ==["empty"]){
+			return (<div>Nous ne parvenons pas à trouvez de ticket, veuillez réessayer plus tard </div>)
 
+		}
 		else {
 		this.state.cardsData.forEach(function(entry){ //show tickets
 			values.push({ title : entry.getTitle()  , author : entry.getRequester() , description :entry.getDescription() , category : entry.getCategory() , key : entry.getId() , })
@@ -159,7 +170,7 @@ class HomePage extends Component {
 		return (
 			<Layout>
 				<Layout style={{ minHeight: "600px" }}>
-					< SiderMenu visible = {this.state.visible} sortItems ={this.sortItems} />
+					< SiderMenu visible = {this.state.visible} sortItems ={this.sortItems} searchItems={this.searchItems}/>
 					<Layout>
 						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} searchItems={this.searchItems} orderItems = {this.orderItems} />
 						<Content style={{ padding: "0 40px" }} >

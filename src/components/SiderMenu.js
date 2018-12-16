@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Menu } from 'antd';
+import { Menu , Input} from 'antd';
 import { Layout } from 'antd';
 const { Sider } = Layout;
 
+const Search = Input.Search;
 
 class SiderMenu extends Component {
   constructor(props) { // constructuer de Top
@@ -17,6 +18,12 @@ class SiderMenu extends Component {
 		this.props.sortItems(category)
 	}
 
+
+
+	searchItems = (value) => {
+	  this.props.searchItems(value)
+  	}
+
 	changeCategory = (e) => {
 
 		var key = e.key ;
@@ -26,20 +33,24 @@ class SiderMenu extends Component {
 			cat ="";
 		}
 
-		if (key ==2) {
+		else if (key ==2) {
 			cat ="Study";
 		}
 
 
-		if (key ==3) {
+		else if (key ==3) {
 			cat ="CarPooling";
 		}
 
 
-		if (key ==4) {
+		else if (key ==4) {
 			cat ="Sharing";
 		}
-
+		
+		else {
+			return 0
+		}
+		
 		this.sortItems(cat);
 
 
@@ -68,6 +79,11 @@ class SiderMenu extends Component {
             </Menu.Item>
             <Menu.Item key="4">
               <span>Prêt</span>
+            </Menu.Item>
+		<Menu.Item key="5">
+	<Search
+            onSearch={value => this.searchItems(value)}
+            style={{ width: '130px'  }}/>
             </Menu.Item>
           </Menu>
         </div>

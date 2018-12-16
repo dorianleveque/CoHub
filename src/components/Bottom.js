@@ -20,7 +20,7 @@ const style = {
         color: 'white'
     },
     footer: {
-        background: '#595959'
+        background: 'rgb(60, 60, 60)'
     },
     imgCohub: {
         width: '50px',
@@ -45,9 +45,9 @@ class Bottom extends Component {
                 <Row type='flex' justify='center' >
                     <Col style={style.header}>
                         <img alt="cohub" src={ cohub } style={ style.imgCohub } />
-                        <h4 style={style.citation}>
-                            “ Une solution de partage et d'entraide à l'ENIB ”
-                        </h4>
+                        <h3 style={style.citation}>
+                            <i>“ Une solution de partage et d'entraide à l'ENIB ”</i>
+                        </h3>
                     </Col>
                 </Row>
                 <Row type='flex' justify='space-around' gutter={30} >
@@ -56,7 +56,7 @@ class Bottom extends Component {
                             <h4 style={style.title} >DESCRIPTION</h4>
                             <p style={style.text} >
                                 Projet réalisé dans le cadre de notre cursus 
-                                à l'école national d'ingénieurs de Brest (ENIB)
+                                à l'école national d'ingénieurs de Brest (ENIB),
                                 en semestre S6A 2018
                             </p>
                         </div>
@@ -78,7 +78,7 @@ class Bottom extends Component {
                             <a href="https://git.enib.fr/d5levequ/CoHub.git">
                                 <div style={{...style.text, ...style.moreInfo}} >
                                     <Icon type='gitlab' style={{ color: '#fa7035', fontSize: '35px' }} />
-                                    <span>Gitlab du projet</span>
+                                    <span>GitLab du projet</span>
                                 </div>
                             </a>
                         </div>

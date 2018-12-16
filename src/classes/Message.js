@@ -1,32 +1,23 @@
-import firebase, { database } from '../firebase'
-
 class Message {
 
 	#id;
-	#text;
+	#content;
 	#sender;
 	#date;
 
 	/**
 	 * 
-	 * @param {int} id : unique key
-	 * @param {string} text 
+	 * @param {Int} id : unique key
+	 * @param {String} content 
 	 * @param {User} sender 
-	 * @param {string} date 
+	 * @param {Date} date 
 	 */
-	constructor(id, text, sender, date)
+	constructor(id, content, sender, date)
 	{
 		this.#id = id;
-		this.#text = text;
+		this.#content = content;
 		this.#sender = sender;
-		if (date === null)
-		{
-			this.#date = new Date();
-		}
-		else
-		{
-			this.#date = new Date(date); 
-		}
+		this.#date = date;
 	}
 
 	getId()
@@ -34,19 +25,32 @@ class Message {
 		return this.#id;
 	}
 
-	setId(id)
+	getContent()
 	{
-		this.#id = id;
+		return this.#content; 
 	}
 
-	getText()
+	/**
+	 * Ajoute le contenu au message
+	 * @param {String} content Contenu du message
+	 */
+	setContent(content) 
 	{
-		return this.#text; 
+		this.#content = content
 	}
 
 	getSender()
 	{
 		return this.#sender;
+	}
+
+	/**
+	 * Ajoute l'expéditeur au message
+	 * @param {User} sender expéditeur du message
+	 */
+	setSender(sender)
+	{
+		this.#sender = sender
 	}
 
 	getDate()
@@ -55,45 +59,22 @@ class Message {
 	}
 
 	/**
-	 * Save the message on firebase
+	 * Ajoute une date d'envoi au message
+	 * @param {Date} date date d'envoi du message
 	 */
-	save()
+	setDate(date)
 	{
-		var year = this.getDate().getFullYear();
-		var month =  this.getDate().getMonth();
-		var day  =  this.getDate().getDate();
-		var hours = this.getDate().getHours();
-		var minutes = this.getDate().getMinutes();
-		var seconds = this.getDate().getSeconds();
-		if (this.getId() != null)
-		{
-			firebase.database().ref('Messages/' + this.getId()).set({
-				message : this.#text,
-				sender : this.#sender.getId(),
-				date : day + "-" + month + "-" + year + " "+ hours + ":" + minutes + ":" + seconds
-			});
-		}
-		else
-		{
-			let id = firebase.database().ref().child('Messages').push().key
-			this.setId(id);
-			let postData = {}
-			postData[id] = {
-				message : this.#text,
-				sender : this.#sender.getId(),
-				date : day + "/" + month + "/" + year
-			}
-			firebase.database().ref('Messages/').update(postData);
-		}
+		this.#date = date
 	}
 
-	/**
-	 * Delete the message on firebase
-	 */
-	delete()
-	{
-		firebase.database().ref('Messages/' + this.getId()).remove();
+	save() {
+		let messageData = {}
+		messageData[this.getId()] = {
+			sender: this.getSender().getId(),
+			content: this.getContent(),
+			date: this.getDate().toISOString()
+		}
+		return messageData
 	}
-
 }
 export default Message

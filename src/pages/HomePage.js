@@ -65,7 +65,7 @@ class HomePage extends Component {
 			})
 		
 		console.log(...this.state.params)
-		this.tlc.searchTickets(pageNumber,...this.state.params).then((value) => {
+		this.tlc.searchTickets(pageNumber-1,...this.state.params).then((value) => {
 
 			this.changeCards(value); //add param in state
 
@@ -163,7 +163,7 @@ class HomePage extends Component {
 		
 		
 		space = <Row><br /></Row>;
-		pagination = <Row> <BoutonCreationDemande/> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10} onChange={this.onChange.bind(this)}  />  </div></Row>;
+		pagination = <Row> <BoutonCreationDemande/> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10+10} onChange={this.onChange.bind(this)}  />  </div></Row>;
 		
 		
 		return (

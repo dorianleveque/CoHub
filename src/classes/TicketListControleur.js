@@ -52,7 +52,7 @@ class TicketListControleur {
 					idTicketList.push( idTicket )
 				}
 			})
-			const pageCount = parseInt(idTicketList.length / nbTicket) + idTicketList.length % nbTicket
+			const pageCount = parseInt(idTicketList.length / nbTicket)
 			idTicketList = idTicketList.reverse()
 			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
 			

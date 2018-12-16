@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Row, Pagination } from 'antd'
+import { Layout, Row, Pagination, Card, Skeleton } from 'antd'
 import Top from '../components/Top'
 import SiderMenu from '../components/SiderMenu'
 import DemandeCard from '../components/DemandeCard';
@@ -18,20 +18,31 @@ class HomePage extends Component {
 		this.ismenu = true;
 		const isDesktop =  window.innerWidth <= 500;
 
-		this.state = { visible: isDesktop , 
-			       cardsData :[],
-				numberOfPages : 5
-			      }
+		var squelletonsCard = []
+		for(var i=0; i<12; i++) {
+			squelletonsCard.push(
+				<Card style={{  margin: '0px 20px', marginTop: '40px', width: '250px', height: '120px' }} >
+					<Skeleton loading active paragraph={{ rows: 3 }} title={false} ></Skeleton>
+				</Card>)
+		}
 
-		var tlc = new TicketListControler();	
+		this.state = { 
+			visible: isDesktop , 
+			cardsData :[],
+			squelletonsCard: squelletonsCard,
+			numberOfPages : 1
+		}
 
-		tlc.searchTickets(0).then((value) => {
+		this.tlc = new TicketListControler();	
+
+		this.tlc.searchTickets(0, 12).then((value) => {
 			
 			var tickets = value.tickets
 			var pages  = value.pageCount
+			console.log(pages)
 			this.setState({
-				cardsData : [...this.state.cardsData,...tickets],
-				numerOfPages : pages ,
+				cardsData : tickets,
+				numberOfPages : pages ,
 			})//setState
 		}) //Then searchTickets
 
@@ -55,9 +66,9 @@ class HomePage extends Component {
 	}
 
 	onChange = (pageNumber) => {  //prblème de début du num de page TODO : Modification de la page
+		this.setState({ cardsData: [] })
 
-		this.tlc.searchTickets(pageNumber).then((value) => {
-
+		this.tlc.searchTickets(pageNumber, 12).then((value) => {
 			this.changeCards(value);
 
 		})
@@ -66,7 +77,7 @@ class HomePage extends Component {
 
 	searchItems = (text) =>{
 
-		this.tlc.searchTickets(0,20,null,text).then((value) => {
+		this.tlc.searchTickets(0,12,null,text).then((value) => {
 			this.changeCards(value);
 
 		})
@@ -75,7 +86,7 @@ class HomePage extends Component {
 	
 	sortItems = (category) =>{
 
-		this.tlc.searchTickets(0,20,category).then((value) => {
+		this.tlc.searchTickets(0,12,category).then((value) => {
 			this.changeCards(value);
 
 		})
@@ -86,9 +97,10 @@ class HomePage extends Component {
 
 			var tickets = value.tickets
 			var pages  = value.pageCount
+			console.log(pages)
 			this.setState({
-				cardsData : [...this.state.cardsData,...tickets],
-				numerOfPages : pages ,
+				cardsData : tickets,
+				numberOfPages : pages ,
 			})
 
 	}
@@ -114,11 +126,15 @@ class HomePage extends Component {
 		let space;
 		let pagination;
 	
+
 		
-		
-	 	cards =  <ul style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly' }} >
-			{this.Cards()}						
-			</ul>
+	 	cards =  <div style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly' }} >
+			{ 
+				(this.state.cardsData.length > 0)
+				? this.Cards()
+				: this.state.squelletonsCard
+			}			
+			</div>
 		
 		
 		

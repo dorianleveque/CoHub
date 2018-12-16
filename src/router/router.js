@@ -41,7 +41,6 @@ class Router extends Component {
                 <PublicRoute    component={RequestPage        } exact path={DISPLAY_DEMAND} />
                 <PrivateRoute   component={RequestPage        } exact path={EDIT_DEMAND}    redirectTo={SIGN_IN} />
                 <ProtectedRoute component={ResetPasswordPage  }       path={ACCOUNT}        withSearchParams={{ mode: 'resetPassword' }} />
-
                 <PublicRoute    component={NotFoundPage       } />
             </Switch>
         </BrowserRouter>

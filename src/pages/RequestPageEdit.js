@@ -6,7 +6,6 @@ import { TicketStudy } from '../classes/TicketStudy.js'
 import { TicketSharing } from '../classes/TicketSharing.js'
 import { TicketCarPooling } from '../classes/TicketCarPooling.js'
 import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
-import { SessionStore } from '../stores'
 
 const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;
@@ -31,7 +30,7 @@ function ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'
 	var t=null;
 
 class Demande_Consultation  extends Component {
-	static contextType = SessionStore
+
 	constructor() {
 		super();
 		this.state = {
@@ -102,8 +101,8 @@ class Demande_Consultation  extends Component {
 	
 	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
 	{
-		const IdTicket= this.props.match.params.id ; //
-		//var IdTicket="-LTdiqMjM6UUvG2TO2ws";
+		//const IdTicket= this.props.match.params.id ; //
+		var IdTicket="-LTdiqMjM6UUvG2TO2ws";
 		console.log(IdTicket);
 		var tlc= new TicketListControleur;
 		t = await tlc.retriveTicket(IdTicket).then((value) => {
@@ -171,8 +170,6 @@ class Demande_Consultation  extends Component {
 	
 	
 	
-
-
     return (
 	
 	<Layout style={{ height: '90vh'}} >

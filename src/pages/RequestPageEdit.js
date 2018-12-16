@@ -7,7 +7,7 @@ import TicketListControleur from '../classes/TicketListControleur.js';
 //import { SessionStore } from '../stores';
 import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
-import { HOME } from '../router/routes';
+import { DISPLAY_DEMAND, applyRouteParams } from '../router/routes';
 
 const { Content } = Layout;
 const { TextArea } = Input
@@ -77,8 +77,6 @@ class Demande_Consultation  extends Component {
 						objet: value.getItem()
 					}
 				})
-				console.log(value.getDescription());
-				console.log(this.state.ticGlobalInfo.description);
 				break;
 			case "CarPooling":
 				this.setState({
@@ -138,9 +136,7 @@ class Demande_Consultation  extends Component {
 				console.log(this.state.Categorie);
 				const auth = this.context;
 				const user = auth.getCurrentUser();
-				
-				
-				
+				const history = this.props.history;
 				// creation du bon type de ticket
 				if(this.state.isStudy)
 				{
@@ -157,16 +153,9 @@ class Demande_Consultation  extends Component {
 					var options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
 					var t =user.editTicket(this.state.ticket,options);
 				}
-				else
-				{
-					alert("Il n'y a pas de catégorie. Ce message est normalement useless car la categorie est requise. Mais bon au cas où...");
-					throw "PROBLEME AU NIVEAU DES CATEGORIES ET DE L'ENVOI DU FORMULAIRE";
-				}
 				
 				t.save();
-			}
-			else {
-				console.log("Erreur fonction on submit"); 
+				history.push(applyRouteParams(DISPLAY_DEMAND, {id: this.props.match.params.id }));
 			}
 		});
 	}

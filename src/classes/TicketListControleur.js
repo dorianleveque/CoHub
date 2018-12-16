@@ -1,4 +1,4 @@
-import {database } from '../firebase'
+import { database } from '../firebase'
 import User from './User' 
 import Ticket from './Ticket'
 

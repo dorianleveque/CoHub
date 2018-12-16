@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-import {database} from '../firebase'
+import { database } from '../firebase'
 
 
 class TicketSharing extends Ticket{

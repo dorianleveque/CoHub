@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-import firebase, {database } from '../firebase'
+import { database } from '../firebase'
 
 class TicketStudy extends Ticket{
 
@@ -110,7 +110,7 @@ class TicketStudy extends Ticket{
 	save()
 	{
 		super.save();
-		firebase.database().ref('TicketsStudy/' + super.getId()).set({
+		database.ref('TicketsStudy/' + super.getId()).set({
 			subject : this.#subject,
 			semester : this.#semester,
 			teacher : this.#teacher,
@@ -124,7 +124,7 @@ class TicketStudy extends Ticket{
 	delete()
 	{
 		super.delete()
-		firebase.database().ref('TicketsStudy/' + super.getId()).remove();
+		database.ref('TicketsStudy/' + super.getId()).remove();
 	}
 
 };

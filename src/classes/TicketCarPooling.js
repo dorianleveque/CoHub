@@ -1,5 +1,5 @@
 import Ticket from './Ticket' 
-import firebase, {database } from '../firebase'
+import { database } from '../firebase'
 
 
 class TicketCarPooling extends Ticket{
@@ -129,7 +129,7 @@ class TicketCarPooling extends Ticket{
 	save()
 	{
 		super.save();
-		firebase.database().ref('TicketsCarPooling/' + super.getId()).set({
+		database.ref('TicketsCarPooling/' + super.getId()).set({
 			departurLocation : this.#departurLocation,
 			arrivalLocation : this.#arrivalLocation,
 			departurTime : this.#departurTime,
@@ -144,7 +144,7 @@ class TicketCarPooling extends Ticket{
 	delete()
 	{
 		super.delete()
-		firebase.database().ref('TicketsCarPooling/' + super.getId()).remove();
+		database.ref('TicketsCarPooling/' + super.getId()).remove();
 	}
 
 };

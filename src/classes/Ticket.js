@@ -1,5 +1,5 @@
 import Conversation from './Conversation' 
-import firebase, {database } from '../firebase'
+import { database } from '../firebase'
 
 
 class Ticket{
@@ -185,7 +185,7 @@ class Ticket{
 		//this.getConversation().save();
 		if (this.getId() != null)
 		{
-			firebase.database().ref('Tickets/' + this.#id).set({
+			database.ref('Tickets/' + this.#id).set({
 				title : this.#title,
 				description : this.#description,
 				category : this.#category,
@@ -197,7 +197,7 @@ class Ticket{
 		}
 		else
 		{
-			let id = firebase.database().ref().child('Tickets').push().key
+			let id = database.ref().child('Tickets').push().key
 			this.setid(id);
 			let postData = {}
 			postData[id] = {
@@ -209,7 +209,7 @@ class Ticket{
 				idHelper : helper,
 				idConversation : this.#conversation.getId()
 			}
-			firebase.database().ref('Tickets/').update(postData);
+			database.ref('Tickets/').update(postData);
 		}
 	}
 
@@ -218,7 +218,7 @@ class Ticket{
 	 */
 	delete()
 	{
-		firebase.database().ref('Tickets/' + this.getId()).remove();
+		database.ref('Tickets/' + this.getId()).remove();
 		this.#conversation.delete();
 	}
 };

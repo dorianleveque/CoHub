@@ -7,6 +7,7 @@ import { TicketSharing } from '../classes/TicketSharing.js'
 import { TicketCarPooling } from '../classes/TicketCarPooling.js'
 import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
 import { SessionStore } from '../stores'
+import Chat from '../components/discussion/Chat.js'
 
 const { Header, Footer, Sider, Content } = Layout;
 const { toString } = Mention;
@@ -29,11 +30,12 @@ function ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'
 	}
 */	
 	var t=null;
+	var IdTicket=null;
 
 class Demande_Consultation  extends Component {
 	static contextType = SessionStore
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			isSharing: false,
 			isStudy: true,
@@ -45,6 +47,7 @@ class Demande_Consultation  extends Component {
 				{value: 'Objet',label: "Prêt d'objet"},
 				{value: 'Covoiturage',label: 'Covoiturage'}
 			],
+			conversation: null,
 			
 			ticGlobalInfo: {titre: null, categorie: null, description: null},
 			ticSharingInfo: {objet: null},
@@ -102,8 +105,9 @@ class Demande_Consultation  extends Component {
 	
 	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
 	{
+		console.log(this.props);
 		const IdTicket= this.props.match.params.id ; //
-		//var IdTicket="-LTdiqMjM6UUvG2TO2ws";
+		//const IdTicket="-LTdiqMjM6UUvG2TO2ws";
 		console.log(IdTicket);
 		var tlc= new TicketListControleur;
 		t = await tlc.retriveTicket(IdTicket).then((value) => {
@@ -126,13 +130,8 @@ class Demande_Consultation  extends Component {
 				</div>;
 	}
 	
-	
-	 // Creation du ticket contenant les infos
 
-	 // Mise a jour des variables état pour l'affichage conditionnel 
-	//let cat = t.getCategory;
 
-	//console.log(cat);
 	
 	
 	let component;
@@ -200,6 +199,7 @@ class Demande_Consultation  extends Component {
 						<TextArea  value={this.state.isViewMode ? this.state.ticGlobalInfo.description : ""} />
 						
 				</Row>
+				<Chat conversation={this.state.conversation} allowPublication={this.context.isConnected()} />
 				<Row>
 					<Col>
 							<Button type="primary" >Retour</Button>

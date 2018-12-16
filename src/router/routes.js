@@ -21,9 +21,6 @@ export const SIGN_UP = '/compte/inscription'
 export const CREATE_DEMAND = '/creer-une-demande'
 export const DISPLAY_DEMAND = '/demande/:id'
 export const EDIT_DEMAND = '/demande/:id/edit'
-export const PAGE_TEST_DODO = '/test/dodo'
-
-export const TEST_JAROD_ANOUK = '/test/on-est-trop-fort'
 
 /**
  * Applique les paramètres sur une 

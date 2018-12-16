@@ -31,7 +31,6 @@ class HomePage extends Component {
 			
 			var tickets = value.tickets
 			var pages  = value.pageCount
-			console.log(pages)
 			this.setState({
 				cardsData : [...tickets],
 				numberOfPages : pages ,
@@ -59,14 +58,12 @@ class HomePage extends Component {
 	}
 //TODO TODO page number !!
 	onChange = (pageNumber) => {  //prblème de début du num de page TODO : Modification de la page
-		
 			this.setState({
 				cardsData : [],// [...this.state.cardsData,...tickets],
 			})
 		
 		console.log(...this.state.params)
 		this.tlc.searchTickets(pageNumber,...this.state.params).then((value) => {
-
 			this.changeCards(value); //add param in state
 
 		})
@@ -108,7 +105,6 @@ class HomePage extends Component {
 
 			var tickets = value.tickets
 			var pages  = value.pageCount
-			console.log(pages)
 			this.setState({
 				cardsData : [...tickets],// [...this.state.cardsData,...tickets],
 				numberOfPages : pages ,

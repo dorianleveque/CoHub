@@ -5,7 +5,7 @@ import Top from '../components/Top'
 import Bottom from '../components/Bottom'
 import { HOME } from '../router/routes'
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 
 const style = {
   content: {

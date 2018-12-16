@@ -1,174 +1,138 @@
 import React, { Component } from 'react';
+//import logo from './logo.svg';
 import Top from '../components/Top'
-import TicketListControleur from '../classes/TicketListControleur.js'
-import { Ticket } from '../classes/Ticket.js'
-import { TicketStudy } from '../classes/TicketStudy.js'
-import { TicketSharing } from '../classes/TicketSharing.js'
-import { TicketCarPooling } from '../classes/TicketCarPooling.js'
-import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader} from 'antd';
+import { SessionStore } from '../stores'
+import { Input,Layout,Row, Col, Mention, Button, Cascader, Form} from 'antd';
 
-const { Header, Footer, Sider, Content } = Layout;
-const { toString } = Mention;
-const Search = Input.Search;
+
+const { Content } = Layout;
+
 const { TextArea } = Input
-const options = [{value: 'Tutorat',label: 'Tutorat'},{value: 'Objet',label: 'Pret d objet'},{value: 'Covoiturage',label: 'Covoiturage'}];
-function onChange(value) {console.log(value);}
 
-/*
-function ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
-	{
-		//const IdTicket= this.props.match.params.id ; //
-		var IdTicket="-LTdiqMjM6UUvG2TO2ws";
-		console.log(IdTicket);
-		var tlc= new TicketListControleur;
-		var t = null;
-		t=tlc.retriveTicket(IdTicket);
-		console.log(t);
-		return t;
-	}
-*/	
-	var t=null;
+const FormItem = Form.Item;
 
 class Demande_Consultation  extends Component {
 
+	static contextType = SessionStore
 	constructor() {
 		super();
-		this.state = {
+		this.state = { 
 			isSharing: false,
-			isStudy: true,
+			isStudy: false,
 			isCarPooling: false,
-			isViewMode: true,
-			Categorie:"Tutorat",
+			isViewMode: false,
+			Categorie:"",
 			categorieOptions: [
 				{value: 'Tutorat',label: 'Tutorat'},
 				{value: 'Objet',label: "Prêt d'objet"},
 				{value: 'Covoiturage',label: 'Covoiturage'}
 			],
-			
-			ticGlobalInfo: {titre: null, categorie: null, description: null},
-			ticSharingInfo: {objet: null},
-			ticStudyInfo: {matiere:null, prof:null, theme:null, semestre: null},
-			ticCarpoolingInfo: {arrivee:null, depart:null, arriveeTime:null, departTime:null, places:null},
-			
-			
 		}
-		
-		
-		this.ticketRecup().then((value)=> 
-		{
-			let cat = value.getCategory();
-			console.log(cat);
-			
-			switch(String(cat)) {
-			case "Study": 
-				this.setState({isSharing: false, isStudy: true, isCarPooling: false, Categorie: "Tutorat", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()},ticStudyInfo: {matiere:value.getSubject(), prof:value.getTeacher(), theme:value.getTheme(), semestre:value.getSemester()}, })
-				break;
-			case "Sharing":
-				this.setState({isSharing: true, isStudy: false, isCarPooling: false, Categorie: "Objet", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()}, ticSharingInfo: {objet: value.getItem()},})
-				console.log(value.getDescription());
-				console.log(this.state.ticGlobalInfo.description);
-				break;
-			case "CarPooling":
-				this.setState({isSharing: false, isStudy: false, isCarPooling: true, Categorie: "Covoiturage", ticGlobalInfo:{titre: value.getTitle(), description:value.getDescription()},ticCarpoolingInfo: {arrivee:value.getArrivalLocation(), depart:value.getDeparturLocation(), arriveeTime:value.getArrivalTime(), departTime:value.getDeparturTime(), places:value.getPlaces()} })
-				break;
-			default:
-				this.setState({isSharing: false, isStudy: false, isCarPooling: false, Categorie: "" })
-				alert("Pas de Categorie")
-		}
-		
-		})
-	
 	}
-
-	/*
-	onCascaderChange(value) {
-		switch(String(value)) {
+	
+	
+	onCascaderChange = (value) => {
+		switch(String(value)) { // J'ai du appeller la fonction string car sinon il allait sur default 
 			case "Tutorat": 
-				this.setState({isSharing: false, isStudy: true, isCarPooling: false, Categorie: "Tutorat" })
+				this.setState({isSharing: false, isStudy: true, isCarPooling: false })
 				break;
 			case "Objet":
-				this.setState({isSharing: true, isStudy: false, isCarPooling: false, Categorie: "Objet" })
+				this.setState({isSharing: true, isStudy: false, isCarPooling: false })
 				break;
 			case "Covoiturage":
-				this.setState({isSharing: false, isStudy: false, isCarPooling: true, Categorie: "Covoiturage"})
+				this.setState({isSharing: false, isStudy: false, isCarPooling: true })
 				break;
 			default:
-				this.setState({isSharing: false, isStudy: false, isCarPooling: false, Categorie: "" })
-				alert("Pas de Categorie")
+				this.setState({isSharing: false, isStudy: false, isCarPooling: false })
 		}
 	}
-	*/
 	
-	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
-	{
-		//const IdTicket= this.props.match.params.id ; //
-		var IdTicket="-LTdiqMjM6UUvG2TO2ws";
-		console.log(IdTicket);
-		var tlc= new TicketListControleur;
-		t = await tlc.retriveTicket(IdTicket).then((value) => {
-			return value
-		});
-		return t
+	onSubmit = (event) => {
+		event.preventDefault();
 		
-			
+		this.props.form.validateFields((err, values) => {
+			if (!err) {
+				console.log(values);
+				console.log(this.state.Categorie);
+				const auth = this.context;
+				const user = auth.getCurrentUser();
+				
+				// creation du bon type de ticket
+				if(this.state.isStudy)
+				{
+					var options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
+					var t =user.createTicket(null,values.title,values.description,"Study",null,null, options);
+				}
+				else if(this.state.isSharing)
+				{
+					var options = { "item": values.objet};
+					var t =user.createTicket(null,values.title,values.description,"Sharing",null,null, options);
+				}
+				else if(this.state.isCarPooling)
+				{
+					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
+					var t =user.createTicket(null,values.title,values.description,"CarPooling",null,null, options);
+				}
+				else
+				{
+					alert("Il n'y a pas de catégorie. Ce message est normalement useless car la categorie est requise. Mais bon au cas où...");
+					throw "PROBLEME AU NIVEAU DES CATEGORIES ET DE L'ENVOI DU FORMULAIRE";
+				}
+				
+				t.save();
+			}
+			else {
+				console.log("Erreur fonction on submit"); 
+			}
+		});
 	}
-	
-	
-	
 	
   render() {
-	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID="indefini",desactive) 
+	 const { getFieldDecorator } = this.props.form
+	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID,desactive, style=null)
 	{
-		return 	<div>
+		return 	<div style={style} >
 					<h3 style= {{color:colorH3}}>{titreH3}</h3>
-					<Input ref={ID} disabled={desactive} defaultValue={desactive ? valueInput : ""} style= {{color:colorInput}} id={ID}/>
+					<FormItem required={true} >
+					{
+						getFieldDecorator(ID, {rules: [ {required: true, message: 'champ requis'}]})(<Input disabled={desactive} style= {{color:colorInput}} />)
+					}
+					</FormItem>
 				</div>;
 	}
-	
-	
-	 // Creation du ticket contenant les infos
-
-	 // Mise a jour des variables état pour l'affichage conditionnel 
-	//let cat = t.getCategory;
-
-	//console.log(cat);
-	
 	
 	let component;
 	
 	if(this.state.isStudy)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Matiere",this.state.ticStudyInfo.matiere,'#42A6FB',"matiere", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Professeur",this.state.ticStudyInfo.prof,'#42A6FB',"prof", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Thème",this.state.ticStudyInfo.theme,'#42A6FB',"theme", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Semestre",this.state.ticStudyInfo.semestre,'#42A6FB',"semestre", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Matiere","Maths",'#42A6FB',"matiere", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Professeur","Mr le prof",'#42A6FB',"prof", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Thème","Le theme",'#42A6FB',"theme", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Semestre","SX",'#42A6FB',"semestre", this.state.isViewMode)}
 		</div>
 	}
 	else if(this.state.isSharing)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Objet",this.state.ticSharingInfo.objet,'#42A6FB',"objet", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Objet","Tournevis",'#42A6FB',"objet", this.state.isViewMode)}
 		</div>
 	}
 	else if(this.state.isCarPooling)
 	{
 		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Départ","Brest",'#42A6FB',"depart", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Arrivée","Marseilles",'#42A6FB',"arrivee", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Places","3",'#42A6FB',"places", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Date de départ","11/06/2018",'#42A6FB',"depart_date", this.state.isViewMode)}
+			{h3PlusInput('#7F7F7F',"Date d'arrivée","12/06/2018",'#42A6FB',"arrivee_date", this.state.isViewMode)}
 		</div>
 	}
+	
 	else
 	{
 		component = null
 	}
-	
-	
-	
-	
 	
     return (
 	
@@ -176,17 +140,22 @@ class Demande_Consultation  extends Component {
 		<Top/>
 		<Content style={{ margin: '42px 16px'}}>
 			<Layout>
-			
+			<Form onSubmit={this.onSubmit} >
 				<Row style={{left:0, width:150 }}>
 					<h1 style= {{color:'#7F7F7F'}}>DEMANDE</h1>
 				</Row>
 				<Row type="flex" justify="space-around" style={{ textAlign:'center'}}>
 					<Col span={16} >
-						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
+						{h3PlusInput('#7F7F7F',"TITRE","Titre du ticket",'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
 					</Col>
 					<Col span={6}>
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
-						<Cascader options={this.state.categorieOptions}  value={[this.state.Categorie]} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>
+						<FormItem required={true} >
+						{
+							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}]})
+							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>)
+						}
+						</FormItem>
 					</Col>
 				</Row>
 				{component}
@@ -194,14 +163,20 @@ class Demande_Consultation  extends Component {
 					<div style={{left:0, width:100, background: '#2699FB',textAlign:'center',padding:10}}>
 						<h5 style= {{color:'#fff'}}>DESCRIPTION</h5>
 					</div>
-						<TextArea  value={this.state.isViewMode ? this.state.ticGlobalInfo.description : ""} />
-						
+					<FormItem>
+					{
+						getFieldDecorator('description', {rules: [ {required: true, message: 'description requise'}]})(<TextArea  />)
+					}
+					</FormItem>
 				</Row>
 				<Row>
 					<Col>
-							<Button type="primary" >Retour</Button>
+						<FormItem style={{ textAlign:"right" }} >
+							<Button htmlType="submit" type="primary" >Aider cette personne</Button>
+						</FormItem>
 					</Col>
 				</Row>
+			</Form>
 			</Layout>
 		</Content>
 	</Layout>
@@ -209,4 +184,4 @@ class Demande_Consultation  extends Component {
   }
 }
 
-export default Demande_Consultation;
+export default Form.create()(Demande_Consultation);

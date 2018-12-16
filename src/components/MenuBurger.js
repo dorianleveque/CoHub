@@ -5,8 +5,6 @@ import { SIGN_IN , HOME } from '../router/routes'
 import { SessionStore } from '../stores';
 import Avatar from '../components/Avatar'
 
-const Search = Input.Search;
-
 class MenuBurger extends Component {
 
   static contextType = SessionStore
@@ -16,7 +14,6 @@ class MenuBurger extends Component {
   }
   
   searchItems = (value) => {
-	  console.log(this.props)
 	  this.props.searchItems(value)
   }
 	
@@ -56,15 +53,9 @@ class MenuBurger extends Component {
           </div>
         </Col>
         <NavLink to={HOME} style={{color: 'white'}}>
-        <Col offset= {6} span={3}> <div style={{ textAlign: 'center' }}>CoHub </div></Col>
+        <Col offset= {8} span={3}> <div style={{ textAlign: 'center' }}>CoHub </div></Col>
         </NavLink>
-        <Col offset = {5} span = {2}>
-         <Search
-            onSearch={value => this.searchItems(value)}
-            style={{ width: '200px'  }}
-            />
-        </Col>
-        <Col span={1} offset={5}> 
+        <Col span={1} offset={10}> 
 	    {account}
         </Col>
       </div>

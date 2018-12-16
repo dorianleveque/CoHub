@@ -16,7 +16,7 @@ const style = {
   }
 }
 
-class BoutonCreationDemande extends React.Component {
+class BoutonCreationDemande extends Component {
   render(){
     var title = <div style={style.title}>
       Besoin d'aide ? <br/>

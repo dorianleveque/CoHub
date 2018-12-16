@@ -5,7 +5,7 @@ import Top from '../components/Top';
 import Bottom from '../components/Bottom'
 import cohub from '../images/CoHub.png'
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 // style de la page

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { Icon, Col , Input  } from 'antd';
+import { Icon, Col , Input, Popconfirm, message, Button } from 'antd';
 import { NavLink } from 'react-router-dom'
 import { SIGN_IN , HOME } from '../router/routes'
 import { SessionStore } from '../stores';
-import { Popconfirm, message, Button } from 'antd';
+import Avatar from '../components/Avatar'
 
 const Search = Input.Search;
 
 class MenuBurger extends Component {
-
 
   static contextType = SessionStore
 
@@ -17,15 +16,20 @@ class MenuBurger extends Component {
   }
 
 confirm = () => {
-	this.context.signOut()
+  this.context.disconnect()
 }
 
   render() {
-	let account ;
-	let connected = this.context.isValide()
-	if (connected) {
-		account =  <Popconfirm placement="bottomRight" title="Voulez-vous vous déconecter ?" onConfirm={this.confirm} okText="Yes" cancelText="No">
-            		<Icon type="user" />
+  let account;
+	if (this.context.isConnected()) {
+    let curentUser = this.context.getCurrentUser()
+    const firstname = curentUser.getName()
+    const surname   = curentUser.getSurname()
+    let name = `${ firstname } ${ surname }`
+		account =  <Popconfirm placement="bottomRight" title="Voulez-vous vous déconnecter ?" onConfirm={this.confirm} okText="Yes" cancelText="No">
+            		<div style={{ cursor: 'pointer' }}>
+                  <Avatar name={name} />
+                </div>
 			</Popconfirm> ;
 	}
 	else  {

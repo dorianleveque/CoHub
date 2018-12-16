@@ -5,7 +5,7 @@ import Bottom from '../components/Bottom'
 import { Layout, Row, Card } from 'antd';
 import cohub from '../images/CoHub.png'
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 const style = {

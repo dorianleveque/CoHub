@@ -147,8 +147,9 @@ class SignUpForm extends Component {
             password } = this.props.form.getFieldsValue()
           
           // on crée le user
-          auth.createUser(lastName, firstName, nickName, email, password)
+          auth.createAccount(lastName, firstName, nickName, email, password)
           .then( () => {
+            //await auth.connect(email, password)
             this.nextSlide()
             this.setState({ fieldValidateStatus: 'sucess', stepIconLoading: false })
           })

@@ -15,13 +15,24 @@ class Authentification {
         this.#currentUser = null             // User Object
         this.#authStateChangedCallback = []  // callback list
 
-        // événement lors d'une nouvelle reconnection avec firebase
+        /**
+         *  Ceci est un évenement qui se déclenche lorsque l'authentification
+         *  de firebase à été modifié.
+         *  Ainsi lors d'une connection, d'une inscription ou d'une déconnection
+         *  réussite, la fonction associé à cet évênement est executé.
+         */
         auth.onAuthStateChanged(async (auth) => {
+            /**
+             * Pour déterminer une authentification réussite et que l'objet currentUser soit
+             * créé, il faut que ses infos auprès de la base de données puissent être récupérées et
+             * que l'authentification auprès de firebase soit correcte
+             */
+
+            // Si l'authentification de firebase est valide
             if (auth) {
-                // On crée ici l'object current User de notre application
-                // à l'aide des infos de la database
                 try {
-                    // si l'authentification est réussit
+                    // on essaye de récupérer les données de l'utilisateur depuis la base de donnée,
+                    // puis on crée notre currentUser
                     const { id, name, surname, email, nickname } = await this._retriveUserData(auth.email)
                     this._setCurrentUser(new User(id, name, surname, email, nickname))
 
@@ -34,7 +45,7 @@ class Authentification {
                 }
             }
             else {
-                // si on n'a pas de connection avec firebase
+                // Si l'authentification de firebase est invalide
                 // impossible de vérifier si l'authentification est correct
                 this._setCurrentUser(null)
             }
@@ -110,7 +121,12 @@ class Authentification {
      * @param {String} password mot de passe
      * @param {Boolean} remember la session est conservé même après fermeture de la page si vrai (true) sinon la session est détruite
      */
-    async signInWithEmailAndPassword(email, password, remember=false) {
+    async connect(email, password, remember=false) {
+        /**
+         * On récupère les informations de l'utilisateur depuis firebase
+         * afin de vérifier que ses infos sont biens disponibles.
+         * Puis on le connecte à l'aide de firebase
+         */
         auth.setPersistence(
             (remember)
             ? firebase.auth.Auth.Persistence.LOCAL
@@ -130,28 +146,42 @@ class Authentification {
      * @param {String} email adresse mail
      * @param {String} password mot de passe
      */
-    async createUser(lastName, firstName, nickName, email, password) {
-        // on crée l'authentification dans firebase
-        await auth.createUserWithEmailAndPassword(email, password)
-        // on crée l'objet User et on sauvegarde ses infos dans la base de données de firebase
-        // si un id existe pour une adresse mail, alors pas besoin de générer un nouvel id
-        let userId = null
+    async createAccount(lastName, firstName, nickName, email, password) {
+        /**
+         * Pour créer un compte, on vérifie dans un premier temps si l'adresse mail est 
+         * déjà utilisé par un autre compte. 
+         * Si c'est le cas on renvoie une erreur.
+         * Sinon une erreur sera relevé lors de la récupération des informations de l'utilisateur
+         * puisque les infos n'existeront pas. Comme l'authentification n'existera pas, 
+         * on créé un nouveau user à l'aide d'un nouvel id fraichement généré.
+         * Puis on sauvegarde l'authentification dans firebase
+         */
         try {
-            const { id } = await this._retriveUserData(email)
-            userId = id
+            await this._retriveUserData(email)
+            throw {
+                code: "auth/email-already-in-use",
+                message: "L'adresse mail est déjà utilisée par un autre compte"
+            }
         }
-        catch {
-            userId = firebase.database().ref().child('Users').push().key
+        catch (error){
+            if (error.code === "user-data-not-found") {
+                // Aucune donnée utilisateur => on crée un utilisateur et on le sauvegarde
+                let userId = database.ref().child('Users').push().key
+                let user = new User(userId, firstName, lastName, email, nickName)
+                await user.save()
+                await auth.createUserWithEmailAndPassword(email, password)
+            }
+            else {
+                throw error
+            }
         }
-        let user = new User(userId, firstName, lastName, email, nickName)
-        await user.save()
     }
 
     /**
      * Envoi un email afin de reset son mot de passe
      * @param {String} email adresse mail
      */
-    async sendPassWordResetWithEmail(email) {
+    async resetPassword(email) {
         await auth.sendPasswordResetEmail(email)
     }
 
@@ -167,7 +197,8 @@ class Authentification {
     /**
      * Déconnecte l'utilisateur de l'application
      */
-    async signOut() {
+    async disconnect() {
+        this._setCurrentUser(null)
         await auth.signOut()
     }
 
@@ -175,7 +206,7 @@ class Authentification {
      * Vérifie si l'authentification est valide
      * @return vrai (true) si l'authentification est valide
      */
-    isValide() {
+    isConnected() {
         return this.getCurrentUser() ? true : false
     }
 

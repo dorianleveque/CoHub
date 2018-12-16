@@ -88,7 +88,7 @@ class SignInForm extends Component {
         const history = this.props.routerHistory
         
         // on authentifie le user
-        auth.signInWithEmailAndPassword(email, password, remember)
+        auth.connect(email, password, remember)
             .then(()=>{
               this.setState({ submitButtonLoading: false })
               message.success("Vous êtes maintenant connecté")
@@ -109,6 +109,9 @@ class SignInForm extends Component {
                 break;
                 case "user-data-not-found":
                   message.error("Votre compte est cassé, vos informations d'identification ont été corrompu. Merci d'en adresser le problème à l'équipe de CoHub")
+                break;
+                case "auth/wrong-password":
+                  message.error("Votre identifiant et/ou votre mot de passe sont incorrect")
                 break;
                 default:
                   message.error("Impossible de vous connecter. Réessayez plus tard")
@@ -133,7 +136,7 @@ class SignInForm extends Component {
       if (!err) {
         const { email } = values
                        
-        auth.sendPassWordResetWithEmail(email)
+        auth.resetPassword(email)
             .then(()=>{
               this.setState({ submitButtonLoading: false, lostPassword: false })
               this.props.onUpdateTitle(false)

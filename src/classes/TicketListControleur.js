@@ -90,21 +90,21 @@ class TicketListControleur {
 			{
 				await database.ref('TicketsCarPooling/'+id).once('value').then((snapshot) =>{
 					var { arrivalLocation, arrivalTime, departurLocation, departurTime, places } = snapshot.val();
-					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { arrivalLocation, arrivalTime, departurLocation, departurTime, places } );
+					ticket = user.createTicket(id , title , description, category, new Date(creationDate), idConversation, { arrivalLocation, arrivalTime: new Date(arrivalTime), departurLocation, departurTime: new Date(departurTime), places } );
 				});
 			}
 			if (category === "Study" )
 			{
 				await database.ref('TicketsStudy/'+id).once('value').then((snapshot) =>{
 					const { subject, semester, teacher, theme } = snapshot.val();
-					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { subject, semester, teacher, theme } );
+					ticket = user.createTicket(id , title , description, category, new Date(creationDate), idConversation, { subject, semester, teacher, theme } );
 				});
 			}
 			if  (category === "Sharing") 		
 			{
 				await database.ref('TicketsSharing/'+id).once('value').then((snapshot) => {
 					const { item } = snapshot.val();
-					ticket = user.createTicket(id , title , description, category, creationDate, idConversation, { item } );
+					ticket = user.createTicket(id , title , description, category, new Date(creationDate), idConversation, { item } );
 				});
 			}
 			return ticket;

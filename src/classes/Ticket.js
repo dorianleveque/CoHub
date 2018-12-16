@@ -30,14 +30,7 @@ class Ticket{
 		this.#title = title;
 		this.#description = description;
 		this.#category = category;
-		if (creationDate === null)
-		{
-			this.#creationDate = new Date();
-		}
-		else
-		{
-			this.#creationDate = new Date(creationDate.substring(8),creationDate.substring(3,5),creationDate.substring(0,2)); 
-		}
+		this.#creationDate = creationDate;
 		this.#requester = requester;
 		this.#helper = [];
 		this.#conversation = new Conversation(idConversation);
@@ -103,43 +96,6 @@ class Ticket{
 		return this.#conversation;
 	}
 
-	/**
-	 * Add an helper
-	 * @param {User} helper 
-	 */
-	addHelper(helper)
-	{
-			this.#helper.push(helper);
-	}
-
-	/**
-	 * return true if param user is a helper
-	 * @param {User} user 
-	 */
-	isHelper(user)
-	{
-		for (var i = 0; i < this.#helper.length; i++) 
-		{
-			if (this.#helper[i] === user) 
-			{
-					return true;
-			}
-		}
-		return false
-	}
-
-	//displayThmbnail() 
-
-	display(){}
-	
-	/**
-	 * Add a message to the Conversation
-	 * @param {Message} message 
-	 */
-	/*addMessage(message)
-	{
-		this.#conversation.addMessage(message);
-	} */
 
 	/**
 	 * Edit ticket parameter
@@ -167,32 +123,15 @@ class Ticket{
 	 */
 	save()
 	{
-		var year = this.getCreationDate().getFullYear();
-		var month =  this.getCreationDate().getMonth();
-		var day  =  this.getCreationDate().getDate();
-		if (month<10)
-		{
-			month = "0" + month;
-		}
-		if (day<10)
-		{
-			day = "0" + day;
-		}
-		var helper = [];
-		for (var i = 0; i < this.#helper.length; i++) {
-			helper[i] =  this.#helper[i].getId();
-		}
-		//this.getConversation().save();
 		if (this.getId() != null)
 		{
 			database.ref('Tickets/' + this.#id).set({
-				title : this.#title,
-				description : this.#description,
-				category : this.#category,
-				creationDate : day + "/" + month + "/" + year,
-				idRequester : this.#requester.getId(),
-				idHelper : helper,
-				idConversation : this.#conversation.getId()
+				title : this.getTitle(),
+				description : this.getDescription(),
+				category : this.getCategory(),
+				creationDate : this.getCreationDate().toISOString(),
+				idRequester : this.getRequester().getId(),
+				idConversation : this.getConversation().getId()
 			}); 
 		}
 		else
@@ -201,13 +140,12 @@ class Ticket{
 			this.setid(id);
 			let postData = {}
 			postData[id] = {
-				title : this.#title,
-				description : this.#description,
-				category : this.#category,
-				creationDate : day + "/" + month + "/" + year,
-				idRequester : this.#requester.getId(),
-				idHelper : helper,
-				idConversation : this.#conversation.getId()
+				title : this.getTitle(),
+				description : this.getDescription(),
+				category : this.getCategory(),
+				creationDate : this.getCreationDate().toISOString(),
+				idRequester : this.getRequester().getId(),
+				idConversation : this.getConversation().getId()
 			}
 			database.ref('Tickets/').update(postData);
 		}

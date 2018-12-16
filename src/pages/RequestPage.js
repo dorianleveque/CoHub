@@ -163,7 +163,7 @@ class Demande_Consultation  extends Component {
 				</Row>
 				<Row type="flex" justify="space-between"  style={{ textAlign:'center'}}>
 					<div style={{ width: '600px'}}>
-						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title')}
+						{h3PlusInput('#7F7F7F',"Titre",this.state.ticGlobalInfo.titre,'#42A6FB','title')}
 					</div>
 					<div>
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>

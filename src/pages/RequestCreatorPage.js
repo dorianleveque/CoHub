@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Layout,Row, Col, Mention, Button, Cascader, Form} from 'antd';
+import { Input,Layout,Row, Col, Button, Cascader, Form, DatePicker } from 'antd';
+import Bottom from '../components/Bottom';
+import { HOME } from '../router/routes';
 
-
+const { RangePicker } = DatePicker;
 const { Content } = Layout;
-
 const { TextArea } = Input
-
 const FormItem = Form.Item;
 
-class Demande_Consultation  extends Component {
+class EditDemandeConsultationPage  extends Component {
 
 	static contextType = SessionStore
 	constructor() {
@@ -29,6 +28,7 @@ class Demande_Consultation  extends Component {
 			],
 		}
 	}
+	
 	
 	
 	onCascaderChange = (value) => {
@@ -49,53 +49,44 @@ class Demande_Consultation  extends Component {
 	
 	onSubmit = (event) => {
 		event.preventDefault();
-		
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log(values);
-				console.log(this.state.Categorie);
 				const auth = this.context;
 				const user = auth.getCurrentUser();
-				
+				const history = this.props.history;
+
 				// creation du bon type de ticket
 				if(this.state.isStudy)
 				{
 					var options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
-					var t =user.createTicket(null,values.title,values.description,"Study",null,null, options);
+					var t =user.createTicket(null,values.title,values.description,"Study",new Date(),null, options);
 				}
 				else if(this.state.isSharing)
 				{
 					var options = { "item": values.objet};
-					var t =user.createTicket(null,values.title,values.description,"Sharing",null,null, options);
+					var t =user.createTicket(null,values.title,values.description,"Sharing",new Date(),null, options);
 				}
 				else if(this.state.isCarPooling)
 				{
-					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
-					var t =user.createTicket(null,values.title,values.description,"CarPooling",null,null, options);
+					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
+					var t =user.createTicket(null,values.title,values.description,"CarPooling",new Date(),null, options);
 				}
-				else
-				{
-					alert("Il n'y a pas de catégorie. Ce message est normalement useless car la categorie est requise. Mais bon au cas où...");
-					throw "PROBLEME AU NIVEAU DES CATEGORIES ET DE L'ENVOI DU FORMULAIRE";
-				}
-				
+
 				t.save();
-			}
-			else {
-				console.log("Erreur fonction on submit"); 
+				history.push(HOME);
 			}
 		});
 	}
 	
   render() {
 	 const { getFieldDecorator } = this.props.form
-	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID,desactive, style=null)
+	function fieldForm(ID,titre, message, component)
 	{
-		return 	<div style={style} >
-					<h3 style= {{color:colorH3}}>{titreH3}</h3>
+		return 	<div style={{margin:'0 10px'}} >
+					<h3 style= {{color:'#7F7F7F'}}>{titre}</h3>
 					<FormItem required={true} >
 					{
-						getFieldDecorator(ID, {rules: [ {required: true, message: 'champ requis'}]})(<Input disabled={desactive} style= {{color:colorInput}} />)
+						getFieldDecorator(ID, {rules: [ {required: true, message: message}]})(component)
 					}
 					</FormItem>
 				</div>;
@@ -105,27 +96,26 @@ class Demande_Consultation  extends Component {
 	
 	if(this.state.isStudy)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Matiere","Maths",'#42A6FB',"matiere", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Professeur","Mr le prof",'#42A6FB',"prof", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Thème","Le theme",'#42A6FB',"theme", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Semestre","SX",'#42A6FB',"semestre", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{fieldForm("matiere","Matiere", "la matière est requise", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("prof","Professeur", "le professeur est requis", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("theme","Thème", "le thème est requis", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("semestre","Semestre", "le semestre n'a pas été renseigné", <Input style= {{color:'#42A6FB'}} />)}
 		</div>
 	}
 	else if(this.state.isSharing)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Objet","Tournevis",'#42A6FB',"objet", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{fieldForm("objet","Objet", "l'objet est requis", <Input style= {{color:'#42A6FB'}} />)}
 		</div>
 	}
 	else if(this.state.isCarPooling)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
-			{h3PlusInput('#7F7F7F',"Départ","Brest",'#42A6FB',"depart", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Arrivée","Marseilles",'#42A6FB',"arrivee", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Places","3",'#42A6FB',"places", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date de départ","11/06/2018",'#42A6FB',"depart_date", this.state.isViewMode)}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée","12/06/2018",'#42A6FB',"arrivee_date", this.state.isViewMode)}
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
+			{fieldForm("depart","Départ", "le lieu de départ n'a pas été renseigné", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("arrivee","Arrivée", "le lieu d'arrivée n'a pas été renseigné", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("places","Places", "le nombre de place n'a pas été renseigné", <Input style= {{color:'#42A6FB'}} />)}
+			{fieldForm("date","Date", "la date n'a pas été renseignée", <RangePicker format="DD/MM/YYYY à HH:mm" showTime={{ format: 'HH:mm' }}  placeholder={['Départ', 'Arrivée']} />)}
 		</div>
 	}
 	
@@ -136,52 +126,40 @@ class Demande_Consultation  extends Component {
 	
     return (
 	
-	<Layout style={{ height: '90vh'}} >
+	<Layout>
 		<Top/>
-		<Content style={{ margin: '42px 16px'}}>
+		<Content style={{ margin: '42px 10%'}}>
 			<Layout>
 			<Form onSubmit={this.onSubmit} >
-				<Row style={{left:0, width:150 }}>
-					<h1 style= {{color:'#7F7F7F'}}>DEMANDE</h1>
+				<Row>
+					<h1 style= {{color:'#7F7F7F'}}>CREATION D'UNE DEMANDE</h1>
 				</Row>
-				<Row type="flex" justify="space-around" style={{ textAlign:'center'}}>
-					<Col span={16} >
-						{h3PlusInput('#7F7F7F',"TITRE","Titre du ticket",'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
-					</Col>
-					<Col span={6}>
-						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
-						<FormItem required={true} >
-						{
-							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}]})
-							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>)
-						}
-						</FormItem>
-					</Col>
+				<Row type="flex" justify="space-between" style={{ textAlign:'center', marginTop:'30px' }}>
+					<div style={{ width: '600px'}} >
+						{fieldForm('title',"Titre", "le titre est requis", <Input style= {{color:'#42A6FB'}} />)}
+					</div>
+					<div>
+						{fieldForm('categorie',"Catégorie", "la catégorie est requise", <Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled={this.state.isViewMode} style= {{color:'#42A6FB'}}/>)}
+					</div>
 				</Row>
 				{component}
 				<Row>
-					<div style={{left:0, width:100, background: '#2699FB',textAlign:'center',padding:10}}>
-						<h5 style= {{color:'#fff'}}>DESCRIPTION</h5>
-					</div>
-					<FormItem>
-					{
-						getFieldDecorator('description', {rules: [ {required: true, message: 'description requise'}]})(<TextArea  />)
-					}
-					</FormItem>
+					{fieldForm('description',"Description", "la description est requise", <TextArea  /> )}
 				</Row>
 				<Row>
 					<Col>
 						<FormItem style={{ textAlign:"right" }} >
-							<Button htmlType="submit" type="primary" >Aider cette personne</Button>
+							<Button htmlType="submit" type="primary" >Créer la demande</Button>
 						</FormItem>
 					</Col>
 				</Row>
 			</Form>
 			</Layout>
 		</Content>
+		<Bottom/>
 	</Layout>
     );
   }
 }
 
-export default Form.create()(Demande_Consultation);
+export default Form.create()(EditDemandeConsultationPage);

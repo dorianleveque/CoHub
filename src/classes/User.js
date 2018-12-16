@@ -71,7 +71,7 @@ class User {
 	 * @param {string} title 
 	 * @param {string} description 
 	 * @param {string} category 
-	 * @param {string} creationDate 
+	 * @param {Date} creationDate 
 	 * @param {int} idConversation 
 	 * @param {*} options :item, subject, semester, teacher, theme,departurLocation, arrivalLocation, departurTime, arrivalTime, places
 	 */

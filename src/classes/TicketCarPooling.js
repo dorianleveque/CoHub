@@ -20,8 +20,8 @@ class TicketCarPooling extends Ticket{
 	 * @param {User} requester 
 	 * @param {string} departurLocation 
 	 * @param {string} arrivalLocation 
-	 * @param {string} departurTime 
-	 * @param {string} arrivalTime 
+	 * @param {Date} departurTime 
+	 * @param {Date} arrivalTime 
 	 * @param {int} places 
 	 */
 	constructor(id, title, description, creationDate , requester, departurLocation, arrivalLocation, departurTime, arrivalTime, places, idConversation)
@@ -130,11 +130,11 @@ class TicketCarPooling extends Ticket{
 	{
 		super.save();
 		database.ref('TicketsCarPooling/' + super.getId()).set({
-			departurLocation : this.#departurLocation,
-			arrivalLocation : this.#arrivalLocation,
-			departurTime : this.#departurTime,
-			arrivalTime : this.#arrivalTime,
-			places : this.#places
+			departurLocation : this.getDeparturLocation(),
+			arrivalLocation : this.getArrivalLocation(),
+			departurTime : this.getDeparturTime().toISOString(),
+			arrivalTime : this.getArrivalTime().toISOString(),
+			places : this.getPlaces()
 		});	
 	}
 

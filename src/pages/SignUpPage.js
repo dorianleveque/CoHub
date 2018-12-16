@@ -5,20 +5,18 @@ import Top from '../components/Top';
 import Bottom from '../components/Bottom'
 import cohub from '../images/CoHub.png'
 
-const { Content, Footer } = Layout;
+const { Content } = Layout;
 const { Meta } = Card;
 
 // style de la page
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
     height: '100%'
   },
   card: {
     minWidth: '320px',
-    maxWidth: '400px'
+    maxWidth: '400px',
+    margin: '50px 0'
   },
   frame: {
     display: 'flex',
@@ -40,7 +38,7 @@ class SignUpPage extends Component {
    */
     render() {
         return (
-          <Layout style={ style.layout } >
+          <Layout>
             <Top/>
             <Content>
               <Row type='flex' align='middle' justify='center' style={style.content} >

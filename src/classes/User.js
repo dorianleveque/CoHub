@@ -1,4 +1,4 @@
-import firebase, { database } from '../firebase'
+import { database } from '../firebase'
 import Ticket from './Ticket';
 import TicketCarPooling from './TicketCarPooling';
 import TicketStudy from './TicketStudy';

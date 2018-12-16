@@ -1,4 +1,4 @@
-import {database } from '../firebase'
+import { database } from '../firebase'
 import User from './User' 
 import Ticket from './Ticket'
 
@@ -30,8 +30,9 @@ class TicketListControleur {
 	 * @param {String} filter (optional) mot clé présent dans le titre ou dans la description du ticket
 	 * @returns un objet contenant une liste de Ticket et le nombre total de page
 	 */
-	async searchTickets(page=0, limit=20, category=null, filter='') {
+	async searchTickets(page, limit, category=null, filter='') {
 		try {
+			console.time("F")
 			const nbTicket = limit
 			var tickets = []
 
@@ -55,11 +56,14 @@ class TicketListControleur {
 			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
 			
 			// création des tickets
+			console.time("I")
 			for (var idTicket of idTicketList) {
 				var ticket = await this.retriveTicket(idTicket)
 				tickets.push(ticket)
 			}
-
+			console.timeEnd("I")
+			//console.log(tickets)
+			console.timeEnd("F")
 			return { tickets, pageCount }
 		}
 		catch (error) {

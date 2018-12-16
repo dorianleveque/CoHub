@@ -10,7 +10,42 @@ class SiderMenu extends Component {
     super(props);
     this.visible =  this.props.visible;
   }
+//Add a funtion to call the function to search a category, something like onclick(value) => orderItems
+	//add the props to the function ! TODO
 
+	sortItems = (category) =>{
+		this.props.sortItems(category)
+	}
+
+	changeCategory = (e) => {
+
+		var key = e.key ;
+		var cat ;
+
+		if (key ==1) {
+			cat ="";
+		}
+
+		if (key ==2) {
+			cat ="Study";
+		}
+
+
+		if (key ==3) {
+			cat ="CarPooling";
+		}
+
+
+		if (key ==4) {
+			cat ="Sharing";
+		}
+
+		this.sortItems(cat);
+
+
+
+
+	}
 
   render() {
 
@@ -19,12 +54,12 @@ class SiderMenu extends Component {
       <Sider style={{ background: '#fff' }} collapsed={this.props.visible} collapsedWidth={0} >
         <div style={{ verticalAlign: 'middle', textAlign: 'center', lineHeight: '70px', background: '#1890ff', color: '#fff', fontSize: '20px', height: '70px' }}> Categorie </div>
         <div>
-          <Menu mode="inline" defaultSelectedKeys={['1']} style={{ height: '100%', background: '#fff' }}>
+          <Menu mode="inline" defaultSelectedKeys={['1']} onClick={this.changeCategory} style={{ height: '100%', background: '#fff' }}>
             <Menu.Item key="1">
               <span>Tout</span>
             </Menu.Item>
 
-            <Menu.Item key="2">
+            <Menu.Item key="2" >
               <span>Tutorat</span>
             </Menu.Item>
 

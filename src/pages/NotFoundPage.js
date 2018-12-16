@@ -5,14 +5,12 @@ import Top from '../components/Top'
 import Bottom from '../components/Bottom'
 import { HOME } from '../router/routes'
 
-const { Content, Footer } = Layout
+const { Content } = Layout
 
 const style = {
-  layout: {
-    height: '100vh'
-  },
   content: {
-    height: '100%'
+    marginTop: '80px',
+    marginBottom: '120px'
   },
   linkBox: {
     position: 'relative',
@@ -57,7 +55,7 @@ class NotFoundPage extends Component {
     let styleSheet = document.styleSheets[0];
     styleSheet.insertRule(style.compass.keyFrame, styleSheet.cssRules.length);
     return (
-      <Layout style={ style.layout } >
+      <Layout>
         <Top />
         <Content >
           <Row type='flex' align='middle' justify='center' style={ style.content } >
@@ -72,8 +70,8 @@ class NotFoundPage extends Component {
                   <br/>
                   <h1>Vous vous êtes perdu ?</h1>
                   <div>
-                    <b>Laissez nous vous tendre une main</b> à 
-                    notre tour en vous suggérant quelques pages 
+                    <b>Laissez nous vous tendre une main</b> en 
+                    vous suggérant quelques pages 
                     pour vous permettre de retrouver votre chemin ;)
                   </div>
                   <NavLink to={HOME}>

@@ -2,22 +2,14 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Divider,Layout,Row, Col, Mention, Button, Cascader, Form} from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
-const { toString } = Mention;
+import { Input,Layout,Row, Col, Mention, Button, Cascader, Form} from 'antd';
+
+
+const { Content } = Layout;
 
 const { TextArea } = Input
 
-const Search = Input.Search;
 const FormItem = Form.Item;
-function onChange(value) {console.log(value);}
-
-function leaule() // Fonction de test 
-	{
-		//var hu = document.getElementById("semestre").value;
-		//alert(hu);
-		console.log("hey !");
-	}
 
 class Demande_Consultation  extends Component {
 

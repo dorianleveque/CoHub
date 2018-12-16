@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
+import { NavLink } from 'react-router-dom'
 import User from "../classes/User"
 class DemandeCard extends Component {
 
@@ -18,7 +19,6 @@ class DemandeCard extends Component {
 	let author = this.state.author 
 	let iconType ;
 	let userInfo = author.getName()+" " + author.getSurname() + " | " + author.getNickname()
-	  console.log(this.state.category)
 	if (this.state.category === "CarPooling" )
 	   {
 		   iconType = "car"
@@ -39,12 +39,13 @@ class DemandeCard extends Component {
 		   iconType = "interation"
 
 		}
-	  console.log(iconType)
 
+	let demande = '/demande/'+this.state.id
 
 
     return (
       <div style={{ overflow: 'hidden', width: '250px' }}>
+        <NavLink to={demande} style={{textDecoration : "none" , color :"inherit"}}>
         <div style={{ marginTop: '40px', width: '250px', height: '120px', backgroundColor: '#FFF', overflowY: 'scroll', textOverflow: 'ellipsis' }}>
           <div style={{ display: 'flex', width: '100%' }} >
             	<div style={{  flexGrow : "1" ,overflow: 'hidden', wordWrap: 'break-word', whiteSpace: 'normal', fontWeight: 'bold' , textAlign :'center' }} >
@@ -63,6 +64,7 @@ class DemandeCard extends Component {
           	</p>
           </div>
         </div>
+	</NavLink>
       </div>
     );
   }

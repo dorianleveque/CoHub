@@ -54,7 +54,7 @@ class SignUpForm extends Component {
           options: {
             rules: [
               { required: true, message: 'une adresse mail est requise' },
-              { pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/ , message: "Votre adresse mail est invalide"}
+              { type: 'email' , message: "Votre adresse mail est invalide"}
             ]
           },
           component: <Input 
@@ -147,8 +147,9 @@ class SignUpForm extends Component {
             password } = this.props.form.getFieldsValue()
           
           // on crée le user
-          auth.createUser(lastName, firstName, nickName, email, password)
+          auth.createAccount(lastName, firstName, nickName, email, password)
           .then( () => {
+            //await auth.connect(email, password)
             this.nextSlide()
             this.setState({ fieldValidateStatus: 'sucess', stepIconLoading: false })
           })
@@ -302,5 +303,5 @@ class SignUpForm extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(SignUpForm);
-export default WrappedNormalLoginForm;
+
+export default Form.create()(SignUpForm);

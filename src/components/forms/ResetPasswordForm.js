@@ -94,7 +94,7 @@ class ResetPasswordForm extends Component {
       else {
         this.setState({ submitButtonLoading: false })
       }
-    });
+    })
   }
 
   /**
@@ -117,10 +117,8 @@ class ResetPasswordForm extends Component {
         }
         <Button type="primary" htmlType="submit" loading={this.state.submitButtonLoading} >Ré-initialiser le mot de passe</Button>
       </Form>
-    );
+    )
   }
 }
-const WrappedNormalLoginForm = Form.create()(ResetPasswordForm);
 
-
-export default WrappedNormalLoginForm;
+export default Form.create()(ResetPasswordForm);;

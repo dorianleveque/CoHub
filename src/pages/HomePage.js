@@ -133,7 +133,7 @@ class HomePage extends Component {
 		}
 		
 		else if (this.state.cardsData[0] =="empty"){
-			return (<div><br/>Nous ne parvenons pas à trouvez de ticket, veuillez réessayer plus tard </div>)
+			return (<div><br/>Nous ne parvenons pas à trouvezr de tickets, veuillez réessayer plus tard </div>)
 
 		}
 		else {

@@ -41,23 +41,6 @@ class Chat extends Component {
     }
   }
 
-  addComment(user, content, date) {
-    const firstname = user.getName()
-    const surname   = user.getSurname()
-    var name = `${ firstname } ${ surname }`
-    this.setState({ 
-      comments: [
-        {
-          author: name,
-          avatar: <Avatar name={name} />,
-          content: <p> {content} </p>,
-          datetime: '20/02/1997'
-        },
-        ...this.state.comments
-      ]
-    })
-  }
-
   // valeurs renvoyées lors d'un submit de l'éditeur
   onSubmit = async (value) => {
     try {

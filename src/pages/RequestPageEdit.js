@@ -30,7 +30,7 @@ function ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'
 	var t=null;
 
 class Demande_Consultation  extends Component {
-	static contextType = SessionStore
+
 	constructor() {
 		super();
 		this.state = {
@@ -170,8 +170,6 @@ class Demande_Consultation  extends Component {
 	
 	
 	
-
-
     return (
 	
 	<Layout style={{ height: '90vh'}} >

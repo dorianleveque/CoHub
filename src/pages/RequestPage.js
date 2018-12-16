@@ -7,6 +7,7 @@ import { SessionStore } from '../stores';
 import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
 import EditButton from '../components/boutons/BoutonEditer'
+import DeleteButton from '../components/boutons/BoutonSupprimer'
 import { HOME } from '../router/routes';
 
 const { Content } = Layout;
@@ -130,6 +131,13 @@ class Demande_Consultation  extends Component {
 		}
 	}
 	
+	confirmDeleteTicket = (event) => {
+		event.preventDefault()
+		const history = this.props.history;
+		const ticket = this.state.ticket
+		ticket.delete()
+		history.push(HOME);
+	}
 	
   render() {
 	function h3PlusInput(colorH3,titreH3,valueInput,colorInput,ID="indefini") 
@@ -209,6 +217,11 @@ class Demande_Consultation  extends Component {
 				{
 					(this.checkRights())
 					? <EditButton id={this.props.match.params.id} />
+					: null
+				}
+				{
+					(this.checkRights())
+					? <DeleteButton onConfirm={this.confirmDeleteTicket} />
 					: null
 				}
 			</Layout>

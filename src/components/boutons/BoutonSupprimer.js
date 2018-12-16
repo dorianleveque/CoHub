@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
-import { Popconfirm, message, Button } from 'antd';
+import { Popconfirm, Button } from 'antd';
 
-const text = 'Êtes-vous sûr de vouloir supprimer cette demande';
-
-function confirm() {
-  message.info('Demande supprimer');
+const style = {
+  button: {
+    position: 'fixed',
+    right: '40px',
+    bottom: '100px',
+    width: '50px',
+    height: '50px'
+  },
+  title: {
+    textAlign: 'center'
+  }
 }
 
-function decline() {
-	message.info('Demande nom supprimer');
-}
-
-
-class BoutonSupprimer extends React.Component {
+class BoutonSupprimer extends Component {
   render(){
+    const text = 'Êtes-vous sûr de vouloir supprimer cette demande'; 
    	return (
   	<div style={{ width: 70, float: 'left' }}>
-      <Popconfirm placement="left" title={text} onConfirm={confirm} onCancel = {decline} okText="Oui" cancelText="Non">
-        <Button icon={"delete"}></Button>
+      <Popconfirm placement="left" title={text} onConfirm={this.props.onConfirm} onCancel={this.props.onCancel} okText="Oui" cancelText="Non">
+        <Button type="primary" shape="circle" icon="delete" size="large" style={style.button} />
       </Popconfirm>
     </div>
   );

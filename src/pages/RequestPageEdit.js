@@ -132,8 +132,6 @@ class Demande_Consultation  extends Component {
 		
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
-				console.log(values);
-				console.log(this.state.Categorie);
 				const auth = this.context;
 				const user = auth.getCurrentUser();
 				const history = this.props.history;
@@ -167,7 +165,6 @@ class Demande_Consultation  extends Component {
 		var tlc= new TicketListControleur; 
 		let ticket = await tlc.retriveTicket(IdTicket);
 		this.setState({idTicket: IdTicket, ticket: ticket });
-		console.log(this.state.ticket.getCreationDate(),"OK"); // DEBUG
 		return ticket
 	}
 	
@@ -190,7 +187,7 @@ class Demande_Consultation  extends Component {
 	
 	if(this.state.isStudy)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
 			{h3PlusInput('#7F7F7F',"Matiere",this.state.ticStudyInfo.matiere,'#42A6FB',"matiere")}
 			{h3PlusInput('#7F7F7F',"Professeur",this.state.ticStudyInfo.prof,'#42A6FB',"prof")}
 			{h3PlusInput('#7F7F7F',"Thème",this.state.ticStudyInfo.theme,'#42A6FB',"theme")}
@@ -199,13 +196,13 @@ class Demande_Consultation  extends Component {
 	}
 	else if(this.state.isSharing)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
 			{h3PlusInput('#7F7F7F',"Objet",this.state.ticSharingInfo.objet,'#42A6FB',"objet")}
 		</div>
 	}
 	else if(this.state.isCarPooling)
 	{
-		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-evenly' }} >
+		component = <div style={{ display: 'flex', flexWrap: "wrap", justifyContent: 'space-between' }} >
 			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart")}
 			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee")}
 			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places")}
@@ -221,19 +218,19 @@ class Demande_Consultation  extends Component {
 	
     return (
 	
-	<Layout style={{ height: '90vh'}} >
+	<Layout>
 		<Top/>
-		<Content style={{ margin: '42px 16px'}}>
+		<Content style={{ margin: '42px 10%'}}>
 			<Layout>
 			<Form onSubmit={this.onSubmit} >
 				<Row style={{left:0, width:150 }}>
 					<h1 style= {{color:'#7F7F7F'}}>DEMANDE</h1>
 				</Row>
-				<Row type="flex" justify="space-around" style={{ textAlign:'center'}}>
-					<Col span={16} >
+				<Row type="flex" justify="space-between" style={{ textAlign:'center'}}>
+					<div style={{ width: '600px'}} >
 						{h3PlusInput('#7F7F7F',"TITRE",this.state.ticGlobalInfo.titre,'#42A6FB','title', this.state.isViewMode, {width: '100%'} )}
-					</Col>
-					<Col span={6}>
+					</div>
+					<div>
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
 						<FormItem required={true} >
 						{
@@ -241,13 +238,13 @@ class Demande_Consultation  extends Component {
 							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled style= {{color:'#42A6FB'}}/>)
 						}
 						</FormItem>
-					</Col>
-				</Row>
-				{component}
-				<Row>
-					<div style={{left:0, width:100, background: '#2699FB',textAlign:'center',padding:10}}>
-						<h5 style= {{color:'#fff'}}>DESCRIPTION</h5>
 					</div>
+				</Row>
+				<div style={{ marginTop: 60 }} >
+					{component}
+				</div>
+				<Row>
+					<h3 style= {{color:'#7F7F7F'}}>Description</h3>
 					<FormItem>
 					{
 						getFieldDecorator('description', {rules: [ {required: true, message: 'description requise'}], initialValue:this.state.ticGlobalInfo.description})(<TextArea style= {{color:'#42A6FB'}} />)
@@ -264,6 +261,7 @@ class Demande_Consultation  extends Component {
 			</Form>
 			</Layout>
 		</Content>
+		<Bottom/>
 	</Layout>
     );
   }

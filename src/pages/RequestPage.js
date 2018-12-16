@@ -19,7 +19,7 @@ class Demande_Consultation  extends Component {
 		this.state = {
 			ticket: null,
 			isSharing: false,
-			isStudy: true,
+			isStudy: false,
 			isCarPooling: false,
 			Categorie:"Tutorat",
 			categorieOptions: [

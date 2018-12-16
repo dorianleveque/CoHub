@@ -106,6 +106,7 @@ class User {
 	editTicket(ticket, options)
 	{
 		ticket.edit(options);
+		return ticket;
 	}
 
 	handleTicket(ticket, message)

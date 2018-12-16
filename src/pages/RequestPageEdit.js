@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-//import logo from './logo.svg';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Layout,Row, Col, Mention, Button, Cascader, Form} from 'antd';
-
+import { Input,Layout,Row, Col, Mention, Button, Cascader, Form, Divider} from 'antd';
+import { NavLink } from 'react-router-dom';
+import TicketListControleur from '../classes/TicketListControleur.js';
+import { SessionStore } from '../stores';
+import Chat from '../components/discussion/Chat.js';
+import Bottom from '../components/Bottom';
+import { HOME } from '../router/routes';
 
 const { Content } = Layout;
-
 const { TextArea } = Input
-
 const FormItem = Form.Item;
 
 class Demande_Consultation  extends Component {

@@ -26,8 +26,7 @@ class SiderMenu extends Component {
   	}
 
 	changeCategory = (e) => {
-
-		var key = e.key ;
+		var key = parseInt(e.key);
 		var cat ;
 
 		if (key === 1) {

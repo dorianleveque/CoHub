@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Col, Row } from 'antd';
-import Menu_burger from './MenuBurger';
+import MenuBurger from './MenuBurger';
 import { NavLink } from 'react-router-dom'
 import { HOME } from '../router/routes'
 const { Header } = Layout;
@@ -37,7 +37,7 @@ class Top extends Component { // demande un argument
     let hamburger; // création de hamburger, varibale contenat le code à rajouter pour le menu hamburger (peut etre vide)
 
     if (ismenu) { //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
-      hamburger = <Menu_burger togleSideBar={this.togleSideBar} orderItems={this.orderItems} searchItems = {this.searchItems}  />; // insère le code du menu hamburger
+      hamburger = <MenuBurger togleSideBar={this.togleSideBar} orderItems={this.orderItems} searchItems = {this.searchItems}  />; // insère le code du menu hamburger
     } else {
       hamburger = <Col offset={11} span={3}> 
               <div style={{ textAlign: 'center' }}> 

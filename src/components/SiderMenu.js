@@ -30,21 +30,21 @@ class SiderMenu extends Component {
 		var key = e.key ;
 		var cat ;
 
-		if (key ==1) {
+		if (key === 1) {
 			cat ="";
 		}
 
-		else if (key ==2) {
+		else if (key === 2) {
 			cat ="Study";
 		}
 
 
-		else if (key ==3) {
+		else if (key === 3) {
 			cat ="CarPooling";
 		}
 
 
-		else if (key ==4) {
+		else if (key === 4) {
 			cat ="Sharing";
 		}
 		

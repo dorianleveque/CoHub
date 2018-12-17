@@ -39,7 +39,7 @@ class MyAvatar extends Component {
         var nameSplit = String(n).toUpperCase().split(' ')
         
         var initials
-        if (nameSplit.length == 1) {
+        if (nameSplit.length === 1) {
             initials = nameSplit[0] ? nameSplit[0].charAt(0):'?';
         } else {
             initials = nameSplit[0].charAt(0) + nameSplit[1].charAt(0);
@@ -48,7 +48,7 @@ class MyAvatar extends Component {
     }
 
     generateNewAvatarStyle(initials) {
-        var charIndex     = (initials == '?' ? 72 : initials.charCodeAt(0)) - 64;
+        var charIndex     = (initials === '?' ? 72 : initials.charCodeAt(0)) - 64;
         var colourIndex   = charIndex % this.state.colours.length;
         
         return { 

@@ -110,7 +110,7 @@ class HomePage extends Component {
 				cardsData : [...tickets],// [...this.state.cardsData,...tickets],
 				numberOfPages : pages ,
 			})
-			if (this.state.cardsData.length ==0)
+			if (this.state.cardsData.length === 0)
 				{
 					
 				this.setState({
@@ -125,12 +125,12 @@ class HomePage extends Component {
 		
 		var values  = []
 
-		if (this.state.cardsData.length ==0){  //show loading when cards are empty
+		if (this.state.cardsData.length === 0){  //show loading when cards are empty
 			Spin.setDefaultIndicator(<Icon type="loading" style={{ fontSize: '40px' }} />)
 			return (<div><Spin/></div>)
 		}
 		
-		else if (this.state.cardsData[0] =="empty"){
+		else if (this.state.cardsData[0] === "empty"){
 			return (<div>Nous ne parvenons pas à trouver de tickets, veuillez réessayer plus tard</div>)
 		}
 		else {
@@ -153,7 +153,7 @@ class HomePage extends Component {
 		let pagination;
 	
 
-		let style = (this.state.cardsData.length ==0 || this.state.cardsData[0] =="empty") ? { minHeight:'500px' } : { minHeight: '250px' }
+		let style = (this.state.cardsData.length === 0 || this.state.cardsData[0] === "empty") ? { minHeight:'500px' } : { minHeight: '250px' }
 	 	cards =  <div style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', alignItems: 'center', justifyContent:'space-evenly', transition: 'min-height 0.5s ease-in-out', ...style }} >
 			{this.Cards()}						
 			</div>

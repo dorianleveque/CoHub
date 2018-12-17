@@ -1,6 +1,5 @@
 import { database } from '../firebase'
-import User from './User' 
-import Ticket from './Ticket'
+import User from './User'
 
 
 class TicketListControleur {

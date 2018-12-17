@@ -71,10 +71,10 @@ class Authentification {
                 return data
             }
             else {
-                throw { 
-                    code: "user-data-not-found",
-                    message: "Aucune données utilisateur n'a été trouvé à partir de cet adresse mail"
-                }
+                throw Object.assign(
+                    new Error("Aucune données utilisateur n'a été trouvé à partir de cet adresse mail"),
+                    { code: "user-data-not-found" }
+                 )
             }
         }
         catch(error) {
@@ -158,10 +158,10 @@ class Authentification {
          */
         try {
             await this._retriveUserData(email)
-            throw {
-                code: "auth/email-already-in-use",
-                message: "L'adresse mail est déjà utilisée par un autre compte"
-            }
+            throw Object.assign(
+                new Error("L'adresse mail est déjà utilisée par un autre compte"),
+                { code: "auth/email-already-in-use" }
+             )
         }
         catch (error){
             if (error.code === "user-data-not-found") {

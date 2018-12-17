@@ -35,7 +35,7 @@ class CommentEditor extends Component {
         })
         .catch((error) => {
           this.setState({ submitting: false })
-          switch(error) {
+          switch(error.code) {
             case "impossible-to-add-message":
               message.error("Impossible de publier votre aide. Réessayez plus tard")
             break;

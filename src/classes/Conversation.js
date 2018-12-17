@@ -1,7 +1,6 @@
 import { database } from '../firebase'
 import Message from './Message';
 import TicketListControleur from './TicketListControleur';
-import User from './User';
 
 class Conversation{
 
@@ -42,7 +41,10 @@ class Conversation{
 			await this.saveMessage(message)
 		}
 		catch(error) {
-			throw "impossible-to-add-message"
+			throw Object.assign(
+                new Error("Impossible d'ajouter un message"),
+                { code: "impossible-to-add-message" }
+             )
 		}
 	}
 
@@ -60,7 +62,10 @@ class Conversation{
 			await this.saveMessage(message)
 		}
 		catch(error) {
-			throw "impossible-to-edit-message"
+			throw Object.assign(
+                new Error("Impossible d'éditer le message"),
+                { code: "impossible-to-edit-message" }
+             )
 		}
 	}
 
@@ -68,14 +73,17 @@ class Conversation{
 	 * Surprime de la base de donnée le message ayant l'id renseigné
 	 * @param {String} idMessage 
 	 */
-	async deleteMessage(idMessage)
+	async removeMessage(idMessage)
 	{
 		try {
 			let message = this.getMessage(idMessage)
 			await this.deleteMessage(message)
 		}
 		catch(error) {
-			throw "impossible-to-delete-message"
+			throw Object.assign(
+                new Error("Impossible de supprimer le message"),
+                { code: "impossible-to-delete-message" }
+             )
 		}
 	}
 

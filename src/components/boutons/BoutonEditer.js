@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import { Button, Tooltip } from 'antd';
+import { Button } from 'antd';
 import { EDIT_DEMAND, applyRouteParams } from '../../router/routes';
 
 const style = {
@@ -16,7 +16,7 @@ const style = {
   }
 }
 
-class BoutonEditer extends React.Component {
+class BoutonEditer extends Component {
   render(){
    	return (
       <div>

@@ -23,7 +23,7 @@ class BoutonSupprimer extends Component {
    	return (
   	<div style={{ width: 70, float: 'left' }}>
       <Popconfirm placement="left" title={text} onConfirm={this.props.onConfirm} onCancel={this.props.onCancel} okText="Oui" cancelText="Non" icon={<Icon type="question-circle-o" style={{ color: 'red' }}/>} >
-        <Button type="primary" shape="circle" type="danger" icon="delete" size="large" style={style.button} />
+        <Button type="danger" shape="circle" icon="delete" size="large" style={style.button} />
       </Popconfirm>
     </div>
   );

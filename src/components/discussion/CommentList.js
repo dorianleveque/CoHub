@@ -4,11 +4,6 @@ import Avatar from '../Avatar'
 
 class CommentList extends Component {
 
-  constructor() {
-    super()
-
-  }
-
   header() {
     const comments = this.props.comments
     return `${comments.length} ${(comments.length > 1) ? "Réponses" : "Réponse"} `

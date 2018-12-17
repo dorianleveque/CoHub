@@ -108,7 +108,7 @@ class SignInForm extends Component {
                   message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
                 break;
                 case "user-data-not-found":
-                  message.error("Votre compte est cassé, vos informations d'identification ont été corrompu. Merci d'en adresser le problème à l'équipe de CoHub")
+                  message.error("Aucun compte ne correspond à cet identifiant. Le compte a dû être supprimé")
                 break;
                 case "auth/wrong-password":
                   message.error("Votre identifiant et/ou votre mot de passe sont incorrect")

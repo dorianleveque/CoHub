@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Layout,Row, Col, Mention, Button, Cascader, Form, Divider} from 'antd';
-import { NavLink } from 'react-router-dom';
+import { Input,Layout,Row, Col, Button, Cascader, Form, DatePicker } from 'antd';
 import TicketListControleur from '../classes/TicketListControleur.js';
 //import { SessionStore } from '../stores';
 import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
 import { DISPLAY_DEMAND, applyRouteParams } from '../router/routes';
+import moment from 'moment'
 
+const { RangePicker } = DatePicker;
 const { Content } = Layout;
 const { TextArea } = Input
 const FormItem = Form.Item;
@@ -148,7 +149,7 @@ class Demande_Consultation  extends Component {
 				}
 				else if(this.state.isCarPooling)
 				{
-					var options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.depart_date, "arrivalTime":values.arrivee_date, "places":values.places };
+					var options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
 					var t =user.editTicket(this.state.ticket,options);
 				}
 				
@@ -206,8 +207,14 @@ class Demande_Consultation  extends Component {
 			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart")}
 			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee")}
 			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places")}
-			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date")}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date")}
+			<div>
+				<h3 style= {{color:'#7F7F7F'}}>Date</h3>
+				<FormItem required={true} >
+					{
+						getFieldDecorator('date', {rules: [ {required: true, message: 'dates requises' }], initialValue: [moment(this.state.ticCarpoolingInfo.departTime), moment(this.state.ticCarpoolingInfo.arriveeTime)]})(<RangePicker format="DD/MM/YYYY à HH:mm" showTime={{ format: 'HH:mm' }}  placeholder={['Départ', 'Arrivée']} />)
+					}
+				</FormItem>
+			</div>
 		</div>
 	}
 	

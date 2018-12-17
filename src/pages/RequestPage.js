@@ -114,7 +114,7 @@ class Demande_Consultation  extends Component {
 	async ticketRecup() // Recupere le ticket en fonction de l'id envoyé dans l'url
 	{
 		const IdTicket= this.props.match.params.id ; //
-		var tlc= new TicketListControleur;
+		var tlc = new TicketListControleur();
 		let ticket = await tlc.retriveTicket(IdTicket)
 		return ticket
 	}
@@ -175,8 +175,8 @@ class Demande_Consultation  extends Component {
 			{h3PlusInput('#7F7F7F',"Départ",this.state.ticCarpoolingInfo.depart,'#42A6FB',"depart")}
 			{h3PlusInput('#7F7F7F',"Arrivée",this.state.ticCarpoolingInfo.arrivee,'#42A6FB',"arrivee")}
 			{h3PlusInput('#7F7F7F',"Places",this.state.ticCarpoolingInfo.places,'#42A6FB',"places")}
-			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime,'#42A6FB',"depart_date")}
-			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime,'#42A6FB',"arrivee_date")}
+			{h3PlusInput('#7F7F7F',"Date de départ",this.state.ticCarpoolingInfo.departTime.toLocaleDateString('fr', {hour:'2-digit', minute:'2-digit'}),'#42A6FB',"depart_date")}
+			{h3PlusInput('#7F7F7F',"Date d'arrivée",this.state.ticCarpoolingInfo.arriveeTime.toLocaleDateString('fr', {hour:'2-digit', minute:'2-digit'}),'#42A6FB',"arrivee_date")}
 		</div>
 	}
 

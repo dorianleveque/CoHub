@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Layout,Row, Col, Button, Cascader, Form, DatePicker } from 'antd';
+import { Input,Layout,Row, Col, Button, Cascader, Form } from 'antd';
 import Bottom from '../components/Bottom';
+import RangePicker from '../components/RangePicker'
 import { HOME } from '../router/routes';
 
-const { RangePicker } = DatePicker;
 const { Content } = Layout;
 const { TextArea } = Input
 const FormItem = Form.Item;
@@ -56,20 +56,22 @@ class EditDemandeConsultationPage  extends Component {
 				const history = this.props.history;
 
 				// creation du bon type de ticket
+				var options = null
+				var t = null
 				if(this.state.isStudy)
 				{
-					var options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
-					var t =user.createTicket(null,values.title,values.description,"Study",new Date(),null, options);
+					options = { "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
+					t = user.createTicket(null,values.title,values.description,"Study",new Date(),null, options);
 				}
 				else if(this.state.isSharing)
 				{
-					var options = { "item": values.objet};
-					var t =user.createTicket(null,values.title,values.description,"Sharing",new Date(),null, options);
+					options = { "item": values.objet};
+					t = user.createTicket(null,values.title,values.description,"Sharing",new Date(),null, options);
 				}
 				else if(this.state.isCarPooling)
 				{
-					var options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
-					var t =user.createTicket(null,values.title,values.description,"CarPooling",new Date(),null, options);
+					options = { "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
+					t = user.createTicket(null,values.title,values.description,"CarPooling",new Date(),null, options);
 				}
 
 				t.save();

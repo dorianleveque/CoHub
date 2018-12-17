@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import Top from '../components/Top'
 import { SessionStore } from '../stores'
-import { Input,Layout,Row, Col, Button, Cascader, Form, DatePicker } from 'antd';
+import { Input,Layout,Row, Col, Button, Cascader, Form } from 'antd';
 import TicketListControleur from '../classes/TicketListControleur.js';
-//import { SessionStore } from '../stores';
-import Chat from '../components/discussion/Chat.js';
 import Bottom from '../components/Bottom';
 import { DISPLAY_DEMAND, applyRouteParams } from '../router/routes';
+import RangePicker from '../components/RangePicker'
 import moment from 'moment'
 
-const { RangePicker } = DatePicker;
 const { Content } = Layout;
 const { TextArea } = Input
 const FormItem = Form.Item;
@@ -137,20 +135,22 @@ class Demande_Consultation  extends Component {
 				const user = auth.getCurrentUser();
 				const history = this.props.history;
 				// creation du bon type de ticket
+				var options = null
+				var t = null
 				if(this.state.isStudy)
 				{
-					var options = {"title":values.title , "description":values.description , "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
-					var t =user.editTicket(this.state.ticket,options);
+					options = {"title":values.title , "description":values.description , "subject": values.matiere, "semester":values.semestre,"teacher":values.prof,"theme":values.theme};
+					t =user.editTicket(this.state.ticket,options);
 				}
 				else if(this.state.isSharing)
 				{
-					var options = {"title":values.title , "description":values.description , "item": values.objet};
-					var t =user.editTicket(this.state.ticket,options);
+					options = {"title":values.title , "description":values.description , "item": values.objet};
+					t =user.editTicket(this.state.ticket,options);
 				}
 				else if(this.state.isCarPooling)
 				{
-					var options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
-					var t =user.editTicket(this.state.ticket,options);
+					options = {"title":values.title , "description":values.description , "departurLocation":values.depart, "arrivalLocation":values.arrivee, "departurTime":values.date[0]._d, "arrivalTime":values.date[1]._d, "places":values.places };
+					t =user.editTicket(this.state.ticket,options);
 				}
 				
 				t.save();
@@ -163,7 +163,7 @@ class Demande_Consultation  extends Component {
 	{
 		const IdTicket= this.props.match.params.id ; //
 		//const IdTicket="-LTt4ArWywKnz3gHvh3S";
-		var tlc= new TicketListControleur; 
+		var tlc= new TicketListControleur(); 
 		let ticket = await tlc.retriveTicket(IdTicket);
 		this.setState({idTicket: IdTicket, ticket: ticket });
 		return ticket
@@ -211,7 +211,7 @@ class Demande_Consultation  extends Component {
 				<h3 style= {{color:'#7F7F7F'}}>Date</h3>
 				<FormItem required={true} >
 					{
-						getFieldDecorator('date', {rules: [ {required: true, message: 'dates requises' }], initialValue: [moment(this.state.ticCarpoolingInfo.departTime), moment(this.state.ticCarpoolingInfo.arriveeTime)]})(<RangePicker format="DD/MM/YYYY à HH:mm" showTime={{ format: 'HH:mm' }}  placeholder={['Départ', 'Arrivée']} />)
+						getFieldDecorator('date', {rules: [ {required: true, message: 'dates requises' }], initialValue: [moment(this.state.ticCarpoolingInfo.departTime), moment(this.state.ticCarpoolingInfo.arriveeTime)]})(<RangePicker format="DD/MM/YYYY à HH:mm" showTime={{ format: 'HH:mm' }} placeholder={['Départ', 'Arrivée']} />)
 					}
 				</FormItem>
 			</div>
@@ -241,8 +241,9 @@ class Demande_Consultation  extends Component {
 						<h3 style= {{color:'#7F7F7F'}}>Catégorie</h3>
 						<FormItem required={true} >
 						{
-							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}], initialValue:[this.state.Categorie] })
-							(<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled style= {{color:'#42A6FB'}}/>)
+							getFieldDecorator('categorie', {rules: [ {required: true, message: 'sélectionnez une catégorie'}], initialValue:[this.state.Categorie] }) (
+							<Cascader options={this.state.categorieOptions} onChange={this.onCascaderChange} disabled style= {{color:'#42A6FB'}}/>
+							)
 						}
 						</FormItem>
 					</div>

@@ -25,7 +25,7 @@ class BoutonCreationDemande extends Component {
    	return (
   	<div>
       <NavLink to={CREATE_DEMAND}>
-       <Tooltip placement="topLeft" title={title} arrowPointAtCenter>
+       <Tooltip placement='top' title={title} arrowPointAtCenter>
         <Button type="primary" shape="circle" icon="plus" size="large" style={style.button} />
        </Tooltip>
       </NavLink>

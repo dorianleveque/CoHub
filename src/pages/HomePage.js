@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Layout, Row, Pagination, Spin } from 'antd'
+import { Layout, Row, Pagination, Spin, Icon } from 'antd'
 import Top from '../components/Top'
 import SiderMenu from '../components/SiderMenu'
 import DemandeCard from '../components/DemandeCard';
 import TicketListControler from '../classes/TicketListControleur'
 import Bottom from "../components/Bottom"
-import TicketCarPooling from "../classes/TicketCarPooling"
-import User from "../classes/User"
-import Ticket from '../classes/Ticket'
 import BoutonCreationDemande from "../components/boutons/BoutonCreationDemande"
 const { Content } = Layout;
 
@@ -129,12 +126,12 @@ class HomePage extends Component {
 		var values  = []
 
 		if (this.state.cardsData.length ==0){  //show loading when cards are empty
-			return (<div><br/><br/><Spin size = "large"/><br/><br/></div>)
+			Spin.setDefaultIndicator(<Icon type="loading" style={{ fontSize: '40px' }} />)
+			return (<div><Spin/></div>)
 		}
 		
 		else if (this.state.cardsData[0] =="empty"){
-			return (<div><br/>Nous ne parvenons pas à trouver de tickets, veuillez réessayer plus tard </div>)
-
+			return (<div>Nous ne parvenons pas à trouver de tickets, veuillez réessayer plus tard</div>)
 		}
 		else {
 		this.state.cardsData.forEach(function(entry){ //show tickets
@@ -156,8 +153,8 @@ class HomePage extends Component {
 		let pagination;
 	
 
-		
-	 	cards =  <div style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', justifyContent:'space-evenly'}} >
+		let style = (this.state.cardsData.length ==0 || this.state.cardsData[0] =="empty") ? { minHeight:'500px' } : { minHeight: '250px' }
+	 	cards =  <div style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', alignItems: 'center', justifyContent:'space-evenly', transition: 'min-height 0.5s ease-in-out', ...style }} >
 			{this.Cards()}						
 			</div>
 		
@@ -172,7 +169,7 @@ class HomePage extends Component {
 					< SiderMenu visible = {this.state.visible} sortItems ={this.sortItems} searchItems={this.searchItems}/>
 					<Layout>
 						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} searchItems={this.searchItems} orderItems = {this.orderItems} />
-						<Content style={{ padding: "0 40px" }} >
+						<Content style={{ padding: "0 40px"}} >
 							{cards}
 							{space}
 							{pagination}

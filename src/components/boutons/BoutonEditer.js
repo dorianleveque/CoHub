@@ -7,7 +7,7 @@ const style = {
   button: {
     position: 'fixed',
     right: '40px',
-    bottom: '40px',
+    bottom: '100px',
     width: '50px',
     height: '50px'
   },

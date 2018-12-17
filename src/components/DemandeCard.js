@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Icon } from 'antd';
 import { NavLink } from 'react-router-dom'
-import User from "../classes/User"
+import { DISPLAY_DEMAND, applyRouteParams } from '../router/routes'
+
 class DemandeCard extends Component {
 
 	constructor(props) {
@@ -40,7 +41,8 @@ class DemandeCard extends Component {
 
 		}
 
-	let demande = '/demande/'+this.state.id
+	
+	let demande = applyRouteParams(DISPLAY_DEMAND, { id: this.state.id })
 
 
     return (

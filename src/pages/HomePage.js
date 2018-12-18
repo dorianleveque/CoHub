@@ -28,7 +28,6 @@ class HomePage extends Component {
 			
 			var tickets = value.tickets
 			var pages  = value.pageCount
-			console.log(pages)
 			this.setState({
 				cardsData : [...tickets],
 				numberOfPages : pages ,
@@ -105,7 +104,6 @@ class HomePage extends Component {
 
 			var tickets = value.tickets
 			var pages  = value.pageCount
-			console.log(pages)
 			this.setState({
 				cardsData : [...tickets],// [...this.state.cardsData,...tickets],
 				numberOfPages : pages ,
@@ -160,7 +158,7 @@ class HomePage extends Component {
 		
 		
 		space = <Row><br /></Row>;
-		pagination = <Row> <BoutonCreationDemande/> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10+10} onChange={this.onChange.bind(this)}  />  </div></Row>;
+		pagination = <Row> <BoutonCreationDemande/> <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>     <Pagination defaultCurrent={1} total={this.state.numberOfPages*10} onChange={this.onChange.bind(this)}  />  </div></Row>;
 		
 		
 		return (

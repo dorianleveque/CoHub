@@ -13,8 +13,20 @@ class Chat extends Component {
     super()
     this.state = {
       comments: [],
-      commentsRetrieved: false
+      commentsRetrieved: false,
+      commentBeingEdited: null
     }
+  }
+
+  onClickBtnEditMessage = async (message) => {
+    this.setState({commentBeingEdited: message})
+    /*let conversation = this.props.conversation
+    await conversation.editMessage(idMessage, newContent)*/
+  }
+
+  onClickBtnDeleteMessage = async (message) => {
+    let conversation = this.props.conversation
+    await conversation.removeMessage(message.getId())
   }
 
   componentWillReceiveProps(props) {
@@ -34,7 +46,14 @@ class Chat extends Component {
     try {
       const currentUser = this.context.getCurrentUser()
       const conversation = this.props.conversation
-      await conversation.addMessage(currentUser, value, new Date())
+      const message = this.state.commentBeingEdited
+      if (message) {
+        await conversation.editMessage(message.getId(), value)
+        this.setState({commentBeingEdited: null})
+      }
+      else {
+        await conversation.addMessage(currentUser, value, new Date())
+      }
     }
     catch (error) {
       throw error
@@ -54,7 +73,9 @@ class Chat extends Component {
       <div>
         <CommentList
           loading={!this.state.commentsRetrieved}
-          comments={this.state.comments} 
+          comments={this.state.comments}
+          onClickBtnDeleteMessage={this.onClickBtnDeleteMessage}
+          onClickBtnEditMessage={this.onClickBtnEditMessage}
         />
         {
           (this.props.allowPublication)
@@ -63,6 +84,7 @@ class Chat extends Component {
               content={
                 <CommentEditor
                   onSubmit={this.onSubmit}
+                  commentBeingEdited={this.state.commentBeingEdited}
                 />
               }
             />

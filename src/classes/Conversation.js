@@ -58,7 +58,6 @@ class Conversation{
 		try {
 			let message = this.getMessage(idMessage)
 			message.setContent(newContent)
-			message.setDate(new Date())
 			await this.saveMessage(message)
 		}
 		catch(error) {
@@ -195,7 +194,10 @@ class Conversation{
 		database.ref().child('Conversations/'+this.getId()).on('child_removed', (snapshot) => {
 			const idMessage = snapshot.key
 			let messageList = this.getMessages()
-			let messageIndex = messageList.indexOf(idMessage)
+			let message = messageList.find(message => {
+				return message.getId() === idMessage
+			})
+			let messageIndex = messageList.indexOf(message)
 			messageList.splice(messageIndex, 1)
 			if (callback) {
 				callback()

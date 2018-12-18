@@ -5,8 +5,8 @@ const { TextArea } = Input
 
 class CommentEditor extends Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       editor: {
         var: 'editor',
@@ -31,11 +31,14 @@ class CommentEditor extends Component {
         this.props.onSubmit(values.editor).then(() => {
           this.setState({ submitting: false })
           
-          this.props.form.setFieldsValue({ editor: '' })
+          this.props.form.resetFields()
         })
         .catch((error) => {
           this.setState({ submitting: false })
           switch(error.code) {
+            case "impossible-to-edit-message":
+              message.error("Impossible d'éditer votre aide. Réessayez plus tard")
+            break;
             case "impossible-to-add-message":
               message.error("Impossible de publier votre aide. Réessayez plus tard")
             break;
@@ -52,11 +55,12 @@ class CommentEditor extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form
+    let editorOptions = {...this.state.editor.options, initialValue: (this.props.commentBeingEdited) ? this.props.commentBeingEdited.getContent() : ''}
     return (
       <Form onSubmit={this.onSubmit} style={{ display: 'flex' }}>
         <Form.Item style={{ flexGrow: 1, marginRight: '20px' }}>
           { 
-            getFieldDecorator(this.state.editor.var, this.state.editor.options) (this.state.editor.component)
+            getFieldDecorator(this.state.editor.var, editorOptions) (this.state.editor.component)
           }
         </Form.Item>
 

@@ -31,7 +31,7 @@ class TicketListControleur {
 	 */
 	async searchTickets(page, limit, category=null, filter='') {
 		try {
-			console.time("F")
+
 			const nbTicket = limit
 			var tickets = []
 
@@ -41,29 +41,35 @@ class TicketListControleur {
 							: await database.ref('Tickets').orderByChild('creationDate').limitToLast(1000).once('value')
 
 			// on récupère un intervalle de ticket
-			var idTicketList = []
+			var TicketsDescr = [] // garde la description du ticket
+			var ticketsPromises = [] // garde les promaise de ticekt
+
 			snapshot.forEach((childSnapshot) => {
-				const idTicket = childSnapshot.key
-				const { title, description } = childSnapshot.val()
+				var idTicket = childSnapshot.key
+				var { category, creationDate, description, idConversation, idRequester, title } = childSnapshot.val()
 				
 				// application du filtre
 				if (title.includes(filter) || description.includes(filter)) {
-					idTicketList.push( idTicket )
+					TicketsDescr.push({idTicket : idTicket ,cat : category, creationDate : creationDate, description : description, idConversation : idConversation, idRequester : idRequester, title : title})
 				}
 			})
-			const pageCount = parseInt(idTicketList.length / nbTicket)
-			idTicketList = idTicketList.reverse()
-			idTicketList = idTicketList.slice(nbTicket*page, nbTicket*page+nbTicket)
+
 			
-			// création des tickets
-			console.time("I")
-			for (var idTicket of idTicketList) {
-				var ticket = await this.retriveTicket(idTicket)
-				tickets.push(ticket)
+			if (TicketsDescr.length / nbTicket == parseInt(TicketsDescr.length / nbTicket) ){ // besoin de simplifier ici 
+				var pageCount = parseInt(TicketsDescr.length / nbTicket)
 			}
-			console.timeEnd("I")
-			//console.log(tickets)
-			console.timeEnd("F")
+			else {
+				var pageCount = parseInt(TicketsDescr.length / nbTicket)+1
+			}
+
+			TicketsDescr = TicketsDescr.reverse()
+			TicketsDescr = TicketsDescr.slice(nbTicket*page, nbTicket*page+nbTicket)
+			for (var i = 0, l = TicketsDescr.length; i < l; i++) {
+				var {idTicket, cat, description, idRequester, title} = TicketsDescr[i]
+				ticketsPromises.push(this.createTickets(idTicket,cat, description, idRequester, title))
+				}
+
+			tickets =  await Promise.all(ticketsPromises)
 			return { tickets, pageCount }
 		}
 		catch (error) {
@@ -71,6 +77,29 @@ class TicketListControleur {
 		}
 	}
 	 
+
+	/**
+	 * get ticket by id and create Ticket
+	 * @param {int} id
+	 * @returns Ticket
+	 */
+	async createTickets(idTicket,cat, description, idRequester, title)
+	{
+		try {
+			var user = await this.searchUser(idRequester)
+			var ticket = user.createTicket(idTicket , title , description, cat)
+			 
+			return ticket;
+		}
+		catch (error) {
+			throw error
+		}
+	}
+
+
+
+
+
 	/**
 	 * get ticket by id and create Ticket
 	 * @param {int} id

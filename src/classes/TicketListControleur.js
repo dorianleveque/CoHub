@@ -54,12 +54,12 @@ class TicketListControleur {
 				}
 			})
 
-			
-			if (TicketsDescr.length / nbTicket == parseInt(TicketsDescr.length / nbTicket) ){ // besoin de simplifier ici 
-				var pageCount = parseInt(TicketsDescr.length / nbTicket)
+			var pageCount = 0
+			if (TicketsDescr.length / nbTicket === parseInt(TicketsDescr.length / nbTicket) ){ // besoin de simplifier ici 
+				pageCount = parseInt(TicketsDescr.length / nbTicket)
 			}
 			else {
-				var pageCount = parseInt(TicketsDescr.length / nbTicket)+1
+				pageCount = parseInt(TicketsDescr.length / nbTicket)+1
 			}
 
 			TicketsDescr = TicketsDescr.reverse()

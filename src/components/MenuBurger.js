@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Icon, Col , Popconfirm } from 'antd';
-import { NavLink } from 'react-router-dom'
-import { SIGN_IN , HOME } from '../router/routes'
+import { Icon, Col } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { HOME } from '../router/routes';
 import { SessionStore } from '../stores';
-import Avatar from '../components/Avatar'
+import AvatarAccount from './AvatarAccount';
 
 class MenuBurger extends Component {
 
@@ -26,25 +26,6 @@ class MenuBurger extends Component {
   }
 
   render() {
-  let account;
-	if (this.context.isConnected()) {
-    let curentUser = this.context.getCurrentUser()
-    const firstname = curentUser.getName()
-    const surname   = curentUser.getSurname()
-    let name = `${ firstname } ${ surname }`
-		account =  <Popconfirm placement="bottomRight" title="Voulez-vous vous déconnecter ?" onConfirm={this.confirm} okText="Yes" cancelText="No">
-            		<div style={{ cursor: 'pointer' }}>
-                  <Avatar name={name} />
-                </div>
-			</Popconfirm> ;
-	}
-
-	else  {
-		account = <NavLink to={SIGN_IN} style={{color: 'white'}}>
-            <Icon type="user" />
-          </NavLink>
-	}
-
     return (
       <div>
         <Col span={2}> 
@@ -53,10 +34,10 @@ class MenuBurger extends Component {
           </div>
         </Col>
         <NavLink to={HOME} style={{color: 'white'}}>
-        <Col offset= {8} span={3}> <div style={{ textAlign: 'center' }}>CoHub </div></Col>
+        <Col offset= {8} span={3}> <h3 style={{ textAlign: 'center', color :'#FFF' }}>CoHub </h3></Col>
         </NavLink>
         <Col span={1} offset={10}> 
-	    {account}
+          <AvatarAccount isConnected={this.context.isConnected()} user={this.context.getCurrentUser()} confirm={this.confirm} />
         </Col>
       </div>
     );

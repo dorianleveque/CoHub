@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Layout, Col, Row } from 'antd';
 import MenuBurger from './MenuBurger';
-import { NavLink } from 'react-router-dom'
-import { HOME } from '../router/routes'
+import { NavLink } from 'react-router-dom';
+import { HOME } from '../router/routes';
+import sessionStore from '../stores/session-store';
+import AvatarAccount from './AvatarAccount';
 const { Header } = Layout;
 
 class Top extends Component { // demande un argument
 
+  static contextType = sessionStore
   constructor(props) { // constructuer de Top
     super(props); // utile ?
     this.ismenu = this.props.ismenu; //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
@@ -38,6 +41,15 @@ class Top extends Component { // demande un argument
 
     if (ismenu) { //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
       hamburger = <MenuBurger togleSideBar={this.togleSideBar} orderItems={this.orderItems} searchItems = {this.searchItems}  />; // insère le code du menu hamburger
+    } else if(1==1) {
+      hamburger = <div>
+                    <NavLink to={HOME} style={{color: 'white'}}>
+                      <Col offset= {10} span={3}> <h3 style={{ textAlign: 'center', color :'#FFF' }}>CoHub </h3></Col>
+                    </NavLink>
+                    <Col span={1} offset={10}> 
+                      <AvatarAccount isConnected={this.context.isConnected()} user={this.context.getCurrentUser()} confirm={() => this.context.disconnect() } />
+                    </Col>
+                  </div>
     } else {
       hamburger = <Col offset={11} span={3}> 
               <div style={{ textAlign: 'center' }}> 

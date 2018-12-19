@@ -166,7 +166,7 @@ class HomePage extends Component {
 				<Layout style={{ minHeight: "600px" }}>
 					< SiderMenu visible = {this.state.visible} sortItems ={this.sortItems} searchItems={this.searchItems}/>
 					<Layout>
-						<Top ismenu={this.ismenu} togleSideBar={this.togleSideBar} searchItems={this.searchItems} orderItems = {this.orderItems} />
+						<Top enabledAccountAvatar ismenu={this.ismenu} togleSideBar={this.togleSideBar} searchItems={this.searchItems} orderItems = {this.orderItems} />
 						<Content style={{ padding: "0 40px"}} >
 							{cards}
 							{space}

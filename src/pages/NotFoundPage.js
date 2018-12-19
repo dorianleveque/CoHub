@@ -56,7 +56,7 @@ class NotFoundPage extends Component {
     styleSheet.insertRule(style.compass.keyFrame, styleSheet.cssRules.length);
     return (
       <Layout>
-        <Top />
+        <Top enabledAccountAvatar />
         <Content >
           <Row type='flex' align='middle' justify='center' style={ style.content } >
             <Col>

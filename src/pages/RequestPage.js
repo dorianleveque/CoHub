@@ -182,7 +182,7 @@ class Demande_Consultation  extends Component {
 
 	return (
 	<Layout>
-		<Top/>
+		<Top enabledAccountAvatar />
 		<Content style={{ margin: '42px 10%'}}>
 			<Layout>
 				<Row>

@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom'
 import { Layout, Col, Row } from 'antd';
+import { HOME } from '../router/routes'
 import MenuBurger from './MenuBurger';
-import { NavLink } from 'react-router-dom';
-import { HOME } from '../router/routes';
-import sessionStore from '../stores/session-store';
 import AvatarAccount from './AvatarAccount';
+import { SessionStore } from '../stores';
+
 const { Header } = Layout;
 
 class Top extends Component { // demande un argument
 
-  static contextType = sessionStore
+  static contextType = SessionStore
   constructor(props) { // constructuer de Top
     super(props); // utile ?
     this.ismenu = this.props.ismenu; //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
@@ -41,7 +42,7 @@ class Top extends Component { // demande un argument
 
     if (ismenu) { //récupère la valeur donné par le proprs afin de savoir si nous somme sur le menu ou non
       hamburger = <MenuBurger togleSideBar={this.togleSideBar} orderItems={this.orderItems} searchItems = {this.searchItems}  />; // insère le code du menu hamburger
-    } else if(1==1) {
+    } else if(this.props.enabledAccountAvatar) {
       hamburger = <div>
                     <NavLink to={HOME} style={{color: 'white'}}>
                       <Col offset= {10} span={3}> <h3 style={{ textAlign: 'center', color :'#FFF' }}>CoHub </h3></Col>

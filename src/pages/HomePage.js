@@ -24,14 +24,14 @@ class HomePage extends Component {
 
 		this.tlc = new TicketListControler();	
 
-		this.tlc.searchTickets(0, 12).then((value) => {
+		this.tlc.searchTickets(0, 18).then((value) => {
 			
 			var tickets = value.tickets
 			var pages  = value.pageCount
 			this.setState({
 				cardsData : [...tickets],
 				numberOfPages : pages ,
-				params : [12]
+				params : [18]
 			})//setState
 		}) //Then searchTickets
 
@@ -70,7 +70,7 @@ class HomePage extends Component {
 	
 
 	searchItems = (text) =>{
-			var parameters  = [12,null,text]
+			var parameters  = [18,null,text]
 			this.setState({
 				cardsData : [],// [...this.state.cardsData,...tickets],
 				numberOfPages : 1 ,
@@ -86,7 +86,7 @@ class HomePage extends Component {
 	
 	sortItems = (category) =>{
 			
-			var parameters  = [12,category]
+			var parameters  = [18,category]
 
 			this.setState({
 				cardsData : [],// [...this.state.cardsData,...tickets],
@@ -151,7 +151,7 @@ class HomePage extends Component {
 		let pagination;
 	
 
-		let style = (this.state.cardsData.length === 0 || this.state.cardsData[0] === "empty") ? { minHeight:'500px' } : { minHeight: '250px' }
+		let style = (this.state.cardsData.length === 0 || this.state.cardsData[0] === "empty") ? { minHeight:'500px' } : { minHeight: ' 50px' }
 	 	cards =  <div style={{ display : 'flex' , flexWrap : 'wrap' ,alignContent: 'space-evenly', alignItems: 'center', justifyContent:'space-evenly', transition: 'min-height 0.5s ease-in-out', ...style }} >
 			{this.Cards()}						
 			</div>

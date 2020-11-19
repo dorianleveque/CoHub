@@ -60,7 +60,7 @@ class DemandeCard extends Component {
           <div style={{ fontSize: '11px', color: '#1890ff', overflow: 'hidden', textAlign: 'center', marginTop: '9px' }}>
 	    {userInfo}
 	  </div>
-          <div style={{ marginTop: '10px', marginLeft: '10px', marginRight: '10px' }} >
+          <div style={{ marginTop: '10px', marginLeft: '10px', marginRight: '10px', paddingRight:'15px' }} >
             	<p style={{ fontSize: '12px', textAlign: 'justify' }}>
 	    		{this.state.description}
           	</p>

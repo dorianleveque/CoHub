@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="docs/CoHub.png" alt="drawing" width="200px;" style="filter: opacity(0.6) drop-shadow(0 0 0 blue);"/>
+    <img src="src/images/CoHub_icon.png" alt="drawing" width="200px;" />
     <h1>
         <b>
             <a style="color: black" href="https://cohub-9d62b.firebaseapp.com/">CoHub</a>
